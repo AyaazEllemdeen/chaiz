@@ -11,3 +11,5 @@ services:
 networks:
     web-backend:
         external: true
+ports:
+      - "9000:9000"
