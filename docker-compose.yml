@@ -5,7 +5,7 @@ services:
         container_name: php8_chaiz
         restart: unless-stopped
         volumes:
-            - ./chaiz:/var/www/html:delegated
+            - ./:/var/www/html:delegated
         ports:
             - "9000:9000"
         networks:
