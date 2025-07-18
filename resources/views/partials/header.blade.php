@@ -8,13 +8,6 @@
         <button class="btn d-lg-none" id="menu-toggle" aria-label="Toggle menu">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-        <!-- Desktop Nav -->
-        <nav class="d-none d-lg-flex gap-4">
-            <a href="#home" class="nav-link yellow">Home</a>
-            <a href="#faq" class="nav-link yellow">FAQ</a>
-            <a href="#blog" class="nav-link yellow">Blog</a>
-        </nav>
     </div>
 </header>
 
