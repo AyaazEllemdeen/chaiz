@@ -6,10 +6,10 @@ services:
         restart: unless-stopped
         volumes:
             - ./chaiz:/var/www/html:delegated
+        ports:
+            - "9000:9000"
         networks:
             - web-backend
 networks:
     web-backend:
         external: true
-ports:
-      - "9000:9000"
