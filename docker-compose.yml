@@ -5,15 +5,19 @@ services:
     image: nginx:latest
     restart: always
     ports:
-      - "${NGINX_NETWORK_PORT}:80"
+      - "80:80"
+      - "443:443"
     volumes:
       - .:/var/www/html
       - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./docker/ssl:/etc/nginx/ssl
     networks:
       - chaiz-network
     depends_on:
       - php82
+    # deploy:
+        #replicas: ${NGINX_REPLICAS:-0}  # Default to 0 replicas (disabled) in production
 
   php82:
     build:
@@ -31,15 +35,12 @@ services:
     volumes:
       - chaiz-db-volume:/var/lib/mysql
     environment:
-        TZ: "Africa/Johannesburg"
-        MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-        MYSQL_DATABASE: ${DB_DATABASE}
-        MYSQL_USER: ${DB_USERNAME}
-        MYSQL_PASSWORD: ${DB_PASSWORD}
+      TZ: "Africa/Johannesburg"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     networks:
       - chaiz-network
     ports:
-      - ${DB_NETWORK_PORT}:3306
+      - 3313:3306
 
 volumes:
   chaiz-db-volume:
