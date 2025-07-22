@@ -1970,8 +1970,90 @@
                 </div>
             </section>
         </div>
+<img src="/img/bottombanner.png" alt="">
 
+<div class="faq-container">
+    <div style="height: 50px; background-color: black;"></div>
+        <div class="faq-item">
+            <div class="faq-header" onclick="toggleFaq(this)">
+                <h3 class="faq-question">Our Comprehensive Review Process for Extended Car Warranties</h3>
+                <div class="faq-icon"></div>
+            </div>
+            <div class="faq-content">
+                <p class="faq-answer">
+                    Our expert team conducts thorough research and analysis of extended car warranty providers. We evaluate coverage options, pricing structures, customer service quality, claim processes, and overall value proposition. Our comprehensive review includes analyzing thousands of customer reviews, speaking with industry experts, and testing claim processes to provide you with accurate, unbiased recommendations.
+                </p>
+            </div>
+        </div>
 
+        <div class="faq-item">
+            <div class="faq-header" onclick="toggleFaq(this)">
+                <h3 class="faq-question">Who Benefits from an Extended Car Warranty?</h3>
+                <div class="faq-icon"></div>
+            </div>
+            <div class="faq-content">
+                <p class="faq-answer">
+                    Extended car warranties are ideal for drivers who want peace of mind beyond their manufacturer's warranty. They're particularly beneficial for those with older vehicles, high-mileage cars, or luxury vehicles with expensive repair costs. If you prefer predictable expenses over unexpected repair bills, or if you lack a substantial emergency fund for car repairs, an extended warranty can provide valuable financial protection.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-header" onclick="toggleFaq(this)">
+                <h3 class="faq-question">Selecting the Right Plan</h3>
+                <div class="faq-icon"></div>
+            </div>
+            <div class="faq-content">
+                <p class="faq-answer">
+                    Choosing the right extended warranty plan depends on several factors: your vehicle's age, mileage, and reliability history; your budget and risk tolerance; the types of repairs you want covered; and your preferred service locations. Consider comprehensive plans for older vehicles, powertrain coverage for newer cars, and always review exclusions, deductibles, and claim procedures before making your decision.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item1">
+            <div class="faq-header" onclick="toggleFaq(this)">
+                <h3 class="faq-question">Sustainability Model</h3>
+                <div class="faq-icon"></div>
+            </div>
+            <div class="faq-content">
+                <p class="faq-answer">
+                    Our sustainability model focuses on promoting responsible car ownership and environmental consciousness. We evaluate warranty providers based on their support for eco-friendly practices, including coverage for hybrid and electric vehicles, partnerships with certified repair facilities that follow environmental standards, and digital-first processes that reduce paper waste. We believe in extending vehicle lifecycles through proper maintenance and coverage, which reduces automotive waste and promotes sustainable transportation choices.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleFaq(element) {
+            const faqItem = element.closest('.faq-item');
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Toggle current item
+            if (isActive) {
+                faqItem.classList.remove('active');
+            } else {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // Close FAQ when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.faq-item')) {
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+            }
+        });
+    </script>
+
+    
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 const modal = document.getElementById("step9");
