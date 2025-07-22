@@ -1672,7 +1672,7 @@
                 setTimeout(() => {
                     step5Loading.style.display = "none";
                     step5.style.display = "block";
-                }, 10);
+                }, 2000);
             });
 
             // Step 5 → Step 6 ZIP code validation
