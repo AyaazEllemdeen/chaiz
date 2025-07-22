@@ -350,6 +350,7 @@
             </div>
 
             <div id="step9" class="modal-card">
+                <div class="modal-background"></div>
                 <div class="card">
                     <button class="close-btn">&times;</button>
 
@@ -360,27 +361,28 @@
                     </p>
 
                     <div class="match-section">
-                        <div class="match-header">
-                            <img src="img/1.png" style="height: 100px;" alt="Endurance Logo">
-                            <h2 class="match-title">
-                                Good news! We've matched you with Endurance for your Auto Warranty!
-                                Your quote is on the way!
-                            </h2>
-                        </div>
+                        <h2 class="match-title">
+                            Good news! We've matched you with Endurance for your Auto Warranty!<br />
+                            Your quote is on the way!
+                        </h2>
 
-                        <div class="benefit">
-                            <span class="benefit-icon">•</span>
-                            <span class="benefit-text">Get $300 off any new 2025 plan!</span>
-                        </div>
+                        <div class="match-body">
+                            <img src="img/1.png" alt="Endurance Logo" class="match-logo" />
 
-                        <div class="benefit">
-                            <span class="benefit-icon">•</span>
-                            <span class="benefit-text">Covers cars up to 20 years old/200K miles</span>
-                        </div>
-
-                        <div class="benefit">
-                            <span class="benefit-icon">•</span>
-                            <span class="benefit-text">1 year of FREE Elite Benefits</span>
+                            <div class="match-benefits">
+                                <div class="benefit">
+                                    <span class="benefit-icon">•</span>
+                                    <span class="benefit-text">Get $300 off any new 2025 plan!</span>
+                                </div>
+                                <div class="benefit">
+                                    <span class="benefit-icon">•</span>
+                                    <span class="benefit-text">Covers cars up to 20 years old/200K miles</span>
+                                </div>
+                                <div class="benefit">
+                                    <span class="benefit-icon">•</span>
+                                    <span class="benefit-text">1 year of FREE Elite Benefits</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -395,10 +397,9 @@
                     </p>
 
                     <div class="provider-card">
-                        <img src="/public/img/american-dream.png" style="height: 100px;" alt="">
+                        <img src="/img/american-dream.png" alt="American Dream Logo" class="provider-logo">
+
                         <div class="provider-content">
-                            <img src="/img/american-dream.png" alt="American Dream Logo" style="height: 100px;"
-                                class="provider-logo">
                             <div class="benefit">
                                 <span class="benefit-icon">•</span>
                                 <span class="benefit-text">$350 off + 3 months free!</span>
@@ -412,12 +413,13 @@
                                 <span class="benefit-text">Customize your coverage plan</span>
                             </div>
                         </div>
+
                         <input type="checkbox" class="provider-checkbox" id="american-dream" checked />
                     </div>
 
                     <button type="submit" class="complete-btn">Complete Your Quote Request</button>
 
-                    <div class="legal-text">
+                    <div style="font-size: small; margin-top: 35px;" class="legal-text">
                         By clicking the button to submit this form, you direct & authorize
                         Marketing VF Ltd ("MVF") to disclose your contact information (including
                         any health data, if you've provided it) to the Providers of Auto
@@ -1721,6 +1723,7 @@
             // Step 8 → Show Modal (with phone validation)
             document.getElementById("to-card").addEventListener("click", e => {
                 e.preventDefault();
+                document.body.classList.add('modal-open');
                 const phone = document.getElementById("user-number").value.trim();
 
                 // Validate phone number
