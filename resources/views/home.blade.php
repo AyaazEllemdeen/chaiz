@@ -353,90 +353,91 @@
                 <div class="modal-background"></div>
                 <div class="card">
                     <button class="close-btn">&times;</button>
+                    <div class="card-content">
+                        <h1>Best Extended Auto Warranty in July 2025</h1>
+                        <p class="subtitle">
+                            Continue our short quiz to Get Matched to an Auto Warranty provider
+                            suited to you
+                        </p>
 
-                    <h1>Best Extended Auto Warranty in July 2025</h1>
-                    <p class="subtitle">
-                        Continue our short quiz to Get Matched to an Auto Warranty provider
-                        suited to you
-                    </p>
+                        <div class="match-section">
+                            <h2 class="match-title">
+                                Good news! We've matched you with Endurance for your Auto Warranty!<br />
+                                Your quote is on the way!
+                            </h2>
 
-                    <div class="match-section">
-                        <h2 class="match-title">
-                            Good news! We've matched you with Endurance for your Auto Warranty!<br />
-                            Your quote is on the way!
-                        </h2>
+                            <div class="match-body">
+                                <img src="img/1.png" alt="Endurance Logo" class="match-logo" />
 
-                        <div class="match-body">
-                            <img src="img/1.png" alt="Endurance Logo" class="match-logo" />
-
-                            <div class="match-benefits">
-                                <div class="benefit">
-                                    <span class="benefit-icon">•</span>
-                                    <span class="benefit-text">Get $300 off any new 2025 plan!</span>
-                                </div>
-                                <div class="benefit">
-                                    <span class="benefit-icon">•</span>
-                                    <span class="benefit-text">Covers cars up to 20 years old/200K miles</span>
-                                </div>
-                                <div class="benefit">
-                                    <span class="benefit-icon">•</span>
-                                    <span class="benefit-text">1 year of FREE Elite Benefits</span>
+                                <div class="match-benefits">
+                                    <div class="benefit">
+                                        <span class="benefit-icon">•</span>
+                                        <span class="benefit-text">Get $300 off any new 2025 plan!</span>
+                                    </div>
+                                    <div class="benefit">
+                                        <span class="benefit-icon">•</span>
+                                        <span class="benefit-text">Covers cars up to 20 years old/200K miles</span>
+                                    </div>
+                                    <div class="benefit">
+                                        <span class="benefit-icon">•</span>
+                                        <span class="benefit-text">1 year of FREE Elite Benefits</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="divider"></div>
+                        <div class="divider"></div>
 
-                    <div class="providers-title">
-                        Request quotes from additional providers
-                    </div>
-                    <p class="providers-subtitle">
-                        Keep the brands you want to hear from selected, then press Complete Your
-                        Quote Request below.
-                    </p>
+                        <div class="providers-title">
+                            Request quotes from additional providers
+                        </div>
+                        <p class="providers-subtitle">
+                            Keep the brands you want to hear from selected, then press Complete Your
+                            Quote Request below.
+                        </p>
 
-                    <div class="provider-card">
-                        <img src="/img/american-dream.png" alt="American Dream Logo" class="provider-logo">
+                        <div class="provider-card">
+                            <img src="/img/american-dream.png" alt="American Dream Logo" class="provider-logo">
 
-                        <div class="provider-content">
-                            <div class="benefit">
-                                <span class="benefit-icon">•</span>
-                                <span class="benefit-text">$350 off + 3 months free!</span>
+                            <div class="provider-content">
+                                <div class="benefit">
+                                    <span class="benefit-icon">•</span>
+                                    <span class="benefit-text">$350 off + 3 months free!</span>
+                                </div>
+                                <div class="benefit">
+                                    <span class="benefit-icon">•</span>
+                                    <span class="benefit-text">Covers cars up to 20 years old / 200K miles</span>
+                                </div>
+                                <div class="benefit">
+                                    <span class="benefit-icon">•</span>
+                                    <span class="benefit-text">Customize your coverage plan</span>
+                                </div>
                             </div>
-                            <div class="benefit">
-                                <span class="benefit-icon">•</span>
-                                <span class="benefit-text">Covers cars up to 20 years old / 200K miles</span>
-                            </div>
-                            <div class="benefit">
-                                <span class="benefit-icon">•</span>
-                                <span class="benefit-text">Customize your coverage plan</span>
-                            </div>
+
+                            <input type="checkbox" class="provider-checkbox" id="american-dream" checked />
                         </div>
 
-                        <input type="checkbox" class="provider-checkbox" id="american-dream" checked />
-                    </div>
+                        <button type="submit" class="complete-btn">Complete Your Quote Request</button>
 
-                    <button type="submit" class="complete-btn">Complete Your Quote Request</button>
-
-                    <div style="font-size: small; margin-top: 35px;" class="legal-text">
-                        By clicking the button to submit this form, you direct & authorize
-                        Marketing VF Ltd ("MVF") to disclose your contact information (including
-                        any health data, if you've provided it) to the Providers of Auto
-                        Protection Plans selected above. You agree that the selected Providers,
-                        or third parties acting on their behalf, may make telemarketing calls &
-                        text messages (which may be made using autodialer or pre-recorded voice
-                        technology) to you about your request, & other products/services related
-                        to your request, at the number you supplied in completing this form.
-                        Standard message and data rates from your mobile network provider may
-                        apply. Calls may be recorded. Your consent is not an obligation of any
-                        purchase. You also agree to MVF making marketing & promotional calls &
-                        texts to you about your request & other related products/services which
-                        may be of interest to you. These calls and texts may be made using
-                        autodialer or pre-recorded voice technology. For additional information
-                        about how we contact you, <a href="#" class="legal-link">see here</a>.
-                        You have rights in relation to your personal data, see our
-                        <a href="#" class="legal-link">privacy policy</a> for more information.
+                        <div style="font-size: small; margin-top: 35px;" class="legal-text">
+                            By clicking the button to submit this form, you direct & authorize
+                            Marketing VF Ltd ("MVF") to disclose your contact information (including
+                            any health data, if you've provided it) to the Providers of Auto
+                            Protection Plans selected above. You agree that the selected Providers,
+                            or third parties acting on their behalf, may make telemarketing calls &
+                            text messages (which may be made using autodialer or pre-recorded voice
+                            technology) to you about your request, & other products/services related
+                            to your request, at the number you supplied in completing this form.
+                            Standard message and data rates from your mobile network provider may
+                            apply. Calls may be recorded. Your consent is not an obligation of any
+                            purchase. You also agree to MVF making marketing & promotional calls &
+                            texts to you about your request & other related products/services which
+                            may be of interest to you. These calls and texts may be made using
+                            autodialer or pre-recorded voice technology. For additional information
+                            about how we contact you, <a href="#" class="legal-link">see here</a>.
+                            You have rights in relation to your personal data, see our
+                            <a href="#" class="legal-link">privacy policy</a> for more information.
+                        </div>
                     </div>
                 </div>
             </div>
