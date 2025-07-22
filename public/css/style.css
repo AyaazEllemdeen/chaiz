@@ -1041,8 +1041,8 @@ body {
 
 /* Logo styling */
 #step9 .match-logo {
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 150px;
     flex-shrink: 0;
 }
 
@@ -1134,8 +1134,8 @@ body {
 
 /* Provider logo */
 #step9 .provider-logo {
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 150px;
     border-radius: 8px;
     flex-shrink: 0;
 }
