@@ -1176,7 +1176,7 @@ body.modal-open {
 }
 
 .full-width-separator {
-  width: 100vw;
+  width: 10vw;
   height: 1px;               /* thinner line */
   background-color: #ffd700;
   margin: 40px 0;
@@ -1184,3 +1184,4 @@ body.modal-open {
   left: 50%;
   transform: translateX(-50%);
 }
+

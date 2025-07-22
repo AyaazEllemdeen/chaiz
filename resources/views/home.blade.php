@@ -4,7 +4,7 @@
 
 @section('content')
     <!-- Hero Banner Section -->
-    <section class="position-relative" style="height: 80vh;">
+    <section class="position-relative" style="height: 60vh;">
         <img src="{{ asset('img/banner3.jpg') }}" alt="Banner" class="object-fit-cover banner-img">
 
         <div class="banner-text-container">
@@ -1963,6 +1963,7 @@
         </section>
     </div>
 
+    
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const modal = document.getElementById("step9");
