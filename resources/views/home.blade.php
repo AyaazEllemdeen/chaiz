@@ -1970,7 +1970,7 @@
                 </div>
             </section>
         </div>
-<img src="/img/bottombanner.png" alt="">
+<img src="/img/bottombanner.png" style="width: 100%;" alt="">
 
 <div class="faq-container">
     <div style="height: 50px; background-color: black;"></div>
