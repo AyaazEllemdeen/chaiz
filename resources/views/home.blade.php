@@ -109,10 +109,10 @@
                 <img src="@if(session('lead_destination') == 'Endurance API') 
                       {{ asset('img/1.png') }} 
                   @elseif(session('lead_destination') == 'LeadConduit (Backup System)') 
-                              {{ asset('img/american-dream.png') }} 
-                          @else 
-                                      {{ asset('img/logo.png') }} 
-                                  @endif" alt="Provider Logo" class="wizard-logo">
+                                  {{ asset('img/american-dream.png') }} 
+                              @else 
+                                  {{ asset('img/logo.png') }} 
+                              @endif" alt="Provider Logo" class="wizard-logo">
 
                 <h1 class="wizard-heading">Thank You! Your Quotes Are on the Way</h1>
                 <p class="wizard-subtext">
@@ -127,17 +127,27 @@
 
                 <div class="wizard-info-box">
                     <h3 class="wizard-next-title">What happens next?</h3>
-                    <ol class="wizard-next-steps">
-                        <li>If there's a match between your specs and a provider, expect a call from 1–5 providers soon.</li>
-                        <li>You'll have a free phone consultation to discuss pricing and plan options.</li>
-                        <li>No obligation — you can choose the best quote that fits your needs.</li>
-                    </ol>
+                    <p>
+                        If there is a match between your specifications and our provider’s criteria, you will receive a call
+                        from between 1-5 providers within the next working day. If you submitted your request during office
+                        hours today, you’re likely to be contacted within the next hour.
+                    </p>
+                    <p>
+                        You will have a free phone consultation with the relevant provider(s) to discuss prices and ask any
+                        questions that you may have.
+                    </p>
+                    <p>Please be aware that you may not receive quotes if:</p>
+                    <ul>
+                        <li>The specifications you provided are not eligible for the provider's product/services</li>
+                        <li>There is an error in the contact details you provided, such as an invalid phone number</li>
+                    </ul>
                 </div>
 
                 <button id="close-success-modal" class="wizard-close-btn">Close</button>
             </div>
         </div>
     @endif
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
