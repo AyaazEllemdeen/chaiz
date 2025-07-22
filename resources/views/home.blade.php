@@ -96,14 +96,113 @@
 
     </div>
     @if(session('success'))
-        <script>
-            alert("{{ session('success') }}");
-        </script>
+        <div id="success-modal" class="wizard-fullscreen-modal">
+            <div class="wizard-modal-box">
+
+                {{-- New Heading and Subtext --}}
+                <h2 class="wizard-subheading text-uppercase text-center mb-2">Best Extended Auto Warranty in July 2025</h2>
+                <p class="wizard-intro text-center mb-4">
+                    Continue our short quiz to get matched to an auto warranty provider suited to you.
+                </p>
+
+                {{-- Conditional Logo --}}
+                <img src="@if(session('lead_destination') == 'Endurance API') 
+                      {{ asset('img/1.png') }} 
+                  @elseif(session('lead_destination') == 'LeadConduit (Backup System)') 
+                              {{ asset('img/american-dream.png') }} 
+                          @else 
+                                      {{ asset('img/logo.png') }} 
+                                  @endif" alt="Provider Logo" class="wizard-logo">
+
+                <h1 class="wizard-heading">Thank You! Your Quotes Are on the Way</h1>
+                <p class="wizard-subtext">
+                    We’ve successfully processed your request, and your quotes from the selected providers will arrive shortly.
+                </p>
+
+                @if(session('reference_number'))
+                    <p class="wizard-reference">
+                        Your reference number is <strong>{{ session('reference_number') }}</strong>
+                    </p>
+                @endif
+
+                <div class="wizard-info-box">
+                    <h3 class="wizard-next-title">What happens next?</h3>
+                    <ol class="wizard-next-steps">
+                        <li>If there's a match between your specs and a provider, expect a call from 1–5 providers soon.</li>
+                        <li>You'll have a free phone consultation to discuss pricing and plan options.</li>
+                        <li>No obligation — you can choose the best quote that fits your needs.</li>
+                    </ol>
+                </div>
+
+                <button id="close-success-modal" class="wizard-close-btn">Close</button>
+            </div>
+        </div>
     @endif
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const closeBtn = document.getElementById('close-success-modal');
+            const modal = document.getElementById('success-modal');
+
+            if (closeBtn && modal) {
+                closeBtn.addEventListener('click', function () {
+                    modal.style.display = 'none';
+                });
+            }
+        });
+    </script>
+
     @if(session('error'))
+        <div id="error-modal" class="fullscreen-modal">
+            <div class="fullscreen-modal-content">
+                <div class="error-modal-body">
+                    <div class="error-content">
+                        <div class="error-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="error-x"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                        </div>
+                        <h2 class="error-title">Submission Failed</h2>
+                        <p class="error-message">{{ session('error') }}</p>
+                        @if(session('lead_destination'))
+                            <p class="error-status"><strong>Status:</strong> {{ session('lead_destination') }}</p>
+                        @endif
+                        <p class="error-description">Please try again later or contact our support team for assistance.</p>
+                    </div>
+
+                    <button id="close-error-modal" class="close-modal-btn">Close</button>
+                </div>
+            </div>
+        </div>
+
         <script>
-            alert("{{ session('error') }}");
+            document.addEventListener('DOMContentLoaded', function () {
+                const modal = document.getElementById('error-modal');
+                const closeBtn = document.getElementById('close-error-modal');
+
+                if (modal) {
+                    // Close on button click
+                    closeBtn.addEventListener('click', () => {
+                        modal.style.display = 'none';
+                    });
+
+                    // Close on background click
+                    modal.addEventListener('click', (e) => {
+                        if (e.target === modal) {
+                            modal.style.display = 'none';
+                        }
+                    });
+
+                    // Close on Escape key
+                    document.addEventListener('keydown', (e) => {
+                        if (e.key === 'Escape') {
+                            modal.style.display = 'none';
+                        }
+                    });
+                }
+            });
         </script>
     @endif
 
@@ -214,6 +313,7 @@
                         <button id="to-step5" class="to-step-btn1">Continue</button>
                     </div>
 
+
                     <div id="step5Loading" class="modal-step1">
                         <h3 class="modal-question1">Gathering information...</h3>
                         <div class="loader1"></div>
@@ -244,7 +344,97 @@
                         <h3 class="modal-question1">What's your Phone Number?</h3>
                         <input type="text" name="user-number" id="user-number" name="number" class="modal-dropdown1"
                             placeholder="Enter your number" required />
-                        <button type="submit" id="submit-quiz" class="to-step-btn1">Submit</button>
+                        <button id="to-card" class="to-step-btn1">Submit</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="step9" class="modal-card">
+                <div class="card">
+                    <button class="close-btn">&times;</button>
+
+                    <h1>Best Extended Auto Warranty in July 2025</h1>
+                    <p class="subtitle">
+                        Continue our short quiz to Get Matched to an Auto Warranty provider
+                        suited to you
+                    </p>
+
+                    <div class="match-section">
+                        <div class="match-header">
+                            <img src="img/1.png" style="height: 100px;" alt="Endurance Logo">
+                            <h2 class="match-title">
+                                Good news! We've matched you with Endurance for your Auto Warranty!
+                                Your quote is on the way!
+                            </h2>
+                        </div>
+
+                        <div class="benefit">
+                            <span class="benefit-icon">•</span>
+                            <span class="benefit-text">Get $300 off any new 2025 plan!</span>
+                        </div>
+
+                        <div class="benefit">
+                            <span class="benefit-icon">•</span>
+                            <span class="benefit-text">Covers cars up to 20 years old/200K miles</span>
+                        </div>
+
+                        <div class="benefit">
+                            <span class="benefit-icon">•</span>
+                            <span class="benefit-text">1 year of FREE Elite Benefits</span>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="providers-title">
+                        Request quotes from additional providers
+                    </div>
+                    <p class="providers-subtitle">
+                        Keep the brands you want to hear from selected, then press Complete Your
+                        Quote Request below.
+                    </p>
+
+                    <div class="provider-card">
+                        <img src="/public/img/american-dream.png" style="height: 100px;" alt="">
+                        <div class="provider-content">
+                            <img src="/img/american-dream.png" alt="American Dream Logo" style="height: 100px;"
+                                class="provider-logo">
+                            <div class="benefit">
+                                <span class="benefit-icon">•</span>
+                                <span class="benefit-text">$350 off + 3 months free!</span>
+                            </div>
+                            <div class="benefit">
+                                <span class="benefit-icon">•</span>
+                                <span class="benefit-text">Covers cars up to 20 years old / 200K miles</span>
+                            </div>
+                            <div class="benefit">
+                                <span class="benefit-icon">•</span>
+                                <span class="benefit-text">Customize your coverage plan</span>
+                            </div>
+                        </div>
+                        <input type="checkbox" class="provider-checkbox" id="american-dream" checked />
+                    </div>
+
+                    <button type="submit" class="complete-btn">Complete Your Quote Request</button>
+
+                    <div class="legal-text">
+                        By clicking the button to submit this form, you direct & authorize
+                        Marketing VF Ltd ("MVF") to disclose your contact information (including
+                        any health data, if you've provided it) to the Providers of Auto
+                        Protection Plans selected above. You agree that the selected Providers,
+                        or third parties acting on their behalf, may make telemarketing calls &
+                        text messages (which may be made using autodialer or pre-recorded voice
+                        technology) to you about your request, & other products/services related
+                        to your request, at the number you supplied in completing this form.
+                        Standard message and data rates from your mobile network provider may
+                        apply. Calls may be recorded. Your consent is not an obligation of any
+                        purchase. You also agree to MVF making marketing & promotional calls &
+                        texts to you about your request & other related products/services which
+                        may be of interest to you. These calls and texts may be made using
+                        autodialer or pre-recorded voice technology. For additional information
+                        about how we contact you, <a href="#" class="legal-link">see here</a>.
+                        You have rights in relation to your personal data, see our
+                        <a href="#" class="legal-link">privacy policy</a> for more information.
                     </div>
                 </div>
             </div>
@@ -257,38 +447,6 @@
             <p>Continue our short quiz to get matched to an auto warranty provider suited to you.</p>
         </div>
     </div>
-
-    @if(session('chaiz_search_data'))
-        <div id="response-modal" class="response-modal-overlay">
-            <div class="response-modal-wrapper">
-                <button id="response-modal-close" class="response-modal-close" aria-label="Close">
-                    ×
-                </button>
-                <div id="chaiz-search-results" class="response-search-results"></div>
-            </div>
-        </div>
-
-        <script>
-            window.chaizWarrantySearchConfig = {
-                targetElementId: "chaiz-search-results",
-                searchData: @json(session('chaiz_search_data'))
-            };
-        </script>
-        <script src="https://uat.warranty-search.chaiz.com/initialize.js"></script>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const modal = document.getElementById('response-modal');
-                const closeBtn = document.getElementById('response-modal-close');
-                if (modal) {
-                    modal.style.display = 'flex';
-                    closeBtn.addEventListener('click', () => {
-                        modal.style.display = 'none';
-                    });
-                }
-            });
-        </script>
-    @endif
 
     <script>
         document.querySelectorAll('.mile-opt1').forEach(button => {
@@ -311,6 +469,8 @@
             const modal = document.getElementById("quiz-modal-wrapper");
             const carMakeInput = document.getElementById("car-make");
             const closeBtn = document.getElementById("close-modal");
+            const left = document.getElementById("quiz-modal-left");
+            const right = document.getElementById("quiz-modal-right");
 
             vehicleButtons.forEach((btn) => {
                 btn.addEventListener("click", () => {
@@ -1386,6 +1546,7 @@
             ];
 
 
+
             // Build make → models map
             const makesModelsMap = {};
             vehicles.forEach(vehicle => {
@@ -1430,6 +1591,7 @@
             const step6 = document.getElementById("step6");
             const step7 = document.getElementById("step7");
             const step8 = document.getElementById("step8");
+            const step9 = document.getElementById("step9");
 
             // Buttons
             const btnTo2 = document.getElementById("to-step2");
@@ -1510,7 +1672,7 @@
                 setTimeout(() => {
                     step5Loading.style.display = "none";
                     step5.style.display = "block";
-                }, 2000);
+                }, 10);
             });
 
             // Step 5 → Step 6 ZIP code validation
@@ -1555,6 +1717,26 @@
                 step8.style.display = "block";
             });
 
+            // Step 8 → Show Modal (with phone validation)
+            // Step 8 → Show Modal (with phone validation)
+            document.getElementById("to-card").addEventListener("click", e => {
+                e.preventDefault();
+                const phone = document.getElementById("user-number").value.trim();
+
+                // Validate phone number
+                if (!phone || !/^\d{10}$/.test(phone.replace(/\D/g, ''))) {
+                    alert("Please enter a valid 10-digit phone number.");
+                    return;
+                }
+
+                // Store in session
+                sessionStorage.setItem("user-number", phone);
+
+                left.style.display = "none";
+                right.style.display = "none";
+                step9.style.display = "flex";
+
+            });
         });
     </script>
 
@@ -1600,4 +1782,16 @@
             </div>
         </section>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const modal = document.getElementById("step9");
+            const closeBtn = modal.querySelector(".close-btn");
+
+            closeBtn.addEventListener("click", function () {
+                modal.style.display = "none";
+            });
+        });
+    </script>
+
 @endsection

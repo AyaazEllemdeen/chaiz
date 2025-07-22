@@ -68,7 +68,9 @@ class LeadSubmissionController extends Controller
             session()->flash('chaiz_search_data', $chaizData);
 
             if ($response->successful()) {
-                return redirect()->back()->with('success', 'Lead submitted successfully.');
+                // Lead successfully sent to Endurance
+                session()->flash('lead_destination', 'Endurance API');
+                return redirect()->back()->with('success', 'Your lead has been successfully submitted to Endurance for processing. You should receive a response shortly.');
             } else {
                 // Fallback to LeadConduit if Endurance fails
                 $fallbackUrl = 'https://app.leadconduit.com/flows/65832665b40f680b034dae9b/sources/68471ebce9693c54cfa25e07/submit';
@@ -98,11 +100,20 @@ class LeadSubmissionController extends Controller
                 Log::info('Fallback LeadConduit response status: ' . $fallbackResponse->status());
                 Log::info('Fallback LeadConduit response body: ' . $fallbackResponse->body());
 
-                return redirect()->back()->with('error', 'Primary submission failed. Sent to backup.');
+                if ($fallbackResponse->successful()) {
+                    // Lead successfully sent to LeadConduit (American Dream)
+                    session()->flash('lead_destination', 'LeadConduit (Backup System)');
+                    return redirect()->back()->with('success', 'Your lead has been successfully submitted via our backup system. You should receive a response shortly.');
+                } else {
+                    // Both systems failed
+                    session()->flash('lead_destination', 'Submission Failed');
+                    return redirect()->back()->with('error', 'We were unable to submit your lead at this time. Both our primary and backup systems are currently unavailable. Please try again later or contact support.');
+                }
             }
         } catch (\Exception $e) {
             Log::error('Submission exception: ' . $e->getMessage());
-            return redirect()->back()->with('error', 'Failed to submit lead due to an error.');
+            session()->flash('lead_destination', 'System Error');
+            return redirect()->back()->with('error', 'Failed to submit lead due to a system error: ' . $e->getMessage());
         }
     }
 }
