@@ -966,7 +966,7 @@ body {
     background: white;
     z-index: 9999;
     overflow: hidden; /* hide body scroll */
-    display: flex;
+    display: none;
     flex-direction: column; /* stack children vertically */
 }
 
