@@ -109,10 +109,10 @@
                 <img src="@if(session('lead_destination') == 'Endurance API') 
                       {{ asset('img/1.png') }} 
                   @elseif(session('lead_destination') == 'LeadConduit (Backup System)') 
-                                  {{ asset('img/american-dream.png') }} 
-                              @else 
-                                  {{ asset('img/logo.png') }} 
-                              @endif" alt="Provider Logo" class="wizard-logo">
+                              {{ asset('img/american-dream.png') }} 
+                          @else 
+                                      {{ asset('img/logo.png') }} 
+                                  @endif" alt="Provider Logo" class="wizard-logo">
 
                 <h1 class="wizard-heading">Thank You! Your Quotes Are on the Way</h1>
                 <p class="wizard-subtext">
@@ -127,19 +127,21 @@
 
                 <div class="wizard-info-box">
                     <h3 class="wizard-next-title">What happens next?</h3>
-                    <p>
-                        If there is a match between your specifications and our provider’s criteria, you will receive a call
-                        from between 1-5 providers within the next working day. If you submitted your request during office
-                        hours today, you’re likely to be contacted within the next hour.
-                    </p>
-                    <p>
-                        You will have a free phone consultation with the relevant provider(s) to discuss prices and ask any
-                        questions that you may have.
-                    </p>
+                    <ul>
+                        <li>
+                            If there is a match between your specifications and our provider’s criteria, you will receive a call
+                            from between 1-5 providers within the next working day. If you submitted your request during office
+                            hours today, you’re likely to be contacted within the next hour.
+                        </li>
+                        <li>
+                            You will have a free phone consultation with the relevant provider(s) to discuss prices and ask any
+                            questions that you may have.
+                        </li>
+                    </ul>
                     <p>Please be aware that you may not receive quotes if:</p>
                     <ul>
-                        <li>The specifications you provided are not eligible for the provider's product/services</li>
-                        <li>There is an error in the contact details you provided, such as an invalid phone number</li>
+                        <li>The specifications you provided are not eligible for the provider's product/services.</li>
+                        <li>There is an error in the contact details you provided, such as an invalid phone number.</li>
                     </ul>
                 </div>
 
@@ -1785,6 +1787,170 @@
                         <div class="rating">
                             <span class="score">9.9</span>
                             <p class="label">Best Overall</p>
+                        </div>
+                        <div class="actions">
+                            <a href="#" class="btn yellow">Get A Quote</a>
+                            <a href="#" class="btn black">Visit Website</a>
+                            <a href="#" class="btn border">Call Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="full-width-separator"></div>
+
+        <section class="endurance-section">
+            <div class="endurance-wrapper">
+                <!-- Logo in Card -->
+                <div class="endurance-logo-card">
+                    <img src="{{ asset('img/chaiz.png') }}" alt="Endurance Logo">
+                </div>
+
+                <!-- Text + Buttons -->
+                <div class="endurance-content">
+                    <p class="description">
+                        <strong>Chaiz shows you several plans from multiple providers within 30 seconds.</strong>
+                        Compare and buy breakdown protection from top providers today
+                    </p>
+                    <ul class="features">
+                        <li>Compare live quotes within less than a minute</li>
+                        <li>Best price guaranteed</li>
+                        <li>Purchase completely online 24/7</li>
+                        <li>No email or phone needed</li>
+                        <li>Independent and unbiased</li>
+                        <li>Hundreds of 5* reviews</li>
+                        <li>A+ customer service</li>
+                        <li>30-day money back guarantee</li>
+                    </ul>
+
+                    <div class="bottom-row">
+                        <div class="rating">
+                            <span class="score">9.7</span>
+                            <p class="label">Exceptional</p>
+                        </div>
+                        <div class="actions">
+                            <a href="#" class="btn yellow">Get A Quote</a>
+                            <a href="#" class="btn black">Visit Website</a>
+                            <a href="#" class="btn border">Call Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="full-width-separator"></div>
+
+        <section class="endurance-section">
+            <div class="endurance-wrapper">
+                <!-- Logo in Card -->
+                <div class="endurance-logo-card">
+                    <img src="{{ asset('img/american-dream.png') }}" alt="Endurance Logo">
+                </div>
+
+                <!-- Text + Buttons -->
+                <div class="endurance-content">
+                    <p class="description">
+                        <strong>American Dream Auto Protect provides peace of mind by mitigating the high costs that come
+                            with unexpected repairs.</strong>
+                        Their stress-free claims process means you get approved in as little as 48 hours.
+                    </p>
+                    <ul class="features">
+                        <li>Choose your own repair facility</li>
+                        <li>Covers cars up to 20 years old / 200K miles</li>
+                        <li>Customize your coverage plan</li>
+                        <li>OFFER: $350 off + 3 months free!</li>
+                        <li>Flexible payment plan options</li>
+                        <li>24/7 Roadside Assistance</li>
+                        <li>30 Day money back guarantee</li>
+                    </ul>
+
+                    <div class="bottom-row">
+                        <div class="rating">
+                            <span class="score">9.1</span>
+                            <p class="label">Excellent</p>
+                        </div>
+                        <div class="actions">
+                            <a href="#" class="btn yellow">Get A Quote</a>
+                            <a href="#" class="btn black">Visit Website</a>
+                            <a href="#" class="btn border">Call Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="full-width-separator"></div>
+
+        <section class="endurance-section">
+            <div class="endurance-wrapper">
+                <!-- Logo in Card -->
+                <div class="endurance-logo-card">
+                    <img src="{{ asset('img/naac.png') }}" alt="Endurance Logo">
+                </div>
+
+                <!-- Text + Buttons -->
+                <div class="endurance-content">
+                    <p class="description">
+                        <strong>North American auto care offers convenient access to a variety of services provided by
+                            trained technicians, with readily available parts and potential warranty coverage for added
+                            peace of mind.</strong>
+                    </p>
+                    <ul class="features">
+                        <ul>
+                            <li>Numerous service centers across North America</li>
+                            <li>Variety of services</li>
+                            <li>Trained & certified professionals</li>
+                            <li>No obligation quote</li>
+                            <li>Easy access to replacements</li>
+                            <li>Over 100 years of combined experience</li>
+                        </ul>
+                    </ul>
+
+                    <div class="bottom-row">
+                        <div class="rating">
+                            <span class="score">8.7</span>
+                            <p class="label">Great</p>
+                        </div>
+                        <div class="actions">
+                            <a href="#" class="btn yellow">Get A Quote</a>
+                            <a href="#" class="btn black">Visit Website</a>
+                            <a href="#" class="btn border">Call Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="full-width-separator"></div>
+
+        <section class="endurance-section">
+            <div class="endurance-wrapper">
+                <!-- Logo in Card -->
+                <div class="endurance-logo-card">
+                    <img src="{{ asset('img/omega.png') }}" alt="Endurance Logo">
+                </div>
+
+                <!-- Text + Buttons -->
+                <div class="endurance-content">
+                    <p class="description">
+                        <strong>Once you sign your Omega Auto Care vehicle service contract, you gain access to several
+                            member benefits. </strong>
+                        And these are more than just simple perks, with benefits that will give you the peace of mind and
+                        customer service you deserve.
+                    </p>
+                    <ul class="features">
+                        <ul>
+                            <li>Comprehensive coverage</li>
+                            <li>Peace of mind with great customer service</li>
+                            <li>Roadside assistance</li>
+                            <li>Flexible plans tailored to different needs</li>
+                            <li>Nationwide network of authorized repair facilities</li>
+                            <li>Road Hazard Coverage</li>
+                        </ul>
+                    </ul>
+
+                    <div class="bottom-row">
+                        <div class="rating">
+                            <span class="score">8.1</span>
+                            <p class="label">Good</p>
                         </div>
                         <div class="actions">
                             <a href="#" class="btn yellow">Get A Quote</a>

@@ -1174,3 +1174,13 @@ body {
 body.modal-open {
     overflow: hidden;
 }
+
+.full-width-separator {
+  width: 100vw;
+  height: 1px;               /* thinner line */
+  background-color: #ffd700;
+  margin: 40px 0;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
