@@ -111,45 +111,48 @@
                         </div>
                     </div>
                     <div class="divider-line"></div>
-                    <div class="description">
-                        Endurance offers flexibility to choose your certified mechanic, and a 30-day money-back guarantee
-                        for
-                        peace of mind. Also, get a free Year of Elite Benefits featuring 24/7 Roadside Assistance, Complete
-                        Tire
-                        Coverage, Key Replacement, and more!
-                    </div>
+                    <div class="card-body-row">
+                        <div class="description">
+                            Endurance offers flexibility to choose your certified mechanic, and a 30-day money-back
+                            guarantee
+                            for
+                            peace of mind. Also, get a free Year of Elite Benefits featuring 24/7 Roadside Assistance,
+                            Complete
+                            Tire
+                            Coverage, Key Replacement, and more!
+                        </div>
 
-                    <div class="features-grid">
-                        <div class="feature">
-                            <span class="checkmark">✓</span>
-                            <span>Covers cars up to 20 years old/200K miles</span>
-                        </div>
-                        <div class="feature">
-                            <span class="checkmark">✓</span>
-                            <span>1 year of FREE Elite Benefits</span>
-                        </div>
-                        <div class="feature">
-                            <span class="checkmark">✓</span>
-                            <span>Flexible down payment to fit your budget</span>
-                        </div>
-                        <div class="feature">
-                            <span class="checkmark">✓</span>
-                            <span>6 coverage plans to choose from</span>
-                        </div>
-                        <div class="feature">
-                            <span class="checkmark">✓</span>
-                            <span>No obligation fast quote</span>
-                        </div>
-                        <div class="feature">
-                            <span class="checkmark">✓</span>
-                            <span>30 Day money back guarantee</span>
-                        </div>
-                        <div class="feature">
-                            <span class="checkmark">✓</span>
-                            <span> Quick and easy claims process</span>
+                        <div class="features-grid">
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Covers cars up to 20 years old/200K miles</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>1 year of FREE Elite Benefits</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Flexible down payment to fit your budget</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>6 coverage plans to choose from</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>No obligation fast quote</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>30 Day money back guarantee</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span> Quick and easy claims process</span>
+                            </div>
                         </div>
                     </div>
-
                     <button class="learn-more-btn">Learn More</button>
                 </div>
 
@@ -173,43 +176,104 @@
                         </div>
                     </div>
                     <div class="divider-line"></div>
-                    <div class="description">
-                        American Dream Auto Protect provides peace of mind by mitigating the high costs that come with
-                        unexpected repairs. Their stress-free claims process means you get approved in as little as 48
-                        hours.
-                    </div>
+                    <div class="card-body-row">
+                        <div class="description">
+                            American Dream Auto Protect provides peace of mind by mitigating the high costs that come with
+                            unexpected repairs. Their stress-free claims process means you get approved in as little as 48
+                            hours.
+                        </div>
 
-                    <div class="features-grid">
-                        <div class="feature">
-                            <span class="checkmark">✓</span>
-                            <span>Choose your own repair facility</span>
-                        </div>
-                        <div class="feature">
-                            <span class="checkmark">✓</span>
-                            <span>Covers cars up to 20 years old / 200K miles</span>
-                        </div>
-                        <div class="feature">
-                            <span class="checkmark">✓</span>
-                            <span>Customize your coverage plan</span>
-                        </div>
-                        <div class="feature">
-                            <span class="checkmark">✓</span>
-                            <span>OFFER: $350 off + 3 months free!</span>
-                        </div>
-                        <div class="feature">
-                            <span class="checkmark">✓</span>
-                            <span>Flexible payment plan options</span>
-                        </div>
-                        <div class="feature">
-                            <span class="checkmark">✓</span>
-                            <span>24/7 Roadside Assistance</span>
-                        </div>
-                        <div class="feature">
-                            <span class="checkmark">✓</span>
-                            <span>30 Day money back guarantee</span>
+                        <div class="features-grid">
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Choose your own repair facility</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Covers cars up to 20 years old / 200K miles</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Customize your coverage plan</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>OFFER: $350 off + 3 months free!</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Flexible payment plan options</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>24/7 Roadside Assistance</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>30 Day money back guarantee</span>
+                            </div>
                         </div>
                     </div>
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
 
+                <!-- elite card -->
+                <div class="service-card">
+                    <div class="card-header">
+                        <div class="logo-section">
+                            <div class="logo">
+                                <img src="/img/elite.webp" alt="">
+                            </div>
+                            <div class="promo-badge">
+                                Up to $450 OFF + Free Rim & Tire Protection w/ White Glove Upgrade!
+                            </div>
+                            <div class="rating-section">
+                                <div class="rating-score">8.1</div>
+                                <div class="stars">★★★★☆</div>
+                            </div>
+                            <div class="cta-section">
+                                <button class="get-quote-btn">Get a Quote</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider-line"></div>
+                    <div class="card-body-row">
+                        <div class="description">
+                            Elite Auto Protect prides itself on exceptional customer service and transparent, hassle-free
+                            claims processing, setting the standard for automotive warranty providers.
+                        </div>
+
+                        <div class="features-grid">
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Zero Deductible!</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>#1 Rated in customer Service</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Cars covered from 1999</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Monthly Payment Options available</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Fully Transferable</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>No obligation fast quote</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Camper/Motorcycle Coverage Available</span>
+                            </div>
+                        </div>
+                    </div>
                     <button class="learn-more-btn">Learn More</button>
                 </div>
             </div>

@@ -212,8 +212,8 @@ body {
 }
 
 .logo {
-    width: 200px;
-    height: 200px;
+    width: 125px;
+    height: 125px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -304,12 +304,13 @@ body {
     line-height: 1.6;
     color: #000000;
     margin-bottom: 25px;
+    width: 400px;
 }
 
 .features-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 10px;
     margin-bottom: 25px;
 }
 
@@ -319,6 +320,14 @@ body {
     gap: 8px;
     font-size: 14px;
     color: #374151;
+}
+
+.card-body-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
 }
 
 .checkmark {
