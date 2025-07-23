@@ -86,7 +86,7 @@
         </div>
     </section>
 
-    <section>
+    <section id="card-section">
         <div class="container">
             <h3 class="mt-5 mb-3" style="font-weight: 700;">Our providers</h3>
 
@@ -276,7 +276,228 @@
                     </div>
                     <button class="learn-more-btn">Learn More</button>
                 </div>
+
+                <!-- omega card -->
+                <div class="service-card">
+                    <div class="card-header">
+                        <div class="logo-section">
+                            <div class="logo">
+                                <img src="/img/omega.png" alt="">
+                            </div>
+                            <div class="promo-badge">
+
+                            </div>
+                            <div class="rating-section">
+                                <div class="rating-score">7.9</div>
+                                <div class="stars">★★★★☆</div>
+                            </div>
+                            <div class="cta-section">
+                                <button class="get-quote-btn">Get a Quote</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider-line"></div>
+                    <div class="card-body-row">
+                        <div class="description">
+                            Once you sign your Omega Auto Care vehicle service contract, you gain access to several member
+                            benefits. And these are more than just simple perks, with benefits that will give you the peace
+                            of mind and customer service you deserve.
+                        </div>
+
+                        <div class="features-grid">
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Comprehensive coverage</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Peace of mind with great customer service</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Roadside assistance</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Flexible plans tailored to different needs</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Nationwide network of authorized repair facilities</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Road Hazard Coverage</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+
+                <!-- naac card -->
+                <div class="service-card">
+                    <div class="card-header">
+                        <div class="logo-section">
+                            <div class="logo">
+                                <img src="/img/naac.png" alt="">
+                            </div>
+                            <div class="promo-badge">
+
+                            </div>
+                            <div class="rating-section">
+                                <div class="rating-score">7.1</div>
+                                <div class="stars">★★★★☆</div>
+                            </div>
+                            <div class="cta-section">
+                                <button class="get-quote-btn">Get a Quote</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider-line"></div>
+                    <div class="card-body-row">
+                        <div class="description">
+                            North American auto care offers convenient access to a variety of services provided by trained
+                            technicians, with readily available parts and potential warranty coverage for added peace of
+                            mind.
+                        </div>
+
+                        <div class="features-grid">
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Variety of services</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Trained & certified professionals</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>No obligation quote</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Easy access to replacements</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Over 100 years of combined experience</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Numerous service centers across North America</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
             </div>
+
+            <div class="mt-5 divider-line"></div>
+            <h3 class="mt-5 mb-3" style="font-weight: 700;">Looking for a quick solution? Buy your Auto Warranty direct
+                today!</h3>
+
+            <div class="mb-4">
+                <!-- chaiz card -->
+                <div class="service-card">
+                    <div class="card-header">
+                        <div class="logo-section">
+                            <div class="logo">
+                                <img src="/img/chaiz.png" alt="">
+                            </div>
+                            <div class="promo-badge">
+                                Buy directly online
+                            </div>
+                            <div class="rating-section">
+                                <div class="rating-score">7.9</div>
+                                <div class="stars">★★★★★</div>
+                            </div>
+                            <div class="cta-section">
+                                <button class="get-quote-btn">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider-line"></div>
+                    <div class="card-body-row">
+                        <div class="description">
+                            Chaiz shows you several plans from multiple providers within 30 seconds. Compare and buy
+                            breakdown protection from top providers today.
+                        </div>
+
+                        <div class="features-grid">
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Compare live quotes within less than a minute</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Best price guaranteed</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Purchase completely online 24/7</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>No email or phone needed</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Independent and unbiased</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>Hundreds of 5* reviews</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>A+ customer service</span>
+                            </div>
+                            <div class="feature">
+                                <span class="checkmark">✓</span>
+                                <span>30-day money back guarantee</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="get-matched" style="padding: 40px 0;">
+        <div class="container">
+            <h1 class="match-title">How we match you with the right provider</h1>
+
+            <div class="match-steps-container">
+                <div class="match-step">
+                    <div class="match-step-icon">
+                        <img src="/img/icon.svg" alt="">
+                    </div>
+                    <h3 class="match-step-title">Your vehicle</h3>
+                    <p class="match-step-description">Tell us a bit about your vehicle and what you need covered.</p>
+                </div>
+
+                <div class="match-step">
+                    <div class="match-step-icon">
+                        <img src="/img/icon2.svg" alt="">
+                    </div>
+                    <h3 class="match-step-title">Our network</h3>
+                    <p class="match-step-description">We'll search our network of top providers to find the right match for
+                        you.</p>
+                </div>
+
+                <div class="match-step">
+                    <div class="match-step-icon">
+                        <img src="/img/icon3.svg" alt="">
+                    </div>
+                    <h3 class="match-step-title">Your quote</h3>
+                    <p class="match-step-description">Receive your personalized match and a quote specific to your needs.
+                    </p>
+                </div>
+            </div>
+
+            <button class="match-cta-button">Get Matched</button>
         </div>
     </section>
 @endsection
