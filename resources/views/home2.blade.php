@@ -218,7 +218,7 @@
                 </div>
 
                 <!-- elite card -->
-                <div class="service-card">
+                {{-- <div class="service-card">
                     <div class="card-header">
                         <div class="logo-section">
                             <div class="logo">
@@ -275,7 +275,7 @@
                         </div>
                     </div>
                     <button class="learn-more-btn">Learn More</button>
-                </div>
+                </div> --}}
 
                 <!-- omega card -->
                 <div class="service-card">
@@ -500,4 +500,182 @@
             <button class="match-cta-button">Get Matched</button>
         </div>
     </section>
+
+    <section id="score-section" class="score-section">
+        <div class="container">
+            <div class="score-content">
+                <h1 class="score-title">How we work our magic</h1>
+                <p class="score-description">
+                    Our ratings are scored on a scale of up to 10 and are assessed based on
+                    three parameters - <span class="score-highlight">Successful matches, brand engagement and
+                        coverage</span>.
+                </p>
+                <button class="score-cta-button">More about our scores</button>
+            </div>
+
+            <div class="score-illustration">
+                <img src="/img/icon4.svg" alt="">
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section container my-5">
+        <div class="faq-card border-light shadow-sm">
+            <div class="faq-card-body p-4">
+                <h2 class="faq-card-title h4 mb-4">Frequently Asked Questions</h2>
+
+                <div class="faq-accordion">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item mb-3">
+                        <button
+                            class="faq-question btn btn-link text-left p-0 w-100 d-flex justify-content-between align-items-center">
+                            <span>Our Comprehensive Review Process for Extended Car Warranties</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer mt-2 d-none">
+                            <p>We thoroughly evaluate each plan based on factors like coverage scope, options, pricing,
+                                availability, support, and claims processing. This rigorous review process enables us to
+                                recommend only the top extended car warranty providers.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item mb-3">
+                        <button
+                            class="faq-question btn btn-link text-left p-0 w-100 d-flex justify-content-between align-items-center">
+                            <span>Who Benefits from an Extended Car Warranty?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer mt-2 d-none">
+                            <p>Typically, car owners seek extended warranties after their factory warranty expires (usually
+                                between 3-5 years or 36,000-60,000 miles). An extended warranty prolongs your car's
+                                protection, saving you money and providing peace of mind for future repairs.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-item mb-3">
+                        <button
+                            class="faq-question btn btn-link text-left p-0 w-100 d-flex justify-content-between align-items-center">
+                            <span>Selecting the Right Plan</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer mt-2 d-none">
+                            <p>When selecting a plan, consider your vehicle's age, mileage, typical repair costs, and your
+                                budget. Look for coverage that matches your vehicle's most likely repair needs while fitting
+                                your financial situation.</p>
+
+                            <ul>
+                                <li><strong>Bumper-to-Bumper Warranties:</strong> Comprehensive coverage for most mechanical
+                                    systems, excluding explicitly listed items.</li>
+                                <li><strong>Powertrain Warranties:</strong> Covers engine, transmission, and related
+                                    components.</li>
+                                <li><strong>Wear-and-Tear Warranties:</strong> Repairs or replacements due to natural wear
+                                    and tear.</li>
+                                <li><strong>Maintenance Plans:</strong> Covers routine maintenance, plus some wear-and-tear
+                                    parts.</li>
+                                <li><strong>Emission Warranties:</strong> Protects against emission-related failures.</li>
+                                <li><strong>Factory Accessory Plans:</strong> Extended coverage for factory-installed
+                                    accessories.</li>
+                                <li><strong>Rust or Corrosion Warranties:</strong> Covers repairs due to rust-through
+                                    problems.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-item mb-3">
+                        <button
+                            class="faq-question btn btn-link text-left p-0 w-100 d-flex justify-content-between align-items-center">
+                            <span>Sustainability Model</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer mt-2 d-none">
+                            <p>With numerous options available, choosing the best car warranty can be overwhelming. Our
+                                reviews and ratings help you compare companies based on coverage, pricing, support, and
+                                claims processing, ensuring you make an informed decision.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const answer = this.nextElementSibling;
+                    const icon = this.querySelector('.faq-icon');
+
+                    if (answer.classList.contains('d-none')) {
+                        // Open this FAQ
+                        answer.classList.remove('d-none');
+                        icon.textContent = '-';
+                    } else {
+                        // Close this FAQ
+                        answer.classList.add('d-none');
+                        icon.textContent = '+';
+                    }
+                });
+            });
+        });
+    </script>
+
+    <section class="advertising-disclosure container my-5">
+        <div class="advertising-card border-light shadow-sm">
+            <div class="advertising-card-body p-4">
+                <h2 class="advertising-card-title h4 mb-3">Disclaimer, please read.</h2>
+                <div class="advertising-card-text">
+                    <p>comparewarranties.org is a trading site of Chaiz, Inc. comparewarranties.org is a free online
+                        resource committed to helping you find Vehicle Service Contract providers ("Products").</p>
+                    <p>Unlike our main site at chaiz.com, we may accept advertising compensation from some of the companies
+                        advertised. The compensation may impact the location and order in which these Products are
+                        presented. We may also list Products for which we receive no compensation. This site does not
+                        feature all Products on the market.</p>
+
+                    <div class="more-content d-none">
+                        <p>By clicking through the links on this site you agree to allow us to pass on your name, address,
+                            email and telephone number to providers of Products advertised on this site. In doing so we may
+                            receive a small fee from the Product provider for the introduction.</p>
+                        <p>This is an advertising site only and does not offer or sell the Products displayed on this site.
+                            We are nor responsible for nor do we control Products advertised on this site. If you wish to
+                            purchase a Product (other than thru the advertisers on this site) you can do so through our site
+                            at chaiz.com.</p>
+                        <p>The Terms of Use and Privacy Policy of Chaiz, Inc. as set out below apply to this site and your
+                            use of it.</p>
+                    </div>
+
+                    <a href="#" class="btn advertising-btn-link px-0 read-more-btn">Read more →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const readMoreBtn = document.querySelector('.read-more-btn');
+            const moreContent = document.querySelector('.more-content');
+            const advertisingCard = document.querySelector('.advertising-card');
+
+            readMoreBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                if (moreContent.classList.contains('d-none')) {
+                    // Expand
+                    moreContent.classList.remove('d-none');
+                    readMoreBtn.textContent = 'Read less →';
+                } else {
+                    // Collapse
+                    moreContent.classList.add('d-none');
+                    readMoreBtn.textContent = 'Read more →';
+                }
+            });
+        });
+    </script>
 @endsection
