@@ -1,5 +1,5 @@
 <header class="site-header bg-black shadow-sm">
-    <div class="container d-flex justify-content-between align-items-center py-3">
+    <div class="d-flex justify-content-between align-items-center py-3">
         <div class="logo-wrap">
             <img src="{{ asset('img/logo.png') }}" alt="Logo" class="logo-img" style="height: 40px;">
         </div>

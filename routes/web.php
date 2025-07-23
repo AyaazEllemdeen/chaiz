@@ -8,6 +8,7 @@ Route::post('/lead-submit', [LeadSubmissionController::class, 'store'])->name('l
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/quiz', function () {
-    return view('quiz-modal');
+
+Route::get('/h2', function () {
+    return view('home2');
 });
