@@ -172,7 +172,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="divider-line"></div>
                     <div class="description">
                         American Dream Auto Protect provides peace of mind by mitigating the high costs that come with
                         unexpected repairs. Their stress-free claims process means you get approved in as little as 48
