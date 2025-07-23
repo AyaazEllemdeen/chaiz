@@ -110,7 +110,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="divider-line"></div>
                     <div class="description">
                         Endurance offers flexibility to choose your certified mechanic, and a 30-day money-back guarantee
                         for
