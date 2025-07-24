@@ -212,8 +212,8 @@ body {
 }
 
 .logo {
-    width: 125px;
-    height: 125px;
+    width: 120px;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -231,7 +231,7 @@ body {
     color: #ffcf4b;
     padding: 8px 12px;
     border-radius: 20px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -308,7 +308,7 @@ body {
 }
 
 .description {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     line-height: 1.6;
     color: #000000;
@@ -319,7 +319,7 @@ body {
 .features-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: 2px;
     margin-bottom: 25px;
 }
 
@@ -336,7 +336,7 @@ body {
     align-items: flex-start;
     justify-content: space-between;
     gap: 20px;
-    padding: 20px;
+    padding: 10px;
 }
 
 .checkmark {
@@ -744,3 +744,185 @@ body {
         line-height: 1.4;
     }
 }
+
+/* modal quiz */
+.car-quiz-right {
+    flex: 1;
+    background: #5f5f5fff;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #7e7e7e;
+    color: white;
+}
+
+.car-quiz-right img{
+     max-width: 180px;
+    margin-bottom: 1.5rem;
+    object-fit: contain;
+    background: rgb(172, 172, 172);
+    border-radius: 50%;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.car-quiz-right h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.car-quiz-right p {
+    font-size: 1.1rem;
+    max-width: 400px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.d-none {
+    display: none;
+}
+
+.car-quiz-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+.car-quiz-modal.show {
+    display: flex;
+}
+
+.car-quiz-close {
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+.car-quiz-split {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+}
+
+.car-quiz-left,
+.car-quiz-right {
+    width: 50%;
+    padding: 3rem 2rem;
+    overflow-y: auto;
+}
+
+/* Left Side (Yellow) */
+.car-quiz-left {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Quiz Content Styling */
+.car-quiz-body {
+    width: 100%;
+    max-width: 500px;
+}
+
+.modal-question {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+.modal-dropdown1 {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1rem;
+    border: 1px solid #ffcf4b;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.to-step-btn {
+    background-color: #ffcf4b;
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 1rem auto 0;
+}
+
+.options-grid1 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.mile-opt1 {
+    padding: 12px;
+    background-color: white;
+    border: 2px solid #ffcf4b;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.mile-opt1.selected {
+    background-color: #ffcf4b;
+    color: #000;
+    border-color: #ffcf4b;
+}
+
+.warranty-urgency-opt1 {
+    padding: 12px;
+    background-color: white;
+    border: 2px solid #ffcf4b;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.warranty-urgency-opt1.selected {
+    background-color: #ffcf4b;
+    color: #000;
+    border-color: #ffcf4b;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .car-quiz-split {
+        flex-direction: column;
+    }
+
+    .car-quiz-left {
+        width: 100%;
+        height: 100vh;
+        padding: 2rem 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .car-quiz-right {
+        display: none;
+    }
+}
+
+

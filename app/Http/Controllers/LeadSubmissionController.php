@@ -70,7 +70,11 @@ class LeadSubmissionController extends Controller
             if ($response->successful()) {
                 // Lead successfully sent to Endurance
                 session()->flash('lead_destination', 'Endurance API');
-                return redirect()->back()->with('success', 'Your lead has been successfully submitted to Endurance for processing. You should receive a response shortly.');
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Your lead has been successfully submitted to Endurance for processing. You should receive a response shortly.',
+                    'destination' => 'Endurance API'
+                ]);
             } else {
                 // Fallback to LeadConduit if Endurance fails
                 $fallbackUrl = 'https://app.leadconduit.com/flows/65832665b40f680b034dae9b/sources/68471ebce9693c54cfa25e07/submit';
@@ -103,17 +107,29 @@ class LeadSubmissionController extends Controller
                 if ($fallbackResponse->successful()) {
                     // Lead successfully sent to LeadConduit (American Dream)
                     session()->flash('lead_destination', 'LeadConduit (Backup System)');
-                    return redirect()->back()->with('success', 'Your lead has been successfully submitted via our backup system. You should receive a response shortly.');
+                    return response()->json([
+                        'success' => true,
+                        'message' => 'Your lead has been successfully submitted via our backup system. You should receive a response shortly.',
+                        'destination' => 'LeadConduit (Backup System)'
+                    ]);
                 } else {
                     // Both systems failed
                     session()->flash('lead_destination', 'Submission Failed');
-                    return redirect()->back()->with('error', 'We were unable to submit your lead at this time. Both our primary and backup systems are currently unavailable. Please try again later or contact support.');
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'We were unable to submit your lead at this time. Both our primary and backup systems are currently unavailable. Please try again later or contact support.',
+                        'destination' => 'Submission Failed'
+                    ]);
                 }
             }
         } catch (\Exception $e) {
             Log::error('Submission exception: ' . $e->getMessage());
             session()->flash('lead_destination', 'System Error');
-            return redirect()->back()->with('error', 'Failed to submit lead due to a system error: ' . $e->getMessage());
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to submit lead due to a system error: ' . $e->getMessage(),
+                'destination' => 'System Error'
+            ]);
         }
     }
 }
