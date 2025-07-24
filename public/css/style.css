@@ -214,7 +214,7 @@ body {
 
 .logo {
     flex: 0 0 120px; /* fixed width */
-    height: 120px;
+    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
