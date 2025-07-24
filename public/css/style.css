@@ -209,16 +209,17 @@ body {
     justify-content: space-between;
     gap: 20px;
     width: 100%;
+    flex-wrap: nowrap;
 }
 
 .logo {
-    width: 120px;
+    flex: 0 0 120px; /* fixed width */
     height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    overflow: hidden; /* ensures the image stays within the bounds */
+    overflow: hidden;
 }
 
 .logo img {
@@ -228,6 +229,7 @@ body {
 }
 
 .promo-badge {
+    flex: 0 0 200px; /* adjust width as needed */
     color: #ffcf4b;
     padding: 8px 12px;
     border-radius: 20px;
@@ -235,9 +237,11 @@ body {
     font-weight: 600;
     display: flex;
     align-items: center;
+    text-align: center;
 }
 
 .rating-section {
+    flex: 0 0 100px; /* fixed width */
     text-align: center;
 }
 
@@ -254,8 +258,10 @@ body {
 }
 
 .cta-section {
+    flex: 0 0 140px; /* fixed width */
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
     gap: 10px;
 }
 
