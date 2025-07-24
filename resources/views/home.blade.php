@@ -1642,7 +1642,7 @@
                 <div class="modal-right-section">
                     <div class="content-wrapper">
                         <div class="success-header">
-                            <h3>Your Lead Has Been Submitted Successfully!</h3>
+                            <h2>Your Lead Has Been Submitted Successfully!</h2>
                         </div>
 
                         <div class="lead-destination-card">
@@ -1685,16 +1685,20 @@
                             </div>
                         </div>
 
-                        <button class="btn btn-continue" onclick="closeModal()">Continue</button>
+                        <button class="btn-continue" onclick="closeModal()">Continue</button>
                     </div>
                 </div>
 
                 <!-- Right Grey Section (now on the right) -->
                 <div class="modal-left-section">
+                    <div class="plans-heading">
+                        <h1>Plans for your car</h1>
+                        <p>Buy coverage from leading providers, right here, right now.</p>
+                    </div>
                     <div id="search-results"></div>
+                    </div>
+                    </div>
                 </div>
-            </div>
-        </div>
             `;
 
                 // Add modal to page

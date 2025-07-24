@@ -994,8 +994,15 @@ body {
     gap: 25px;
 }
 
+.plans-heading {
+    padding: 1rem;
+    text-align: center;
+    color: #ffffff;
+}
+
 .success-header {
     text-align: center;
+    margin-top: -77px; /* adjust as needed */
 }
 
 .success-header h3 {
