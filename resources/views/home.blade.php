@@ -1697,7 +1697,7 @@
                     </div>
                     <div id="search-results"></div>
                     </div>
-                    </div>
+                </div>
                 </div>
             `;
 
