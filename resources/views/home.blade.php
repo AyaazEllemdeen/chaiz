@@ -271,7 +271,7 @@
             }
 
             // Example vehicle data (make and models)
-            const vehicles = [
+                const vehicles = [
                 "ACURA 2.3CL",
                 "ACURA 3.0CL",
                 "ACURA 3.2CL",
@@ -1309,6 +1309,7 @@
                 "VOLVO XC90",
             ];
 
+
             // Build make → models map
             const makesModelsMap = {};
             vehicles.forEach(vehicle => {
@@ -1627,278 +1628,113 @@
             }
 
             // Function to show success modal with lead destination
+            // In your existing script, replace the showSuccessModal function with this updated version:
+
             function showSuccessModal(responseData) {
                 // Create success modal HTML with improved styling
                 const successModal = document.createElement('div');
                 successModal.id = 'success-modal';
-                successModal.className = 'car-quiz-modal show';
+                successModal.className = 'success-modal-container';
                 successModal.innerHTML = `
-                <div class="success-modal-container">
-    <div class="success-modal-content">
-        <div class="success-header">
-            <h3>Your Lead Has Been Submitted Successfully!</h3>
-        </div>
-
-        <div class="lead-destination-card">
-            <p class="lead-destination-info">
-                <strong>Submitted to:</strong> <span id="destination-name">Processing...</span>
-            </p>
-        </div>
-
-        <div class="content-grid">
-            <div class="what-happens-next">
-                <h4>What happens next?</h4>
-                <div class="steps-container">
-                    <div class="step-item">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <p>If there is a match between your specifications and our provider's criteria, you will receive a call from between 1-5 providers within the next working day.</p>
+                <div class="success-modal-container" id="success-modal">
+            <div class="success-modal-content">
+                <!-- Left Content Section (now on the left) -->
+                <div class="modal-right-section">
+                    <div class="content-wrapper">
+                        <div class="success-header">
+                            <h3>Your Lead Has Been Submitted Successfully!</h3>
                         </div>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <p>You will have a free phone consultation with the relevant provider(s) to discuss prices and ask any questions.</p>
+
+                        <div class="lead-destination-card">
+                            <p class="lead-destination-info">
+                                <strong>Submitted to:</strong> <span id="destination-name">Processing...</span>
+                            </p>
                         </div>
+
+                        <div class="content-grid">
+                            <div class="what-happens-next">
+                                <h4>What happens next?</h4>
+                                <div class="steps-container">
+                                    <div class="step-item">
+                                        <div class="step-number">1</div>
+                                        <div class="step-content">
+                                            <p>If there is a match between your specifications and our provider's criteria, you will receive a call from between 1-5 providers within the next working day.</p>
+                                        </div>
+                                    </div>
+                                    <div class="step-item">
+                                        <div class="step-number">2</div>
+                                        <div class="step-content">
+                                            <p>You will have a free phone consultation with the relevant provider(s) to discuss prices and ask any questions.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="awareness-section">
+                                <h5>Please be aware that you may not receive quotes if:</h5>
+                                <div class="awareness-items">
+                                    <div class="awareness-item">
+                                        <div class="awareness-number">1</div>
+                                        <p>Your specifications don't match the provider's criteria</p>
+                                    </div>
+                                    <div class="awareness-item">
+                                        <div class="awareness-number">2</div>
+                                        <p>There's an error in your contact details</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-continue" onclick="closeModal()">Continue</button>
                     </div>
                 </div>
-            </div>
 
-            <div class="awareness-section">
-                <h5>Please be aware that you may not receive quotes if:</h5>
-                <div class="awareness-items">
-                    <div class="awareness-item">
-                        <div class="awareness-number">1</div>
-                        <p>Your specifications don't match the provider's criteria</p>
-                    </div>
-                    <div class="awareness-item">
-                        <div class="awareness-number">2</div>
-                        <p>There's an error in your contact details</p>
-                    </div>
+                <!-- Right Grey Section (now on the right) -->
+                <div class="modal-left-section">
+                    <div id="search-results"></div>
                 </div>
             </div>
         </div>
-
-        <button class="btn btn-continue" onclick="closeSuccessModal()">Continue</button>
-    </div>
-</div>
-
-<style>
-    .success-modal-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(0, 0, 0, 0.8);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        padding: 20px;
-        box-sizing: border-box;
-    }
-
-    .success-modal-content {
-        background: white;
-        border-radius: 12px;
-        width: 100%;
-        max-width: 600px;
-        max-height: 90vh;
-        padding: 30px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-    }
-
-    .success-header {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    .success-header h3 {
-        color: #2c3e50;
-        font-size: 24px;
-        font-weight: 600;
-        margin: 0 0 15px 0;
-    }
-
-    .lead-destination-card {
-        background: #f8f9fa;
-        padding: 15px;
-        border-radius: 8px;
-        margin-bottom: 25px;
-        text-align: center;
-        border-left: 4px solid #ffcf4b;
-    }
-
-    .lead-destination-info {
-        margin: 0;
-        font-size: 16px;
-        color: #2c3e50;
-    }
-
-    .content-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        margin-bottom: 25px;
-    }
-
-    .what-happens-next {
-        background: #f8f9fa;
-        padding: 15px;
-        border-radius: 8px;
-    }
-
-    .what-happens-next h4 {
-        color: #2c3e50;
-        font-size: 18px;
-        font-weight: 600;
-        margin: 0 0 15px 0;
-        text-align: center;
-    }
-
-    .steps-container {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .step-item {
-        display: flex;
-        gap: 10px;
-    }
-
-    .step-number {
-        background: #ffcf4b;
-        color: #2c3e50;
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 600;
-        flex-shrink: 0;
-        font-size: 14px;
-    }
-
-    .step-content p {
-        margin: 0;
-        color: #495057;
-        font-size: 14px;
-        line-height: 1.4;
-    }
-
-    .awareness-section {
-        background: #fff3cd;
-        padding: 15px;
-        border-radius: 8px;
-    }
-
-    .awareness-section h5 {
-        color: #856404;
-        font-size: 16px;
-        font-weight: 600;
-        margin: 0 0 12px 0;
-        text-align: center;
-    }
-
-    .awareness-items {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .awareness-item {
-        display: flex;
-        gap: 8px;
-    }
-
-    .awareness-number {
-        background: #ffc107;
-        color: #856404;
-        width: 22px;
-        height: 22px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 600;
-        flex-shrink: 0;
-        font-size: 12px;
-    }
-
-    .awareness-item p {
-        margin: 0;
-        color: #856404;
-        font-size: 13px;
-        line-height: 1.4;
-    }
-
-    .btn-continue {
-        background: #ffcf4b;
-        color: #2c3e50;
-        border: none;
-        padding: 12px 30px;
-        font-size: 16px;
-        font-weight: 600;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        display: block;
-        margin: 0 auto;
-        width: 100%;
-        max-width: 200px;
-    }
-
-    .btn-continue:hover {
-        background: #ffd700;
-        transform: translateY(-2px);
-    }
-
-    /* Mobile responsiveness */
-    @media (max-width: 768px) {
-        .success-modal-content {
-            padding: 20px;
-        }
-        
-        .content-grid {
-            grid-template-columns: 1fr;
-        }
-        
-        .success-header h3 {
-            font-size: 20px;
-        }
-        
-        .what-happens-next h4,
-        .awareness-section h5 {
-            font-size: 16px;
-        }
-        
-        .step-content p,
-        .awareness-item p {
-            font-size: 13px;
-        }
-        
-        .btn-continue {
-            padding: 10px 20px;
-            font-size: 15px;
-        }
-    }
-</style>
             `;
 
                 // Add modal to page
                 document.body.appendChild(successModal);
 
                 // Set lead destination from response data
-                setLeadDestination(responseData.destination);
+                setLeadDestination(responseData.destination || 'Endurance API');
+
+                // Initialize warranty search if needed
+                if (window.carData) {
+                    window.chaizWarrantySearchConfig = {
+                        targetElementId: "search-results",
+                        searchData: {
+                            make: "mercedes-benz",
+                            model: "gle-coupe",
+                            year: 2020,
+                            state: "NJ",
+                            mileage: 30000,
+                            userId: "96d8841b-6ae6-4cb6-9b43-401662e25560"
+                        }
+                    };
+
+                    // Load the warranty search script if not already loaded
+                    if (!document.querySelector('script[src="https://uat.warranty-search.chaiz.com/initialize.js"]')) {
+                        const script = document.createElement('script');
+                        script.src = 'https://uat.warranty-search.chaiz.com/initialize.js';
+                        document.body.appendChild(script);
+                    }
+                }
             }
 
-            // Function to set lead destination display
+            // Update the closeModal function to be globally accessible
+            window.closeModal = function () {
+                const successModal = document.getElementById('success-modal');
+                if (successModal) {
+                    successModal.remove();
+                }
+            };
+
+            // Update the setLeadDestination function
             function setLeadDestination(destination) {
                 const destinationElement = document.getElementById('destination-name');
                 if (destinationElement) {
@@ -1932,11 +1768,10 @@
                         destinationColor = '#28a745';
                     }
 
-                    destinationElement.innerHTML = destinationText;
+                    destinationElement.textContent = destinationText;
                     destinationElement.style.color = destinationColor;
                 }
             }
-
             // Function to close success modal
             window.closeSuccessModal = function () {
                 const successModal = document.getElementById('success-modal');
