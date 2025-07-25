@@ -386,7 +386,7 @@ body {
 }
 
 @media (max-width: 768px) {
-    .service-card > *:not(.card-header) {
+    .service-card > *:not(.card-header):not(.top-rated-ribbon) {
         display: none !important;
     }
 
@@ -401,24 +401,23 @@ body {
         align-items: center;
         flex-wrap: wrap;
     }
+
     .promo-badge {
         order: 3;
         padding: 6px 12px;
         font-size: 16px;
         font-weight: 600;
         text-align: center;
-        margin: 0 auto; /* centers the badge horizontally */
+        margin: 0 auto;
+        display: flex;
+        color: #a855f7;
+        font-weight: 600;
+        gap: 6px;
     }
 
     .logo {
         width: 130px;
         height: 130px;
-    }
-    .promo-badge {
-        display: flex;
-        color: #a855f7;
-        font-weight: 600;
-        gap: 6px;
     }
 
     .cta-section {
