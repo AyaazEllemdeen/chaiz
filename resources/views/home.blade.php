@@ -2154,7 +2154,7 @@
                 </div>
             </div>
 
-            <button class="match-cta-button">Get Matched</button>
+            <button class="match-cta-button">Find My Match</button>
         </div>
     </section>
 
