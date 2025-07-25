@@ -1636,70 +1636,70 @@
                 successModal.id = 'success-modal';
                 successModal.className = 'success-modal-container';
                 successModal.innerHTML = `
-                                <div class="success-modal-container" id="success-modal">
-                            <div class="success-modal-content">
-                                <!-- Left Content Section (now on the left) -->
-                                <div class="modal-right-section">
-                                    <div class="content-wrapper">
-                                        <div class="success-header">
-                                            <h2>Your Lead Has Been Submitted Successfully!</h2>
-                                        </div>
+                                                    <div class="success-modal-container" id="success-modal">
+                                                <div class="success-modal-content">
+                                                    <!-- Left Content Section (now on the left) -->
+                                                    <div class="modal-right-section">
+                                                        <div class="content-wrapper">
+                                                            <div class="success-header">
+                                                                <h2>Your Lead Has Been Submitted Successfully!</h2>
+                                                            </div>
 
-                                        <div class="lead-destination-card">
-                                            <p class="lead-destination-info">
-                                                <strong>Submitted to:</strong> <span id="destination-name">Processing...</span>
-                                            </p>
-                                        </div>
+                                                            <div class="lead-destination-card">
+                                                                <p class="lead-destination-info">
+                                                                    <strong>Submitted to:</strong> <span id="destination-name">Processing...</span>
+                                                                </p>
+                                                            </div>
 
-                                        <div class="content-grid">
-                                            <div class="what-happens-next">
-                                                <h4>What happens next?</h4>
-                                                <div class="steps-container">
-                                                    <div class="step-item">
-                                                        <div class="step-number">1</div>
-                                                        <div class="step-content">
-                                                            <p>If there is a match between your specifications and our provider's criteria, you will receive a call from between 1-5 providers within the next working day.</p>
+                                                            <div class="content-grid">
+                                                                <div class="what-happens-next">
+                                                                    <h4>What happens next?</h4>
+                                                                    <div class="steps-container">
+                                                                        <div class="step-item">
+                                                                            <div class="step-number">1</div>
+                                                                            <div class="step-content">
+                                                                                <p>If there is a match between your specifications and our provider's criteria, you will receive a call from between 1-5 providers within the next working day.</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="step-item">
+                                                                            <div class="step-number">2</div>
+                                                                            <div class="step-content">
+                                                                                <p>You will have a free phone consultation with the relevant provider(s) to discuss prices and ask any questions.</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="awareness-section">
+                                                                    <h5>Please be aware that you may not receive quotes if:</h5>
+                                                                    <div class="awareness-items">
+                                                                        <div class="awareness-item">
+                                                                            <div class="awareness-number">1</div>
+                                                                            <p>Your specifications don't match the provider's criteria</p>
+                                                                        </div>
+                                                                        <div class="awareness-item">
+                                                                            <div class="awareness-number">2</div>
+                                                                            <p>There's an error in your contact details</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <button class="btn-continue" onclick="closeModal()">Continue</button>
                                                         </div>
                                                     </div>
-                                                    <div class="step-item">
-                                                        <div class="step-number">2</div>
-                                                        <div class="step-content">
-                                                            <p>You will have a free phone consultation with the relevant provider(s) to discuss prices and ask any questions.</p>
+
+                                                    <!-- Right Grey Section (now on the right) -->
+                                                    <div class="modal-left-section">
+                                                        <div class="plans-heading">
+                                                            <h1>Plans for your car</h1>
+                                                            <p>Buy coverage from leading providers, right here, right now.</p>
+                                                        </div>
+                                                        <div id="search-results"></div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="awareness-section">
-                                                <h5>Please be aware that you may not receive quotes if:</h5>
-                                                <div class="awareness-items">
-                                                    <div class="awareness-item">
-                                                        <div class="awareness-number">1</div>
-                                                        <p>Your specifications don't match the provider's criteria</p>
                                                     </div>
-                                                    <div class="awareness-item">
-                                                        <div class="awareness-number">2</div>
-                                                        <p>There's an error in your contact details</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <button class="btn-continue" onclick="closeModal()">Continue</button>
-                                    </div>
-                                </div>
-
-                                <!-- Right Grey Section (now on the right) -->
-                                <div class="modal-left-section">
-                                    <div class="plans-heading">
-                                        <h1>Plans for your car</h1>
-                                        <p>Buy coverage from leading providers, right here, right now.</p>
-                                    </div>
-                                    <div id="search-results"></div>
-                                    </div>
-                                </div>
-                                </div>
-                            `;
+                                                `;
 
                 // Add modal to page
                 document.body.appendChild(successModal);
@@ -2046,7 +2046,8 @@
             </div>
 
             <div class="mt-5 divider-line"></div>
-            <h4 class="mt-5 mb-3" style="font-weight: 700;">Looking for a quick solution? Skip the wait and buy your auto warranty directly online in minutes.</h4>
+            <h4 class="mt-5 mb-3" style="font-weight: 700;">Looking for a quick solution? Skip the wait and buy your auto
+                warranty directly online in minutes.</h4>
 
             <div class="mb-4">
                 <!-- chaiz card -->
@@ -2288,25 +2289,26 @@
     <section class="advertising-disclosure container my-5">
         <div class="advertising-card border-light shadow-sm">
             <div class="advertising-card-body p-4">
-                <h2 class="advertising-card-title h4 mb-3">Disclaimer, please read.</h2>
+                <h2 class="advertising-card-title h4 mb-3">Site Disclaimer and Privacy Notice</h2>
                 <div class="advertising-card-text">
-                    <p>comparewarranties.org is a trading site of Chaiz, Inc. comparewarranties.org is a free online
-                        resource committed to helping you find Vehicle Service Contract providers ("Products").</p>
-                    <p>Unlike our main site at chaiz.com, we may accept advertising compensation from some of the companies
-                        advertised. The compensation may impact the location and order in which these Products are
-                        presented. We may also list Products for which we receive no compensation. This site does not
-                        feature all Products on the market.</p>
+                    <p>comparewarranties.org is operated by Chaiz, Inc. and serves as a free resource to help you find
+                        Vehicle Service Contract providers ("Products").</p>
+                    <p>Unlike our main site at chaiz.com, we may receive advertising fees from some of the companies
+                        featured here. These fees can influence the placement and order of Products shown. We also include
+                        Products for which we do not receive compensation. This site does not include every Product
+                        available on the market.
+                    </p>
 
                     <div class="more-content d-none">
-                        <p>By clicking through the links on this site you agree to allow us to pass on your name, address,
-                            email and telephone number to providers of Products advertised on this site. In doing so we may
-                            receive a small fee from the Product provider for the introduction.</p>
-                        <p>This is an advertising site only and does not offer or sell the Products displayed on this site.
-                            We are nor responsible for nor do we control Products advertised on this site. If you wish to
-                            purchase a Product (other than thru the advertisers on this site) you can do so through our site
-                            at chaiz.com.</p>
-                        <p>The Terms of Use and Privacy Policy of Chaiz, Inc. as set out below apply to this site and your
-                            use of it.</p>
+                        <p>When you click on links to Product providers, you consent to share your contact details (name,
+                            address, email, and phone number) securely with those providers. This allows them to connect
+                            with you about their services. In some cases, we receive a small referral fee for making this
+                            introduction.</p>
+                        <p>comparewarranties.org is an advertising platform only and does not sell or offer the Products
+                            listed. We do not control the Products or services offered by these providers. If you prefer,
+                            you may purchase Product coverage directly through our main site, chaiz.com.</p>
+                        <p>Your use of this site is subject to the Terms of Use and Privacy Policy of Chaiz, Inc. as
+                            outlined below.</p>
                     </div>
 
                     <a href="#" class="btn advertising-btn-link px-0 read-more-btn">Read more →</a>
