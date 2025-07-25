@@ -1823,6 +1823,7 @@
             <div class="mb-4">
                 <!-- endurance card -->
                 <div class="service-card">
+                    <div class="top-rated-ribbon">TOP RATED</div>
                     <div class="card-header">
                         <div class="logo-section">
                             <div class="logo">
@@ -2075,6 +2076,7 @@
             <div class="mb-4">
                 <!-- chaiz card -->
                 <div class="service-card">
+                    <div class="top-rated-ribbon">BUY NOW</div>
                     <div class="card-header">
                         <div class="logo-section">
                             <div class="logo">
