@@ -1749,7 +1749,7 @@
                         switch (destination) {
                             case 'Endurance API':
                                 destinationText = 'Endurance';
-                                destinationColor = '#28a745';
+                                destinationColor = '#ffc107';
                                 break;
                             case 'LeadConduit (Backup System)':
                                 destinationText = 'American Dream';
