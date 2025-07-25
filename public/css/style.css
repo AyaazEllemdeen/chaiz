@@ -215,6 +215,7 @@ body {
 .logo {
     flex: 0 0 120px; /* fixed width */
     height: 150px;
+    width: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1177,9 +1178,16 @@ body {
     .modal-left-section,
     .modal-right-section {
         width: 100%;
-        padding: 0px;
+        padding: 20px 15px;
+        box-sizing: border-box;
         height: auto;
         overflow: visible;
+    }
+
+    .modal-left-section {
+        background: #6c757d;
+        color: white;
+        text-align: center;
     }
 
     .modal-right-section {
@@ -1188,10 +1196,6 @@ body {
         align-items: flex-start;
         padding-top: 10px;
         margin-bottom: 40px;
-    }
-
-    .modal-left-section {
-        text-align: center;
     }
 
     .content-wrapper {
