@@ -9,7 +9,8 @@
         <div class="hero-text-overlay py-5">
             <div class="container text-white">
                 <p class="quiz-heading">Explore your options</p>
-                <p class="quiz-subtext">Complete our brief quiz to discover the ideal auto warranty tailored to your vehicle and budget.</p>
+                <p class="quiz-subtext">Complete our brief quiz to discover the ideal auto warranty tailored to your vehicle
+                    and budget.</p>
 
                 <!-- Quiz starts directly below text -->
                 <div class="quiz-content-box mt-4">
@@ -1636,70 +1637,70 @@
                 successModal.id = 'success-modal';
                 successModal.className = 'success-modal-container';
                 successModal.innerHTML = `
-                                                    <div class="success-modal-container" id="success-modal">
-                                                <div class="success-modal-content">
-                                                    <!-- Left Content Section (now on the left) -->
-                                                    <div class="modal-right-section">
-                                                        <div class="content-wrapper">
-                                                            <div class="success-header">
-                                                                <h2>Your Lead Has Been Submitted Successfully!</h2>
-                                                            </div>
+                                                        <div class="success-modal-container" id="success-modal">
+                                                    <div class="success-modal-content">
+                                                        <!-- Left Content Section (now on the left) -->
+                                                        <div class="modal-right-section">
+                                                            <div class="content-wrapper">
+                                                                <div class="success-header">
+                                                                    <h2>Your Lead Has Been Submitted Successfully!</h2>
+                                                                </div>
 
-                                                            <div class="lead-destination-card">
-                                                                <p class="lead-destination-info">
-                                                                    <strong>Submitted to:</strong> <span id="destination-name">Processing...</span>
-                                                                </p>
-                                                            </div>
+                                                                <div class="lead-destination-card">
+                                                                    <p class="lead-destination-info">
+                                                                        <strong>Submitted to:</strong> <span id="destination-name">Processing...</span>
+                                                                    </p>
+                                                                </div>
 
-                                                            <div class="content-grid">
-                                                                <div class="what-happens-next">
-                                                                    <h4>What happens next?</h4>
-                                                                    <div class="steps-container">
-                                                                        <div class="step-item">
-                                                                            <div class="step-number">1</div>
-                                                                            <div class="step-content">
-                                                                                <p>If there is a match between your specifications and our provider's criteria, you will receive a call from between 1-5 providers within the next working day.</p>
+                                                                <div class="content-grid">
+                                                                    <div class="what-happens-next">
+                                                                        <h4>What happens next?</h4>
+                                                                        <div class="steps-container">
+                                                                            <div class="step-item">
+                                                                                <div class="step-number">1</div>
+                                                                                <div class="step-content">
+                                                                                    <p>If there is a match between your specifications and our provider's criteria, you will receive a call from between 1-5 providers within the next working day.</p>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="step-item">
+                                                                                <div class="step-number">2</div>
+                                                                                <div class="step-content">
+                                                                                    <p>You will have a free phone consultation with the relevant provider(s) to discuss prices and ask any questions.</p>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="step-item">
-                                                                            <div class="step-number">2</div>
-                                                                            <div class="step-content">
-                                                                                <p>You will have a free phone consultation with the relevant provider(s) to discuss prices and ask any questions.</p>
+                                                                    </div>
+
+                                                                    <div class="awareness-section">
+                                                                        <h5>Please be aware that you may not receive quotes if:</h5>
+                                                                        <div class="awareness-items">
+                                                                            <div class="awareness-item">
+                                                                                <div class="awareness-number">1</div>
+                                                                                <p>Your specifications don't match the provider's criteria</p>
+                                                                            </div>
+                                                                            <div class="awareness-item">
+                                                                                <div class="awareness-number">2</div>
+                                                                                <p>There's an error in your contact details</p>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="awareness-section">
-                                                                    <h5>Please be aware that you may not receive quotes if:</h5>
-                                                                    <div class="awareness-items">
-                                                                        <div class="awareness-item">
-                                                                            <div class="awareness-number">1</div>
-                                                                            <p>Your specifications don't match the provider's criteria</p>
-                                                                        </div>
-                                                                        <div class="awareness-item">
-                                                                            <div class="awareness-number">2</div>
-                                                                            <p>There's an error in your contact details</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                                <button class="btn-continue" onclick="closeModal()">Continue</button>
                                                             </div>
+                                                        </div>
 
-                                                            <button class="btn-continue" onclick="closeModal()">Continue</button>
+                                                        <!-- Right Grey Section (now on the right) -->
+                                                        <div class="modal-left-section">
+                                                            <div class="plans-heading">
+                                                                <h1>Plans for your car</h1>
+                                                                <p>Buy coverage from leading providers, right here, right now.</p>
+                                                            </div>
+                                                            <div id="search-results"></div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-
-                                                    <!-- Right Grey Section (now on the right) -->
-                                                    <div class="modal-left-section">
-                                                        <div class="plans-heading">
-                                                            <h1>Plans for your car</h1>
-                                                            <p>Buy coverage from leading providers, right here, right now.</p>
                                                         </div>
-                                                        <div id="search-results"></div>
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                `;
+                                                    `;
 
                 // Add modal to page
                 document.body.appendChild(successModal);
@@ -1709,25 +1710,52 @@
 
                 // Initialize warranty search if needed
                 if (window.carData) {
+                    const make = window.carData.make
+                        ? window.carData.make.toLowerCase().replace(/\s+/g, '-')
+                        : 'default-make';
+
+                    const model = window.carData.model
+                        ? window.carData.model.toLowerCase().replace(/\s+/g, '-')
+                        : 'default-model';
+
+                    const year = window.carData.year
+                        ? parseInt(window.carData.year, 10)
+                        : 2020;
+
+                    const state = window.carData.state
+                        ? window.carData.state.toUpperCase()
+                        : 'NJ';
+
+                    let mileage = 30000; // default mileage
+                    if (typeof window.carData.mileage === 'string') {
+                        const digits = window.carData.mileage.replace(/\D/g, '');
+                        if (digits) {
+                            mileage = parseInt(digits, 10);
+                        }
+                    }
+
                     window.chaizWarrantySearchConfig = {
                         targetElementId: "search-results",
                         searchData: {
-                            make: "mercedes-benz",
-                            model: "gle-coupe",
-                            year: 2020,
-                            state: "NJ",
-                            mileage: 30000,
+                            make,
+                            model,
+                            year,
+                            state,
+                            mileage,
                             userId: "96d8841b-6ae6-4cb6-9b43-401662e25560"
                         }
                     };
 
-                    // Load the warranty search script if not already loaded
+                    console.log('Using car data:', window.carData);
+                    console.log('Warranty config:', window.chaizWarrantySearchConfig);
+
                     if (!document.querySelector('script[src="https://uat.warranty-search.chaiz.com/initialize.js"]')) {
                         const script = document.createElement('script');
                         script.src = 'https://uat.warranty-search.chaiz.com/initialize.js';
                         document.body.appendChild(script);
                     }
                 }
+
             }
 
             // Update the closeModal function to be globally accessible
