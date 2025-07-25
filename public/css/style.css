@@ -443,8 +443,8 @@ body {
     min-width: 300px; /* optional: give more breathing room */
 }
 .match-step-icon {
-    width: 170px;       /* reduced from 100px */
-    height: 170px;      /* reduced from 100px */
+    width: 170px; /* reduced from 100px */
+    height: 170px; /* reduced from 100px */
     margin: 0 auto 20px; /* tightened spacing */
     position: relative;
 }
@@ -582,7 +582,7 @@ body {
 
 .score-illustration {
     width: 100%;
-    max-width: 250px;
+    max-width: 220px;
 }
 
 .score-illustration img {
@@ -702,6 +702,7 @@ body {
     font-size: 1.25rem;
     color: #ffcf4b;
 }
+
 @media (max-width: 768px) {
     .faq-section {
         padding: 0 1rem;
