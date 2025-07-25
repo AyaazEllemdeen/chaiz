@@ -2056,7 +2056,7 @@
                             </div>
                             <div class="rating-section">
                                 <div class="rating-score">7.9</div>
-                                <div class="stars">★★★★★</div>
+                                <div class="stars">★★★★☆</div>
                             </div>
                             <div class="cta-section">
                                 <button class="get-quote-btn">Buy Now</button>
