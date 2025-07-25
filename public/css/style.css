@@ -1002,9 +1002,11 @@ body {
 }
 
 .plans-heading {
-    padding: 1rem;
+    padding: 0rem 0rem;
+    margin-bottom: 1rem;
     text-align: center;
     color: #ffffff;
+    align-self: flex-start; 
 }
 
 .success-header {
@@ -1188,6 +1190,7 @@ body {
         background: #a4a9ae;
         color: white;
         text-align: center;
+        padding-top: 10px;
     }
 
     .modal-right-section {
@@ -1227,7 +1230,7 @@ body {
     }
 
     .plans-heading h1 {
-        font-size: 15px;
+        font-size: 20px;
     }
     .plans-heading p {
         font-size: 11px;
