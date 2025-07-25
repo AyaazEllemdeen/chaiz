@@ -213,15 +213,16 @@ body {
 }
 
 .logo {
-    flex: 0 0 120px; /* fixed width */
-    height: 150px;
-    width: 150px;
+    flex: 0 0 180px; /* increased from 120px */
+    height: 180px;   /* increased from 150px */
+    width: 180px;    /* increased from 150px */
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 8px;
     overflow: hidden;
 }
+
 
 .logo img {
     width: 100%;
