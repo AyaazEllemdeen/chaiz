@@ -8,8 +8,8 @@
 
         <div class="hero-text-overlay py-5">
             <div class="container text-white">
-                <p class="quiz-heading">Compare Alternatives</p>
-                <p class="quiz-subtext">Take our short quiz to find an Auto Warranty suited to you.</p>
+                <p class="quiz-heading">Explore your options</p>
+                <p class="quiz-subtext">Complete our brief quiz to discover the ideal auto warranty tailored to your vehicle and budget.</p>
 
                 <!-- Quiz starts directly below text -->
                 <div class="quiz-content-box mt-4">
