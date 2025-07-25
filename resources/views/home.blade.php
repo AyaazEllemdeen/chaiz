@@ -1795,7 +1795,7 @@
 
     <section id="card-section">
         <div class="container">
-            <h3 class="mt-5 mb-3" style="font-weight: 700;">Our providers</h3>
+            <h4 class="mt-5 mb-3" style="font-weight: 700;">Our providers</h4>
 
             <div class="mb-4">
                 <!-- endurance card -->
