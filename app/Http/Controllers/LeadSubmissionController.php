@@ -10,8 +10,8 @@ class LeadSubmissionController extends Controller
 {
     public function store(Request $request)
     {
-        \Log::info('LeadSubmissionController@store called');
-        \Log::info('Request data:', $request->all());
+        // \Log::info('LeadSubmissionController@store called');
+        // \Log::info('Request data:', $request->all());
 
         $validated = $request->validate([
             'sel-year' => 'required|integer',
@@ -53,8 +53,8 @@ class LeadSubmissionController extends Controller
                 ->withBasicAuth('CHAIZ-INT-chaizhp', 'sqEgIFfA347MNDWU')
                 ->post($url, $payload);
 
-            \Log::info('LeadSubmission API response status: ' . $response->status());
-            \Log::info('LeadSubmission API response body: ' . $response->body());
+            // \Log::info('LeadSubmission API response status: ' . $response->status());
+            // \Log::info('LeadSubmission API response body: ' . $response->body());
 
             $chaizData = [
                 'make' => strtolower($validated['sel-make']),
@@ -101,8 +101,8 @@ class LeadSubmissionController extends Controller
 
                 $fallbackResponse = Http::asForm()->post($fallbackUrl, $leadConduitPayload);
 
-                Log::info('Fallback LeadConduit response status: ' . $fallbackResponse->status());
-                Log::info('Fallback LeadConduit response body: ' . $fallbackResponse->body());
+                // Log::info('Fallback LeadConduit response status: ' . $fallbackResponse->status());
+                // Log::info('Fallback LeadConduit response body: ' . $fallbackResponse->body());
 
                 if ($fallbackResponse->successful()) {
                     // Lead successfully sent to LeadConduit (American Dream)
