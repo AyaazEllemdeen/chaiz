@@ -755,14 +755,14 @@ body {
 /* modal quiz */
 .car-quiz-right {
     flex: 1;
-    background: #5f5f5fff;
+    background: #909499;
     padding: 3rem 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-color: #7e7e7e;
+    background-color: #909499;
     color: white;
 }
 
@@ -770,10 +770,10 @@ body {
     max-width: 180px;
     margin-bottom: 1.5rem;
     object-fit: contain;
-    background: rgb(172, 172, 172);
-    border-radius: 50%;
-    padding: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    background: transparent; 
+    border-radius: 0; 
+    padding: 0; 
+    box-shadow: none;
 }
 
 .car-quiz-right h2 {
