@@ -3,7 +3,7 @@
         <div class="row align-items-center text-center text-lg-start">
             <!-- Left Column: Disclaimer -->
             <div class="col-lg-6 text-center text-lg-start mb-3 mb-lg-0">
-                <span class="disclaimer-trigger" data-bs-toggle="modal" data-bs-target="#disclaimerModal">
+                <span class="disclaimer-trigger" id="disclaimerTrigger">
                     Disclaimer
                     <!-- Desktop hover popup -->
                     <div class="disclaimer-popup">
@@ -74,6 +74,21 @@
         </div>
     </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const trigger = document.getElementById("disclaimerTrigger");
+
+    if (window.innerWidth <= 768) {
+      trigger.setAttribute("data-bs-toggle", "modal");
+      trigger.setAttribute("data-bs-target", "#disclaimerModal");
+    } else {
+      trigger.removeAttribute("data-bs-toggle");
+      trigger.removeAttribute("data-bs-target");
+    }
+  });
+</script>
+
 <style>
     /* Footer Styles */
     footer {
@@ -98,7 +113,6 @@
         color: #cccccc;
         /* Optional: light gray on hover for visual feedback */
     }
-
 
     /* Desktop hover popup */
     .disclaimer-popup {

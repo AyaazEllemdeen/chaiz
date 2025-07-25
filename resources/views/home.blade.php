@@ -2286,7 +2286,7 @@
         });
     </script>
 
-    <section class="advertising-disclosure container my-5">
+    {{-- <section class="advertising-disclosure container my-5">
         <div class="advertising-card border-light shadow-sm">
             <div class="advertising-card-body p-4">
                 <h2 class="advertising-card-title h4 mb-3">Site Disclaimer and Privacy Notice</h2>
@@ -2337,5 +2337,5 @@
                 }
             });
         });
-    </script>
+    </script> --}}
 @endsection
