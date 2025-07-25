@@ -2165,8 +2165,7 @@
                     <span class="score-highlight">how often
                         they match successfully with drivers, how well their brand connects with users, and the strength of
                         their coverage.
-                        More about our scores
-                    </span>.
+                    </span>
                 </p>
                 <button class="score-cta-button">More about our scores</button>
             </div>
