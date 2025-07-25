@@ -2046,8 +2046,7 @@
             </div>
 
             <div class="mt-5 divider-line"></div>
-            <h3 class="mt-5 mb-3" style="font-weight: 700;">Looking for a quick solution? Buy your Auto Warranty direct
-                today!</h3>
+            <h4 class="mt-5 mb-3" style="font-weight: 700;">Looking for a quick solution? Skip the wait and buy your auto warranty directly online in minutes.</h4>
 
             <div class="mb-4">
                 <!-- chaiz card -->
