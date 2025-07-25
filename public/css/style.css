@@ -439,9 +439,9 @@ body {
 .match-step {
     flex: 1;
     text-align: center;
-    max-width: 280px;
+    max-width: none; /* remove width restriction */
+    min-width: 300px; /* optional: give more breathing room */
 }
-
 .match-step-icon {
     width: 100px;
     height: 100px;
