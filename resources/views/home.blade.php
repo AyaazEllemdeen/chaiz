@@ -3,7 +3,7 @@
 @section('content')
 
     <section id="hero-section" class="position-relative" style="height: auto;">
-        <img src="{{ asset('img/banner3.jpg') }}" alt="Banner" class="object-fit-cover banner-img"
+        <img src="{{ asset('img/banner4.png') }}" alt="Banner" class="object-fit-cover banner-img"
             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;">
 
         <div class="hero-text-overlay py-5">
