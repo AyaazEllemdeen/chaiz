@@ -414,8 +414,12 @@ body {
     }
 
     .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 130px;
         height: 130px;
+        margin: 0 auto; /* center block-level element */
     }
 
     .cta-section {

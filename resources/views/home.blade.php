@@ -488,6 +488,12 @@
                 });
             });
 
+            document.querySelector('.match-cta-button').addEventListener('click', () => {
+                const quizModal = document.getElementById('car-quiz');
+                quizModal.classList.remove('d-none');
+                quizModal.classList.add('show');
+            });
+
             // Close buttons to close the modal
             document.querySelector('.car-quiz-close').addEventListener('click', () => {
                 document.getElementById('car-quiz').classList.remove('show');
@@ -2373,7 +2379,7 @@
                         their coverage.
                     </span>
                 </p>
-                <button class="score-cta-button">More about our scores</button>
+                <!-- <button class="score-cta-button">More about our scores</button> -->
             </div>
 
             <div class="score-illustration">
