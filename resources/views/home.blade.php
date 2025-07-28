@@ -133,7 +133,7 @@
                     </div>
 
                     <div id="quiz-step3" class="d-none">
-                        <h3 class="modal-question1">How soon do you want your new auto warranty?</h3>
+                        <h3 class="modal-question">How soon do you want your new auto warranty?</h3>
                         <div class="options-grid1">
                             <button type="button" class="warranty-urgency-opt1" data-value="As soon as possible">As soon as
                                 possible</button>
@@ -149,7 +149,7 @@
                     </div>
 
                     <div id="quiz-step4" class="d-none">
-                        <h3 class="modal-question1">What state would you like coverage in?</h3>
+                        <h3 class="modal-question">What state would you like coverage in?</h3>
                         <select id="user-state" name="user-state" class="modal-dropdown1" required>
                             <option value="">Select your state</option>
                             <option value="AL">Alabama</option>
@@ -209,7 +209,7 @@
                     </div>
 
                     <div id="quiz-step5" class="d-none">
-                        <h3 class="modal-question1">What's your ZIP code?</h3>
+                        <h3 class="modal-question">What's your ZIP code?</h3>
                         <input type="text" name="user-zip" id="user-zip" class="modal-dropdown1"
                             placeholder="Enter your ZIP code" maxlength="5" pattern="\d{5}" inputmode="numeric" required />
                         <div class="step-buttons">
@@ -225,7 +225,7 @@
                     </div>
 
                     <div id="quiz-step6" class="d-none">
-                        <h3 class="modal-question1">What's your Email Address?</h3>
+                        <h3 class="modal-question">What's your Email Address?</h3>
                         <input type="email" name="email" id="user-email" class="modal-dropdown1"
                             placeholder="Enter your Email" required />
                         <div class="step-buttons-wrapper">
@@ -241,7 +241,7 @@
                     </div>
 
                     <div id="quiz-step7" class="d-none">
-                        <h3 class="modal-question1">What's your Full Name?</h3>
+                        <h3 class="modal-question">What's your Full Name?</h3>
                         <input type="text" name="user-name" id="user-name" class="modal-dropdown1"
                             placeholder="Enter your name" required />
                         <div class="step-buttons-wrapper">
@@ -257,7 +257,7 @@
                     </div>
 
                     <div id="quiz-step8" class="d-none">
-                        <h3 class="modal-question1">What's your Phone Number?</h3>
+                        <h3 class="modal-question">What's your Phone Number?</h3>
                         <input type="text" name="user-number" id="user-number" name="number" class="modal-dropdown1"
                             placeholder="Enter your number" required />
                         <div class="step-buttons-wrapper">
