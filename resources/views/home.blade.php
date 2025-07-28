@@ -208,26 +208,19 @@
                         </div>
                     </div>
 
-                    <div id="quiz-loading" class="d-none">
-                        <div class="loading-container">
-                            <div class="spinner"></div>
-                            <p>Gathering details...</p>
-                        </div>
-                    </div>
-
                     <div id="quiz-step5" class="d-none">
                         <h3 class="modal-question1">What's your ZIP code?</h3>
                         <input type="text" name="user-zip" id="user-zip" class="modal-dropdown1"
                             placeholder="Enter your ZIP code" maxlength="5" pattern="\d{5}" inputmode="numeric" required />
-                        <div class="step-buttons-wrapper">
-                            <div class="step-buttons">
-                                <button id="to-step6" class="to-step-btn">Continue</button>
-                            </div>
+                        <div class="step-buttons">
+                            <button id="to-step6" class="to-step-btn">Continue</button>
+                        </div>
+                    </div>
 
-                            <div class="skip-section">
-                                <p class="skip-message">Don’t want to give us your details?</p>
-                                <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Instant Quote</button>
-                            </div>
+                    <div id="quiz-loading" class="d-none">
+                        <div class="loading-container">
+                            <div class="spinner"></div>
+                            <p>Gathering details...</p>
                         </div>
                     </div>
 
@@ -1650,6 +1643,7 @@
 
 
             // Step 4 → Step 5 (State Validation with Loading)
+            // Step 4 → Step 5 (State Validation without Loader)
             document.getElementById("to-step5").addEventListener("click", function (e) {
                 e.preventDefault();
                 const state = document.getElementById("user-state").value.trim();
@@ -1662,17 +1656,13 @@
                 window.carData = window.carData || {};
                 window.carData.state = state;
 
-                // Transition: Step 4 → Loading → Step 5
+                // Direct transition: Step 4 → Step 5
                 document.getElementById("quiz-step4").classList.add("d-none");
-                document.getElementById("quiz-loading").classList.remove("d-none");
-
-                setTimeout(() => {
-                    document.getElementById("quiz-loading").classList.add("d-none");
-                    document.getElementById("quiz-step5").classList.remove("d-none");
-                }, 2700); // 2.7 seconds delay
+                document.getElementById("quiz-step5").classList.remove("d-none");
             });
 
-            // Step 5 → Step 6 (ZIP Validation)
+
+            // Step 5 → Step 6 (ZIP Validation with Loader)
             document.getElementById("to-step6").addEventListener("click", function (e) {
                 e.preventDefault();
                 const zip = document.getElementById("user-zip").value.trim();
@@ -1685,8 +1675,14 @@
                 window.carData = window.carData || {};
                 window.carData.zip = zip;
 
+                // Transition: Step 5 → Loading → Step 6
                 document.getElementById("quiz-step5").classList.add("d-none");
-                document.getElementById("quiz-step6").classList.remove("d-none");
+                document.getElementById("quiz-loading").classList.remove("d-none");
+
+                setTimeout(() => {
+                    document.getElementById("quiz-loading").classList.add("d-none");
+                    document.getElementById("quiz-step6").classList.remove("d-none");
+                }, 2700); // 2.7 seconds delay
             });
 
             // Step 6 → Step 7 (Email Validation)
