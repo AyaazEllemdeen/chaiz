@@ -3,7 +3,7 @@
 @section('content')
 
     <section id="hero-section" class="position-relative" style="height: auto;">
-        <img src="{{ asset('img/banner4.png') }}" alt="Banner" class="object-fit-cover banner-img"
+        <img src="{{ asset('img/banner4.webp') }}" alt="Banner" class="object-fit-cover banner-img"
             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;">
 
         <div class="hero-text-overlay py-5">
@@ -149,7 +149,7 @@
                     </div>
 
                     <div id="quiz-step4" class="d-none">
-                        <h3 class="modal-question1">What state do you live in?</h3>
+                        <h3 class="modal-question1">What state would you like coverage in?</h3>
                         <select id="user-state" name="user-state" class="modal-dropdown1" required>
                             <option value="">Select your state</option>
                             <option value="AL">Alabama</option>
@@ -2004,7 +2004,7 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="cta-section">
-                                <button class="get-quote-btn">Get a Quote</button>
+                                <a href="https://www.endurancewarranty.com/lp/chaiz/" class="get-quote-btn" target="_blank" rel="noopener noreferrer">Get a Quote</a>
                                 <a href="tel:8005980082">
                                     <button class="phone-btn">800-598-0082</button>
                                 </a>
@@ -2054,7 +2054,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="learn-more-btn">Learn More</button>
+                    <!-- <button class="learn-more-btn">Learn More</button> -->
                 </div>
 
                 <!-- american dream card -->
@@ -2072,7 +2072,7 @@
                                 <div class="stars">★★★★☆</div>
                             </div>
                             <div class="cta-section">
-                                <button class="get-quote-btn">Get a Quote</button>
+                                <a href="https://www.americandreamautoprotect.com/u7izFNKM9E" class="get-quote-btn" target="_blank" rel="noopener noreferrer">Get a Quote</a>
                                 <a href="tel:8333640947">
                                     <button class="phone-btn">833-364-0947</button>
                                 </a>
@@ -2118,7 +2118,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="learn-more-btn">Learn More</button>
+                    <!-- <button class="learn-more-btn">Learn More</button> -->
                 </div>
 
                 <!-- omega card -->
@@ -2136,7 +2136,7 @@
                                 <div class="stars">★★★★☆</div>
                             </div>
                             <div class="cta-section">
-                                <button class="get-quote-btn">Get a Quote</button>
+                                <a href="https://www.chaiz.com/p/omega?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article" class="get-quote-btn" target="_blank" rel="noopener noreferrer">Get a Quote</a>
                             </div>
                         </div>
                     </div>
@@ -2175,7 +2175,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="learn-more-btn">Learn More</button>
+                    <!-- <button class="learn-more-btn">Learn More</button> -->
                 </div>
 
                 <!-- naac card -->
@@ -2193,7 +2193,7 @@
                                 <div class="stars">★★★★☆</div>
                             </div>
                             <div class="cta-section">
-                                <button class="get-quote-btn">Get a Quote</button>
+                                <a href="https://www.chaiz.com/p/naac?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article" class="get-quote-btn" target="_blank" rel="noopener noreferrer">Get a Quote</a>
                             </div>
                         </div>
                     </div>
@@ -2232,7 +2232,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="learn-more-btn">Learn More</button>
+                    <!-- <button class="learn-more-btn">Learn More</button> -->
                 </div>
             </div>
 
@@ -2257,7 +2257,7 @@
                                 <div class="stars">★★★★☆</div>
                             </div>
                             <div class="cta-section">
-                                <button class="get-quote-btn">Buy Now</button>
+                                <a href="https://www.chaiz.com/?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article" class="get-quote-btn" target="_blank" rel="noopener noreferrer">Get a Quote</a>
                                 <a href="tel:8339429249">
                                     <button class="phone-btn">833-942-9249</button>
                                 </a>
@@ -2306,7 +2306,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="learn-more-btn">Learn More</button>
+                    <!-- <button class="learn-more-btn">Learn More</button> -->
                 </div>
             </div>
         </div>

@@ -289,10 +289,9 @@ body {
     cursor: pointer;
     transition: background 0.3s;
     width: 150px;
-}
-
-.get-quote-btn:hover {
-    background: #876d27;
+    text-decoration: none; /* removes underline */
+    display: inline-block; /* ensures padding works properly */
+    text-align: center; /* centers text inside if needed */
 }
 
 .divider-line {
