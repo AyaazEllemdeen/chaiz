@@ -399,18 +399,39 @@
             <h3>Plans for your car</h3>
             <p>Buy coverage from leading providers, right here, right now.</p>
             <span class="close" onclick="closeChaizModal()">&times;</span>
+
+            <!-- Loading Spinner -->
+            <div id="chaiz-loading" style="text-align: center; padding: 20px;">
+                <p>Loading plans...</p>
+                <div class="spinner"
+                    style="margin: auto; width: 40px; height: 40px; border: 4px solid #ccc; border-top: 4px solid #333; border-radius: 50%; animation: spin 1s linear infinite;">
+                </div>
+            </div>
+
+            <!-- Results Container -->
             <div id="search-results-skip">
                 <!-- Chaiz Warranty Results will appear here -->
             </div>
         </div>
     </div>
 
+    <style>
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
 
     <script>
         function skipMyDetails() {
-            console.log('Skip button clicked'); // Debug log
+            console.log('Skip button clicked');
 
-            // Prepare warranty search config from window.carData or fallback defaults
             const make = window.carData?.make?.toLowerCase().replace(/\s+/g, '-') || 'default-make';
             const model = window.carData?.model?.toLowerCase().replace(/\s+/g, '-') || 'default-model';
             const year = window.carData?.year ? parseInt(window.carData.year, 10) : 2020;
@@ -436,31 +457,65 @@
                 }
             };
 
-            console.log('Using car data:', window.carData);
-            console.log('Warranty config:', window.chaizWarrantySearchConfig);
-
-            // Hide quiz modal using the same method as other parts of your code
+            // Hide car quiz modal and show Chaiz modal
             const quizModal = document.getElementById('car-quiz');
             const chaizModal = document.getElementById('chaizModal');
+            const loadingSpinner = document.getElementById('chaiz-loading');
+            const resultContainer = document.getElementById('search-results-skip');
 
             if (quizModal) {
-                quizModal.classList.remove('show'); // Use 'show' class like other parts
-                // Also add d-none as backup
+                quizModal.classList.remove('show');
                 quizModal.classList.add('d-none');
             }
 
             if (chaizModal) {
                 chaizModal.classList.remove('d-none');
-            } else {
-                console.error('chaizModal element not found');
             }
 
-            // Load Chaiz warranty search script only once
-            if (!document.querySelector('script[src="https://uat.warranty-search.chaiz.com/initialize.js"]')) {
+
+
+            // Clear results and show loader
+            if (loadingSpinner) loadingSpinner.style.display = 'block';
+            if (resultContainer) resultContainer.innerHTML = '';
+
+            // Define the polling function
+            function startPollingForResults() {
+                const maxWaitTime = 5000; // 10 seconds fallback
+                const startTime = Date.now();
+
+                const interval = setInterval(() => {
+                    const content = resultContainer?.innerText?.trim() || '';
+                    const hasResults = content.length > 20;
+
+                    if (hasResults) {
+                        loadingSpinner.style.display = 'none';
+                        clearInterval(interval);
+                    }
+
+                    // Timeout fallback
+                    if (Date.now() - startTime > maxWaitTime) {
+                        console.warn("Chaiz results took too long or failed to load.");
+                        loadingSpinner.style.display = 'none';
+                        clearInterval(interval);
+                    }
+                }, 500);
+            }
+
+            // Check if script is already loaded
+            const existingScript = document.querySelector('script[src="https://uat.warranty-search.chaiz.com/initialize.js"]');
+            if (!existingScript) {
                 const script = document.createElement('script');
                 script.src = 'https://uat.warranty-search.chaiz.com/initialize.js';
+                script.onload = () => {
+                    // Script loaded, now poll for results
+                    startPollingForResults();
+                };
                 document.body.appendChild(script);
+            } else {
+                // Script already exists — assume it's initialized
+                startPollingForResults();
             }
+
         }
 
         // Also make closeChaizModal global
