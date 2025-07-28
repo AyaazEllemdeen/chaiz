@@ -1627,7 +1627,7 @@
                 setTimeout(() => {
                     document.getElementById("quiz-loading").classList.add("d-none");
                     document.getElementById("quiz-step4").classList.remove("d-none");
-                }, 10); // 2.5 seconds delay
+                }, 2700); // 2.5 seconds delay
             });
 
 
