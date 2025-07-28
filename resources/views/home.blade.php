@@ -270,7 +270,7 @@
                             placeholder="Enter your number" required />
                         <div class="step-buttons-wrapper">
                             <div class="step-buttons">
-                                <button id="to-card" class="to-step-btn">Continue</button>
+                                <button id="to-card" class="to-step-btn">Submit</button>
                             </div>
 
                             <div class="skip-section">
@@ -2269,7 +2269,7 @@
                             </div>
                             <div class="cta-section">
                                 <a href="https://www.chaiz.com/?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
-                                    class="get-quote-btn" target="_blank" rel="noopener noreferrer">Get a Quote</a>
+                                    class="get-quote-btn" target="_blank" rel="noopener noreferrer">Buy Now</a>
                                 <a href="tel:8339429249">
                                     <button class="phone-btn">833-942-9249</button>
                                 </a>
