@@ -921,6 +921,17 @@ body {
     font-size: 1rem;
 }
 
+.step-buttons-wrapper {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.step-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
 .to-step-btn {
     background-color: #ffcf4b;
     color: #fff;
@@ -929,9 +940,18 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    flex: 1;
     max-width: 150px;
-    margin: 0; /* remove auto and top margin */
+    width: 100%;
+}
+
+.skip-section {
+    margin-top: 1rem;
+}
+
+.skip-message {
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 8px;
 }
 
 .to-skip-btn {
@@ -939,31 +959,24 @@ body {
     color: #ffcf4b;
     padding: 12px 24px;
     font-size: 1rem;
-    border: 2px solid #ffcf4b; /* add width + solid + color */
+    border: 2px solid #ffcf4b;
     border-radius: 5px;
     cursor: pointer;
-    flex: 1;
     max-width: 150px;
-    margin: 0;
+    width: 100%;
 }
 
 .to-skip-btn:hover {
     background-color: #ffcf4b;
-    color: #fff; /* optional: switch text to white for contrast */
+    color: #fff;
     transition: background-color 0.3s ease;
-}
-
-.step-buttons {
-    display: flex;
-    gap: 3px; /* tight spacing between buttons */
-    justify-content: center;
-    margin-top: 1rem;
 }
 
 .options-grid1 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+    margin-bottom: 1rem;
 }
 
 .mile-opt1 {

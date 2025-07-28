@@ -148,13 +148,6 @@
                         <input type="hidden" name="warranty" id="warranty" value="">
                     </div>
 
-                    <div id="quiz-loading" class="d-none">
-                        <div class="loading-container">
-                            <div class="spinner"></div>
-                            <p>Gathering details...</p>
-                        </div>
-                    </div>
-
                     <div id="quiz-step4" class="d-none">
                         <h3 class="modal-question1">What state do you live in?</h3>
                         <select id="user-state" name="user-state" class="modal-dropdown1" required>
@@ -212,7 +205,13 @@
                         </select>
                         <div class="step-buttons">
                             <button id="to-step5" class="to-step-btn">Continue</button>
-                            <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Skip</button>
+                        </div>
+                    </div>
+
+                    <div id="quiz-loading" class="d-none">
+                        <div class="loading-container">
+                            <div class="spinner"></div>
+                            <p>Gathering details...</p>
                         </div>
                     </div>
 
@@ -220,9 +219,15 @@
                         <h3 class="modal-question1">What's your ZIP code?</h3>
                         <input type="text" name="user-zip" id="user-zip" class="modal-dropdown1"
                             placeholder="Enter your ZIP code" maxlength="5" pattern="\d{5}" inputmode="numeric" required />
-                        <div class="step-buttons">
-                            <button id="to-step6" class="to-step-btn">Continue</button>
-                            <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Skip</button>
+                        <div class="step-buttons-wrapper">
+                            <div class="step-buttons">
+                                <button id="to-step6" class="to-step-btn">Continue</button>
+                            </div>
+
+                            <div class="skip-section">
+                                <p class="skip-message">Don’t want to give us your details?</p>
+                                <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Instant Quote</button>
+                            </div>
                         </div>
                     </div>
 
@@ -230,9 +235,15 @@
                         <h3 class="modal-question1">What's your Email Address?</h3>
                         <input type="email" name="email" id="user-email" class="modal-dropdown1"
                             placeholder="Enter your Email" required />
-                        <div class="step-buttons">
-                            <button id="to-step7" class="to-step-btn">Continue</button>
-                            <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Skip</button>
+                        <div class="step-buttons-wrapper">
+                            <div class="step-buttons">
+                                <button id="to-step7" class="to-step-btn">Continue</button>
+                            </div>
+
+                            <div class="skip-section">
+                                <p class="skip-message">Don’t want to give us your details?</p>
+                                <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Instant Quote</button>
+                            </div>
                         </div>
                     </div>
 
@@ -240,9 +251,15 @@
                         <h3 class="modal-question1">What's your Full Name?</h3>
                         <input type="text" name="user-name" id="user-name" class="modal-dropdown1"
                             placeholder="Enter your name" required />
-                        <div class="step-buttons">
-                            <button id="to-step8" class="to-step-btn">Continue</button>
-                            <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Skip</button>
+                        <div class="step-buttons-wrapper">
+                            <div class="step-buttons">
+                                <button id="to-step8" class="to-step-btn">Continue</button>
+                            </div>
+
+                            <div class="skip-section">
+                                <p class="skip-message">Don’t want to give us your details?</p>
+                                <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Instant Quote</button>
+                            </div>
                         </div>
                     </div>
 
@@ -250,9 +267,15 @@
                         <h3 class="modal-question1">What's your Phone Number?</h3>
                         <input type="text" name="user-number" id="user-number" name="number" class="modal-dropdown1"
                             placeholder="Enter your number" required />
-                        <div class="step-buttons">
-                            <button id="to-card" class="to-step-btn">Submit</button>
-                            <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Skip</button>
+                        <div class="step-buttons-wrapper">
+                            <div class="step-buttons">
+                                <button id="to-card" class="to-step-btn">Continue</button>
+                            </div>
+
+                            <div class="skip-section">
+                                <p class="skip-message">Don’t want to give us your details?</p>
+                                <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Instant Quote</button>
+                            </div>
                         </div>
                     </div>
 
@@ -285,7 +308,7 @@
         const headingMap = {
             'to-step2': 'Vehicle Details',
             'to-step3': 'Vehicle Details',
-            'to-step4': 'Your Details',
+            'to-step4': 'Vehicle Details',
             'to-step5': 'Your Details',
             'to-step6': 'Your Details',
             'to-step7': 'Your Details',
@@ -1620,18 +1643,13 @@
                 window.carData.warranty = selectedWarranty.dataset.value;
                 document.getElementById('warranty').value = selectedWarranty.dataset.value;
 
-                // Transition: Step 3 → Loading → Step 4
+                // Transition: Step 3 → Step 4 (No loader here)
                 document.getElementById("quiz-step3").classList.add("d-none");
-                document.getElementById("quiz-loading").classList.remove("d-none");
-
-                setTimeout(() => {
-                    document.getElementById("quiz-loading").classList.add("d-none");
-                    document.getElementById("quiz-step4").classList.remove("d-none");
-                }, 2700); // 2.5 seconds delay
+                document.getElementById("quiz-step4").classList.remove("d-none");
             });
 
 
-            // Step 4 → Step 5 (State Validation)
+            // Step 4 → Step 5 (State Validation with Loading)
             document.getElementById("to-step5").addEventListener("click", function (e) {
                 e.preventDefault();
                 const state = document.getElementById("user-state").value.trim();
@@ -1644,8 +1662,14 @@
                 window.carData = window.carData || {};
                 window.carData.state = state;
 
+                // Transition: Step 4 → Loading → Step 5
                 document.getElementById("quiz-step4").classList.add("d-none");
-                document.getElementById("quiz-step5").classList.remove("d-none");
+                document.getElementById("quiz-loading").classList.remove("d-none");
+
+                setTimeout(() => {
+                    document.getElementById("quiz-loading").classList.add("d-none");
+                    document.getElementById("quiz-step5").classList.remove("d-none");
+                }, 2700); // 2.7 seconds delay
             });
 
             // Step 5 → Step 6 (ZIP Validation)
