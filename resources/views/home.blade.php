@@ -94,7 +94,12 @@
         <div class="car-quiz-split">
             <div class="car-quiz-left">
                 <div class="car-quiz-body">
-
+                    <h4 id="quiz-section-heading" class="quiz-section-heading">Vehicle Details</h4>
+                    <div class="quiz-progress-container">
+                        <div class="quiz-progress-bar" id="quiz-progress-bar">
+                            <span id="quiz-progress-text">10%</span>
+                        </div>
+                    </div>
                     <!-- Step 1: Year, Make, Model -->
                     <div id="quiz-step1">
                         <h3 class="modal-question">What is the year, make & model of your vehicle?</h3>
@@ -107,7 +112,9 @@
                         <select id="sel_model" name="sel-model" class="modal-dropdown1">
                             <option value="">Select Model</option>
                         </select>
-                        <button id="to-step2" class="to-step-btn">Continue</button>
+                        <div class="step-buttons">
+                            <button id="to-step2" class="to-step-btn">Continue</button>
+                        </div>
                     </div>
 
                     <!-- Step 2: Mileage -->
@@ -119,7 +126,9 @@
                             <button type="button" class="mile-opt1" data-value="180000">140-200k</button>
                             <button type="button" class="mile-opt1" data-value=">200000">More than 200k</button>
                         </div>
-                        <button id="to-step3" class="to-step-btn">Continue</button>
+                        <div class="step-buttons">
+                            <button id="to-step3" class="to-step-btn">Continue</button>
+                        </div>
                         <input type="hidden" name="car_mileage" id="input-mileage" value="">
                     </div>
 
@@ -133,8 +142,17 @@
                             <button type="button" class="warranty-urgency-opt1" data-value="4+ weeks">4+ weeks</button>
                             <button type="button" class="warranty-urgency-opt1" data-value="Unsure">Unsure</button>
                         </div>
-                        <button id="to-step4" class="to-step-btn">Continue</button>
+                        <div class="step-buttons">
+                            <button id="to-step4" class="to-step-btn">Continue</button>
+                        </div>
                         <input type="hidden" name="warranty" id="warranty" value="">
+                    </div>
+
+                    <div id="quiz-loading" class="d-none">
+                        <div class="loading-container">
+                            <div class="spinner"></div>
+                            <p>Gathering details...</p>
+                        </div>
                     </div>
 
                     <div id="quiz-step4" class="d-none">
@@ -192,35 +210,50 @@
                             <option value="WI">Wisconsin</option>
                             <option value="WY">Wyoming</option>
                         </select>
-                        <button id="to-step5" class="to-step-btn">Continue</button>
+                        <div class="step-buttons">
+                            <button id="to-step5" class="to-step-btn">Continue</button>
+                            <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Skip</button>
+                        </div>
                     </div>
 
                     <div id="quiz-step5" class="d-none">
                         <h3 class="modal-question1">What's your ZIP code?</h3>
                         <input type="text" name="user-zip" id="user-zip" class="modal-dropdown1"
                             placeholder="Enter your ZIP code" maxlength="5" pattern="\d{5}" inputmode="numeric" required />
-                        <button id="to-step6" class="to-step-btn">Continue</button>
+                        <div class="step-buttons">
+                            <button id="to-step6" class="to-step-btn">Continue</button>
+                            <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Skip</button>
+                        </div>
                     </div>
 
                     <div id="quiz-step6" class="d-none">
                         <h3 class="modal-question1">What's your Email Address?</h3>
                         <input type="email" name="email" id="user-email" class="modal-dropdown1"
                             placeholder="Enter your Email" required />
-                        <button id="to-step7" class="to-step-btn">Continue</button>
+                        <div class="step-buttons">
+                            <button id="to-step7" class="to-step-btn">Continue</button>
+                            <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Skip</button>
+                        </div>
                     </div>
 
                     <div id="quiz-step7" class="d-none">
                         <h3 class="modal-question1">What's your Full Name?</h3>
                         <input type="text" name="user-name" id="user-name" class="modal-dropdown1"
                             placeholder="Enter your name" required />
-                        <button id="to-step8" class="to-step-btn">Continue</button>
+                        <div class="step-buttons">
+                            <button id="to-step8" class="to-step-btn">Continue</button>
+                            <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Skip</button>
+                        </div>
                     </div>
 
                     <div id="quiz-step8" class="d-none">
                         <h3 class="modal-question1">What's your Phone Number?</h3>
                         <input type="text" name="user-number" id="user-number" name="number" class="modal-dropdown1"
                             placeholder="Enter your number" required />
-                        <button id="to-card" class="to-step-btn">Submit</button>
+                        <div class="step-buttons">
+                            <button id="to-card" class="to-step-btn">Submit</button>
+                            <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Skip</button>
+                        </div>
                     </div>
 
                 </div>
@@ -234,14 +267,200 @@
         </div>
     </div>
 
+    <script>
+        const progressBar = document.getElementById('quiz-progress-bar');
+        const progressText = document.getElementById('quiz-progress-text');
+        const sectionHeading = document.getElementById('quiz-section-heading');
+
+        const stepProgress = {
+            'to-step2': 20,
+            'to-step3': 30,
+            'to-step4': 40,
+            'to-step5': 50,
+            'to-step6': 60,
+            'to-step7': 75,
+            'to-step8': 90
+        };
+
+        const headingMap = {
+            'to-step2': 'Vehicle Details',
+            'to-step3': 'Vehicle Details',
+            'to-step4': 'Your Details',
+            'to-step5': 'Your Details',
+            'to-step6': 'Your Details',
+            'to-step7': 'Your Details',
+            'to-step8': 'Your Details'
+        };
+
+        document.querySelectorAll('.to-step-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const progress = stepProgress[this.id];
+                const heading = headingMap[this.id];
+
+                if (progress !== undefined) {
+                    progressBar.style.width = `${progress}%`;
+                    progressText.textContent = `${progress}%`;
+                }
+
+                if (heading) {
+                    sectionHeading.textContent = heading;
+                }
+            });
+        });
+    </script>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="success-modal-container" style="display:none;">
+        <div class="success-modal-content">
+            <div class="modal-right-section">
+                <div class="content-wrapper">
+                    <div class="success-header">
+                        <h2>Your Lead Has Been Submitted Successfully!</h2>
+                    </div>
+                    <div class="lead-destination-card">
+                        <p class="lead-destination-info">
+                            <strong>Submitted to:</strong> <span id="destination-name">Processing...</span>
+                        </p>
+                    </div>
+                    <div class="content-grid">
+                        <div class="what-happens-next">
+                            <h4>What happens next?</h4>
+                            <div class="steps-container">
+                                <div class="step-item">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <p>If there is a match between your specifications and our provider's criteria, you
+                                            will receive a call from between 1-5 providers within the next working day.</p>
+                                    </div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <p>You will have a free phone consultation with the relevant provider(s) to discuss
+                                            prices and ask any questions.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="awareness-section">
+                            <h5>Please be aware that you may not receive quotes if:</h5>
+                            <div class="awareness-items">
+                                <div class="awareness-item">
+                                    <div class="awareness-number">1</div>
+                                    <p>Your specifications don't match the provider's criteria</p>
+                                </div>
+                                <div class="awareness-item">
+                                    <div class="awareness-number">2</div>
+                                    <p>There's an error in your contact details</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-continue" onclick="closeModal()">Continue</button>
+                </div>
+            </div>
+            <div class="modal-left-section">
+                <div class="plans-heading">
+                    <h1>Plans for your car</h1>
+                    <p>Buy coverage from leading providers, right here, right now.</p>
+                </div>
+                <div id="search-results"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="chaizModal" class="modal d-none">
+        <div class="modal-content">
+            <h3>Plans for your car</h3>
+            <p>Buy coverage from leading providers, right here, right now.</p>
+            <span class="close" onclick="closeChaizModal()">&times;</span>
+            <div id="search-results-skip">
+                <!-- Chaiz Warranty Results will appear here -->
+            </div>
+        </div>
+    </div>
+
 
     <script>
+        function skipMyDetails() {
+            console.log('Skip button clicked'); // Debug log
+
+            // Prepare warranty search config from window.carData or fallback defaults
+            const make = window.carData?.make?.toLowerCase().replace(/\s+/g, '-') || 'default-make';
+            const model = window.carData?.model?.toLowerCase().replace(/\s+/g, '-') || 'default-model';
+            const year = window.carData?.year ? parseInt(window.carData.year, 10) : 2020;
+            const state = window.carData?.state?.toUpperCase() || 'NJ';
+
+            let mileage = 30000;
+            if (typeof window.carData?.mileage === 'string') {
+                const digits = window.carData.mileage.replace(/\D/g, '');
+                if (digits) {
+                    mileage = parseInt(digits, 10);
+                }
+            }
+
+            window.chaizWarrantySearchConfig = {
+                targetElementId: "search-results-skip",
+                searchData: {
+                    make,
+                    model,
+                    year,
+                    state,
+                    mileage,
+                    userId: "96d8841b-6ae6-4cb6-9b43-401662e25560"
+                }
+            };
+
+            console.log('Using car data:', window.carData);
+            console.log('Warranty config:', window.chaizWarrantySearchConfig);
+
+            // Hide quiz modal using the same method as other parts of your code
+            const quizModal = document.getElementById('car-quiz');
+            const chaizModal = document.getElementById('chaizModal');
+
+            if (quizModal) {
+                quizModal.classList.remove('show'); // Use 'show' class like other parts
+                // Also add d-none as backup
+                quizModal.classList.add('d-none');
+            }
+
+            if (chaizModal) {
+                chaizModal.classList.remove('d-none');
+            } else {
+                console.error('chaizModal element not found');
+            }
+
+            // Load Chaiz warranty search script only once
+            if (!document.querySelector('script[src="https://uat.warranty-search.chaiz.com/initialize.js"]')) {
+                const script = document.createElement('script');
+                script.src = 'https://uat.warranty-search.chaiz.com/initialize.js';
+                document.body.appendChild(script);
+            }
+        }
+
+        // Also make closeChaizModal global
+        function closeChaizModal() {
+            const chaizModal = document.getElementById('chaizModal');
+            if (chaizModal) {
+                chaizModal.classList.add('d-none');
+            }
+        }
+
         document.addEventListener("DOMContentLoaded", () => {
+            const skipButton = document.querySelector('button[onclick="skipMyDetails()"]');
+            if (skipButton) {
+                skipButton.removeAttribute('onclick'); // Remove inline onclick
+                skipButton.addEventListener('click', skipMyDetails);
+            }
+
             // Show the quiz modal after vehicle type selected
             document.querySelectorAll('.vehicle-option').forEach(button => {
                 button.addEventListener('click', () => {
                     document.getElementById('car-make').value = button.dataset.value;
-                    document.getElementById('car-quiz').classList.add('show');
+                    const quizModal = document.getElementById('car-quiz');
+                    quizModal.classList.remove('d-none'); // remove hidden class
+                    quizModal.classList.add('show');      // add visible class
                 });
             });
 
@@ -1311,6 +1530,7 @@
             ];
 
 
+
             // Build make → models map
             const makesModelsMap = {};
             vehicles.forEach(vehicle => {
@@ -1400,9 +1620,16 @@
                 window.carData.warranty = selectedWarranty.dataset.value;
                 document.getElementById('warranty').value = selectedWarranty.dataset.value;
 
+                // Transition: Step 3 → Loading → Step 4
                 document.getElementById("quiz-step3").classList.add("d-none");
-                document.getElementById("quiz-step4").classList.remove("d-none");
+                document.getElementById("quiz-loading").classList.remove("d-none");
+
+                setTimeout(() => {
+                    document.getElementById("quiz-loading").classList.add("d-none");
+                    document.getElementById("quiz-step4").classList.remove("d-none");
+                }, 10); // 2.5 seconds delay
             });
+
 
             // Step 4 → Step 5 (State Validation)
             document.getElementById("to-step5").addEventListener("click", function (e) {
@@ -1632,78 +1859,16 @@
             // In your existing script, replace the showSuccessModal function with this updated version:
 
             function showSuccessModal(responseData) {
-                // Create success modal HTML with improved styling
-                const successModal = document.createElement('div');
-                successModal.id = 'success-modal';
-                successModal.className = 'success-modal-container';
-                successModal.innerHTML = `
-                  <div class="success-modal-container" id="success-modal">
-              <div class="success-modal-content">
-                  <!-- Left Content Section (now on the left) -->
-                  <div class="modal-right-section">
-                      <div class="content-wrapper">
-                          <div class="success-header">
-                              <h2>Your Lead Has Been Submitted Successfully!</h2>
-                          </div>
-                          <div class="lead-destination-card">
-                              <p class="lead-destination-info">
-                                  <strong>Submitted to:</strong> <span id="destination-name">Processing...</span>
-                              </p>
-                          </div>
-                          <div class="content-grid">
-                              <div class="what-happens-next">
-                                  <h4>What happens next?</h4>
-                                  <div class="steps-container">
-                                      <div class="step-item">
-                                          <div class="step-number">1</div>
-                                          <div class="step-content">
-                                              <p>If there is a match between your specifications and our provider's criteria, you will receive a call from between 1-5 providers within the next working day.</p>
-                                          </div>
-                                      </div>
-                                      <div class="step-item">
-                                          <div class="step-number">2</div>
-                                          <div class="step-content">
-                                              <p>You will have a free phone consultation with the relevant provider(s) to discuss prices and ask any questions.</p>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="awareness-section">
-                                  <h5>Please be aware that you may not receive quotes if:</h5>
-                                  <div class="awareness-items">
-                                      <div class="awareness-item">
-                                          <div class="awareness-number">1</div>
-                                          <p>Your specifications don't match the provider's criteria</p>
-                                      </div>
-                                      <div class="awareness-item">
-                                          <div class="awareness-number">2</div>
-                                          <p>There's an error in your contact details</p>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <button class="btn-continue" onclick="closeModal()">Continue</button>
-                      </div>
-                  </div>
-                  <!-- Right Grey Section (now on the right) -->
-                  <div class="modal-left-section">
-                      <div class="plans-heading">
-                          <h1>Plans for your car</h1>
-                          <p>Buy coverage from leading providers, right here, right now.</p>
-                      </div>
-                      <div id="search-results"></div>
-                      </div>
-                  </div>
-                  </div>
-              `;
+                const successModal = document.getElementById('success-modal');
+                if (!successModal) return;
 
-                // Add modal to page
-                document.body.appendChild(successModal);
-
-                // Set lead destination from response data
+                // Update lead destination text and color
                 setLeadDestination(responseData.destination || 'Endurance API');
 
-                // Initialize warranty search if needed
+                // Show modal
+                successModal.style.display = 'flex';
+
+                // Initialize warranty search if needed (same as your current logic)
                 if (window.carData) {
                     const make = window.carData.make
                         ? window.carData.make.toLowerCase().replace(/\s+/g, '-')
@@ -1731,18 +1896,8 @@
 
                     window.chaizWarrantySearchConfig = {
                         targetElementId: "search-results",
-                        searchData: {
-                            make,
-                            model,
-                            year,
-                            state,
-                            mileage,
-                            userId: "96d8841b-6ae6-4cb6-9b43-401662e25560"
-                        }
+                        searchData: { make, model, year, state, mileage, userId: "96d8841b-6ae6-4cb6-9b43-401662e25560" }
                     };
-
-                    console.log('Using car data:', window.carData);
-                    console.log('Warranty config:', window.chaizWarrantySearchConfig);
 
                     if (!document.querySelector('script[src="https://uat.warranty-search.chaiz.com/initialize.js"]')) {
                         const script = document.createElement('script');
@@ -1750,54 +1905,46 @@
                         document.body.appendChild(script);
                     }
                 }
-
             }
 
-            // Update the closeModal function to be globally accessible
             window.closeModal = function () {
                 const successModal = document.getElementById('success-modal');
                 if (successModal) {
-                    successModal.remove();
+                    successModal.style.display = 'none';
                 }
             };
 
-            // Update the setLeadDestination function
             function setLeadDestination(destination) {
                 const destinationElement = document.getElementById('destination-name');
-                if (destinationElement) {
-                    let destinationText = '';
-                    let destinationColor = '';
+                if (!destinationElement) return;
 
-                    if (destination) {
-                        switch (destination) {
-                            case 'Endurance API':
-                                destinationText = 'Endurance';
-                                destinationColor = '#ffc107';
-                                break;
-                            case 'LeadConduit (Backup System)':
-                                destinationText = 'American Dream';
-                                destinationColor = '#ffc107';
-                                break;
-                            case 'Submission Failed':
-                                destinationText = '❌ Submission Failed';
-                                destinationColor = '#dc3545';
-                                break;
-                            case 'System Error':
-                                destinationText = '⚠️ System Error';
-                                destinationColor = '#dc3545';
-                                break;
-                            default:
-                                destinationText = '✅ Successfully Submitted';
-                                destinationColor = '#28a745';
-                        }
-                    } else {
+                let destinationText = '';
+                let destinationColor = '';
+
+                switch (destination) {
+                    case 'Endurance API':
+                        destinationText = 'Endurance';
+                        destinationColor = '#ffc107';
+                        break;
+                    case 'LeadConduit (Backup System)':
+                        destinationText = 'American Dream';
+                        destinationColor = '#ffc107';
+                        break;
+                    case 'Submission Failed':
+                        destinationText = '❌ Submission Failed';
+                        destinationColor = '#dc3545';
+                        break;
+                    case 'System Error':
+                        destinationText = '⚠️ System Error';
+                        destinationColor = '#dc3545';
+                        break;
+                    default:
                         destinationText = '✅ Successfully Submitted';
                         destinationColor = '#28a745';
-                    }
-
-                    destinationElement.textContent = destinationText;
-                    destinationElement.style.color = destinationColor;
                 }
+
+                destinationElement.textContent = destinationText;
+                destinationElement.style.color = destinationColor;
             }
             // Function to close success modal
             window.closeSuccessModal = function () {
