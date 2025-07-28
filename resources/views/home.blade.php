@@ -208,19 +208,27 @@
                         </div>
                     </div>
 
-                    <div id="quiz-step5" class="d-none">
-                        <h3 class="modal-question">What's your ZIP code?</h3>
-                        <input type="text" name="user-zip" id="user-zip" class="modal-dropdown1"
-                            placeholder="Enter your ZIP code" maxlength="5" pattern="\d{5}" inputmode="numeric" required />
-                        <div class="step-buttons">
-                            <button id="to-step6" class="to-step-btn">Continue</button>
-                        </div>
-                    </div>
-
                     <div id="quiz-loading" class="d-none">
                         <div class="loading-container">
                             <div class="spinner"></div>
                             <p>Gathering details...</p>
+                        </div>
+                    </div>
+
+
+                    <div id="quiz-step5" class="d-none">
+                        <h3 class="modal-question">What's your ZIP code?</h3>
+                        <input type="text" name="user-zip" id="user-zip" class="modal-dropdown1"
+                            placeholder="Enter your ZIP code" maxlength="5" pattern="\d{5}" inputmode="numeric" required />
+                        <div class="step-buttons-wrapper">
+                            <div class="step-buttons">
+                                <button id="to-step6" class="to-step-btn">Continue</button>
+                            </div>
+
+                            <div class="skip-section">
+                                <p class="skip-message">Don’t want to give us your details?</p>
+                                <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Instant Quote</button>
+                            </div>
                         </div>
                     </div>
 
@@ -1642,8 +1650,7 @@
             });
 
 
-            // Step 4 → Step 5 (State Validation with Loading)
-            // Step 4 → Step 5 (State Validation without Loader)
+            // Step 4 → Step 5 (State Validation with Loader)
             document.getElementById("to-step5").addEventListener("click", function (e) {
                 e.preventDefault();
                 const state = document.getElementById("user-state").value.trim();
@@ -1656,13 +1663,18 @@
                 window.carData = window.carData || {};
                 window.carData.state = state;
 
-                // Direct transition: Step 4 → Step 5
+                // Transition: Step 4 → Loading → Step 5
                 document.getElementById("quiz-step4").classList.add("d-none");
-                document.getElementById("quiz-step5").classList.remove("d-none");
+                document.getElementById("quiz-loading").classList.remove("d-none");
+
+                setTimeout(() => {
+                    document.getElementById("quiz-loading").classList.add("d-none");
+                    document.getElementById("quiz-step5").classList.remove("d-none");
+                }, 2700); // 2.7 seconds delay
             });
 
 
-            // Step 5 → Step 6 (ZIP Validation with Loader)
+            // Step 5 → Step 6 (ZIP Validation without Loader)
             document.getElementById("to-step6").addEventListener("click", function (e) {
                 e.preventDefault();
                 const zip = document.getElementById("user-zip").value.trim();
@@ -1675,14 +1687,9 @@
                 window.carData = window.carData || {};
                 window.carData.zip = zip;
 
-                // Transition: Step 5 → Loading → Step 6
+                // Direct transition: Step 5 → Step 6
                 document.getElementById("quiz-step5").classList.add("d-none");
-                document.getElementById("quiz-loading").classList.remove("d-none");
-
-                setTimeout(() => {
-                    document.getElementById("quiz-loading").classList.add("d-none");
-                    document.getElementById("quiz-step6").classList.remove("d-none");
-                }, 2700); // 2.7 seconds delay
+                document.getElementById("quiz-step6").classList.remove("d-none");
             });
 
             // Step 6 → Step 7 (Email Validation)
@@ -2004,7 +2011,8 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="cta-section">
-                                <a href="https://www.endurancewarranty.com/lp/chaiz/" class="get-quote-btn" target="_blank" rel="noopener noreferrer">Get a Quote</a>
+                                <a href="https://www.endurancewarranty.com/lp/chaiz/" class="get-quote-btn" target="_blank"
+                                    rel="noopener noreferrer">Get a Quote</a>
                                 <a href="tel:8005980082">
                                     <button class="phone-btn">800-598-0082</button>
                                 </a>
@@ -2072,7 +2080,8 @@
                                 <div class="stars">★★★★☆</div>
                             </div>
                             <div class="cta-section">
-                                <a href="https://www.americandreamautoprotect.com/u7izFNKM9E" class="get-quote-btn" target="_blank" rel="noopener noreferrer">Get a Quote</a>
+                                <a href="https://www.americandreamautoprotect.com/u7izFNKM9E" class="get-quote-btn"
+                                    target="_blank" rel="noopener noreferrer">Get a Quote</a>
                                 <a href="tel:8333640947">
                                     <button class="phone-btn">833-364-0947</button>
                                 </a>
@@ -2136,7 +2145,8 @@
                                 <div class="stars">★★★★☆</div>
                             </div>
                             <div class="cta-section">
-                                <a href="https://www.chaiz.com/p/omega?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article" class="get-quote-btn" target="_blank" rel="noopener noreferrer">Get a Quote</a>
+                                <a href="https://www.chaiz.com/p/omega?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
+                                    class="get-quote-btn" target="_blank" rel="noopener noreferrer">Get a Quote</a>
                             </div>
                         </div>
                     </div>
@@ -2193,7 +2203,8 @@
                                 <div class="stars">★★★★☆</div>
                             </div>
                             <div class="cta-section">
-                                <a href="https://www.chaiz.com/p/naac?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article" class="get-quote-btn" target="_blank" rel="noopener noreferrer">Get a Quote</a>
+                                <a href="https://www.chaiz.com/p/naac?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
+                                    class="get-quote-btn" target="_blank" rel="noopener noreferrer">Get a Quote</a>
                             </div>
                         </div>
                     </div>
@@ -2257,7 +2268,8 @@
                                 <div class="stars">★★★★☆</div>
                             </div>
                             <div class="cta-section">
-                                <a href="https://www.chaiz.com/?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article" class="get-quote-btn" target="_blank" rel="noopener noreferrer">Get a Quote</a>
+                                <a href="https://www.chaiz.com/?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
+                                    class="get-quote-btn" target="_blank" rel="noopener noreferrer">Get a Quote</a>
                                 <a href="tel:8339429249">
                                     <button class="phone-btn">833-942-9249</button>
                                 </a>
