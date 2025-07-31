@@ -244,7 +244,7 @@ body {
 
 .promo-badge {
     flex: 0 0 200px; /* adjust width as needed */
-    color: #ffcf4b;
+    color: #000000;
     padding: 8px 12px;
     border-radius: 20px;
     font-size: 15px;
@@ -281,7 +281,7 @@ body {
 
 .get-quote-btn {
     background: #ffcf4b;
-    color: white;
+    color: rgb(0, 0, 0);
     border: none;
     padding: 12px 24px;
     border-radius: 8px;
@@ -485,7 +485,7 @@ body {
 
 .match-cta-button {
     background: #ffcf4b;
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 18px;
     font-weight: 600;
     padding: 16px 40px;
@@ -500,6 +500,7 @@ body {
 
 .match-cta-button:hover {
     background: #876d27;
+    color: white;
 }
 
 .match-cta-button:active {
