@@ -2323,7 +2323,7 @@
                             </div>
                             <div class="rating-section">
                                 <div class="rating-score">9.9</div>
-                                <div class="stars">★★★★☆</div>
+                                <div class="stars">★★★★★</div>
                             </div>
                             <div class="cta-section">
                                 <a href="https://www.chaiz.com/?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
