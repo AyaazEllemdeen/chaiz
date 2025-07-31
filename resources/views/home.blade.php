@@ -288,10 +288,28 @@
             </div>
 
             <div class="car-quiz-right">
-                <img src="{{ asset('img/logo.png') }}" alt="Company Logo" />
-                <h2>Best Extended Auto Warranty in May 2025</h2>
-                <p>Continue our short quiz to get matched to an auto warranty provider suited to you.</p>
+                <div id="quiz-right-div">
+                    <img src="{{ asset('img/logo.png') }}" alt="Company Logo" />
+                    <h2>Best Extended Auto Warranty in May 2025</h2>
+                    <p>Continue our short quiz to get matched to an auto warranty provider suited to you.</p>
+                </div>
+                <div id="chaiz-inline-container" class="d-none">
+                    <h3>Plans for your car</h3>
+                    <p>Buy coverage from leading providers, right here, right now.</p>
+
+                    <div id="chaiz-loading-inline" style="text-align: center; padding: 20px;">
+                        <p>Loading plans...</p>
+                        <div class="spinner"
+                            style="margin: auto; width: 40px; height: 40px; border: 4px solid #ccc; border-top: 4px solid #333; border-radius: 50%; animation: spin 1s linear infinite;">
+                        </div>
+                    </div>
+
+                    <div id="search-results-skip">
+                        <!-- Chaiz results will be injected here -->
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 
@@ -398,27 +416,6 @@
     </div>
 
 
-    <div id="chaizModal" class="modal d-none">
-        <div class="modal-content">
-            <h3>Plans for your car</h3>
-            <p>Buy coverage from leading providers, right here, right now.</p>
-            <span class="close" onclick="closeChaizModal()">&times;</span>
-
-            <!-- Loading Spinner -->
-            <div id="chaiz-loading" style="text-align: center; padding: 20px;">
-                <p>Loading plans...</p>
-                <div class="spinner"
-                    style="margin: auto; width: 40px; height: 40px; border: 4px solid #ccc; border-top: 4px solid #333; border-radius: 50%; animation: spin 1s linear infinite;">
-                </div>
-            </div>
-
-            <!-- Results Container -->
-            <div id="search-results-skip">
-                <!-- Chaiz Warranty Results will appear here -->
-            </div>
-        </div>
-    </div>
-
     <style>
         @keyframes spin {
             0% {
@@ -461,65 +458,50 @@
                 }
             };
 
-            // Hide car quiz modal and show Chaiz modal
             const quizModal = document.getElementById('car-quiz');
             const chaizModal = document.getElementById('chaizModal');
             const loadingSpinner = document.getElementById('chaiz-loading');
+            const loadingInline = document.getElementById('chaiz-loading-inline');  // <-- here
             const resultContainer = document.getElementById('search-results-skip');
 
-            if (quizModal) {
-                quizModal.classList.remove('show');
-                quizModal.classList.add('d-none');
+            const rightPane = document.querySelector('.car-quiz-right');
+            const chaizContainer = document.getElementById('chaiz-inline-container');
+            const quizRightDiv = document.getElementById('quiz-right-div');
+
+            if (rightPane && chaizContainer && quizRightDiv) {
+                rightPane.classList.remove('d-none');
+                chaizContainer.classList.remove('d-none');
+                quizRightDiv.classList.add('d-none');
+                rightPane.scrollIntoView({ behavior: 'smooth' });
             }
 
-            if (chaizModal) {
-                chaizModal.classList.remove('d-none');
-            }
-
-
-
-            // Clear results and show loader
             if (loadingSpinner) loadingSpinner.style.display = 'block';
+            if (loadingInline) loadingInline.style.display = 'block';   // Show inline spinner too
             if (resultContainer) resultContainer.innerHTML = '';
 
-            // Define the polling function
             function startPollingForResults() {
-                const maxWaitTime = 5000; // 10 seconds fallback
-                const startTime = Date.now();
+                const spinDuration = 4000; // 4 seconds
 
-                const interval = setInterval(() => {
-                    const content = resultContainer?.innerText?.trim() || '';
-                    const hasResults = content.length > 20;
+                if (loadingSpinner) loadingSpinner.style.display = 'block';
+                if (loadingInline) loadingInline.style.display = 'block';
 
-                    if (hasResults) {
-                        loadingSpinner.style.display = 'none';
-                        clearInterval(interval);
-                    }
-
-                    // Timeout fallback
-                    if (Date.now() - startTime > maxWaitTime) {
-                        console.warn("Chaiz results took too long or failed to load.");
-                        loadingSpinner.style.display = 'none';
-                        clearInterval(interval);
-                    }
-                }, 500);
+                setTimeout(() => {
+                    if (loadingSpinner) loadingSpinner.style.display = 'none';
+                    if (loadingInline) loadingInline.style.display = 'none'; // Hide inline spinner after 4 seconds
+                }, spinDuration);
             }
 
-            // Check if script is already loaded
             const existingScript = document.querySelector('script[src="https://uat.warranty-search.chaiz.com/initialize.js"]');
             if (!existingScript) {
                 const script = document.createElement('script');
                 script.src = 'https://uat.warranty-search.chaiz.com/initialize.js';
                 script.onload = () => {
-                    // Script loaded, now poll for results
                     startPollingForResults();
                 };
                 document.body.appendChild(script);
             } else {
-                // Script already exists — assume it's initialized
                 startPollingForResults();
             }
-
         }
 
         // Also make closeChaizModal global

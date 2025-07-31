@@ -807,21 +807,34 @@ body {
 
 /* modal quiz */
 .car-quiz-right {
-    flex: 1;
-    background: #909499;
+    background: #000000;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
     padding: 3rem 2rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    min-height: 0; /* important for flex children */
+}
+
+#quiz-right-div {
+    flex: 1; /* allow grow & shrink */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: center; /* vertical + horizontal centering */
     text-align: center;
-    background-color: #000000;
-    color: white;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem; /* Add some padding for better spacing */
 }
 
 .car-quiz-right img {
-    max-width: 180px;
-    margin-bottom: 1.5rem;
+    display: block;
+    margin: 0 auto 1.5rem auto; /* Center the image horizontally */
+    max-width: 140px;
     object-fit: contain;
     background: transparent;
     border-radius: 0;
@@ -829,18 +842,42 @@ body {
     box-shadow: none;
 }
 
-.car-quiz-right h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
-    line-height: 1.2;
+#quiz-right-div h2,
+#quiz-right-div p {
+    text-align: center;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.car-quiz-right p {
-    font-size: 1.1rem;
-    max-width: 400px;
-    line-height: 1.6;
-    opacity: 0.9;
+#chaiz-inline-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* horizontal center */
+    justify-content: flex-start; /* top align */
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0 1rem;
+    /* No internal scroll here! */
+}
+
+#search-results-skip {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 1rem;
+    color: #fff;
+    text-align: left; /* usually better for results */
+    overflow: visible; /* ensure no scrolling */
+    word-break: break-word;
+}
+
+/* Remove any height or max-height or overflow from chaiz result container if present */
+#search-results-skip,
+#search-results-skip * {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
 }
 
 .d-none {
@@ -1045,21 +1082,36 @@ body {
 
 /* Responsive Layout */
 @media (max-width: 768px) {
+    .car-quiz-modal.show {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
     .car-quiz-split {
         flex-direction: column;
+        height: auto;
+    }
+
+    .car-quiz-left,
+    .car-quiz-right {
+        width: 100%;
+        padding: 2rem 1.5rem;
+        overflow: unset;
     }
 
     .car-quiz-left {
-        width: 100%;
-        height: 100vh;
-        padding: 2rem 1.5rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        min-height: 100vh;
     }
 
     .car-quiz-right {
-        display: none;
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+    }
+
+    .car-quiz-close {
+        top: 10px;
+        right: 15px;
     }
 }
 
@@ -1087,7 +1139,7 @@ body {
 /* Right Grey Section (now on the right) */
 .modal-left-section {
     background: #a4a9ae;
-    width: 50%;
+    width: 75%;
     padding: 20px;
     color: white;
     position: relative;
@@ -1115,7 +1167,7 @@ body {
 
 /* Left Content Section (now on the left) */
 .modal-right-section {
-    width: 50%;
+    width: 25%;
     padding: 30px;
     display: flex;
     justify-content: center;
@@ -1124,12 +1176,13 @@ body {
 }
 
 .content-wrapper {
+    margin-top: 10px;
     width: 100%;
-    max-width: 600px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 20px;
+    padding-top: 15px;
 }
 
 .plans-heading {
