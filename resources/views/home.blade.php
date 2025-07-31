@@ -9,7 +9,8 @@
         <div class="hero-text-overlay py-5">
             <div class="container text-white">
                 <p class="quiz-heading">Compare coverage with confidence</p>
-                <p class="quiz-subtext">We don’t do one-size-fits-all. Tell us about your car, and we’ll show you real options with real value.</p>
+                <p class="quiz-subtext">We don’t do one-size-fits-all. Tell us about your car, and we’ll show you real
+                    options with real value.</p>
 
                 <!-- Quiz starts directly below text -->
                 <div class="quiz-content-box mt-4">
@@ -69,17 +70,21 @@
 
                         <input type="hidden" name="car_make" id="car-make" required>
 
-                        <p class="quiz-disclaimer">
-                            <span class="quiz-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" fill="none"
-                                    viewBox="0 0 25 24">
-                                    <path
-                                        d="M11.45 16.55L17.1 10.9 15.675 9.475 11.45 13.7 9.325 11.575 7.9 13l3.55 3.55ZM12.5 22a9.5 9.5 0 1 1 0-19 9.5 9.5 0 0 1 0 19ZM6.1 2.35 7.5 3.75 3.25 8 1.85 6.6 6.1 2.35ZM18.9 2.35 23.15 6.6 21.75 8 17.5 3.75 18.9 2.35Z"
-                                        fill="#1C1B1F" />
-                                </svg>
-                            </span>
-                            It only takes a minute!
-                        </p>
+                        <div class="quiz-intro-actions d-flex align-items-center gap-3 mb-4">
+                            <button type="button" class="begin-btn get-quote-btn">Begin</button>
+                            <p class="quiz-disclaimer-text mb-0 d-flex align-items-center">
+                                <span class="quiz-icon me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" fill="none"
+                                        viewBox="0 0 25 24">
+                                        <path
+                                            d="M11.45 16.55L17.1 10.9 15.675 9.475 11.45 13.7 9.325 11.575 7.9 13l3.55 3.55ZM12.5 22a9.5 9.5 0 1 1 0-19 9.5 9.5 0 0 1 0 19ZM6.1 2.35 7.5 3.75 3.25 8 1.85 6.6 6.1 2.35ZM18.9 2.35 23.15 6.6 21.75 8 17.5 3.75 18.9 2.35Z"
+                                            fill="#1C1B1F" />
+                                    </svg>
+                                </span>
+                                It only takes a minute!
+                            </p>
+                        </div>
+
                     </form>
                 </div>
             </div>
@@ -547,6 +552,16 @@
                 quizModal.classList.remove('d-none');
                 quizModal.classList.add('show');
             });
+
+            document.querySelector('.begin-btn').addEventListener('click', () => {
+                const quizModal = document.getElementById('car-quiz');
+                quizModal.classList.remove('d-none');
+                quizModal.classList.add('show');
+
+                // Change button text to "Continue"
+                document.querySelector('.begin-btn').textContent = 'Continue';
+            });
+
 
             // Close buttons to close the modal
             document.querySelector('.car-quiz-close').addEventListener('click', () => {

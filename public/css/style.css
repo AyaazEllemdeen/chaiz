@@ -186,6 +186,31 @@ body {
     min-height: 480px; /* Added to increase vertical space */
 }
 
+.quiz-intro-actions {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 1rem;
+}
+
+.quiz-disclaimer {
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.quiz-icon svg {
+    display: inline-block;
+    margin-right: 0.25rem;
+}
+.quiz-disclaimer-text {
+    font-size: 0.95rem;
+    color: #1c1b1f !important; /* force dark text color */
+    display: flex;
+    align-items: center;
+}
+
 /* our providers section CARD SECTION */
 
 .service-card {
