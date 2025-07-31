@@ -909,6 +909,18 @@ body {
     cursor: pointer;
     z-index: 10000;
 }
+.car-quiz-close1 {
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000000;
+    cursor: pointer;
+    z-index: 10000;
+}
 
 .car-quiz-split {
     display: flex;
@@ -1110,6 +1122,10 @@ body {
     }
 
     .car-quiz-close {
+        top: 10px;
+        right: 15px;
+    }
+    .car-quiz-close1 {
         top: 10px;
         right: 15px;
     }

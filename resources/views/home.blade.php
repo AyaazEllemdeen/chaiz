@@ -358,6 +358,7 @@
     <!-- Success Modal -->
     <div id="success-modal" class="success-modal-container" style="display:none;">
         <div class="success-modal-content">
+            <button class="car-quiz-close1" onclick="closeModal()" aria-label="Close modal">×</button>
             <div class="modal-right-section">
                 <div class="content-wrapper">
                     <div class="success-header">
