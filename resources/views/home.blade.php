@@ -9,7 +9,7 @@
         <div class="hero-text-overlay py-5">
             <div class="container text-white">
                 <p class="quiz-heading">Compare coverage with confidence</p>
-                <p class="quiz-subtext">Provide a few quick details to compare custom warranty plans that fit your needs.</p>
+                <p class="quiz-subtext">We don’t do one-size-fits-all. Tell us about your car, and we’ll show you real options with real value.</p>
 
                 <!-- Quiz starts directly below text -->
                 <div class="quiz-content-box mt-4">
