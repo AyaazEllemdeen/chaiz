@@ -294,6 +294,11 @@ body {
     text-align: center; /* centers text inside if needed */
 }
 
+.get-quote-btn:hover {
+    background: #876d27;
+    color: white;
+}
+
 .divider-line {
     height: 1px;
     background-color: black;
