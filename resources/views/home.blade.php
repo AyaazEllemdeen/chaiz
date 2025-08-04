@@ -2123,6 +2123,84 @@
                     <!-- <button class="learn-more-btn">Learn More</button> -->
                 </div>
 
+
+                <div class="mt-5 divider-line"></div>
+                <h4 class="mt-5 mb-3" style="font-weight: 700;">Looking for a quick solution? Skip the wait and buy your
+                    auto
+                    warranty directly online in minutes.</h4>
+
+                <div class="mb-4">
+                    <!-- chaiz card -->
+                    <div class="service-card">
+                        <div class="top-rated-ribbon">BUY NOW</div>
+                        <div class="card-header">
+                            <div class="logo-section">
+                                <div class="logo">
+                                    <img src="/img/chaiz.png" alt="">
+                                </div>
+                                <div class="chaiz-promo-badge">
+                                    Buy directly online — No Email or Phone needed, Only Price Comparison Site
+                                </div>
+                                <div class="rating-section">
+                                    <div class="rating-score">9.9</div>
+                                    <div class="stars">★★★★★</div>
+                                </div>
+                                <div class="cta-section">
+                                    <a href="https://www.chaiz.com/?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
+                                        class="get-quote-btn" target="_blank" rel="noopener noreferrer">Buy Now</a>
+                                    <a href="tel:8339429249">
+                                        <button class="phone-btn">833-942-9249</button>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="divider-line"></div>
+                        <div class="card-body-row">
+                            <div class="description">
+                                Chaiz shows you several plans from multiple providers within 30 seconds. Compare and buy
+                                breakdown protection from top providers today.
+                            </div>
+
+                            <div class="features-grid">
+                                <div class="feature">
+                                    <span class="checkmark">✓</span>
+                                    <span>Compare live quotes within less than a minute</span>
+                                </div>
+                                <div class="feature">
+                                    <span class="checkmark">✓</span>
+                                    <span>Best price guaranteed</span>
+                                </div>
+                                <div class="feature">
+                                    <span class="checkmark">✓</span>
+                                    <span>Purchase completely online 24/7</span>
+                                </div>
+                                <div class="feature">
+                                    <span class="checkmark">✓</span>
+                                    <span>No email or phone needed</span>
+                                </div>
+                                <div class="feature">
+                                    <span class="checkmark">✓</span>
+                                    <span>Independent and unbiased</span>
+                                </div>
+                                <div class="feature">
+                                    <span class="checkmark">✓</span>
+                                    <span>Hundreds of 5* reviews</span>
+                                </div>
+                                <div class="feature">
+                                    <span class="checkmark">✓</span>
+                                    <span>A+ customer service</span>
+                                </div>
+                                <div class="feature">
+                                    <span class="checkmark">✓</span>
+                                    <span>30-day money back guarantee</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <button class="learn-more-btn">Learn More</button> -->
+                    </div>
+                </div>
+
                 <!-- american dream card -->
                 <div class="service-card">
                     <div class="card-header">
@@ -2199,7 +2277,7 @@
 
                             </div>
                             <div class="rating-section">
-                                <div class="rating-score">7.9</div>
+                                <div class="rating-score">8.2</div>
                                 <div class="stars">★★★★☆</div>
                             </div>
                             <div class="cta-section">
@@ -2257,7 +2335,7 @@
 
                             </div>
                             <div class="rating-section">
-                                <div class="rating-score">7.1</div>
+                                <div class="rating-score">8.1</div>
                                 <div class="stars">★★★★☆</div>
                             </div>
                             <div class="cta-section">
@@ -2298,81 +2376,6 @@
                             <div class="feature">
                                 <span class="checkmark">✓</span>
                                 <span>Numerous service centers across North America</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <button class="learn-more-btn">Learn More</button> -->
-                </div>
-            </div>
-
-            <div class="mt-5 divider-line"></div>
-            <h4 class="mt-5 mb-3" style="font-weight: 700;">Looking for a quick solution? Skip the wait and buy your auto
-                warranty directly online in minutes.</h4>
-
-            <div class="mb-4">
-                <!-- chaiz card -->
-                <div class="service-card">
-                    <div class="top-rated-ribbon">BUY NOW</div>
-                    <div class="card-header">
-                        <div class="logo-section">
-                            <div class="logo">
-                                <img src="/img/chaiz.png" alt="">
-                            </div>
-                            <div class="promo-badge">
-                                Buy directly online
-                            </div>
-                            <div class="rating-section">
-                                <div class="rating-score">9.9</div>
-                                <div class="stars">★★★★★</div>
-                            </div>
-                            <div class="cta-section">
-                                <a href="https://www.chaiz.com/?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
-                                    class="get-quote-btn" target="_blank" rel="noopener noreferrer">Buy Now</a>
-                                <a href="tel:8339429249">
-                                    <button class="phone-btn">833-942-9249</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="divider-line"></div>
-                    <div class="card-body-row">
-                        <div class="description">
-                            Chaiz shows you several plans from multiple providers within 30 seconds. Compare and buy
-                            breakdown protection from top providers today.
-                        </div>
-
-                        <div class="features-grid">
-                            <div class="feature">
-                                <span class="checkmark">✓</span>
-                                <span>Compare live quotes within less than a minute</span>
-                            </div>
-                            <div class="feature">
-                                <span class="checkmark">✓</span>
-                                <span>Best price guaranteed</span>
-                            </div>
-                            <div class="feature">
-                                <span class="checkmark">✓</span>
-                                <span>Purchase completely online 24/7</span>
-                            </div>
-                            <div class="feature">
-                                <span class="checkmark">✓</span>
-                                <span>No email or phone needed</span>
-                            </div>
-                            <div class="feature">
-                                <span class="checkmark">✓</span>
-                                <span>Independent and unbiased</span>
-                            </div>
-                            <div class="feature">
-                                <span class="checkmark">✓</span>
-                                <span>Hundreds of 5* reviews</span>
-                            </div>
-                            <div class="feature">
-                                <span class="checkmark">✓</span>
-                                <span>A+ customer service</span>
-                            </div>
-                            <div class="feature">
-                                <span class="checkmark">✓</span>
-                                <span>30-day money back guarantee</span>
                             </div>
                         </div>
                     </div>

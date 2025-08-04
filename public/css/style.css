@@ -279,6 +279,18 @@ body {
     text-align: center;
 }
 
+.chaiz-promo-badge {
+    flex: 0 0 250px; /* adjust width as needed */
+    color: #000000;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
 .rating-section {
     flex: 0 0 100px; /* fixed width */
     text-align: center;
