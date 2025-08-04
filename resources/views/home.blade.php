@@ -2139,7 +2139,7 @@
                                     <img src="/img/chaiz.png" alt="">
                                 </div>
                                 <div class="chaiz-promo-badge">
-                                    Buy directly online — No Email or Phone needed, Only Price Comparison Site
+                                    Buy directly online — No Email or Phone needed
                                 </div>
                                 <div class="rating-section">
                                     <div class="rating-score">9.9</div>
