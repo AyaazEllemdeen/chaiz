@@ -829,7 +829,7 @@ body {
     box-sizing: border-box;
     overflow-y: auto;
     min-height: 0; /* important for flex children */
-    width: 70%;
+    width: 75%;
 }
 
 #quiz-right-div {
@@ -953,7 +953,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30%;
+    width: 25%;
 }
 
 /* Quiz Content Styling */

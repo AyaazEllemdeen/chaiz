@@ -94,7 +94,7 @@
     <!-- quiz modal start -->
     <!-- Car Quiz Modal -->
     <div id="car-quiz" class="car-quiz-modal">
-        <button class="car-quiz-close" aria-label="Close modal">×</button>
+        <button class="car-quiz-close" onclick="closeModalskip()">×</button>
         <div class="car-quiz-split">
             <div class="car-quiz-left">
                 <div class="car-quiz-body">
@@ -287,6 +287,54 @@
                 </div>
             </div>
 
+            <div class="d-none modal-right-section">
+                <div class="content-wrapper">
+                    <div class="success-header">
+                        <h2>Your Lead Has Been Submitted Successfully!</h2>
+                    </div>
+                    <div class="lead-destination-card">
+                        <p class="lead-destination-info">
+                            <strong>Submitted to:</strong> <span class="destination-name">Processing...</span>
+                        </p>
+                    </div>
+                    <div class="content-grid">
+                        <div class="what-happens-next">
+                            <h4>What happens next?</h4>
+                            <div class="steps-container">
+                                <div class="step-item">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <p>If there is a match between your specifications and our provider's criteria, you
+                                            will receive a call from between 1-5 providers within the next working day.</p>
+                                    </div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <p>You will have a free phone consultation with the relevant provider(s) to discuss
+                                            prices and ask any questions.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="awareness-section">
+                            <h5>Please be aware that you may not receive quotes if:</h5>
+                            <div class="awareness-items">
+                                <div class="awareness-item">
+                                    <div class="awareness-number">1</div>
+                                    <p>Your specifications don't match the provider's criteria</p>
+                                </div>
+                                <div class="awareness-item">
+                                    <div class="awareness-number">2</div>
+                                    <p>There's an error in your contact details</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-continue" onclick="closeModalskip()">Continue</button>
+                </div>
+            </div>
+
             <div class="car-quiz-right">
                 <div id="quiz-right-div">
                     <img src="{{ asset('img/logo.png') }}" alt="Company Logo" />
@@ -366,7 +414,7 @@
                     </div>
                     <div class="lead-destination-card">
                         <p class="lead-destination-info">
-                            <strong>Submitted to:</strong> <span id="destination-name">Processing...</span>
+                            <strong>Submitted to:</strong> <span class="destination-name">Processing...</span>
                         </p>
                     </div>
                     <div class="content-grid">
@@ -431,140 +479,362 @@
 
 
     <script>
-        function skipMyDetails() {
-            console.log('Skip button clicked');
-
-            const make = window.carData?.make?.toLowerCase().replace(/\s+/g, '-') || 'default-make';
-            const model = window.carData?.model?.toLowerCase().replace(/\s+/g, '-') || 'default-model';
-            const year = window.carData?.year ? parseInt(window.carData.year, 10) : 2020;
-            const state = window.carData?.state?.toUpperCase() || 'NJ';
-
-            let mileage = 30000;
-            if (typeof window.carData?.mileage === 'string') {
-                const digits = window.carData.mileage.replace(/\D/g, '');
-                if (digits) {
-                    mileage = parseInt(digits, 10);
-                }
-            }
-
-            window.chaizWarrantySearchConfig = {
-                targetElementId: "search-results-skip",
-                searchData: {
-                    make,
-                    model,
-                    year,
-                    state,
-                    mileage,
-                    userId: "96d8841b-6ae6-4cb6-9b43-401662e25560"
-                }
-            };
-
+        function closeModalskip() {
             const quizModal = document.getElementById('car-quiz');
-            const chaizModal = document.getElementById('chaizModal');
-            const loadingSpinner = document.getElementById('chaiz-loading');
-            const loadingInline = document.getElementById('chaiz-loading-inline');  // <-- here
-            const resultContainer = document.getElementById('search-results-skip');
-
-            const rightPane = document.querySelector('.car-quiz-right');
-            const chaizContainer = document.getElementById('chaiz-inline-container');
-            const quizRightDiv = document.getElementById('quiz-right-div');
-
-            if (rightPane && chaizContainer && quizRightDiv) {
-                rightPane.classList.remove('d-none');
-                chaizContainer.classList.remove('d-none');
-                quizRightDiv.classList.add('d-none');
-                rightPane.scrollIntoView({ behavior: 'smooth' });
-            }
-
-            if (loadingSpinner) loadingSpinner.style.display = 'block';
-            if (loadingInline) loadingInline.style.display = 'block';   // Show inline spinner too
-            if (resultContainer) resultContainer.innerHTML = '';
-
-            function startPollingForResults() {
-                const spinDuration = 4000; // 4 seconds
-
-                if (loadingSpinner) loadingSpinner.style.display = 'block';
-                if (loadingInline) loadingInline.style.display = 'block';
-
-                setTimeout(() => {
-                    if (loadingSpinner) loadingSpinner.style.display = 'none';
-                    if (loadingInline) loadingInline.style.display = 'none'; // Hide inline spinner after 4 seconds
-                }, spinDuration);
-            }
-
-            const existingScript = document.querySelector('script[src="https://uat.warranty-search.chaiz.com/initialize.js"]');
-            if (!existingScript) {
-                const script = document.createElement('script');
-                script.src = 'https://uat.warranty-search.chaiz.com/initialize.js';
-                script.onload = () => {
-                    startPollingForResults();
-                };
-                document.body.appendChild(script);
-            } else {
-                startPollingForResults();
-            }
-        }
-
-        // Also make closeChaizModal global
-        function closeChaizModal() {
-            const chaizModal = document.getElementById('chaizModal');
-            if (chaizModal) {
-                chaizModal.classList.add('d-none');
+            if (quizModal) {
+                quizModal.classList.add('d-none');
+                quizModal.classList.remove('show');
             }
         }
 
         document.addEventListener("DOMContentLoaded", () => {
+            function skipMyDetails() {
+                console.log('Skip button clicked');
+                window.chaizSkipPressed = true;
+
+                const make = window.carData?.make?.toLowerCase().replace(/\s+/g, '-') || 'default-make';
+                const model = window.carData?.model?.toLowerCase().replace(/\s+/g, '-') || 'default-model';
+                const year = window.carData?.year ? parseInt(window.carData.year, 10) : 2020;
+                const state = window.carData?.state?.toUpperCase() || 'NJ';
+
+                let mileage = 30000;
+                if (typeof window.carData?.mileage === 'string') {
+                    const digits = window.carData.mileage.replace(/\D/g, '');
+                    if (digits) {
+                        mileage = parseInt(digits, 10);
+                    }
+                }
+
+                window.chaizWarrantySearchConfig = {
+                    targetElementId: "search-results-skip",
+                    searchData: {
+                        make,
+                        model,
+                        year,
+                        state,
+                        mileage,
+                        userId: "96d8841b-6ae6-4cb6-9b43-401662e25560"
+                    }
+                };
+
+                const quizModal = document.getElementById('car-quiz');
+                const loadingSpinner = document.getElementById('chaiz-loading');
+                const loadingInline = document.getElementById('chaiz-loading-inline');
+                const resultContainer = document.getElementById('search-results-skip');
+
+                const rightPane = document.querySelector('.car-quiz-right');
+                const chaizContainer = document.getElementById('chaiz-inline-container');
+                const quizRightDiv = document.getElementById('quiz-right-div');
+
+                if (rightPane && chaizContainer && quizRightDiv) {
+                    rightPane.classList.remove('d-none');
+                    chaizContainer.classList.remove('d-none');
+                    quizRightDiv.classList.add('d-none');
+                    rightPane.scrollIntoView({ behavior: 'smooth' });
+                }
+
+                if (loadingSpinner) loadingSpinner.style.display = 'block';
+                if (loadingInline) loadingInline.style.display = 'block';
+                if (resultContainer) resultContainer.innerHTML = '';
+
+                function startPollingForResults() {
+                    const spinDuration = 4000;
+
+                    if (loadingSpinner) loadingSpinner.style.display = 'block';
+                    if (loadingInline) loadingInline.style.display = 'block';
+
+                    setTimeout(() => {
+                        if (loadingSpinner) loadingSpinner.style.display = 'none';
+                        if (loadingInline) loadingInline.style.display = 'none';
+                    }, spinDuration);
+                }
+
+                const existingScript = document.querySelector('script[src="https://uat.warranty-search.chaiz.com/initialize.js"]');
+                if (!existingScript) {
+                    const script = document.createElement('script');
+                    script.src = 'https://uat.warranty-search.chaiz.com/initialize.js';
+                    script.onload = () => {
+                        startPollingForResults();
+                    };
+                    document.body.appendChild(script);
+                } else {
+                    startPollingForResults();
+                }
+            }
+
+
+            function submitFormData() {
+                const finalButton = document.getElementById("to-card") || document.getElementById("to-final");
+                const originalText = finalButton.textContent;
+                finalButton.disabled = true;
+                finalButton.textContent = 'Submitting...';
+
+                const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') ||
+                    document.querySelector('input[name="_token"]')?.value;
+
+                console.log('CSRF Token:', csrfToken);
+                console.log('Car Data:', window.carData);
+
+                const formData = new FormData();
+                formData.append('_token', csrfToken);
+                formData.append('sel-year', window.carData.year);
+                formData.append('sel-make', window.carData.make);
+                formData.append('sel-model', window.carData.model);
+                formData.append('car_mileage', window.carData.mileage);
+                formData.append('warranty', window.carData.warranty);
+                formData.append('user-state', window.carData.state);
+                formData.append('user-zip', window.carData.zip);
+                formData.append('email', window.carData.email);
+                formData.append('user-name', window.carData.name);
+                formData.append('user-number', window.carData.phone);
+
+                console.log('Form data being sent:');
+                for (let [key, value] of formData.entries()) {
+                    console.log(key, value);
+                }
+
+                const requiredFields = ['year', 'make', 'model', 'mileage', 'warranty', 'state', 'zip', 'email', 'name', 'phone'];
+                const missingFields = requiredFields.filter(field => !window.carData[field]);
+
+                if (missingFields.length > 0) {
+                    alert('Missing required fields: ' + missingFields.join(', '));
+                    finalButton.disabled = false;
+                    finalButton.textContent = originalText;
+                    return;
+                }
+
+                const submitUrl = '/lead-submit';
+
+                fetch(submitUrl, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                    .then(response => {
+                        console.log('Response status:', response.status);
+                        console.log('Response headers:', response.headers);
+
+                        const contentType = response.headers.get('content-type');
+
+                        if (response.status === 422) {
+                            return response.json().then(data => {
+                                throw { status: 422, data: data };
+                            });
+                        }
+
+                        if (!response.ok) {
+                            return response.text().then(text => {
+                                throw new Error(`HTTP ${response.status}: ${text}`);
+                            });
+                        }
+
+                        if (contentType && contentType.includes('application/json')) {
+                            return response.json();
+                        } else {
+                            return { success: true, redirect: response.url };
+                        }
+                    })
+                    .then(data => {
+                        console.log('Success response:', data);
+                        document.getElementById('car-quiz').classList.remove('show');
+                        showSuccessModal(data);
+                    })
+                    .catch(error => {
+                        console.error('Full error:', error);
+
+                        if (error.status === 422 && error.data && error.data.errors) {
+                            let errorMessage = 'Please fix the following errors:\n';
+                            Object.keys(error.data.errors).forEach(key => {
+                                errorMessage += `- ${error.data.errors[key][0]}\n`;
+                            });
+                            alert(errorMessage);
+                        } else if (error.message) {
+                            alert('Error: ' + error.message);
+                        } else {
+                            alert('Error: Failed to submit your information. Please check the console for details and try again.');
+                        }
+                    })
+                    .finally(() => {
+                        finalButton.disabled = false;
+                        finalButton.textContent = originalText;
+                    });
+            }
+
+            function showSuccessModal(responseData) {
+                if (window.chaizSkipPressed) {
+                    // Toggle visibility of sections
+                    const modalRightSection = document.querySelector('.modal-right-section.d-none');
+                    const carQuizLeft = document.querySelector('.car-quiz-left');
+                    const carQuizModal = document.getElementById('car-quiz');
+
+                    if (modalRightSection) {
+                        modalRightSection.classList.remove('d-none');
+                    }
+
+                    if (carQuizLeft) {
+                        carQuizLeft.classList.add('d-none');
+                    }
+
+                    if (carQuizModal) {
+                        carQuizModal.style.display = 'flex';  // or 'flex' depending on your CSS
+                    }
+
+                    // Don't show the success modal or run the Chaiz script
+                    return;
+                }
+
+                const successModal = document.getElementById('success-modal');
+                if (!successModal) return;
+
+                setLeadDestination(responseData.destination || 'Endurance API');
+                successModal.style.display = 'flex';
+
+                if (window.carData) {
+                    const make = window.carData.make
+                        ? window.carData.make.toLowerCase().replace(/\s+/g, '-')
+                        : 'default-make';
+
+                    const model = window.carData.model
+                        ? window.carData.model.toLowerCase().replace(/\s+/g, '-')
+                        : 'default-model';
+
+                    const year = window.carData.year
+                        ? parseInt(window.carData.year, 10)
+                        : 2020;
+
+                    const state = window.carData.state
+                        ? window.carData.state.toUpperCase()
+                        : 'NJ';
+
+                    let mileage = 30000;
+                    if (typeof window.carData.mileage === 'string') {
+                        const digits = window.carData.mileage.replace(/\D/g, '');
+                        if (digits) {
+                            mileage = parseInt(digits, 10);
+                        }
+                    }
+
+                    window.chaizWarrantySearchConfig = {
+                        targetElementId: "search-results",
+                        searchData: {
+                            make,
+                            model,
+                            year,
+                            state,
+                            mileage,
+                            userId: "96d8841b-6ae6-4cb6-9b43-401662e25560"
+                        }
+                    };
+
+                    if (!document.querySelector('script[src="https://uat.warranty-search.chaiz.com/initialize.js"]')) {
+                        const script = document.createElement('script');
+                        script.src = 'https://uat.warranty-search.chaiz.com/initialize.js';
+                        document.body.appendChild(script);
+                    }
+                }
+            }
+
+
+            function setLeadDestination(destination) {
+                const destinationElements = document.querySelectorAll('.destination-name');
+                if (!destinationElements.length) return;
+
+                let destinationText = '';
+                let destinationColor = '';
+
+                switch (destination) {
+                    case 'Endurance API':
+                        destinationText = 'Endurance';
+                        destinationColor = '#ffc107';
+                        break;
+                    case 'LeadConduit (Backup System)':
+                        destinationText = 'American Dream';
+                        destinationColor = '#ffc107';
+                        break;
+                    case 'Submission Failed':
+                        destinationText = '❌ Submission Failed';
+                        destinationColor = '#dc3545';
+                        break;
+                    case 'System Error':
+                        destinationText = '⚠️ System Error';
+                        destinationColor = '#dc3545';
+                        break;
+                    default:
+                        destinationText = '✅ Successfully Submitted';
+                        destinationColor = '#28a745';
+                }
+
+                destinationElements.forEach((el) => {
+                    el.textContent = destinationText;
+                    el.style.color = destinationColor;
+                });
+            }
+
+            function closeSuccessModal() {
+                const successModal = document.getElementById('success-modal');
+                if (successModal) {
+                    successModal.remove();
+                }
+            }
+
+            function showSuccessStep() {
+                showSuccessModal({});
+            }
+
+            // Make functions available globally
+            window.skipMyDetails = skipMyDetails;
+            window.closeModal = closeSuccessModal;
+            window.closeSuccessModal = closeSuccessModal;
+
+            // Rest of your event listeners and initialization code...
             const skipButton = document.querySelector('button[onclick="skipMyDetails()"]');
             if (skipButton) {
-                skipButton.removeAttribute('onclick'); // Remove inline onclick
+                skipButton.removeAttribute('onclick');
                 skipButton.addEventListener('click', skipMyDetails);
             }
 
-            // Show the quiz modal after vehicle type selected
             document.querySelectorAll('.vehicle-option').forEach(button => {
                 button.addEventListener('click', () => {
                     document.getElementById('car-make').value = button.dataset.value;
                     const quizModal = document.getElementById('car-quiz');
-                    quizModal.classList.remove('d-none'); // remove hidden class
-                    quizModal.classList.add('show');      // add visible class
+                    quizModal.classList.remove('d-none');
+                    quizModal.classList.add('show');
                     document.querySelector('.begin-btn').textContent = 'Continue';
                 });
             });
 
-            document.querySelector('.match-cta-button').addEventListener('click', () => {
+            document.addEventListener('click', (event) => {
+                if (event.target.matches('.match-cta-button')) {
+                    openModal();
+                }
+
+                if (event.target.matches('.begin-btn')) {
+                    openModal();
+                    event.target.textContent = 'Continue';
+                }
+            });
+
+            function openModal() {
                 const quizModal = document.getElementById('car-quiz');
-                quizModal.classList.remove('d-none');
-                quizModal.classList.add('show');
-            });
+                if (quizModal) {
+                    quizModal.classList.remove('d-none');
+                    quizModal.classList.add('show');
+                }
+            }
 
-            document.querySelector('.begin-btn').addEventListener('click', () => {
-                const quizModal = document.getElementById('car-quiz');
-                quizModal.classList.remove('d-none');
-                quizModal.classList.add('show');
-
-                // Change button text to "Continue"
-                document.querySelector('.begin-btn').textContent = 'Continue';
-            });
-
-
-            // Close buttons to close the modal
-            document.querySelector('.car-quiz-close').addEventListener('click', () => {
-                document.getElementById('car-quiz').classList.remove('show');
-            });
-
-            // Optional: Close modal on outside click
             document.getElementById('car-quiz').addEventListener('click', (e) => {
                 if (e.target.id === 'car-quiz') {
                     e.currentTarget.classList.remove('show');
                 }
             });
 
-            // Get dropdown elements
+            // Rest of your existing initialization code...
             const yearSelect = document.getElementById("sel_year");
             const makeSelect = document.getElementById("sel_make");
             const modelSelect = document.getElementById("sel_model");
 
-            // Populate years dropdown (current year to 2005)
             const currentYear = new Date().getFullYear();
             for (let y = currentYear; y >= 2005; y--) {
                 const opt = document.createElement("option");
@@ -573,9 +843,9 @@
                 yearSelect.appendChild(opt);
             }
 
-            // Example vehicle data (make and models)
             const vehicles = [
                 "ACURA 2.3CL",
+
                 "ACURA 3.0CL",
                 "ACURA 3.2CL",
                 "ACURA 3.2TL",
@@ -1612,9 +1882,6 @@
                 "VOLVO XC90",
             ];
 
-
-
-            // Build make → models map
             const makesModelsMap = {};
             vehicles.forEach(vehicle => {
                 const [make, ...modelParts] = vehicle.split(" ");
@@ -1625,7 +1892,6 @@
                 }
             });
 
-            // Populate make dropdown
             makeSelect.innerHTML = `<option value="">Select Make</option>`;
             Object.keys(makesModelsMap).forEach(make => {
                 const opt = document.createElement("option");
@@ -1634,7 +1900,6 @@
                 makeSelect.appendChild(opt);
             });
 
-            // When make changes, populate model dropdown
             makeSelect.addEventListener("change", () => {
                 const selectedMake = makeSelect.value;
                 modelSelect.innerHTML = `<option value="">Select Model</option>`;
@@ -1648,8 +1913,6 @@
                 }
             });
 
-            // Step navigation with proper validation
-            // Step 1 → Step 2 (Vehicle Info Validation)
             document.getElementById("to-step2").addEventListener("click", function (e) {
                 e.preventDefault();
                 const year = yearSelect.value;
@@ -1661,7 +1924,6 @@
                     return;
                 }
 
-                // Store data in memory (not sessionStorage for Claude compatibility)
                 window.carData = window.carData || {};
                 window.carData.year = year;
                 window.carData.make = make;
@@ -1671,7 +1933,6 @@
                 document.getElementById("quiz-step2").classList.remove("d-none");
             });
 
-            // Step 2 → Step 3 (Mileage Selection)
             document.getElementById("to-step3").addEventListener("click", function (e) {
                 e.preventDefault();
                 const selectedMileage = document.querySelector('.mile-opt1.selected');
@@ -1689,7 +1950,6 @@
                 document.getElementById("quiz-step3").classList.remove("d-none");
             });
 
-            // Step 3 → Step 4 (Warranty Selection)
             document.getElementById("to-step4").addEventListener("click", function (e) {
                 e.preventDefault();
                 const selectedWarranty = document.querySelector('.warranty-urgency-opt1.selected');
@@ -1703,13 +1963,10 @@
                 window.carData.warranty = selectedWarranty.dataset.value;
                 document.getElementById('warranty').value = selectedWarranty.dataset.value;
 
-                // Transition: Step 3 → Step 4 (No loader here)
                 document.getElementById("quiz-step3").classList.add("d-none");
                 document.getElementById("quiz-step4").classList.remove("d-none");
             });
 
-
-            // Step 4 → Step 5 (State Validation with Loader)
             document.getElementById("to-step5").addEventListener("click", function (e) {
                 e.preventDefault();
                 const state = document.getElementById("user-state").value.trim();
@@ -1722,18 +1979,15 @@
                 window.carData = window.carData || {};
                 window.carData.state = state;
 
-                // Transition: Step 4 → Loading → Step 5
                 document.getElementById("quiz-step4").classList.add("d-none");
                 document.getElementById("quiz-loading").classList.remove("d-none");
 
                 setTimeout(() => {
                     document.getElementById("quiz-loading").classList.add("d-none");
                     document.getElementById("quiz-step5").classList.remove("d-none");
-                }, 2700); // 2.7 seconds delay
+                }, 2700);
             });
 
-
-            // Step 5 → Step 6 (ZIP Validation without Loader)
             document.getElementById("to-step6").addEventListener("click", function (e) {
                 e.preventDefault();
                 const zip = document.getElementById("user-zip").value.trim();
@@ -1746,12 +2000,10 @@
                 window.carData = window.carData || {};
                 window.carData.zip = zip;
 
-                // Direct transition: Step 5 → Step 6
                 document.getElementById("quiz-step5").classList.add("d-none");
                 document.getElementById("quiz-step6").classList.remove("d-none");
             });
 
-            // Step 6 → Step 7 (Email Validation)
             document.getElementById("to-step7").addEventListener("click", function (e) {
                 e.preventDefault();
                 const email = document.getElementById("user-email").value.trim();
@@ -1768,7 +2020,6 @@
                 document.getElementById("quiz-step7").classList.remove("d-none");
             });
 
-            // Step 7 → Step 8 (Name Validation)
             document.getElementById("to-step8").addEventListener("click", function (e) {
                 e.preventDefault();
                 const name = document.getElementById("user-name").value.trim();
@@ -1785,7 +2036,6 @@
                 document.getElementById("quiz-step8").classList.remove("d-none");
             });
 
-            // Handle mileage option selection
             const mileOptions = document.querySelectorAll('.mile-opt1');
             mileOptions.forEach(button => {
                 button.addEventListener('click', () => {
@@ -1794,7 +2044,6 @@
                 });
             });
 
-            // Handle warranty option selection
             const warrantyOptions = document.querySelectorAll('.warranty-urgency-opt1');
             warrantyOptions.forEach(button => {
                 button.addEventListener('click', () => {
@@ -1803,7 +2052,6 @@
                 });
             });
 
-            // Final step (phone validation and form submission)
             const finalButton = document.getElementById("to-card") || document.getElementById("to-final");
             if (finalButton) {
                 finalButton.addEventListener("click", function (e) {
@@ -1818,231 +2066,8 @@
                     window.carData = window.carData || {};
                     window.carData.phone = phone;
 
-                    // Submit form to Laravel controller
                     submitFormData();
                 });
-            }
-
-            // Function to submit form data to Laravel controller
-            function submitFormData() {
-                // Show loading state
-                const submitButton = finalButton;
-                const originalText = submitButton.textContent;
-                submitButton.disabled = true;
-                submitButton.textContent = 'Submitting...';
-
-                // Get CSRF token (Laravel requirement)
-                const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') ||
-                    document.querySelector('input[name="_token"]')?.value;
-
-                console.log('CSRF Token:', csrfToken);
-                console.log('Car Data:', window.carData);
-
-                // Prepare form data matching your controller's expected field names
-                const formData = new FormData();
-                formData.append('_token', csrfToken);
-                formData.append('sel-year', window.carData.year);
-                formData.append('sel-make', window.carData.make);
-                formData.append('sel-model', window.carData.model);
-                formData.append('car_mileage', window.carData.mileage);
-                formData.append('warranty', window.carData.warranty);
-                formData.append('user-state', window.carData.state);
-                formData.append('user-zip', window.carData.zip);
-                formData.append('email', window.carData.email);
-                formData.append('user-name', window.carData.name);
-                formData.append('user-number', window.carData.phone);
-
-                // Debug: Log form data
-                console.log('Form data being sent:');
-                for (let [key, value] of formData.entries()) {
-                    console.log(key, value);
-                }
-
-                // Check if we have all required data
-                const requiredFields = ['year', 'make', 'model', 'mileage', 'warranty', 'state', 'zip', 'email', 'name', 'phone'];
-                const missingFields = requiredFields.filter(field => !window.carData[field]);
-
-                if (missingFields.length > 0) {
-                    alert('Missing required fields: ' + missingFields.join(', '));
-                    submitButton.disabled = false;
-                    submitButton.textContent = originalText;
-                    return;
-                }
-
-                // Submit to your Laravel route (matches your actual route)
-                const submitUrl = '/lead-submit'; // Updated to match your route
-
-                fetch(submitUrl, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
-                    }
-                })
-                    .then(response => {
-                        console.log('Response status:', response.status);
-                        console.log('Response headers:', response.headers);
-
-                        // Handle different content types
-                        const contentType = response.headers.get('content-type');
-
-                        if (response.status === 422) {
-                            // Validation error - expect JSON
-                            return response.json().then(data => {
-                                throw { status: 422, data: data };
-                            });
-                        }
-
-                        if (!response.ok) {
-                            // Other HTTP errors
-                            return response.text().then(text => {
-                                throw new Error(`HTTP ${response.status}: ${text}`);
-                            });
-                        }
-
-                        // Check if response is JSON or redirect
-                        if (contentType && contentType.includes('application/json')) {
-                            return response.json();
-                        } else {
-                            // Likely a redirect or HTML response
-                            return { success: true, redirect: response.url };
-                        }
-                    })
-                    .then(data => {
-                        // Handle successful submission
-                        console.log('Success response:', data);
-
-                        // Close the current quiz modal
-                        document.getElementById('car-quiz').classList.remove('show');
-
-                        // Show success modal with lead destination info
-                        showSuccessModal(data);
-                    })
-                    .catch(error => {
-                        console.error('Full error:', error);
-
-                        // Handle validation errors (422)
-                        if (error.status === 422 && error.data && error.data.errors) {
-                            let errorMessage = 'Please fix the following errors:\n';
-                            Object.keys(error.data.errors).forEach(key => {
-                                errorMessage += `- ${error.data.errors[key][0]}\n`;
-                            });
-                            alert(errorMessage);
-                        } else if (error.message) {
-                            alert('Error: ' + error.message);
-                        } else {
-                            alert('Error: Failed to submit your information. Please check the console for details and try again.');
-                        }
-                    })
-                    .finally(() => {
-                        // Reset button state
-                        submitButton.disabled = false;
-                        submitButton.textContent = originalText;
-                    });
-            }
-
-            // Function to show success modal with lead destination
-            // In your existing script, replace the showSuccessModal function with this updated version:
-
-            function showSuccessModal(responseData) {
-                const successModal = document.getElementById('success-modal');
-                if (!successModal) return;
-
-                // Update lead destination text and color
-                setLeadDestination(responseData.destination || 'Endurance API');
-
-                // Show modal
-                successModal.style.display = 'flex';
-
-                // Initialize warranty search if needed (same as your current logic)
-                if (window.carData) {
-                    const make = window.carData.make
-                        ? window.carData.make.toLowerCase().replace(/\s+/g, '-')
-                        : 'default-make';
-
-                    const model = window.carData.model
-                        ? window.carData.model.toLowerCase().replace(/\s+/g, '-')
-                        : 'default-model';
-
-                    const year = window.carData.year
-                        ? parseInt(window.carData.year, 10)
-                        : 2020;
-
-                    const state = window.carData.state
-                        ? window.carData.state.toUpperCase()
-                        : 'NJ';
-
-                    let mileage = 30000; // default mileage
-                    if (typeof window.carData.mileage === 'string') {
-                        const digits = window.carData.mileage.replace(/\D/g, '');
-                        if (digits) {
-                            mileage = parseInt(digits, 10);
-                        }
-                    }
-
-                    window.chaizWarrantySearchConfig = {
-                        targetElementId: "search-results",
-                        searchData: { make, model, year, state, mileage, userId: "96d8841b-6ae6-4cb6-9b43-401662e25560" }
-                    };
-
-                    if (!document.querySelector('script[src="https://uat.warranty-search.chaiz.com/initialize.js"]')) {
-                        const script = document.createElement('script');
-                        script.src = 'https://uat.warranty-search.chaiz.com/initialize.js';
-                        document.body.appendChild(script);
-                    }
-                }
-            }
-
-            window.closeModal = function () {
-                const successModal = document.getElementById('success-modal');
-                if (successModal) {
-                    successModal.style.display = 'none';
-                }
-            };
-
-            function setLeadDestination(destination) {
-                const destinationElement = document.getElementById('destination-name');
-                if (!destinationElement) return;
-
-                let destinationText = '';
-                let destinationColor = '';
-
-                switch (destination) {
-                    case 'Endurance API':
-                        destinationText = 'Endurance';
-                        destinationColor = '#ffc107';
-                        break;
-                    case 'LeadConduit (Backup System)':
-                        destinationText = 'American Dream';
-                        destinationColor = '#ffc107';
-                        break;
-                    case 'Submission Failed':
-                        destinationText = '❌ Submission Failed';
-                        destinationColor = '#dc3545';
-                        break;
-                    case 'System Error':
-                        destinationText = '⚠️ System Error';
-                        destinationColor = '#dc3545';
-                        break;
-                    default:
-                        destinationText = '✅ Successfully Submitted';
-                        destinationColor = '#28a745';
-                }
-
-                destinationElement.textContent = destinationText;
-                destinationElement.style.color = destinationColor;
-            }
-            // Function to close success modal
-            window.closeSuccessModal = function () {
-                const successModal = document.getElementById('success-modal');
-                if (successModal) {
-                    successModal.remove();
-                }
-            }
-
-            // Function to show success step (keeping for backward compatibility)
-            function showSuccessStep() {
-                showSuccessModal({});
             }
         });
     </script>
