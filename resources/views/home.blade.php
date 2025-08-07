@@ -640,6 +640,14 @@
                         console.log('Success response:', data);
                         document.getElementById('car-quiz').classList.remove('show');
                         showSuccessModal(data);
+
+                        // ✅ Push custom event to GTM
+                        if (window.dataLayer) {
+                            window.dataLayer.push({
+                                event: 'leadSubmission',
+                                leadDestination: data.destination || 'Unknown'
+                            });
+                        }
                     })
                     .catch(error => {
                         console.error('Full error:', error);
@@ -746,11 +754,11 @@
                 let destinationColor = '';
 
                 switch (destination) {
-                    case 'Endurance API':
+                    case 'Endurance':
                         destinationText = 'Endurance';
                         destinationColor = '#ffc107';
                         break;
-                    case 'LeadConduit (Backup System)':
+                    case 'American Dream':
                         destinationText = 'American Dream';
                         destinationColor = '#ffc107';
                         break;

@@ -69,11 +69,11 @@ class LeadSubmissionController extends Controller
 
             if ($response->successful()) {
                 // Lead successfully sent to Endurance
-                session()->flash('lead_destination', 'Endurance API');
+                session()->flash('lead_destination', 'Endurance');
                 return response()->json([
                     'success' => true,
                     'message' => 'Your lead has been successfully submitted to Endurance for processing. You should receive a response shortly.',
-                    'destination' => 'Endurance API'
+                    'destination' => 'Endurance'
                 ]);
             } else {
                 // Fallback to LeadConduit if Endurance fails
@@ -101,16 +101,13 @@ class LeadSubmissionController extends Controller
 
                 $fallbackResponse = Http::asForm()->post($fallbackUrl, $leadConduitPayload);
 
-                // Log::info('Fallback LeadConduit response status: ' . $fallbackResponse->status());
-                // Log::info('Fallback LeadConduit response body: ' . $fallbackResponse->body());
-
                 if ($fallbackResponse->successful()) {
                     // Lead successfully sent to LeadConduit (American Dream)
-                    session()->flash('lead_destination', 'LeadConduit (Backup System)');
+                    session()->flash('lead_destination', 'American Dream');
                     return response()->json([
                         'success' => true,
                         'message' => 'Your lead has been successfully submitted via our backup system. You should receive a response shortly.',
-                        'destination' => 'LeadConduit (Backup System)'
+                        'destination' => 'American Dream'
                     ]);
                 } else {
                     // Both systems failed
