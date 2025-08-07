@@ -527,6 +527,7 @@
                     const quizModal = document.getElementById('car-quiz');
                     quizModal.classList.remove('d-none'); // remove hidden class
                     quizModal.classList.add('show');      // add visible class
+                    document.querySelector('.begin-btn').textContent = 'Continue';
                 });
             });
 

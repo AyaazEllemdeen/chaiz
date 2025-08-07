@@ -829,6 +829,7 @@ body {
     box-sizing: border-box;
     overflow-y: auto;
     min-height: 0; /* important for flex children */
+    width: 70%;
 }
 
 #quiz-right-div {
@@ -876,7 +877,6 @@ body {
 
 #search-results-skip {
     width: 100%;
-    max-width: 600px;
     margin-top: 1rem;
     color: #fff;
     text-align: left; /* usually better for results */
@@ -943,7 +943,6 @@ body {
 
 .car-quiz-left,
 .car-quiz-right {
-    width: 50%;
     padding: 3rem 2rem;
     overflow-y: auto;
 }
@@ -954,6 +953,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 30%;
 }
 
 /* Quiz Content Styling */
