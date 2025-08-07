@@ -11,8 +11,8 @@ services:
       - .:/var/www/html
       - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - /etc/letsencrypt/live/islandexcursions.com/fullchain.pem:/etc/nginx/ssl/fullchain.pem:ro
-      - /etc/letsencrypt/live/islandexcursions.com/privkey.pem:/etc/nginx/ssl/privkey.pem:ro
+      - /etc/letsencrypt/live/comparewarranties.org/fullchain.pem:/etc/nginx/ssl/fullchain.pem:ro
+      - /etc/letsencrypt/live/comparewarranties.org/privkey.pem:/etc/nginx/ssl/privkey.pem:ro
     networks:
       - chaiz-network
     depends_on:
