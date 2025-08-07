@@ -681,6 +681,7 @@
                         carQuizModal.style.display = 'flex';  // or 'flex' depending on your CSS
                     }
 
+                    setLeadDestination(responseData.destination || 'Endurance API');
                     // Don't show the success modal or run the Chaiz script
                     return;
                 }
