@@ -2104,7 +2104,7 @@
                                 <div class="stars">★★★★★</div>
                             </div>
                             <div class="cta-section">
-                                <a href="https://www.endurancewarranty.com/lp/chaiz/" class="get-quote-btn" target="_blank"
+                                <a href="https://endurancewarranty.com/lp/czcw" class="get-quote-btn" target="_blank"
                                     rel="noopener noreferrer">Get a Quote</a>
                                 <a href="tel:8005980082">
                                     <button class="phone-btn">800-598-0082</button>
