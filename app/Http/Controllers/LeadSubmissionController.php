@@ -50,7 +50,7 @@ class LeadSubmissionController extends Controller
             $response = Http::withHeaders([
                 'Content-Type' => 'application/json-patch+json',
             ])
-                ->withBasicAuth('CHAIZ-INT-chaizhp', 'sqEgIFfA347MNDWU')
+                ->withBasicAuth('CHAIZ-INT-chaizcwhp', 'NqkTOZ2vJBEi3cpn')
                 ->post($url, $payload);
 
             // \Log::info('LeadSubmission API response status: ' . $response->status());
