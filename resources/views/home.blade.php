@@ -2103,7 +2103,7 @@
                     <div class="card-header">
                         <div class="logo-section">
                             <div class="logo">
-                                <a href="https://endurancewarranty.com/lp/czcw" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.endurancewarranty.com/" target="_blank" rel="noopener noreferrer">
                                     <img src="/img/1.png" alt="">
                                 </a>
                             </div>
@@ -2182,7 +2182,7 @@
                         <div class="card-header">
                             <div class="logo-section">
                                 <div class="logo">
-                                    <a href="https://www.chaiz.com/?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
+                                    <a href="https://www.chaiz.com/"
                                         target="_blank" rel="noopener noreferrer">
                                         <img src="/img/chaiz.png" alt="">
                                     </a>
@@ -2255,7 +2255,7 @@
                     <div class="card-header">
                         <div class="logo-section">
                             <div class="logo">
-                                <a href="https://www.americandreamautoprotect.com/u7izFNKM9E" target="_blank"
+                                <a href="https://americandreamautoprotect.com/" target="_blank"
                                     rel="noopener noreferrer">
                                     <img src="/img/american-dream.png" alt="">
                                 </a>
@@ -2323,7 +2323,7 @@
                     <div class="card-header">
                         <div class="logo-section">
                             <div class="logo">
-                                <a href="https://www.chaiz.com/p/omega?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
+                                <a href="https://omegaautocare.com/"
                                     target="_blank" rel="noopener noreferrer">
                                     <img src="/img/omega.png" alt="">
                                 </a>
@@ -2384,7 +2384,7 @@
                     <div class="card-header">
                         <div class="logo-section">
                             <div class="logo">
-                                <a href="https://www.chaiz.com/p/naac?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
+                                <a href="https://www.northamericanautocare.co/"
                                     target="_blank" rel="noopener noreferrer">
                                     <img src="/img/naac.png" alt="">
                                 </a>
