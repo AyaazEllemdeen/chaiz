@@ -2103,7 +2103,9 @@
                     <div class="card-header">
                         <div class="logo-section">
                             <div class="logo">
-                                <img src="/img/1.png" alt="">
+                                <a href="https://endurancewarranty.com/lp/czcw" target="_blank" rel="noopener noreferrer">
+                                    <img src="/img/1.png" alt="">
+                                </a>
                             </div>
                             <div class="promo-badge">
                                 $300 off any new plan!
@@ -2180,7 +2182,10 @@
                         <div class="card-header">
                             <div class="logo-section">
                                 <div class="logo">
-                                    <img src="/img/chaiz.png" alt="">
+                                    <a href="https://www.chaiz.com/?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
+                                        target="_blank" rel="noopener noreferrer">
+                                        <img src="/img/chaiz.png" alt="">
+                                    </a>
                                 </div>
                                 <div class="chaiz-promo-badge">
                                     Buy directly online — No Email or Phone needed
@@ -2250,7 +2255,10 @@
                     <div class="card-header">
                         <div class="logo-section">
                             <div class="logo">
-                                <img src="/img/american-dream.png" alt="">
+                                <a href="https://www.americandreamautoprotect.com/u7izFNKM9E" target="_blank"
+                                    rel="noopener noreferrer">
+                                    <img src="/img/american-dream.png" alt="">
+                                </a>
                             </div>
                             <div class="promo-badge">
                                 $350 off + 3 months free!
@@ -2315,7 +2323,10 @@
                     <div class="card-header">
                         <div class="logo-section">
                             <div class="logo">
-                                <img src="/img/omega.png" alt="">
+                                <a href="https://www.chaiz.com/p/omega?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
+                                    target="_blank" rel="noopener noreferrer">
+                                    <img src="/img/omega.png" alt="">
+                                </a>
                             </div>
                             <div class="promo-badge">
 
@@ -2373,7 +2384,10 @@
                     <div class="card-header">
                         <div class="logo-section">
                             <div class="logo">
-                                <img src="/img/naac.png" alt="">
+                                <a href="https://www.chaiz.com/p/naac?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
+                                    target="_blank" rel="noopener noreferrer">
+                                    <img src="/img/naac.png" alt="">
+                                </a>
                             </div>
                             <div class="promo-badge">
 
