@@ -818,6 +818,15 @@ body {
 }
 
 /* modal quiz */
+.zip-helper-text {
+    background: #fff3cd; /* soft yellow */
+    color: #856404; /* darker yellow/brown text for contrast */
+    font-size: 12px;
+    text-align: center;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
 .car-quiz-right {
     background: #000000;
     color: white;

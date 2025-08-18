@@ -8,9 +8,9 @@
 
         <div class="hero-text-overlay py-5">
             <div class="container text-white">
-                <p class="quiz-heading">Compare coverage with confidence</p>
-                <p class="quiz-subtext">We don’t do one-size-fits-all. Tell us about your car, and we’ll show you real
-                    options with real value.</p>
+                <p class="quiz-heading">Compare car warranties with confidence</p>
+                <p class="quiz-subtext">Every car is different. Enter your details and see real car warranty options,
+                    coverage plans, and protection that fit your vehicle.</p>
 
                 <!-- Quiz starts directly below text -->
                 <div class="quiz-content-box mt-4">
@@ -221,6 +221,8 @@
 
 
                     <div id="quiz-step5" class="d-none">
+                        <p class="zip-helper-text">Your ZIP code ensures quotes are as accurate as possible for your area
+                        </p>
                         <h3 class="modal-question">What's your ZIP code?</h3>
                         <input type="text" name="user-zip" id="user-zip" class="modal-dropdown1"
                             placeholder="Enter your ZIP code" maxlength="5" pattern="\d{5}" inputmode="numeric" required />
@@ -236,7 +238,10 @@
                         </div>
                     </div>
 
+
                     <div id="quiz-step6" class="d-none">
+                        <p class="zip-helper-text">You will receive a copy of your quote via Email. We only pass your Email
+                            Address onto your match.</p>
                         <h3 class="modal-question">What's your Email Address?</h3>
                         <input type="email" name="email" id="user-email" class="modal-dropdown1"
                             placeholder="Enter your Email" required />
@@ -253,6 +258,8 @@
                     </div>
 
                     <div id="quiz-step7" class="d-none">
+                        <p class="zip-helper-text">Enter your full name so your match knows who to make your quote out to.
+                        </p>
                         <h3 class="modal-question">What's your Full Name?</h3>
                         <input type="text" name="user-name" id="user-name" class="modal-dropdown1"
                             placeholder="Enter your name" required />
@@ -269,6 +276,8 @@
                     </div>
 
                     <div id="quiz-step8" class="d-none">
+                        <p class="zip-helper-text">This is the last page of questions. We only pass your phone number onto
+                            your match.</p>
                         <h3 class="modal-question">What's your Phone Number?</h3>
                         <input type="text" name="user-number" id="user-number" name="number" class="modal-dropdown1"
                             placeholder="Enter your number" required />
