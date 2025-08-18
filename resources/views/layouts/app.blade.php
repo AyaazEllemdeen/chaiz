@@ -4,7 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Cworg')</title>
+    <title>Compare best extended auto warranties 2025</title>
+    <meta name="title" content="Compare best extended auto warranties 2025">
+    <meta name="description"
+        content="Compare the best extended auto warranties in 2025 and find the plan that fits you—learn about coverage, benefits, and extended car warranty cost.">
+    <meta name="keywords"
+        content="extended auto warranties 2025, best car warranty, extended car warranty cost, auto warranty coverage, vehicle warranty plans">
+
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}">
 
