@@ -2124,7 +2124,7 @@
                     submitFormData();
                 });
             }
-            
+
             document.getElementById("back-to-step7").addEventListener("click", function (e) {
                 e.preventDefault();
                 document.getElementById("quiz-step8").classList.add("d-none");
@@ -2210,9 +2210,9 @@
                             </div>
                         </div>
                     </div>
+                    <button class="more-btn">+ More</button>
                     <!-- <button class="learn-more-btn">Learn More</button> -->
                 </div>
-
 
                 <div class="mt-5 divider-line"></div>
                 <h4 class="mt-5 mb-3" style="font-weight: 700;">Looking for a quick solution? Skip the wait and buy your
@@ -2245,7 +2245,6 @@
                                     </a>
                                 </div>
                             </div>
-
                         </div>
                         <div class="divider-line"></div>
                         <div class="card-body-row">
@@ -2289,8 +2288,9 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <button class="learn-more-btn">Learn More</button> -->
+                        <button class="more-btn">+ More</button>
                     </div>
+
                 </div>
 
                 <!-- american dream card -->
@@ -2357,7 +2357,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <button class="learn-more-btn">Learn More</button> -->
+                    <button class="more-btn">+ More</button>
                 </div>
 
                 <!-- omega card -->
@@ -2369,9 +2369,7 @@
                                     <img src="/img/omega.png" alt="">
                                 </a>
                             </div>
-                            <div class="promo-badge">
-
-                            </div>
+                            <div class="promo-badge"></div>
                             <div class="rating-section">
                                 <div class="rating-score">8.2</div>
                                 <div class="stars">★★★★☆</div>
@@ -2417,8 +2415,9 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <button class="learn-more-btn">Learn More</button> -->
+                    <button class="more-btn">+ More</button>
                 </div>
+
 
                 <!-- naac card -->
                 <div class="service-card">
@@ -2429,9 +2428,7 @@
                                     <img src="/img/naac.png" alt="">
                                 </a>
                             </div>
-                            <div class="promo-badge">
-
-                            </div>
+                            <div class="promo-badge"></div>
                             <div class="rating-section">
                                 <div class="rating-score">8.1</div>
                                 <div class="stars">★★★★☆</div>
@@ -2477,12 +2474,28 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <button class="learn-more-btn">Learn More</button> -->
+                    <button class="more-btn">+ More</button>
                 </div>
+
+
             </div>
         </div>
     </section>
 
+    <script>
+        document.querySelectorAll(".more-btn").forEach(btn => {
+            btn.addEventListener("click", function () {
+                const cardBody = this.previousElementSibling;
+                cardBody.classList.toggle("active");
+
+                if (cardBody.classList.contains("active")) {
+                    this.textContent = "- Less";
+                } else {
+                    this.textContent = "+ More";
+                }
+            });
+        });
+    </script>
 
     <section id="get-matched" style="padding: 40px 0;">
         <div class="container">
