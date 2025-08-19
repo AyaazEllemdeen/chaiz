@@ -132,6 +132,7 @@
                         </div>
                         <div class="step-buttons">
                             <button id="to-step3" class="to-step-btn">Continue</button>
+                            <button id="back-to-step1" class="to-step-btn">Back</button>
                         </div>
                         <input type="hidden" name="car_mileage" id="input-mileage" value="">
                     </div>
@@ -148,9 +149,11 @@
                         </div>
                         <div class="step-buttons">
                             <button id="to-step4" class="to-step-btn">Continue</button>
+                            <button id="back-to-step2" class="to-step-btn">Back</button>
                         </div>
                         <input type="hidden" name="warranty" id="warranty" value="">
                     </div>
+
 
                     <div id="quiz-step4" class="d-none">
                         <h3 class="modal-question">What state would you like coverage in?</h3>
@@ -209,6 +212,7 @@
                         </select>
                         <div class="step-buttons">
                             <button id="to-step5" class="to-step-btn">Continue</button>
+                            <button id="back-to-step3" class="to-step-btn">Back</button>
                         </div>
                     </div>
 
@@ -219,16 +223,17 @@
                         </div>
                     </div>
 
-
                     <div id="quiz-step5" class="d-none">
                         <p class="zip-helper-text">Your ZIP code ensures quotes are as accurate as possible for your area
                         </p>
                         <h3 class="modal-question">What's your ZIP code?</h3>
                         <input type="text" name="user-zip" id="user-zip" class="modal-dropdown1"
                             placeholder="Enter your ZIP code" maxlength="5" pattern="\d{5}" inputmode="numeric" required />
+
                         <div class="step-buttons-wrapper">
                             <div class="step-buttons">
                                 <button id="to-step6" class="to-step-btn">Continue</button>
+                                <button id="back-to-step4" class="to-step-btn">Back</button>
                             </div>
 
                             <div class="skip-section">
@@ -238,16 +243,19 @@
                         </div>
                     </div>
 
-
                     <div id="quiz-step6" class="d-none">
-                        <p class="zip-helper-text">You will receive a copy of your quote via Email. We only pass your Email
-                            Address onto your match.</p>
+                        <p class="zip-helper-text">
+                            You will receive a copy of your quote via Email. We only pass your Email Address onto your
+                            match.
+                        </p>
                         <h3 class="modal-question">What's your Email Address?</h3>
                         <input type="email" name="email" id="user-email" class="modal-dropdown1"
                             placeholder="Enter your Email" required />
+
                         <div class="step-buttons-wrapper">
                             <div class="step-buttons">
                                 <button id="to-step7" class="to-step-btn">Continue</button>
+                                <button id="back-to-step5" class="to-step-btn">Back</button>
                             </div>
 
                             <div class="skip-section">
@@ -258,14 +266,17 @@
                     </div>
 
                     <div id="quiz-step7" class="d-none">
-                        <p class="zip-helper-text">Enter your full name so your match knows who to make your quote out to.
+                        <p class="zip-helper-text">
+                            Enter your full name so your match knows who to make your quote out to.
                         </p>
                         <h3 class="modal-question">What's your Full Name?</h3>
                         <input type="text" name="user-name" id="user-name" class="modal-dropdown1"
                             placeholder="Enter your name" required />
+
                         <div class="step-buttons-wrapper">
                             <div class="step-buttons">
                                 <button id="to-step8" class="to-step-btn">Continue</button>
+                                <button id="back-to-step6" class="to-step-btn">Back</button>
                             </div>
 
                             <div class="skip-section">
@@ -276,13 +287,16 @@
                     </div>
 
                     <div id="quiz-step8" class="d-none">
-                        <p class="zip-helper-text">This is the last page of questions. We only pass your phone number onto
-                            your match.</p>
+                        <p class="zip-helper-text">
+                            This is the last page of questions. We only pass your phone number onto your match.
+                        </p>
                         <h3 class="modal-question">What's your Phone Number?</h3>
-                        <input type="text" name="user-number" id="user-number" name="number" class="modal-dropdown1"
+                        <input type="text" name="user-number" id="user-number" class="modal-dropdown1"
                             placeholder="Enter your number" required />
+
                         <div class="step-buttons-wrapper">
                             <div class="step-buttons">
+                                <button id="back-to-step7" class="to-step-btn">Back</button>
                                 <button id="to-card" class="to-step-btn">Submit</button>
                             </div>
 
@@ -1951,38 +1965,52 @@
                 document.getElementById("quiz-step2").classList.remove("d-none");
             });
 
-            document.getElementById("to-step3").addEventListener("click", function (e) {
-                e.preventDefault();
-                const selectedMileage = document.querySelector('.mile-opt1.selected');
+            const mileOptions = document.querySelectorAll('.mile-opt1');
+            mileOptions.forEach(button => {
+                button.addEventListener('click', () => {
+                    // remove selected state from others
+                    mileOptions.forEach(btn => btn.classList.remove('selected'));
+                    button.classList.add('selected');
 
-                if (!selectedMileage) {
-                    alert("Please select your vehicle's mileage range.");
-                    return;
-                }
+                    // store data
+                    window.carData = window.carData || {};
+                    window.carData.mileage = button.dataset.value;
+                    document.getElementById('input-mileage').value = button.dataset.value;
 
-                window.carData = window.carData || {};
-                window.carData.mileage = selectedMileage.dataset.value;
-                document.getElementById('input-mileage').value = selectedMileage.dataset.value;
-
-                document.getElementById("quiz-step2").classList.add("d-none");
-                document.getElementById("quiz-step3").classList.remove("d-none");
+                    // move to next step
+                    document.getElementById("quiz-step2").classList.add("d-none");
+                    document.getElementById("quiz-step3").classList.remove("d-none");
+                });
             });
 
-            document.getElementById("to-step4").addEventListener("click", function (e) {
+            document.getElementById("back-to-step1").addEventListener("click", function (e) {
                 e.preventDefault();
-                const selectedWarranty = document.querySelector('.warranty-urgency-opt1.selected');
+                document.getElementById("quiz-step2").classList.add("d-none");
+                document.getElementById("quiz-step1").classList.remove("d-none");
+            });
 
-                if (!selectedWarranty) {
-                    alert("Please select your warranty preference.");
-                    return;
-                }
+            const warrantyOptions = document.querySelectorAll('.warranty-urgency-opt1');
+            warrantyOptions.forEach(button => {
+                button.addEventListener('click', () => {
+                    // remove previous selection
+                    warrantyOptions.forEach(btn => btn.classList.remove('selected'));
+                    button.classList.add('selected');
 
-                window.carData = window.carData || {};
-                window.carData.warranty = selectedWarranty.dataset.value;
-                document.getElementById('warranty').value = selectedWarranty.dataset.value;
+                    // save data
+                    window.carData = window.carData || {};
+                    window.carData.warranty = button.dataset.value;
+                    document.getElementById('warranty').value = button.dataset.value;
 
+                    // go to next step
+                    document.getElementById("quiz-step3").classList.add("d-none");
+                    document.getElementById("quiz-step4").classList.remove("d-none");
+                });
+            });
+
+            document.getElementById("back-to-step2").addEventListener("click", function (e) {
+                e.preventDefault();
                 document.getElementById("quiz-step3").classList.add("d-none");
-                document.getElementById("quiz-step4").classList.remove("d-none");
+                document.getElementById("quiz-step2").classList.remove("d-none");
             });
 
             document.getElementById("to-step5").addEventListener("click", function (e) {
@@ -2006,6 +2034,13 @@
                 }, 2700);
             });
 
+            document.getElementById("back-to-step3").addEventListener("click", function (e) {
+                e.preventDefault();
+                document.getElementById("quiz-step4").classList.add("d-none");
+                document.getElementById("quiz-step3").classList.remove("d-none");
+            });
+
+
             document.getElementById("to-step6").addEventListener("click", function (e) {
                 e.preventDefault();
                 const zip = document.getElementById("user-zip").value.trim();
@@ -2020,6 +2055,12 @@
 
                 document.getElementById("quiz-step5").classList.add("d-none");
                 document.getElementById("quiz-step6").classList.remove("d-none");
+            });
+
+            document.getElementById("back-to-step4").addEventListener("click", function (e) {
+                e.preventDefault();
+                document.getElementById("quiz-step5").classList.add("d-none");
+                document.getElementById("quiz-step4").classList.remove("d-none");
             });
 
             document.getElementById("to-step7").addEventListener("click", function (e) {
@@ -2038,6 +2079,12 @@
                 document.getElementById("quiz-step7").classList.remove("d-none");
             });
 
+            document.getElementById("back-to-step5").addEventListener("click", function (e) {
+                e.preventDefault();
+                document.getElementById("quiz-step6").classList.add("d-none");
+                document.getElementById("quiz-step5").classList.remove("d-none");
+            });
+
             document.getElementById("to-step8").addEventListener("click", function (e) {
                 e.preventDefault();
                 const name = document.getElementById("user-name").value.trim();
@@ -2054,20 +2101,10 @@
                 document.getElementById("quiz-step8").classList.remove("d-none");
             });
 
-            const mileOptions = document.querySelectorAll('.mile-opt1');
-            mileOptions.forEach(button => {
-                button.addEventListener('click', () => {
-                    mileOptions.forEach(btn => btn.classList.remove('selected'));
-                    button.classList.add('selected');
-                });
-            });
-
-            const warrantyOptions = document.querySelectorAll('.warranty-urgency-opt1');
-            warrantyOptions.forEach(button => {
-                button.addEventListener('click', () => {
-                    warrantyOptions.forEach(btn => btn.classList.remove('selected'));
-                    button.classList.add('selected');
-                });
+            document.getElementById("back-to-step6").addEventListener("click", function (e) {
+                e.preventDefault();
+                document.getElementById("quiz-step7").classList.add("d-none");
+                document.getElementById("quiz-step6").classList.remove("d-none");
             });
 
             const finalButton = document.getElementById("to-card") || document.getElementById("to-final");
@@ -2087,6 +2124,13 @@
                     submitFormData();
                 });
             }
+
+            document.getElementById("back-to-step7").addEventListener("click", function (e) {
+                e.preventDefault();
+                document.getElementById("quiz-step8").classList.add("d-none");
+                document.getElementById("quiz-step7").classList.remove("d-none");
+            });
+
         });
     </script>
 
@@ -2182,8 +2226,7 @@
                         <div class="card-header">
                             <div class="logo-section">
                                 <div class="logo">
-                                    <a href="https://www.chaiz.com/"
-                                        target="_blank" rel="noopener noreferrer">
+                                    <a href="https://www.chaiz.com/" target="_blank" rel="noopener noreferrer">
                                         <img src="/img/chaiz.png" alt="">
                                     </a>
                                 </div>
@@ -2255,8 +2298,7 @@
                     <div class="card-header">
                         <div class="logo-section">
                             <div class="logo">
-                                <a href="https://americandreamautoprotect.com/" target="_blank"
-                                    rel="noopener noreferrer">
+                                <a href="https://americandreamautoprotect.com/" target="_blank" rel="noopener noreferrer">
                                     <img src="/img/american-dream.png" alt="">
                                 </a>
                             </div>
@@ -2323,8 +2365,7 @@
                     <div class="card-header">
                         <div class="logo-section">
                             <div class="logo">
-                                <a href="https://omegaautocare.com/"
-                                    target="_blank" rel="noopener noreferrer">
+                                <a href="https://omegaautocare.com/" target="_blank" rel="noopener noreferrer">
                                     <img src="/img/omega.png" alt="">
                                 </a>
                             </div>
@@ -2384,8 +2425,7 @@
                     <div class="card-header">
                         <div class="logo-section">
                             <div class="logo">
-                                <a href="https://www.northamericanautocare.co/"
-                                    target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.northamericanautocare.co/" target="_blank" rel="noopener noreferrer">
                                     <img src="/img/naac.png" alt="">
                                 </a>
                             </div>
