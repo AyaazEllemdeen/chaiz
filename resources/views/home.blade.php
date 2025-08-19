@@ -2477,6 +2477,100 @@
         </div>
     </section>
 
+    <section id="warranty-section" class="warranty-section mt-5">
+        <div class="container">
+            <div class="warranty-content">
+                <h1 class="warranty-title">Is an extended warranty worth it?</h1>
+                <p class="warranty-description">
+                    That really depends on the car and the driver. If you’re someone who trades cars every couple of years,
+                    you probably won’t get your money’s worth. But if you plan on keeping your ride for a while, an extended
+                    warranty can be a lifesaver.</p>
+                <p class="warranty-description">
+                    Think of it like health insurance for your car. You hope you don’t need it, but when something big goes
+                    wrong, it can save you from a bill that wipes out your savings. Modern cars are packed with electronics
+                    and sensors. A single repair on one of those systems can cost more than the warranty itself.</p>
+
+                <h1 class="warranty-title">How long does a car warranty last?</h1>
+                <p class="warranty-description">
+                    Most new cars come with a warranty that lasts three years or 36,000 miles. Some brands, like Hyundai and
+                    Kia, give you longer coverage on the powertrain, sometimes as much as ten years or 100,000 miles.
+                </p>
+                <p class="warranty-description">
+                    Once that factory coverage ends, you’re on your own unless you’ve picked up an extended plan. Extended
+                    warranties can add several more years of protection, depending on the provider and the level of coverage
+                    you choose.
+                </p>
+
+                <h1 class="warranty-title">Types of warranties</h1>
+
+                <p>Car warranties aren’t one-size-fits-all. Some plans cover only the essentials, while others practically
+                    babysit your car. The right choice really depends on how much risk you’re comfortable with and how much
+                    you want to spend. Let’s break it down in plain English:</p>
+
+                <ul class="warranty-list">
+                    <li><strong>Powertrain warranty:</strong> This is the “big stuff” warranty. It takes care of the engine,
+                        transmission, and the parts that keep the car moving. It won’t save you from smaller repair bills,
+                        but it covers the most expensive problems you could face.</li>
+                    <li><strong>Bumper-to-bumper warranty:</strong> This is the gold standard. It covers almost everything
+                        from your electronics to your A/C. Of course, there are always exclusions, but if you want maximum
+                        peace of mind, this is the one to look at.</li>
+                    <li><strong>Named component warranty:</strong> This one is more selective. Instead of covering nearly
+                        everything, it lists out specific parts that are protected. It’s a good fit if you know what systems
+                        you want covered and don’t care about the rest.</li>
+                    <li><strong>Wrap coverage:</strong> Think of this as the “gap filler.” If your powertrain is still under
+                        factory warranty, a wrap plan can extend coverage to everything else. It rounds out your protection
+                        without overlapping what you already have.</li>
+                    <li><strong>Drivetrain warranty:</strong> Sounds a lot like powertrain, right? The difference is it
+                        usually skips the engine. It focuses on the parts that send power to the wheels, like the
+                        transmission and axles.</li>
+                </ul>
+
+                <p>So which should you pick? If you’re driving an older car, a simple powertrain plan might be enough to
+                    save you from a nightmare repair bill. If you’ve got a newer or luxury car, bumper-to-bumper or wrap
+                    coverage is usually the smarter move.</p>
+
+
+                <h1 class="warranty-title">Car warranty for luxury vehicles</h1>
+                <p class="warranty-description">
+                    Luxury cars are incredible to drive, but they can be brutal on your wallet when something breaks. A
+                    simple repair on a Mercedes, BMW, or Audi can cost more than fixing an entire economy car.
+                </p>
+                <p class="warranty-description">
+                    That’s why a car warranty for luxury vehicles is worth looking into. These plans often cover the pricey
+                    tech that makes high-end cars so special, like adaptive suspensions, advanced safety systems, or digital
+                    dashboards. Yes, the warranties cost more, but so do the repairs. If you’re driving a luxury car,
+                    extended coverage isn’t just nice to have. It can protect you from financial shock when something goes
+                    wrong.
+                </p>
+
+                <h1 class="warranty-title">Extended car warranty cost</h1>
+                <p class="warranty-description">
+                    The price of an extended warranty is all over the place. On average, you’re looking at somewhere between
+                    $1,500 and $4,000. The price is higher if you own an older car or a luxury vehicle.
+                </p>
+                <p class="warranty-description">
+                    What you pay depends on the make and age of your car, the type of coverage you choose, the deductible,
+                    and whether you’re buying through a dealer or a third-party provider. Some plans also include perks like
+                    roadside assistance or rental car coverage. Those extras don’t sound exciting until you’re stuck on the
+                    side of the road and suddenly truly grateful you have them.
+                </p>
+
+                <h1 class="warranty-title">Used automobile warranties</h1>
+                <p class="warranty-description">
+                    If you’re buying used, you still have options. Used automobile warranties are built for pre-owned cars
+                    that don’t have factory coverage anymore. They can help cover things like transmission repairs or
+                    electrical failures, which are the kinds of surprises no one wants to pay for out of pocket.
+                </p>
+                <p class="warranty-description">
+                    Some dealers include a short warranty with certified pre-owned cars, but if you’re buying privately, a
+                    third-party warranty is usually your best bet. Keep in mind that not every car qualifies. Ancient or
+                    high-mileage cars might be excluded, so check before you buy.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
     <script>
         document.querySelectorAll(".more-btn").forEach(btn => {
             btn.addEventListener("click", function () {
