@@ -2480,7 +2480,7 @@
     <section id="warranty-section" class="warranty-section mt-5">
         <div class="container">
             <div class="warranty-content">
-                <h1 class="warranty-title">Is an extended warranty worth it?</h1>
+                <h2 class="warranty-title">Is an extended warranty worth it?</h2>
                 <p class="warranty-description">
                     That really depends on the car and the driver. If you’re someone who trades cars every couple of years,
                     you probably won’t get your money’s worth. But if you plan on keeping your ride for a while, an extended
@@ -2490,7 +2490,7 @@
                     wrong, it can save you from a bill that wipes out your savings. Modern cars are packed with electronics
                     and sensors. A single repair on one of those systems can cost more than the warranty itself.</p>
 
-                <h1 class="warranty-title">How long does a car warranty last?</h1>
+                <h2 class="warranty-title">How long does a car warranty last?</h2>
                 <p class="warranty-description">
                     Most new cars come with a warranty that lasts three years or 36,000 miles. Some brands, like Hyundai and
                     Kia, give you longer coverage on the powertrain, sometimes as much as ten years or 100,000 miles.
@@ -2501,7 +2501,7 @@
                     you choose.
                 </p>
 
-                <h1 class="warranty-title">Types of warranties</h1>
+                <h2 class="warranty-title">Types of warranties</h2>
 
                 <p>Car warranties aren’t one-size-fits-all. Some plans cover only the essentials, while others practically
                     babysit your car. The right choice really depends on how much risk you’re comfortable with and how much
@@ -2530,7 +2530,7 @@
                     coverage is usually the smarter move.</p>
 
 
-                <h1 class="warranty-title">Car warranty for luxury vehicles</h1>
+                <h2 class="warranty-title">Car warranty for luxury vehicles</h2>
                 <p class="warranty-description">
                     Luxury cars are incredible to drive, but they can be brutal on your wallet when something breaks. A
                     simple repair on a Mercedes, BMW, or Audi can cost more than fixing an entire economy car.
@@ -2543,7 +2543,7 @@
                     wrong.
                 </p>
 
-                <h1 class="warranty-title">Extended car warranty cost</h1>
+                <h2 class="warranty-title">Extended car warranty cost</h2>
                 <p class="warranty-description">
                     The price of an extended warranty is all over the place. On average, you’re looking at somewhere between
                     $1,500 and $4,000. The price is higher if you own an older car or a luxury vehicle.
@@ -2555,7 +2555,7 @@
                     side of the road and suddenly truly grateful you have them.
                 </p>
 
-                <h1 class="warranty-title">Used automobile warranties</h1>
+                <h2 class="warranty-title">Used automobile warranties</h2>
                 <p class="warranty-description">
                     If you’re buying used, you still have options. Used automobile warranties are built for pre-owned cars
                     that don’t have factory coverage anymore. They can help cover things like transmission repairs or
