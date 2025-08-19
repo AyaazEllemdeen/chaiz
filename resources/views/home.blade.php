@@ -131,8 +131,8 @@
                             <button type="button" class="mile-opt1" data-value=">200000">More than 200k</button>
                         </div>
                         <div class="step-buttons">
-                            <button id="to-step3" class="to-step-btn">Continue</button>
                             <button id="back-to-step1" class="to-step-btn">Back</button>
+                            <button id="to-step3" class="to-step-btn">Continue</button>
                         </div>
                         <input type="hidden" name="car_mileage" id="input-mileage" value="">
                     </div>
@@ -148,8 +148,8 @@
                             <button type="button" class="warranty-urgency-opt1" data-value="Unsure">Unsure</button>
                         </div>
                         <div class="step-buttons">
-                            <button id="to-step4" class="to-step-btn">Continue</button>
                             <button id="back-to-step2" class="to-step-btn">Back</button>
+                            <button id="to-step4" class="to-step-btn">Continue</button>
                         </div>
                         <input type="hidden" name="warranty" id="warranty" value="">
                     </div>
@@ -211,8 +211,8 @@
                             <option value="WY">Wyoming</option>
                         </select>
                         <div class="step-buttons">
-                            <button id="to-step5" class="to-step-btn">Continue</button>
                             <button id="back-to-step3" class="to-step-btn">Back</button>
+                            <button id="to-step5" class="to-step-btn">Continue</button>
                         </div>
                     </div>
 
@@ -232,8 +232,8 @@
 
                         <div class="step-buttons-wrapper">
                             <div class="step-buttons">
-                                <button id="to-step6" class="to-step-btn">Continue</button>
                                 <button id="back-to-step4" class="to-step-btn">Back</button>
+                                <button id="to-step6" class="to-step-btn">Continue</button>
                             </div>
 
                             <div class="skip-section">
@@ -254,8 +254,8 @@
 
                         <div class="step-buttons-wrapper">
                             <div class="step-buttons">
-                                <button id="to-step7" class="to-step-btn">Continue</button>
                                 <button id="back-to-step5" class="to-step-btn">Back</button>
+                                <button id="to-step7" class="to-step-btn">Continue</button>
                             </div>
 
                             <div class="skip-section">
@@ -275,8 +275,8 @@
 
                         <div class="step-buttons-wrapper">
                             <div class="step-buttons">
-                                <button id="to-step8" class="to-step-btn">Continue</button>
                                 <button id="back-to-step6" class="to-step-btn">Back</button>
+                                <button id="to-step8" class="to-step-btn">Continue</button>
                             </div>
 
                             <div class="skip-section">
@@ -2124,7 +2124,7 @@
                     submitFormData();
                 });
             }
-
+            
             document.getElementById("back-to-step7").addEventListener("click", function (e) {
                 e.preventDefault();
                 document.getElementById("quiz-step8").classList.add("d-none");
