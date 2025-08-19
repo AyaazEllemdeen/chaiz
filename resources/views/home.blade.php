@@ -8,7 +8,7 @@
 
         <div class="hero-text-overlay py-5">
             <div class="container text-white">
-                <p class="quiz-heading">Compare car warranties with confidence</p>
+                <p class="quiz-heading">Compare Car Warranties With Confidence</p>
                 <p class="quiz-subtext">Take a short quiz to find the best extended auto warranty for your vehicle</p>
 
                 <!-- Quiz starts directly below text -->
