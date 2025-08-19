@@ -305,7 +305,7 @@ body {
 .stars {
     color: #fbbf24;
     font-size: 18px;
-    margin: 5px 0;
+    margin: 0px 0;
 }
 
 .cta-section {
@@ -324,11 +324,12 @@ body {
     border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s, box-shadow 0.3s;
     width: 150px;
-    text-decoration: none; /* removes underline */
-    display: inline-block; /* ensures padding works properly */
-    text-align: center; /* centers text inside if needed */
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* subtle shadow */
 }
 
 .get-quote-btn:hover {
@@ -418,14 +419,50 @@ body {
     cursor: pointer;
     transition: all 0.3s;
     width: 150px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* subtle shadow */
 }
 
 .phone-btn:hover {
     background: #000000;
     color: white;
 }
-
 @media (max-width: 768px) {
+    .service-card {
+        position: relative;
+    }
+
+    /* Rating floating in top-right corner */
+    .rating-section {
+        position: absolute;
+        top: 2px;
+        right: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 2px; /* reduced gap between score and stars */
+        padding: 0;
+        background: none;
+        box-shadow: none;
+        border-radius: 0;
+        z-index: 10;
+    }
+
+    .rating-section .rating-score {
+        font-size: 20px;
+    }
+
+    .rating-section .stars {
+        font-size: 14px;
+        line-height: 1;
+    }
+
+    /* Ensure rating doesn't appear in its original place */
+    .logo-section .rating-section {
+        order: unset;
+    }
+
+    /* Card structure */
     .service-card > .card-header,
     .service-card > .top-rated-ribbon,
     .service-card > .more-btn {
@@ -438,15 +475,17 @@ body {
     }
 
     .card-body-row .description {
-        width: 100%; /* fit the container */
-        box-sizing: border-box; /* include padding in width */
-        padding: 10px; /* optional: give some space */
-        text-align: center; /* center text on mobile */
-        word-wrap: break-word; /* prevent overflow */
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        text-align: center;
+        word-wrap: break-word;
     }
+
     .description {
-    font-weight: normal;
+        font-weight: normal;
     }
+
     .card-body-row.active {
         display: flex;
         flex-direction: column;
@@ -467,7 +506,7 @@ body {
         font-weight: bold;
         margin-top: 10px;
         box-sizing: border-box;
-        order: 4; /* push to bottom */
+        order: 4;
     }
 
     .card-header {
@@ -478,10 +517,10 @@ body {
         align-items: center;
     }
 
-    /* Logo + rating side by side */
+    /* Logo + promo side by side */
     .logo-section {
         display: flex;
-        flex-direction: row; /* side by side */
+        flex-direction: row;
         justify-content: center;
         align-items: center;
         gap: 15px;
@@ -497,22 +536,7 @@ body {
 
     .logo img {
         width: 100px;
-        height: auto; /* keep aspect ratio */
-    }
-
-    .rating-section .rating-score {
-        font-size: 25px; /* smaller on mobile */
-    }
-
-    .rating-section .stars {
-        font-size: 16px; /* optional: make stars smaller too */
-    }
-    .rating-section {
-        display: flex;
-        flex-direction: column; /* stars under rating number */
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
+        height: auto;
     }
 
     /* Buttons under logo + rating */
