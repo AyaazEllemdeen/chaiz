@@ -424,32 +424,39 @@ body {
     background: #000000;
     color: white;
 }
+
 @media (max-width: 768px) {
-    /* Show only header, ribbon, and more button */
     .service-card > .card-header,
     .service-card > .top-rated-ribbon,
     .service-card > .more-btn {
         display: block;
     }
 
-    /* Hide everything else by default */
     .service-card > .card-body-row,
     .service-card > .divider-line {
         display: none;
     }
 
-    /* Show card-body when active */
+    .card-body-row .description {
+        width: 100%; /* fit the container */
+        box-sizing: border-box; /* include padding in width */
+        padding: 10px; /* optional: give some space */
+        text-align: center; /* center text on mobile */
+        word-wrap: break-word; /* prevent overflow */
+    }
+    .description {
+    font-weight: normal;
+    }
     .card-body-row.active {
         display: flex;
         flex-direction: column;
-        align-items: center; /* center horizontally */
-        text-align: center; /* center text */
+        align-items: center;
+        text-align: center;
         padding: 15px;
         box-sizing: border-box;
         background: #fff;
     }
 
-    /* Style the + More button */
     .more-btn {
         display: block;
         width: 100%;
@@ -460,78 +467,87 @@ body {
         font-weight: bold;
         margin-top: 10px;
         box-sizing: border-box;
+        order: 4; /* push to bottom */
     }
 
     .card-header {
         padding-bottom: 20px;
         border-bottom: 1px solid #ddd;
-    }
-
-    .logo-section {
-        width: 100%;
-        justify-content: space-between;
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        flex-wrap: wrap;
     }
 
+    /* Logo + rating side by side */
+    .logo-section {
+        display: flex;
+        flex-direction: row; /* side by side */
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        flex-wrap: wrap;
+        order: 1;
+        width: 100%;
+    }
+
+    .logo {
+        width: 130px;
+        height: 130px;
+    }
+
+    .logo img {
+        width: 100px;
+        height: auto; /* keep aspect ratio */
+    }
+
+    .rating-section .rating-score {
+        font-size: 25px; /* smaller on mobile */
+    }
+
+    .rating-section .stars {
+        font-size: 16px; /* optional: make stars smaller too */
+    }
+    .rating-section {
+        display: flex;
+        flex-direction: column; /* stars under rating number */
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    /* Buttons under logo + rating */
+    .cta-section {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+        width: 100%;
+        order: 2;
+    }
+
+    .get-quote-btn,
+    .phone-btn {
+        width: 150px;
+    }
+
+    /* Promo badge under buttons */
     .promo-badge,
     .chaiz-promo-badge {
-        order: 3;
         padding: 6px 12px;
         font-size: 16px;
         font-weight: 600;
         text-align: center;
-        margin: 0 auto;
-        display: flex;
-        color: #a855f7;
-        gap: 6px;
-    }
-
-    .logo {
         display: flex;
         justify-content: center;
-        align-items: center;
-        width: 130px;
-        height: 130px;
-        margin: 0 auto;
-    }
-
-    .cta-section {
-        width: 100%;
+        color: #000;
+        gap: 6px;
         margin-top: 10px;
-    }
-
-    .get-quote-btn {
         width: 100%;
-    }
-
-    /* Ensure description and features stay contained */
-    .card-body-row .description {
-        margin: 0 0 10px 0;
-        word-break: break-word;
-        overflow-wrap: break-word;
-        max-width: 100%;
-    }
-
-    .card-body-row .features-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        align-items: center; /* center each feature */
-        width: 100%;
-    }
-
-    .card-body-row .feature {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        justify-content: center; /* center checkmark + text */
-        width: 100%;
-        word-break: break-word;
+        order: 3;
     }
 }
 
-/* Hide the + More button on desktop */
 @media (min-width: 769px) {
     .more-btn {
         display: none;
