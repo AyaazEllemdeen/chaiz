@@ -9,8 +9,7 @@
         <div class="hero-text-overlay py-5">
             <div class="container text-white">
                 <p class="quiz-heading">Compare car warranties with confidence</p>
-                <p class="quiz-subtext">Every car is different. Enter your details and see real car warranty options,
-                    coverage plans, and protection that fit your vehicle.</p>
+                <p class="quiz-subtext">Take a short quiz to find the best extended auto warranty for your vehicle</p>
 
                 <!-- Quiz starts directly below text -->
                 <div class="quiz-content-box mt-4">
@@ -132,7 +131,7 @@
                         </div>
                         <div class="step-buttons">
                             <button id="back-to-step1" class="to-step-btn">Back</button>
-                            <button id="to-step3" class="to-step-btn">Continue</button>
+                            <!-- <button id="to-step3" class="to-step-btn">Continue</button> -->
                         </div>
                         <input type="hidden" name="car_mileage" id="input-mileage" value="">
                     </div>
@@ -149,7 +148,7 @@
                         </div>
                         <div class="step-buttons">
                             <button id="back-to-step2" class="to-step-btn">Back</button>
-                            <button id="to-step4" class="to-step-btn">Continue</button>
+                            <!-- <button id="to-step4" class="to-step-btn">Continue</button> -->
                         </div>
                         <input type="hidden" name="warranty" id="warranty" value="">
                     </div>
@@ -686,7 +685,7 @@
                         finalButton.textContent = originalText;
                     });
             }
-            
+
             function showSuccessModal(responseData) {
                 if (window.chaizSkipPressed) {
                     // Toggle visibility of sections
@@ -1962,18 +1961,18 @@
             const mileOptions = document.querySelectorAll('.mile-opt1');
             mileOptions.forEach(button => {
                 button.addEventListener('click', () => {
-                    // remove selected state from others
                     mileOptions.forEach(btn => btn.classList.remove('selected'));
                     button.classList.add('selected');
 
-                    // store data
                     window.carData = window.carData || {};
                     window.carData.mileage = button.dataset.value;
                     document.getElementById('input-mileage').value = button.dataset.value;
 
-                    // move to next step
-                    document.getElementById("quiz-step2").classList.add("d-none");
-                    document.getElementById("quiz-step3").classList.remove("d-none");
+                    // small delay so user can see yellow highlight before moving on
+                    setTimeout(() => {
+                        document.getElementById("quiz-step2").classList.add("d-none");
+                        document.getElementById("quiz-step3").classList.remove("d-none");
+                    }, 400); // 200ms delay
                 });
             });
 
@@ -1995,9 +1994,11 @@
                     window.carData.warranty = button.dataset.value;
                     document.getElementById('warranty').value = button.dataset.value;
 
-                    // go to next step
-                    document.getElementById("quiz-step3").classList.add("d-none");
-                    document.getElementById("quiz-step4").classList.remove("d-none");
+                    // small delay so user can see yellow highlight
+                    setTimeout(() => {
+                        document.getElementById("quiz-step3").classList.add("d-none");
+                        document.getElementById("quiz-step4").classList.remove("d-none");
+                    }, 400); // 200ms delay
                 });
             });
 
