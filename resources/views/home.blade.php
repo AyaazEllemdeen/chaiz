@@ -626,57 +626,51 @@
                     return;
                 }
 
-                const submitUrl = '/lead-submit';
+                // Send to both endpoints
+                const endpoints = ['/lead-submit', '/lead-submit-db'];
 
-                fetch(submitUrl, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
-                    }
-                })
-                    .then(response => {
-                        console.log('Response status:', response.status);
-                        console.log('Response headers:', response.headers);
-
-                        const contentType = response.headers.get('content-type');
-
-                        if (response.status === 422) {
-                            return response.json().then(data => {
-                                throw { status: 422, data: data };
-                            });
-                        }
-
-                        if (!response.ok) {
-                            return response.text().then(text => {
-                                throw new Error(`HTTP ${response.status}: ${text}`);
-                            });
-                        }
-
-                        if (contentType && contentType.includes('application/json')) {
-                            return response.json();
-                        } else {
-                            return { success: true, redirect: response.url };
-                        }
+                Promise.all(endpoints.map(url =>
+                    fetch(url, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'X-Requested-With': 'XMLHttpRequest' }
                     })
-                    .then(data => {
-                        console.log('Success response:', data);
-                        document.getElementById('car-quiz').classList.remove('show');
-                        showSuccessModal(data);
+                        .then(response => {
+                            console.log(`Response from ${url}:`, response.status);
+                            const contentType = response.headers.get('content-type');
 
-                        // ✅ Push custom event to GTM
+                            if (response.status === 422) {
+                                return response.json().then(data => { throw { status: 422, data, url }; });
+                            }
+
+                            if (!response.ok) {
+                                return response.text().then(text => { throw new Error(`HTTP ${response.status}: ${text}`); });
+                            }
+
+                            if (contentType && contentType.includes('application/json')) {
+                                return response.json();
+                            } else {
+                                return { success: true, redirect: response.url };
+                            }
+                        })
+                ))
+                    .then(results => {
+                        console.log('Both submissions succeeded:', results);
+                        document.getElementById('car-quiz').classList.remove('show');
+                        showSuccessModal(results[0]); // show modal using first response
+
                         if (window.dataLayer) {
                             window.dataLayer.push({
                                 event: 'leadSubmission',
-                                leadDestination: data.destination || 'Unknown'
+                                leadDestination: results[0].destination || 'Unknown'
                             });
                         }
                     })
                     .catch(error => {
-                        console.error('Full error:', error);
+                        console.error('Submission error:', error);
 
                         if (error.status === 422 && error.data && error.data.errors) {
-                            let errorMessage = 'Please fix the following errors:\n';
+                            let errorMessage = `Validation error on ${error.url}:\n`;
                             Object.keys(error.data.errors).forEach(key => {
                                 errorMessage += `- ${error.data.errors[key][0]}\n`;
                             });
@@ -684,7 +678,7 @@
                         } else if (error.message) {
                             alert('Error: ' + error.message);
                         } else {
-                            alert('Error: Failed to submit your information. Please check the console for details and try again.');
+                            alert('Error: Failed to submit your information. Check console for details.');
                         }
                     })
                     .finally(() => {
@@ -692,7 +686,7 @@
                         finalButton.textContent = originalText;
                     });
             }
-
+            
             function showSuccessModal(responseData) {
                 if (window.chaizSkipPressed) {
                     // Toggle visibility of sections

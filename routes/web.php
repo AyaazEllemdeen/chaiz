@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LeadSubmissionController;
+use App\Http\Controllers\LeadController;
+
+Route::post('/lead-submit-db', [LeadController::class, 'submit']);
 
 Route::post('/lead-submit', [LeadSubmissionController::class, 'store'])->name('lead.submit');
 
