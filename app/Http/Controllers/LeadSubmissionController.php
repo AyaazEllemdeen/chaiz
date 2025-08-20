@@ -100,20 +100,7 @@ class LeadSubmissionController extends Controller
                     'company.name' => "Null",
                 ];
 
-                // 🔹 Log what we're sending to LeadConduit
-                Log::info('Sending lead to LeadConduit', [
-                    'url' => $fallbackUrl,
-                    'payload' => $leadConduitPayload,
-                ]);
-
                 $fallbackResponse = Http::asForm()->post($fallbackUrl, $leadConduitPayload);
-
-                // 🔹 Log the raw response from LeadConduit
-                Log::info('LeadConduit response', [
-                    'status' => $fallbackResponse->status(),
-                    'body' => $fallbackResponse->body(),
-                ]);
-
 
                 if ($fallbackResponse->successful()) {
                     // Lead successfully sent to LeadConduit (American Dream)
