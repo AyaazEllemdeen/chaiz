@@ -2142,9 +2142,7 @@
                     <div class="card-header">
                         <div class="logo-section">
                             <div class="logo">
-                                <a href="https://www.endurancewarranty.com/" target="_blank" rel="noopener noreferrer">
-                                    <img src="/img/1.png" alt="">
-                                </a>
+                                <img src="/img/1.png" alt="">
                             </div>
                             <div class="promo-badge">
                                 $300 off any new plan!
@@ -2221,9 +2219,7 @@
                         <div class="card-header">
                             <div class="logo-section">
                                 <div class="logo">
-                                    <a href="https://www.chaiz.com/" target="_blank" rel="noopener noreferrer">
-                                        <img src="/img/chaiz.png" alt="">
-                                    </a>
+                                    <img src="/img/chaiz.png" alt="">
                                 </div>
                                 <div class="chaiz-promo-badge">
                                     Buy directly online — No Email or Phone needed
@@ -2293,9 +2289,7 @@
                     <div class="card-header">
                         <div class="logo-section">
                             <div class="logo">
-                                <a href="https://americandreamautoprotect.com/" target="_blank" rel="noopener noreferrer">
-                                    <img src="/img/american-dream.png" alt="">
-                                </a>
+                                <img src="/img/american-dream.png" alt="">
                             </div>
                             <div class="promo-badge">
                                 $350 off + 3 months free!
@@ -2360,9 +2354,7 @@
                     <div class="card-header">
                         <div class="logo-section">
                             <div class="logo">
-                                <a href="https://omegaautocare.com/" target="_blank" rel="noopener noreferrer">
-                                    <img src="/img/omega.png" alt="">
-                                </a>
+                                <img src="/img/omega.png" alt="">
                             </div>
                             <div class="promo-badge"></div>
                             <div class="rating-section">
@@ -2419,9 +2411,7 @@
                     <div class="card-header">
                         <div class="logo-section">
                             <div class="logo">
-                                <a href="https://www.northamericanautocare.co/" target="_blank" rel="noopener noreferrer">
-                                    <img src="/img/naac.png" alt="">
-                                </a>
+                                <img src="/img/naac.png" alt="">
                             </div>
                             <div class="promo-badge"></div>
                             <div class="rating-section">
