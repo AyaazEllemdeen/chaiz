@@ -153,7 +153,6 @@
                         <input type="hidden" name="warranty" id="warranty" value="">
                     </div>
 
-
                     <div id="quiz-step4" class="d-none">
                         <h3 class="modal-question">What state would you like coverage in?</h3>
                         <select id="user-state" name="user-state" class="modal-dropdown1" required>
@@ -486,7 +485,6 @@
         </div>
     </div>
 
-
     <style>
         @keyframes spin {
             0% {
@@ -583,7 +581,6 @@
                     startPollingForResults();
                 }
             }
-
 
             function submitFormData() {
                 const finalButton = document.getElementById("to-card") || document.getElementById("to-final");
@@ -761,7 +758,6 @@
                 }
             }
 
-
             function setLeadDestination(destination) {
                 const destinationElements = document.querySelectorAll('.destination-name');
                 if (!destinationElements.length) return;
@@ -870,7 +866,6 @@
 
             const vehicles = [
                 "ACURA 2.3CL",
-
                 "ACURA 3.0CL",
                 "ACURA 3.2CL",
                 "ACURA 3.2TL",
@@ -2128,7 +2123,6 @@
 
         });
     </script>
-
     <!-- quiz modal end -->
 
     <section id="card-section">
@@ -2405,7 +2399,6 @@
                     <button class="more-btn">+ More</button>
                 </div>
 
-
                 <!-- naac card -->
                 <div class="service-card">
                     <div class="card-header">
@@ -2431,7 +2424,6 @@
                             technicians, with readily available parts and potential warranty coverage for added peace of
                             mind.
                         </div>
-
                         <div class="features-grid">
                             <div class="feature">
                                 <span class="checkmark">✓</span>
@@ -2461,8 +2453,6 @@
                     </div>
                     <button class="more-btn">+ More</button>
                 </div>
-
-
             </div>
         </div>
     </section>
@@ -2519,7 +2509,6 @@
                     save you from a nightmare repair bill. If you’ve got a newer or luxury car, bumper-to-bumper or wrap
                     coverage is usually the smarter move.</p>
 
-
                 <h2 class="warranty-title">Car warranty for luxury vehicles</h2>
                 <p class="warranty-description">
                     Luxury cars are incredible to drive, but they can be brutal on your wallet when something breaks. A
@@ -2559,7 +2548,6 @@
             </div>
         </div>
     </section>
-
 
     <script>
         document.querySelectorAll(".more-btn").forEach(btn => {
