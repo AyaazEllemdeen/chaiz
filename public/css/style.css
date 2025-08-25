@@ -1196,6 +1196,7 @@ body {
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
+    color: #010100;
 }
 
 .mile-opt1.selected {
@@ -1211,6 +1212,7 @@ body {
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
+    color: #010100;
 }
 
 .warranty-urgency-opt1.selected {
