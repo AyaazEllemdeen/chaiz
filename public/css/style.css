@@ -497,7 +497,6 @@ body {
     }
 
     .more-btn {
-        -webkit-appearance: none; /* Add this line */
         display: block;
         width: 100%;
         padding: 10px;
@@ -508,7 +507,7 @@ body {
         margin-top: 10px;
         box-sizing: border-box;
         order: 4;
-        color: #000000fa !important;
+        color: #000604;
     }
 
     .card-header {
