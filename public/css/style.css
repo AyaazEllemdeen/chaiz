@@ -1137,6 +1137,21 @@ body {
     border: 1px solid #ffcf4b;
     border-radius: 5px;
     font-size: 1rem;
+
+    /* Force black text everywhere */
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important; /* iPhone Safari fix */
+    background-color: #fff;
+
+    /* Remove iPhone Safari's default blue styling */
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* Ensure option text is also black */
+.modal-dropdown1 option {
+    color: #000 !important;
+    background-color: #fff;
 }
 
 .step-buttons-wrapper {
