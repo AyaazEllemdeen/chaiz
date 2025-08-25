@@ -1666,3 +1666,27 @@ body {
         font-size: 28px;
     }
 }
+/* Force input text color to black on all browsers, including iPhone Safari */
+input,
+textarea,
+select {
+  color: #000 !important;               /* Normal text color */
+  -webkit-text-fill-color: #000 !important; /* Fix for iPhone Safari */
+  -webkit-opacity: 1;
+  opacity: 1;
+}
+
+/* Make sure placeholder text looks consistent */
+input::placeholder,
+textarea::placeholder {
+  color: #888; /* Light gray for placeholders */
+  opacity: 1;  /* Safari sometimes reduces opacity */
+}
+
+/* Fix for Safari autofill turning text blue */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset !important; /* Match your input background */
+  -webkit-text-fill-color: #000 !important;
+}
