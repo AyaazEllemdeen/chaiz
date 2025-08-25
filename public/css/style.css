@@ -1138,21 +1138,33 @@ body {
     border-radius: 5px;
     font-size: 1rem;
 
-    /* Force black text everywhere */
+    /* Force black text */
     color: #000 !important;
-    -webkit-text-fill-color: #000 !important; /* iPhone Safari fix */
-    background-color: #fff;
+    -webkit-text-fill-color: #000 !important;
 
-    /* Remove iPhone Safari's default blue styling */
-    -webkit-appearance: none;
-    appearance: none;
+    /* iPhone-specific fixes */
+    background-color: #fff;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+
+    /* Prevent Safari auto-styling */
+    background-image: none !important;
 }
 
-/* Ensure option text is also black */
+/* Ensure options inside the dropdown are black */
 .modal-dropdown1 option {
     color: #000 !important;
     background-color: #fff;
 }
+
+/* Special hack for iPhone Safari to override native select styles */
+@supports (-webkit-touch-callout: none) {
+    .modal-dropdown1 {
+        color: #000 !important;
+        -webkit-text-fill-color: #000 !important;
+    }
+}
+
 
 .step-buttons-wrapper {
     text-align: center;
