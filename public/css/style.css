@@ -497,6 +497,7 @@ body {
     }
 
     .more-btn {
+        -webkit-appearance: none; /* Add this line */
         display: block;
         width: 100%;
         padding: 10px;
@@ -507,16 +508,7 @@ body {
         margin-top: 10px;
         box-sizing: border-box;
         order: 4;
-
-        /* iPhone / Safari button reset */
-        -webkit-appearance: none;
-        appearance: none;
-
-        /* Force text color */
-        color: #000 !important;
-
-        /* Optional: Remove iOS default rounded corners */
-        border-radius: 0;
+        color: #000000fa !important;
     }
 
     .card-header {
@@ -1137,34 +1129,7 @@ body {
     border: 1px solid #ffcf4b;
     border-radius: 5px;
     font-size: 1rem;
-
-    /* Force black text */
-    color: #000 !important;
-    -webkit-text-fill-color: #000 !important;
-
-    /* iPhone-specific fixes */
-    background-color: #fff;
-    -webkit-appearance: none !important;
-    appearance: none !important;
-
-    /* Prevent Safari auto-styling */
-    background-image: none !important;
 }
-
-/* Ensure options inside the dropdown are black */
-.modal-dropdown1 option {
-    color: #000 !important;
-    background-color: #fff;
-}
-
-/* Special hack for iPhone Safari to override native select styles */
-@supports (-webkit-touch-callout: none) {
-    .modal-dropdown1 {
-        color: #000 !important;
-        -webkit-text-fill-color: #000 !important;
-    }
-}
-
 
 .step-buttons-wrapper {
     text-align: center;
