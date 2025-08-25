@@ -507,7 +507,16 @@ body {
         margin-top: 10px;
         box-sizing: border-box;
         order: 4;
-        color: #000;
+
+        /* iPhone / Safari button reset */
+        -webkit-appearance: none;
+        appearance: none;
+
+        /* Force text color */
+        color: #000 !important;
+
+        /* Optional: Remove iOS default rounded corners */
+        border-radius: 0;
     }
 
     .card-header {
