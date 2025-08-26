@@ -959,7 +959,7 @@ body {
 }
 
 #quiz-left-logo {
-    margin: auto 0; /* Vertical centering */
+    margin: 50px 0 50px 0; 
     text-align: center;
 }
 
