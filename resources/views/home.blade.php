@@ -96,7 +96,7 @@
         <div class="car-quiz-split">
             <div class="car-quiz-left">
                 <div id="quiz-left-logo">
-                    <img src="{{ asset('img/logonew.png') }}" alt="Company Logo" />
+                    <img src="{{ asset('img/logo.png') }}" alt="Company Logo" />
                 </div>
                 <div class="car-quiz-body">
                     <h4 id="quiz-section-heading" class="quiz-section-heading">Vehicle Details</h4>
