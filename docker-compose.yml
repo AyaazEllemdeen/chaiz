@@ -5,8 +5,8 @@ services:
     image: nginx:latest
     restart: always
     ports:
-      - "8081:80"       # Staging HTTP → 8081
-      - "8444:443"      # Staging HTTPS → 8444
+      - "8081:80"       # expose staging HTTP on 8081
+      - "8443:443"      # expose staging HTTPS on 8443
     volumes:
       - .:/var/www/html
       - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
@@ -39,7 +39,7 @@ services:
     networks:
       - chaiz-network
     ports:
-      - "3314:3306"
+      - 3314:3306
 
 volumes:
   chaiz-db-volume:
