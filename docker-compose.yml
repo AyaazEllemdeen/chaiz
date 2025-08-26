@@ -41,7 +41,7 @@ services:
     networks:
       - chaiz-network
     ports:
-      - 3313:3306
+      - 3314:3306
 
 volumes:
   chaiz-db-volume:
