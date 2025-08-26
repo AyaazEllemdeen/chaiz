@@ -1972,20 +1972,30 @@
             const mileOptions = document.querySelectorAll('.mile-opt1');
             mileOptions.forEach(button => {
                 button.addEventListener('click', () => {
+                    // Highlight selected
                     mileOptions.forEach(btn => btn.classList.remove('selected'));
                     button.classList.add('selected');
 
+                    // Store selected value
                     window.carData = window.carData || {};
                     window.carData.mileage = button.dataset.value;
                     document.getElementById('input-mileage').value = button.dataset.value;
 
-                    // small delay so user can see yellow highlight before moving on
+                    // Small delay so user can see yellow highlight
                     setTimeout(() => {
+                        // Move to next step
                         document.getElementById("quiz-step2").classList.add("d-none");
                         document.getElementById("quiz-step3").classList.remove("d-none");
-                    }, 400); // 200ms delay
+
+                        // Simulate pressing the Continue button
+                        const continueBtn = document.getElementById('to-step3');
+                        if (continueBtn) {
+                            continueBtn.click();
+                        }
+                    }, 400);
                 });
             });
+
 
             document.getElementById("back-to-step1").addEventListener("click", function (e) {
                 e.preventDefault();
@@ -1996,20 +2006,27 @@
             const warrantyOptions = document.querySelectorAll('.warranty-urgency-opt1');
             warrantyOptions.forEach(button => {
                 button.addEventListener('click', () => {
-                    // remove previous selection
+                    // Highlight selected
                     warrantyOptions.forEach(btn => btn.classList.remove('selected'));
                     button.classList.add('selected');
 
-                    // save data
+                    // Store selected value
                     window.carData = window.carData || {};
                     window.carData.warranty = button.dataset.value;
                     document.getElementById('warranty').value = button.dataset.value;
 
-                    // small delay so user can see yellow highlight
+                    // Small delay so user can see yellow highlight
                     setTimeout(() => {
+                        // Move to next step
                         document.getElementById("quiz-step3").classList.add("d-none");
                         document.getElementById("quiz-step4").classList.remove("d-none");
-                    }, 400); // 200ms delay
+
+                        // Simulate pressing the Continue button
+                        const continueBtn = document.getElementById('to-step4');
+                        if (continueBtn) {
+                            continueBtn.click();
+                        }
+                    }, 400);
                 });
             });
 
