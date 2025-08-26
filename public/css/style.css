@@ -959,10 +959,16 @@ body {
     overflow: visible; /* Prevent its own scrollbar */
 }
 
-
 #quiz-left-logo {
     margin-top: 30px;
+    margin-bottom: 15px;
     text-align: center;
+}
+
+@media (max-width: 768px) {
+    #quiz-left-logo {
+        margin-bottom: 0; /* Remove space below on mobile */
+    }
 }
 
 #quiz-left-logo img {
@@ -970,7 +976,6 @@ body {
     height: auto;
     display: block;
 }
-
 
 /* Right section */
 .car-quiz-right {
@@ -1122,6 +1127,16 @@ body {
     text-align: center;
 }
 
+.car-quiz-left .car-quiz-body {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); /* darker shadow */
+    border: 2px solid #ffcf4b; /* gold border */
+    max-width: 500px;
+    margin: auto;
+}
+
 .car-quiz-body {
     width: 100%;
     max-width: 500px;
@@ -1211,17 +1226,6 @@ body {
     cursor: pointer;
     color: #010100;
 }
-
-.car-quiz-left .car-quiz-body {
-    background-color: #ffffff; 
-    padding: 30px; 
-    border-radius: 12px; 
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); /* darker shadow */
-    border: 2px solid #ffcf4b; /* gold border */
-    max-width: 500px; 
-    margin: auto; 
-}
-
 
 .mile-opt1.selected {
     background-color: #ffcf4b;
@@ -1331,7 +1335,8 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/><circle cx="20" cy="20" r="1" fill="white" opacity="0.05"/><circle cx="80" cy="30" r="1.5" fill="white" opacity="0.08"/><circle cx="30" cy="80" r="1" fill="white" opacity="0.06"/></svg>') repeat;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/><circle cx="20" cy="20" r="1" fill="white" opacity="0.05"/><circle cx="80" cy="30" r="1.5" fill="white" opacity="0.08"/><circle cx="30" cy="80" r="1" fill="white" opacity="0.06"/></svg>')
+        repeat;
     opacity: 0.3;
 }
 
@@ -1352,7 +1357,6 @@ body {
     width: 50%;
     padding-top: 15px; /* can reduce if using margin above */
 }
-
 
 #search-results {
     position: relative;
