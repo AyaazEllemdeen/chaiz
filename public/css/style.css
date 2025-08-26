@@ -961,12 +961,13 @@ body {
 
 
 #quiz-left-logo {
+    margin-top: 20px;
     margin-bottom: 20px; /* space between logo and card */
     text-align: center;
 }
 
 #quiz-left-logo img {
-    max-width: 150px;
+    max-width: 200px;
     height: auto;
     display: block;
 }
