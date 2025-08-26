@@ -1198,6 +1198,17 @@ body {
     color: #010100;
 }
 
+.car-quiz-left .car-quiz-body {
+    background-color: #ffffff; 
+    padding: 30px; 
+    border-radius: 12px; 
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); /* darker shadow */
+    border: 2px solid #ffcf4b; /* gold border */
+    max-width: 500px; 
+    margin: auto; 
+}
+
+
 .mile-opt1.selected {
     background-color: #ffcf4b;
     color: #000;
