@@ -1619,7 +1619,7 @@ body {
 #quiz-progress-text {
     font-size: 13px;
     font-weight: bold;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 #chaizModal.modal {
