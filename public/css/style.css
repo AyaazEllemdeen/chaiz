@@ -536,7 +536,7 @@ body {
     }
 
     .logo img {
-        width: 130px;
+        width: 180px;
         height: auto;
     }
 
@@ -922,45 +922,89 @@ body {
     }
 }
 
-/* modal quiz */
-.zip-helper-text {
-    background: #fff3cd; /* soft yellow */
-    color: #856404; /* darker yellow/brown text for contrast */
-    font-size: 12px;
-    text-align: center;
-    padding: 10px 15px;
-    border-radius: 6px;
-    margin-bottom: 12px;
+/* Modal Quiz */
+.car-quiz-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+    overflow-y: auto; /* Single scrollbar for entire modal */
 }
-.car-quiz-right {
-    background: #000000;
-    color: white;
+
+.car-quiz-modal.show {
     display: flex;
     flex-direction: column;
-    height: 100%;
+}
+
+/* Split layout */
+.car-quiz-split {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Left section */
+.car-quiz-left {
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Horizontal & vertical centering */
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+#quiz-left-logo {
+    margin: 50px 0 50px 0;
+    text-align: center;
+}
+
+#quiz-left-logo img {
+    max-width: 200px;
+    height: auto;
+    display: block;
+}
+
+.car-quiz-left .car-quiz-body {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    border: 2px solid #ffcf4b;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 700px;
+}
+
+/* Right section */
+.car-quiz-right {
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     padding: 3rem 2rem;
     box-sizing: border-box;
-    overflow-y: auto;
-    min-height: 0; /* important for flex children */
-    width: 75%;
 }
 
 #quiz-right-div {
-    flex: 1; /* allow grow & shrink */
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* vertical + horizontal centering */
+    justify-content: flex-start;
     text-align: center;
     width: 100%;
     margin: 0 auto;
-    padding: 2rem; /* Add some padding for better spacing */
+    padding-top: 2rem;
 }
 
 .car-quiz-right img {
     display: block;
-    margin: 0 auto 1.5rem auto; /* Center the image horizontally */
+    margin: 0 auto 1.5rem;
     max-width: 140px;
     object-fit: contain;
     background: transparent;
@@ -973,8 +1017,19 @@ body {
 #quiz-right-div p {
     text-align: center;
     max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
+}
+
+/* Quiz container */
+.quiz-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
 }
 
 #chaiz-inline-container {
@@ -987,6 +1042,10 @@ body {
     box-sizing: border-box;
     padding: 0 1rem;
     /* No internal scroll here! */
+}
+
+.d-none {
+    display: none;
 }
 
 #search-results-skip {
@@ -1006,23 +1065,7 @@ body {
     overflow: visible !important;
 }
 
-.d-none {
-    display: none;
-}
-
-.car-quiz-modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background-color: #fff;
-    font-family: Arial, sans-serif;
-}
-
-.car-quiz-modal.show {
-    display: flex;
-}
-
+/* Quiz Content Styling */
 .car-quiz-close {
     position: fixed;
     top: 20px;
@@ -1043,34 +1086,20 @@ body {
     border: none;
     font-size: 2rem;
     font-weight: bold;
-    color: #000000;
+    color: #ffcf4b;
     cursor: pointer;
     z-index: 10000;
 }
 
-.car-quiz-split {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    flex-direction: row;
+.zip-helper-text {
+    background: #fff3cd; /* soft yellow */
+    color: #856404; /* darker yellow/brown text for contrast */
+    font-size: 12px;
+    text-align: center;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 12px;
 }
-
-.car-quiz-left,
-.car-quiz-right {
-    padding: 3rem 2rem;
-    overflow-y: auto;
-}
-
-/* Left Side (Yellow) */
-.car-quiz-left {
-    background-color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 25%;
-}
-
-/* Quiz Content Styling */
 
 .loading-container {
     display: flex;
@@ -1107,11 +1136,6 @@ body {
     font-weight: bold;
     margin-bottom: 10px;
     text-align: center;
-}
-
-.car-quiz-body {
-    width: 100%;
-    max-width: 500px;
 }
 
 .modal-question {
@@ -1274,21 +1298,30 @@ body {
 }
 
 .success-modal-content {
-    background: white;
+    background: rgb(0, 0, 0);
     width: 100vw;
     height: 100vh;
     display: flex;
-    overflow: hidden;
+    flex-direction: column; /* top-to-bottom */
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.modal-left-section,
+.modal-right-section {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: visible; /* remove individual scrollbars */
+    height: auto; /* let it expand naturally */
 }
 
 /* Right Grey Section (now on the right) */
 .modal-left-section {
-    background: #a4a9ae;
-    width: 75%;
-    padding: 20px;
+    background: #000000;
     color: white;
     position: relative;
-    overflow-y: auto;
+    height: 100%;
 }
 
 .modal-left-section::before {
@@ -1303,31 +1336,39 @@ body {
     opacity: 0.3;
 }
 
-#search-results {
-    position: relative;
-    z-index: 1;
-    height: 100%;
-    width: 100%;
-}
-
 /* Left Content Section (now on the left) */
 .modal-right-section {
-    width: 25%;
+    width: 100%;
     padding: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-y: auto;
 }
 
 .content-wrapper {
-    margin-top: 10px;
-    width: 100%;
-    margin: 0 auto;
+    margin: 40px auto 0 auto; /* top margin to push content down */
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding-top: 15px;
+    width: 50%;
+    padding-top: 15px; /* can reduce if using margin above */
+}
+
+.success-card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    border: 2px solid #ffcf4b;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 700px;
+    box-sizing: border-box;
+}
+
+#search-results {
+    position: relative;
+    z-index: 1;
+    width: 100%;
 }
 
 .plans-heading {
@@ -1340,12 +1381,13 @@ body {
 
 .success-header {
     text-align: center;
-    margin-top: -77px; /* adjust as needed */
+    margin-top: 0px; /* adjust as needed */
+    font-size: 16px;
 }
 
-.success-header h3 {
+.success-header h2 {
     color: #2c3e50;
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 600;
     margin: 0 0 15px 0;
     line-height: 1.3;
@@ -1500,7 +1542,7 @@ body {
     .success-modal-content {
         flex-direction: column;
         width: 100%;
-        max-height: 90vh; /* slightly less than container to allow padding */
+        max-height: 100vh; /* slightly less than container to allow padding */
         overflow-y: auto;
         padding: 0;
         margin: 0 auto;
@@ -1516,7 +1558,7 @@ body {
     }
 
     .modal-left-section {
-        background: #a4a9ae;
+        background: #000000;
         color: white;
         text-align: center;
         padding-top: 10px;
@@ -1589,7 +1631,7 @@ body {
 #quiz-progress-text {
     font-size: 13px;
     font-weight: bold;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 #chaizModal.modal {

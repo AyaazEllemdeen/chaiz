@@ -91,221 +91,233 @@
     </section>
 
     <!-- quiz modal start -->
-    <!-- Car Quiz Modal -->
     <div id="car-quiz" class="car-quiz-modal">
         <button class="car-quiz-close" onclick="closeModalskip()">×</button>
         <div class="car-quiz-split">
             <div class="car-quiz-left">
-                <div class="car-quiz-body">
-                    <h4 id="quiz-section-heading" class="quiz-section-heading">Vehicle Details</h4>
-                    <div class="quiz-progress-container">
-                        <div class="quiz-progress-bar" id="quiz-progress-bar">
-                            <span id="quiz-progress-text">10%</span>
-                        </div>
+                <div class="quiz-container">
+                    <div id="quiz-left-logo">
+                        <img src="{{ asset('img/logo.png') }}" alt="Company Logo" />
                     </div>
-                    <!-- Step 1: Year, Make, Model -->
-                    <div id="quiz-step1">
-                        <h3 class="modal-question">What is the year, make & model of your vehicle?</h3>
-                        <select id="sel_year" name="sel-year" class="modal-dropdown1">
-                            <option value="">Select Year</option>
-                        </select>
-                        <select id="sel_make" name="sel-make" class="modal-dropdown1">
-                            <option value="">Select Make</option>
-                        </select>
-                        <select id="sel_model" name="sel-model" class="modal-dropdown1">
-                            <option value="">Select Model</option>
-                        </select>
-                        <div class="step-buttons">
-                            <button id="to-step2" class="to-step-btn">Continue</button>
+                    <div class="car-quiz-body">
+                        <h4 id="quiz-section-heading" class="quiz-section-heading">Vehicle Details</h4>
+                        <div class="quiz-progress-container">
+                            <div class="quiz-progress-bar" id="quiz-progress-bar">
+                                <span id="quiz-progress-text">10%</span>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- Step 2: Mileage -->
-                    <div id="quiz-step2" class="d-none">
-                        <h3 class="modal-question">Roughly, how many miles are on the vehicle?</h3>
-                        <div class="options-grid1">
-                            <button type="button" class="mile-opt1" data-value="<100000">Less than 100k</button>
-                            <button type="button" class="mile-opt1" data-value="130000">100-140k</button>
-                            <button type="button" class="mile-opt1" data-value="180000">140-200k</button>
-                            <button type="button" class="mile-opt1" data-value=">200000">More than 200k</button>
-                        </div>
-                        <div class="step-buttons">
-                            <button id="back-to-step1" class="to-step-btn">Back</button>
-                            <!-- <button id="to-step3" class="to-step-btn">Continue</button> -->
-                        </div>
-                        <input type="hidden" name="car_mileage" id="input-mileage" value="">
-                    </div>
-
-                    <div id="quiz-step3" class="d-none">
-                        <h3 class="modal-question">How soon do you want your new auto warranty?</h3>
-                        <div class="options-grid1">
-                            <button type="button" class="warranty-urgency-opt1" data-value="As soon as possible">As soon as
-                                possible</button>
-                            <button type="button" class="warranty-urgency-opt1" data-value="1-2 weeks">1-2 weeks</button>
-                            <button type="button" class="warranty-urgency-opt1" data-value="3-4 weeks">3-4 weeks</button>
-                            <button type="button" class="warranty-urgency-opt1" data-value="4+ weeks">4+ weeks</button>
-                            <button type="button" class="warranty-urgency-opt1" data-value="Unsure">Unsure</button>
-                        </div>
-                        <div class="step-buttons">
-                            <button id="back-to-step2" class="to-step-btn">Back</button>
-                            <!-- <button id="to-step4" class="to-step-btn">Continue</button> -->
-                        </div>
-                        <input type="hidden" name="warranty" id="warranty" value="">
-                    </div>
-
-
-                    <div id="quiz-step4" class="d-none">
-                        <h3 class="modal-question">What state would you like coverage in?</h3>
-                        <select id="user-state" name="user-state" class="modal-dropdown1" required>
-                            <option value="">Select your state</option>
-                            <option value="AL">Alabama</option>
-                            <option value="AK">Alaska</option>
-                            <option value="AZ">Arizona</option>
-                            <option value="AR">Arkansas</option>
-                            <option value="CA">California</option>
-                            <option value="CO">Colorado</option>
-                            <option value="CT">Connecticut</option>
-                            <option value="DE">Delaware</option>
-                            <option value="FL">Florida</option>
-                            <option value="GA">Georgia</option>
-                            <option value="HI">Hawaii</option>
-                            <option value="ID">Idaho</option>
-                            <option value="IL">Illinois</option>
-                            <option value="IN">Indiana</option>
-                            <option value="IA">Iowa</option>
-                            <option value="KS">Kansas</option>
-                            <option value="KY">Kentucky</option>
-                            <option value="LA">Louisiana</option>
-                            <option value="ME">Maine</option>
-                            <option value="MD">Maryland</option>
-                            <option value="MA">Massachusetts</option>
-                            <option value="MI">Michigan</option>
-                            <option value="MN">Minnesota</option>
-                            <option value="MS">Mississippi</option>
-                            <option value="MO">Missouri</option>
-                            <option value="MT">Montana</option>
-                            <option value="NE">Nebraska</option>
-                            <option value="NV">Nevada</option>
-                            <option value="NH">New Hampshire</option>
-                            <option value="NJ">New Jersey</option>
-                            <option value="NM">New Mexico</option>
-                            <option value="NY">New York</option>
-                            <option value="NC">North Carolina</option>
-                            <option value="ND">North Dakota</option>
-                            <option value="OH">Ohio</option>
-                            <option value="OK">Oklahoma</option>
-                            <option value="OR">Oregon</option>
-                            <option value="PA">Pennsylvania</option>
-                            <option value="RI">Rhode Island</option>
-                            <option value="SC">South Carolina</option>
-                            <option value="SD">South Dakota</option>
-                            <option value="TN">Tennessee</option>
-                            <option value="TX">Texas</option>
-                            <option value="UT">Utah</option>
-                            <option value="VT">Vermont</option>
-                            <option value="VA">Virginia</option>
-                            <option value="WA">Washington</option>
-                            <option value="WV">West Virginia</option>
-                            <option value="WI">Wisconsin</option>
-                            <option value="WY">Wyoming</option>
-                        </select>
-                        <div class="step-buttons">
-                            <button id="back-to-step3" class="to-step-btn">Back</button>
-                            <button id="to-step5" class="to-step-btn">Continue</button>
-                        </div>
-                    </div>
-
-                    <div id="quiz-loading" class="d-none">
-                        <div class="loading-container">
-                            <div class="spinner"></div>
-                            <p>Gathering details...</p>
-                        </div>
-                    </div>
-
-                    <div id="quiz-step5" class="d-none">
-                        <p class="zip-helper-text">Your ZIP code ensures quotes are as accurate as possible for your area
-                        </p>
-                        <h3 class="modal-question">What's your ZIP code?</h3>
-                        <input type="text" name="user-zip" id="user-zip" class="modal-dropdown1"
-                            placeholder="Enter your ZIP code" maxlength="5" pattern="\d{5}" inputmode="numeric" required />
-
-                        <div class="step-buttons-wrapper">
+                        <!-- Step 1: Year, Make, Model -->
+                        <div id="quiz-step1">
+                            <h3 class="modal-question">What is the year, make & model of your vehicle?</h3>
+                            <select id="sel_year" name="sel-year" class="modal-dropdown1">
+                                <option value="">Select Year</option>
+                            </select>
+                            <select id="sel_make" name="sel-make" class="modal-dropdown1">
+                                <option value="">Select Make</option>
+                            </select>
+                            <select id="sel_model" name="sel-model" class="modal-dropdown1">
+                                <option value="">Select Model</option>
+                            </select>
                             <div class="step-buttons">
-                                <button id="back-to-step4" class="to-step-btn">Back</button>
-                                <button id="to-step6" class="to-step-btn">Continue</button>
-                            </div>
-
-                            <div class="skip-section">
-                                <p class="skip-message">Don’t want to give us your details?</p>
-                                <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Instant Quote</button>
+                                <button id="to-step2" class="to-step-btn">Continue</button>
                             </div>
                         </div>
-                    </div>
 
-                    <div id="quiz-step6" class="d-none">
-                        <p class="zip-helper-text">
-                            You will receive a copy of your quote via Email. We only pass your Email Address onto your
-                            match.
-                        </p>
-                        <h3 class="modal-question">What's your Email Address?</h3>
-                        <input type="email" name="email" id="user-email" class="modal-dropdown1"
-                            placeholder="Enter your Email" required />
-
-                        <div class="step-buttons-wrapper">
+                        <!-- Step 2: Mileage -->
+                        <div id="quiz-step2" class="d-none">
+                            <h3 class="modal-question">Roughly, how many miles are on the vehicle?</h3>
+                            <div class="options-grid1">
+                                <button type="button" class="mile-opt1" data-value="<100000">Less than 100k</button>
+                                <button type="button" class="mile-opt1" data-value="130000">100-140k</button>
+                                <button type="button" class="mile-opt1" data-value="180000">140-200k</button>
+                                <button type="button" class="mile-opt1" data-value=">200000">More than 200k</button>
+                            </div>
                             <div class="step-buttons">
-                                <button id="back-to-step5" class="to-step-btn">Back</button>
-                                <button id="to-step7" class="to-step-btn">Continue</button>
+                                <button id="back-to-step1" class="to-step-btn">Back</button>
+                                <button id="to-step3" class="to-step-btn">Continue</button>
                             </div>
-
-                            <div class="skip-section">
-                                <p class="skip-message">Don’t want to give us your details?</p>
-                                <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Instant Quote</button>
-                            </div>
+                            <input type="hidden" name="car_mileage" id="input-mileage" value="">
                         </div>
-                    </div>
 
-                    <div id="quiz-step7" class="d-none">
-                        <p class="zip-helper-text">
-                            Enter your full name so your match knows who to make your quote out to.
-                        </p>
-                        <h3 class="modal-question">What's your Full Name?</h3>
-                        <input type="text" name="user-name" id="user-name" class="modal-dropdown1"
-                            placeholder="Enter your name" required />
-
-                        <div class="step-buttons-wrapper">
+                        <div id="quiz-step3" class="d-none">
+                            <h3 class="modal-question">How soon do you want your new auto warranty?</h3>
+                            <div class="options-grid1">
+                                <button type="button" class="warranty-urgency-opt1" data-value="As soon as possible">As soon
+                                    as
+                                    possible</button>
+                                <button type="button" class="warranty-urgency-opt1" data-value="1-2 weeks">1-2
+                                    weeks</button>
+                                <button type="button" class="warranty-urgency-opt1" data-value="3-4 weeks">3-4
+                                    weeks</button>
+                                <button type="button" class="warranty-urgency-opt1" data-value="4+ weeks">4+ weeks</button>
+                                <button type="button" class="warranty-urgency-opt1" data-value="Unsure">Unsure</button>
+                            </div>
                             <div class="step-buttons">
-                                <button id="back-to-step6" class="to-step-btn">Back</button>
-                                <button id="to-step8" class="to-step-btn">Continue</button>
+                                <button id="back-to-step2" class="to-step-btn">Back</button>
+                                <button id="to-step4" class="to-step-btn">Continue</button>
                             </div>
-
-                            <div class="skip-section">
-                                <p class="skip-message">Don’t want to give us your details?</p>
-                                <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Instant Quote</button>
-                            </div>
+                            <input type="hidden" name="warranty" id="warranty" value="">
                         </div>
-                    </div>
 
-                    <div id="quiz-step8" class="d-none">
-                        <p class="zip-helper-text">
-                            This is the last page of questions. We only pass your phone number onto your match.
-                        </p>
-                        <h3 class="modal-question">What's your Phone Number?</h3>
-                        <input type="text" name="user-number" id="user-number" class="modal-dropdown1"
-                            placeholder="Enter your number" required />
-
-                        <div class="step-buttons-wrapper">
+                        <div id="quiz-step4" class="d-none">
+                            <h3 class="modal-question">What state would you like coverage in?</h3>
+                            <select id="user-state" name="user-state" class="modal-dropdown1" required>
+                                <option value="">Select your state</option>
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="CA">California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD">Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
+                            </select>
                             <div class="step-buttons">
-                                <button id="back-to-step7" class="to-step-btn">Back</button>
-                                <button id="to-card" class="to-step-btn">Submit</button>
-                            </div>
-
-                            <div class="skip-section">
-                                <p class="skip-message">Don’t want to give us your details?</p>
-                                <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Instant Quote</button>
+                                <button id="back-to-step3" class="to-step-btn">Back</button>
+                                <button id="to-step5" class="to-step-btn">Continue</button>
                             </div>
                         </div>
-                    </div>
 
+                        <div id="quiz-loading" class="d-none">
+                            <div class="loading-container">
+                                <div class="spinner"></div>
+                                <p>Gathering details...</p>
+                            </div>
+                        </div>
+
+                        <div id="quiz-step5" class="d-none">
+                            <p class="zip-helper-text">Your ZIP code ensures quotes are as accurate as possible for your
+                                area
+                            </p>
+                            <h3 class="modal-question">What's your ZIP code?</h3>
+                            <input type="text" name="user-zip" id="user-zip" class="modal-dropdown1"
+                                placeholder="Enter your ZIP code" maxlength="5" pattern="\d{5}" inputmode="numeric"
+                                required />
+
+                            <div class="step-buttons-wrapper">
+                                <div class="step-buttons">
+                                    <button id="back-to-step4" class="to-step-btn">Back</button>
+                                    <button id="to-step6" class="to-step-btn">Continue</button>
+                                </div>
+
+                                <div class="skip-section">
+                                    <p class="skip-message">Don’t want to give us your details?</p>
+                                    <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Instant
+                                        Quote</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="quiz-step6" class="d-none">
+                            <p class="zip-helper-text">
+                                You will receive a copy of your quote via Email. We only pass your Email Address onto your
+                                match.
+                            </p>
+                            <h3 class="modal-question">What's your Email Address?</h3>
+                            <input type="email" name="email" id="user-email" class="modal-dropdown1"
+                                placeholder="Enter your Email" required />
+
+                            <div class="step-buttons-wrapper">
+                                <div class="step-buttons">
+                                    <button id="back-to-step5" class="to-step-btn">Back</button>
+                                    <button id="to-step7" class="to-step-btn">Continue</button>
+                                </div>
+
+                                <div class="skip-section">
+                                    <p class="skip-message">Don’t want to give us your details?</p>
+                                    <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Instant
+                                        Quote</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="quiz-step7" class="d-none">
+                            <p class="zip-helper-text">
+                                Enter your full name so your match knows who to make your quote out to.
+                            </p>
+                            <h3 class="modal-question">What's your Full Name?</h3>
+                            <input type="text" name="user-name" id="user-name" class="modal-dropdown1"
+                                placeholder="Enter your name" required />
+
+                            <div class="step-buttons-wrapper">
+                                <div class="step-buttons">
+                                    <button id="back-to-step6" class="to-step-btn">Back</button>
+                                    <button id="to-step8" class="to-step-btn">Continue</button>
+                                </div>
+
+                                <div class="skip-section">
+                                    <p class="skip-message">Don’t want to give us your details?</p>
+                                    <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Instant
+                                        Quote</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="quiz-step8" class="d-none">
+                            <p class="zip-helper-text">
+                                This is the last page of questions. We only pass your phone number onto your match.
+                            </p>
+                            <h3 class="modal-question">What's your Phone Number?</h3>
+                            <input type="text" name="user-number" id="user-number" class="modal-dropdown1"
+                                placeholder="Enter your number" required />
+
+                            <div class="step-buttons-wrapper">
+                                <div class="step-buttons">
+                                    <button id="back-to-step7" class="to-step-btn">Back</button>
+                                    <button id="to-card" class="to-step-btn">Submit</button>
+                                </div>
+
+                                <div class="skip-section">
+                                    <p class="skip-message">Don’t want to give us your details?</p>
+                                    <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Instant
+                                        Quote</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
@@ -359,8 +371,11 @@
 
             <div class="car-quiz-right">
                 <div id="quiz-right-div">
-                    <img src="{{ asset('img/logo.png') }}" alt="Company Logo" />
-                    <h2>Best Extended Auto Warranty in May 2025</h2>
+
+                    <h2 id="quiz-title">Best Extended Auto Warranty in </h2>
+
+
+
                     <p>Continue our short quiz to get matched to an auto warranty provider suited to you.</p>
                 </div>
                 <div id="chaiz-inline-container" class="d-none">
@@ -430,7 +445,7 @@
         <div class="success-modal-content">
             <button class="car-quiz-close1" onclick="closeModal()" aria-label="Close modal">×</button>
             <div class="modal-right-section">
-                <div class="content-wrapper">
+                <div class="content-wrapper success-card">
                     <div class="success-header">
                         <h2>Your Lead Has Been Submitted Successfully!</h2>
                     </div>
@@ -485,7 +500,6 @@
             </div>
         </div>
     </div>
-
 
     <style>
         @keyframes spin {
@@ -583,7 +597,6 @@
                     startPollingForResults();
                 }
             }
-
 
             function submitFormData() {
                 const finalButton = document.getElementById("to-card") || document.getElementById("to-final");
@@ -761,7 +774,6 @@
                 }
             }
 
-
             function setLeadDestination(destination) {
                 const destinationElements = document.querySelectorAll('.destination-name');
                 if (!destinationElements.length) return;
@@ -870,7 +882,6 @@
 
             const vehicles = [
                 "ACURA 2.3CL",
-
                 "ACURA 3.0CL",
                 "ACURA 3.2CL",
                 "ACURA 3.2TL",
@@ -1961,20 +1972,30 @@
             const mileOptions = document.querySelectorAll('.mile-opt1');
             mileOptions.forEach(button => {
                 button.addEventListener('click', () => {
+                    // Highlight selected
                     mileOptions.forEach(btn => btn.classList.remove('selected'));
                     button.classList.add('selected');
 
+                    // Store selected value
                     window.carData = window.carData || {};
                     window.carData.mileage = button.dataset.value;
                     document.getElementById('input-mileage').value = button.dataset.value;
 
-                    // small delay so user can see yellow highlight before moving on
+                    // Small delay so user can see yellow highlight
                     setTimeout(() => {
+                        // Move to next step
                         document.getElementById("quiz-step2").classList.add("d-none");
                         document.getElementById("quiz-step3").classList.remove("d-none");
-                    }, 400); // 200ms delay
+
+                        // Simulate pressing the Continue button
+                        const continueBtn = document.getElementById('to-step3');
+                        if (continueBtn) {
+                            continueBtn.click();
+                        }
+                    }, 400);
                 });
             });
+
 
             document.getElementById("back-to-step1").addEventListener("click", function (e) {
                 e.preventDefault();
@@ -1985,20 +2006,27 @@
             const warrantyOptions = document.querySelectorAll('.warranty-urgency-opt1');
             warrantyOptions.forEach(button => {
                 button.addEventListener('click', () => {
-                    // remove previous selection
+                    // Highlight selected
                     warrantyOptions.forEach(btn => btn.classList.remove('selected'));
                     button.classList.add('selected');
 
-                    // save data
+                    // Store selected value
                     window.carData = window.carData || {};
                     window.carData.warranty = button.dataset.value;
                     document.getElementById('warranty').value = button.dataset.value;
 
-                    // small delay so user can see yellow highlight
+                    // Small delay so user can see yellow highlight
                     setTimeout(() => {
+                        // Move to next step
                         document.getElementById("quiz-step3").classList.add("d-none");
                         document.getElementById("quiz-step4").classList.remove("d-none");
-                    }, 400); // 200ms delay
+
+                        // Simulate pressing the Continue button
+                        const continueBtn = document.getElementById('to-step4');
+                        if (continueBtn) {
+                            continueBtn.click();
+                        }
+                    }, 400);
                 });
             });
 
@@ -2128,7 +2156,6 @@
 
         });
     </script>
-
     <!-- quiz modal end -->
 
     <section id="card-section">
@@ -2405,7 +2432,6 @@
                     <button class="more-btn">+ More</button>
                 </div>
 
-
                 <!-- naac card -->
                 <div class="service-card">
                     <div class="card-header">
@@ -2431,7 +2457,6 @@
                             technicians, with readily available parts and potential warranty coverage for added peace of
                             mind.
                         </div>
-
                         <div class="features-grid">
                             <div class="feature">
                                 <span class="checkmark">✓</span>
@@ -2461,8 +2486,6 @@
                     </div>
                     <button class="more-btn">+ More</button>
                 </div>
-
-
             </div>
         </div>
     </section>
@@ -2519,7 +2542,6 @@
                     save you from a nightmare repair bill. If you’ve got a newer or luxury car, bumper-to-bumper or wrap
                     coverage is usually the smarter move.</p>
 
-
                 <h2 class="warranty-title">Car warranty for luxury vehicles</h2>
                 <p class="warranty-description">
                     Luxury cars are incredible to drive, but they can be brutal on your wallet when something breaks. A
@@ -2559,7 +2581,6 @@
             </div>
         </div>
     </section>
-
 
     <script>
         document.querySelectorAll(".more-btn").forEach(btn => {
@@ -2741,6 +2762,16 @@
         });
     </script>
 
+    <script>
+        const title = document.getElementById('quiz-title');
+        const now = new Date();
+        const monthNames = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        const currentMonth = monthNames[now.getMonth()];
+        title.textContent = `Best Extended Auto Warranty in ${currentMonth} ${now.getFullYear()}`;
+    </script>
     {{-- <section class="advertising-disclosure container my-5">
         <div class="advertising-card border-light shadow-sm">
             <div class="advertising-card-body p-4">
