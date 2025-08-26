@@ -91,11 +91,13 @@
     </section>
 
     <!-- quiz modal start -->
-    <!-- Car Quiz Modal -->
     <div id="car-quiz" class="car-quiz-modal">
         <button class="car-quiz-close" onclick="closeModalskip()">×</button>
         <div class="car-quiz-split">
             <div class="car-quiz-left">
+                <div id="quiz-left-logo">
+                    <img src="{{ asset('img/logo.png') }}" alt="Company Logo" />
+                </div>
                 <div class="car-quiz-body">
                     <h4 id="quiz-section-heading" class="quiz-section-heading">Vehicle Details</h4>
                     <div class="quiz-progress-container">
@@ -358,8 +360,11 @@
 
             <div class="car-quiz-right">
                 <div id="quiz-right-div">
-                    <img src="{{ asset('img/logo.png') }}" alt="Company Logo" />
-                    <h2>Best Extended Auto Warranty in May 2025</h2>
+
+                    <h2 id="quiz-title">Best Extended Auto Warranty in </h2>
+
+
+
                     <p>Continue our short quiz to get matched to an auto warranty provider suited to you.</p>
                 </div>
                 <div id="chaiz-inline-container" class="d-none">
@@ -2729,6 +2734,16 @@
         });
     </script>
 
+    <script>
+        const title = document.getElementById('quiz-title');
+        const now = new Date();
+        const monthNames = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        const currentMonth = monthNames[now.getMonth()];
+        title.textContent = `Best Extended Auto Warranty in ${currentMonth} ${now.getFullYear()}`;
+    </script>
     {{-- <section class="advertising-disclosure container my-5">
         <div class="advertising-card border-light shadow-sm">
             <div class="advertising-card-body p-4">
