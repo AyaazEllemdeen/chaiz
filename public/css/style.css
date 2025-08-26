@@ -426,7 +426,7 @@ body {
     background: #000000;
     color: white;
 }
-@media (max-width: 768px) {
+@media (max-width: 1065px) {
     .service-card {
         position: relative;
     }
@@ -507,6 +507,7 @@ body {
         margin-top: 10px;
         box-sizing: border-box;
         order: 4;
+        color: #010100;
     }
 
     .card-header {
@@ -535,7 +536,7 @@ body {
     }
 
     .logo img {
-        width: 180px;
+        width: 130px;
         height: auto;
     }
 
@@ -922,64 +923,39 @@ body {
 }
 
 /* modal quiz */
-.car-quiz-modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background-color: #fff;
-    font-family: Arial, sans-serif;
-    overflow-y: auto; /* Single scrollbar for entire modal */
+.zip-helper-text {
+    background: #fff3cd; /* soft yellow */
+    color: #856404; /* darker yellow/brown text for contrast */
+    font-size: 12px;
+    text-align: center;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 12px;
 }
-
-.car-quiz-modal.show {
-    display: flex;
-    flex-direction: column;
-}
-
-.car-quiz-split {
-    display: flex;
-    flex-direction: column; /* Stack vertically */
-    width: 100%;
-    min-height: 100vh; /* Ensure it fits full screen height */
-}
-
-/* Left section */
-.car-quiz-left {
-    background-color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100%;
-    padding: 3rem 2rem;
-    box-sizing: border-box;
-    height: 100vh;
-    overflow: visible; /* Prevent its own scrollbar */
-}
-
-/* Right section */
 .car-quiz-right {
     background: #000000;
     color: white;
     display: flex;
     flex-direction: column;
+    height: 100%;
     width: 100%;
     padding: 3rem 2rem;
     box-sizing: border-box;
-    overflow: visible; /* Prevent its own scrollbar */
+    overflow-y: auto;
+    min-height: 0; /* important for flex children */
+    width: 75%;
 }
 
-/* Center content inside right section */
 #quiz-right-div {
-    flex: 1;
+    flex: 1; /* allow grow & shrink */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: center; /* vertical + horizontal centering */
     text-align: center;
     width: 100%;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 2rem; /* Add some padding for better spacing */
 }
 
 .car-quiz-right img {
@@ -1013,10 +989,6 @@ body {
     /* No internal scroll here! */
 }
 
-.d-none {
-    display: none;
-}
-
 #search-results-skip {
     width: 100%;
     margin-top: 1rem;
@@ -1034,7 +1006,23 @@ body {
     overflow: visible !important;
 }
 
-/* Quiz Content Styling */
+.d-none {
+    display: none;
+}
+
+.car-quiz-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+.car-quiz-modal.show {
+    display: flex;
+}
+
 .car-quiz-close {
     position: fixed;
     top: 20px;
@@ -1060,15 +1048,29 @@ body {
     z-index: 10000;
 }
 
-.zip-helper-text {
-    background: #fff3cd; /* soft yellow */
-    color: #856404; /* darker yellow/brown text for contrast */
-    font-size: 12px;
-    text-align: center;
-    padding: 10px 15px;
-    border-radius: 6px;
-    margin-bottom: 12px;
+.car-quiz-split {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
 }
+
+.car-quiz-left,
+.car-quiz-right {
+    padding: 3rem 2rem;
+    overflow-y: auto;
+}
+
+/* Left Side (Yellow) */
+.car-quiz-left {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+}
+
+/* Quiz Content Styling */
 
 .loading-container {
     display: flex;
@@ -1126,6 +1128,7 @@ body {
     border: 1px solid #ffcf4b;
     border-radius: 5px;
     font-size: 1rem;
+    color: #010100;
 }
 
 .step-buttons-wrapper {
@@ -1193,6 +1196,7 @@ body {
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
+    color: #010100;
 }
 
 .mile-opt1.selected {
@@ -1208,6 +1212,7 @@ body {
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
+    color: #010100;
 }
 
 .warranty-urgency-opt1.selected {
@@ -1273,26 +1278,17 @@ body {
     width: 100vw;
     height: 100vh;
     display: flex;
-    flex-direction: column; /* top-to-bottom */
-    overflow-y: auto;
-    box-sizing: border-box;
-}
-
-.modal-left-section,
-.modal-right-section {
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    overflow: visible; /* remove individual scrollbars */
-    height: auto; /* let it expand naturally */
+    overflow: hidden;
 }
 
 /* Right Grey Section (now on the right) */
 .modal-left-section {
     background: #a4a9ae;
+    width: 75%;
+    padding: 20px;
     color: white;
     position: relative;
-    height: 100%;
+    overflow-y: auto;
 }
 
 .modal-left-section::before {
@@ -1302,33 +1298,36 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/><circle cx="20" cy="20" r="1" fill="white" opacity="0.05"/><circle cx="80" cy="30" r="1.5" fill="white" opacity="0.08"/><circle cx="30" cy="80" r="1" fill="white" opacity="0.06"/></svg>') repeat;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/><circle cx="20" cy="20" r="1" fill="white" opacity="0.05"/><circle cx="80" cy="30" r="1.5" fill="white" opacity="0.08"/><circle cx="30" cy="80" r="1" fill="white" opacity="0.06"/></svg>')
+        repeat;
     opacity: 0.3;
 }
-
-/* Left Content Section (now on the left) */
-.modal-right-section {
-    width: 100%;
-    padding: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.content-wrapper {
-    margin: 40px auto 0 auto; /* top margin to push content down */
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 50%;
-    padding-top: 15px; /* can reduce if using margin above */
-}
-
 
 #search-results {
     position: relative;
     z-index: 1;
+    height: 100%;
     width: 100%;
+}
+
+/* Left Content Section (now on the left) */
+.modal-right-section {
+    width: 25%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.content-wrapper {
+    margin-top: 10px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 15px;
 }
 
 .plans-heading {
@@ -1341,7 +1340,7 @@ body {
 
 .success-header {
     text-align: center;
-    margin-top: 0px; /* adjust as needed */
+    margin-top: -77px; /* adjust as needed */
 }
 
 .success-header h3 {
@@ -1501,7 +1500,7 @@ body {
     .success-modal-content {
         flex-direction: column;
         width: 100%;
-        max-height: 100vh; /* slightly less than container to allow padding */
+        max-height: 90vh; /* slightly less than container to allow padding */
         overflow-y: auto;
         padding: 0;
         margin: 0 auto;
@@ -1670,4 +1669,28 @@ body {
         right: 15px;
         font-size: 28px;
     }
+}
+/* Force input text color to black on all browsers, including iPhone Safari */
+input,
+textarea,
+select {
+    color: #000 !important; /* Normal text color */
+    -webkit-text-fill-color: #000 !important; /* Fix for iPhone Safari */
+    -webkit-opacity: 1;
+    opacity: 1;
+}
+
+/* Make sure placeholder text looks consistent */
+input::placeholder,
+textarea::placeholder {
+    color: #888; /* Light gray for placeholders */
+    opacity: 1; /* Safari sometimes reduces opacity */
+}
+
+/* Fix for Safari autofill turning text blue */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset !important; /* Match your input background */
+    -webkit-text-fill-color: #000 !important;
 }
