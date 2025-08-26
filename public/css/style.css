@@ -948,17 +948,18 @@ body {
 .car-quiz-left {
     background-color: #000;
     display: flex;
+    justify-content: center; /* horizontal center */
     flex-direction: column;
-    align-items: center; /* horizontal center */
-    justify-content: center; /* vertical center */
+    align-items: center;
     width: 100%;
-    min-height: 100vh; /* fill screen height */
-    padding: 2rem; /* optional padding */
+    min-height: 100vh;
+    padding: 2rem;
     box-sizing: border-box;
 }
 
 #quiz-left-logo {
-    padding-bottom: 15%;      /* gap between logo and quiz card */
+    margin-bottom: auto; /* pushes the card down */
+    margin-top: auto;    /* pushes the logo down from top equally */
     text-align: center;
 }
 
@@ -966,13 +967,17 @@ body {
     width: 100%;
 }
 
-
 .quiz-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* top align */
+    height: 100%;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
 }
+
 #quiz-left-logo img {
     max-width: 200px;
     height: auto;
@@ -1128,13 +1133,12 @@ body {
 }
 
 .car-quiz-left .car-quiz-body {
-    background-color: #ffffff;
+    background-color: #fff;
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); /* darker shadow */
-    border: 2px solid #ffcf4b; /* gold border */
-    max-width: 500px;
-    margin: auto;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    border: 2px solid #ffcf4b;
+    width: 100%;
 }
 
 .car-quiz-body {
