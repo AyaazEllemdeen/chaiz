@@ -922,7 +922,7 @@ body {
     }
 }
 
-/* modal quiz */
+/* Modal Quiz */
 .car-quiz-modal {
     display: none;
     position: fixed;
@@ -938,9 +938,10 @@ body {
     flex-direction: column;
 }
 
+/* Split layout */
 .car-quiz-split {
     display: flex;
-    flex-direction: column; /* Stack vertically */
+    flex-direction: column;
     width: 100%;
 }
 
@@ -948,8 +949,8 @@ body {
 .car-quiz-left {
     background-color: #000;
     display: flex;
-    justify-content: center; /* horizontal center */
     flex-direction: column;
+    justify-content: center; /* Horizontal & vertical centering */
     align-items: center;
     width: 100%;
     min-height: 100vh;
@@ -958,24 +959,8 @@ body {
 }
 
 #quiz-left-logo {
-    margin-bottom: auto; /* pushes the card down */
-    margin-top: auto;    /* pushes the logo down from top equally */
+    margin: auto 0; /* Vertical centering */
     text-align: center;
-}
-
-.car-quiz-body {
-    width: 100%;
-}
-
-.quiz-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start; /* top align */
-    height: 100%;
-    width: 100%;
-    max-width: 500px;
-    position: relative;
 }
 
 #quiz-left-logo img {
@@ -984,10 +969,20 @@ body {
     display: block;
 }
 
+.car-quiz-left .car-quiz-body {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    border: 2px solid #ffcf4b;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 500px;
+}
+
 /* Right section */
 .car-quiz-right {
-    background: #000;
-    color: white;
+    background-color: #000;
+    color: #fff;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -1000,16 +995,16 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* start from top */
+    justify-content: flex-start;
     text-align: center;
     width: 100%;
     margin: 0 auto;
-    padding: 2rem 0 0 0; /* top padding for spacing */
+    padding-top: 2rem;
 }
 
 .car-quiz-right img {
     display: block;
-    margin: 0 auto 1.5rem auto; /* Center the image horizontally */
+    margin: 0 auto 1.5rem;
     max-width: 140px;
     object-fit: contain;
     background: transparent;
@@ -1022,9 +1017,21 @@ body {
 #quiz-right-div p {
     text-align: center;
     max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
+
+/* Quiz container */
+.quiz-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+}
+
 
 #chaiz-inline-container {
     width: 100%;
@@ -1130,20 +1137,6 @@ body {
     font-weight: bold;
     margin-bottom: 10px;
     text-align: center;
-}
-
-.car-quiz-left .car-quiz-body {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-    border: 2px solid #ffcf4b;
-    width: 100%;
-}
-
-.car-quiz-body {
-    width: 100%;
-    max-width: 500px;
 }
 
 .modal-question {
