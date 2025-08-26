@@ -426,7 +426,7 @@ body {
     background: #000000;
     color: white;
 }
-@media (max-width: 768px) {
+@media (max-width: 1065px) {
     .service-card {
         position: relative;
     }
@@ -947,7 +947,7 @@ body {
 
 /* Left section */
 .car-quiz-left {
-    background-color: #434343;
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
     flex-direction: column;
