@@ -445,7 +445,7 @@
         <div class="success-modal-content">
             <button class="car-quiz-close1" onclick="closeModal()" aria-label="Close modal">×</button>
             <div class="modal-right-section">
-                <div class="content-wrapper">
+                <div class="content-wrapper success-card">
                     <div class="success-header">
                         <h2>Your Lead Has Been Submitted Successfully!</h2>
                     </div>
