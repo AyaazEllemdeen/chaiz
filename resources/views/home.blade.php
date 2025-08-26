@@ -131,7 +131,7 @@
                         </div>
                         <div class="step-buttons">
                             <button id="back-to-step1" class="to-step-btn">Back</button>
-                            <!-- <button id="to-step3" class="to-step-btn">Continue</button> -->
+                            <button id="to-step3" class="to-step-btn">Continue</button>
                         </div>
                         <input type="hidden" name="car_mileage" id="input-mileage" value="">
                     </div>
@@ -148,7 +148,7 @@
                         </div>
                         <div class="step-buttons">
                             <button id="back-to-step2" class="to-step-btn">Back</button>
-                            <!-- <button id="to-step4" class="to-step-btn">Continue</button> -->
+                            <button id="to-step4" class="to-step-btn">Continue</button>
                         </div>
                         <input type="hidden" name="warranty" id="warranty" value="">
                     </div>
