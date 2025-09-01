@@ -5,13 +5,13 @@ services:
     image: nginx:latest
     restart: always
     ports:
-      - "8081:80"      # HTTP
+      - "8080:80"      # HTTP
       - "8443:443"     # HTTPS
     volumes:
       - .:/var/www/html
       - ./docker/nginx/nginx-staging.conf:/etc/nginx/conf.d/default.conf
-      - /etc/letsencrypt/live/comparewarranties.org/fullchain.pem:/etc/nginx/ssl/fullchain.pem:ro
-      - /etc/letsencrypt/live/comparewarranties.org/privkey.pem:/etc/nginx/ssl/privkey.pem:ro
+      - /etc/letsencrypt/live/staging.comparewarranties.org/fullchain.pem:/etc/nginx/ssl/fullchain.pem:ro
+      - /etc/letsencrypt/live/staging.comparewarranties.org/privkey.pem:/etc/nginx/ssl/privkey.pem:ro
     networks:
       - comparewarranties-staging-network
     depends_on:
