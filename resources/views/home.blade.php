@@ -358,9 +358,9 @@
 
         const stepProgress = {
             'to-step2': 20,
-            'to-step3': 30,
-            'to-step4': 40,
-            'to-step5': 50,
+            'to-step3': 40,
+            'to-step4': 60,
+            'to-step5': 80,
             'to-step6': 60,
             'to-step7': 75,
             'to-step8': 90
