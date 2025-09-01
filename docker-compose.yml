@@ -5,8 +5,8 @@ services:
     image: nginx:latest
     restart: always
     ports:
-      - "8081:80"       # expose staging HTTP on 8081
-      - "8443:443"      # expose staging HTTPS on 8443
+      - "8080:80"
+      - "8443:443"
     volumes:
       - .:/var/www/html
       - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
@@ -17,6 +17,8 @@ services:
       - chaiz-network
     depends_on:
       - php82
+    # deploy:
+        #replicas: ${NGINX_REPLICAS:-0}  # Default to 0 replicas (disabled) in production
 
   php82:
     build:
