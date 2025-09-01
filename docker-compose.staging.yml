@@ -16,7 +16,6 @@ services:
       - comparewarranties-staging-network
     depends_on:
       - php82-staging
-      - db-staging
 
   php82-staging:
     build:
@@ -36,9 +35,6 @@ services:
     environment:
       TZ: "Africa/Johannesburg"
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-      MYSQL_DATABASE: chaiz_staging
-      MYSQL_USER: root
-      MYSQL_PASSWORD: ""
     networks:
       - comparewarranties-staging-network
     ports:
