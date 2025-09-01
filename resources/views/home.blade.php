@@ -228,84 +228,36 @@
                         </div>
 
                         <div id="quiz-step5" class="d-none">
-                            <p class="zip-helper-text">Your ZIP code ensures quotes are as accurate as possible for your
-                                area
+                            <h3 class="modal-question">Your Contact Details</h3>
+
+                            <p class="zip-helper-text">
+                                Please fill in your details below so we can provide accurate quotes for your vehicle.
                             </p>
-                            <h3 class="modal-question">What's your ZIP code?</h3>
+
+                            <!-- ZIP Code -->
+                            <label for="user-zip" class="detail-label">ZIP Code</label>
                             <input type="text" name="user-zip" id="user-zip" class="modal-dropdown1"
                                 placeholder="Enter your ZIP code" maxlength="5" pattern="\d{5}" inputmode="numeric"
                                 required />
 
-                            <div class="step-buttons-wrapper">
-                                <div class="step-buttons">
-                                    <button id="back-to-step4" class="to-step-btn">Back</button>
-                                    <button id="to-step6" class="to-step-btn">Continue</button>
-                                </div>
-
-                                <div class="skip-section">
-                                    <p class="skip-message">Don’t want to give us your details?</p>
-                                    <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Instant
-                                        Quote</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="quiz-step6" class="d-none">
-                            <p class="zip-helper-text">
-                                You will receive a copy of your quote via Email. We only pass your Email Address onto your
-                                match.
-                            </p>
-                            <h3 class="modal-question">What's your Email Address?</h3>
+                            <!-- Email -->
+                            <label for="user-email" class="detail-label">Email Address</label>
                             <input type="email" name="email" id="user-email" class="modal-dropdown1"
                                 placeholder="Enter your Email" required />
 
-                            <div class="step-buttons-wrapper">
-                                <div class="step-buttons">
-                                    <button id="back-to-step5" class="to-step-btn">Back</button>
-                                    <button id="to-step7" class="to-step-btn">Continue</button>
-                                </div>
-
-                                <div class="skip-section">
-                                    <p class="skip-message">Don’t want to give us your details?</p>
-                                    <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Instant
-                                        Quote</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="quiz-step7" class="d-none">
-                            <p class="zip-helper-text">
-                                Enter your full name so your match knows who to make your quote out to.
-                            </p>
-                            <h3 class="modal-question">What's your Full Name?</h3>
+                            <!-- Full Name -->
+                            <label for="user-name" class="detail-label">Full Name</label>
                             <input type="text" name="user-name" id="user-name" class="modal-dropdown1"
                                 placeholder="Enter your name" required />
 
-                            <div class="step-buttons-wrapper">
-                                <div class="step-buttons">
-                                    <button id="back-to-step6" class="to-step-btn">Back</button>
-                                    <button id="to-step8" class="to-step-btn">Continue</button>
-                                </div>
-
-                                <div class="skip-section">
-                                    <p class="skip-message">Don’t want to give us your details?</p>
-                                    <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Instant
-                                        Quote</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="quiz-step8" class="d-none">
-                            <p class="zip-helper-text">
-                                This is the last page of questions. We only pass your phone number onto your match.
-                            </p>
-                            <h3 class="modal-question">What's your Phone Number?</h3>
+                            <!-- Phone Number -->
+                            <label for="user-number" class="detail-label">Phone Number</label>
                             <input type="text" name="user-number" id="user-number" class="modal-dropdown1"
                                 placeholder="Enter your number" required />
 
                             <div class="step-buttons-wrapper">
                                 <div class="step-buttons">
-                                    <button id="back-to-step7" class="to-step-btn">Back</button>
+                                    <button id="back-to-step4" class="to-step-btn">Back</button>
                                     <button id="to-card" class="to-step-btn">Submit</button>
                                 </div>
 
@@ -316,6 +268,7 @@
                                 </div>
                             </div>
                         </div>
+
 
                     </div>
                 </div>
@@ -404,10 +357,10 @@
         const sectionHeading = document.getElementById('quiz-section-heading');
 
         const stepProgress = {
-            'to-step2': 20,
-            'to-step3': 30,
-            'to-step4': 40,
-            'to-step5': 50,
+            'to-step2': 30,
+            'to-step3': 50,
+            'to-step4': 70,
+            'to-step5': 90,
             'to-step6': 60,
             'to-step7': 75,
             'to-step8': 90
@@ -1969,32 +1922,55 @@
                 document.getElementById("quiz-step2").classList.remove("d-none");
             });
 
-            const mileOptions = document.querySelectorAll('.mile-opt1');
-            mileOptions.forEach(button => {
-                button.addEventListener('click', () => {
-                    // Highlight selected
-                    mileOptions.forEach(btn => btn.classList.remove('selected'));
-                    button.classList.add('selected');
+            // Mileage options
+const mileOptions = document.querySelectorAll('.mile-opt1');
+const continueMileageBtn = document.getElementById('to-step3');
 
-                    // Store selected value
-                    window.carData = window.carData || {};
-                    window.carData.mileage = button.dataset.value;
-                    document.getElementById('input-mileage').value = button.dataset.value;
+mileOptions.forEach(button => {
+    button.addEventListener('click', () => {
+        // Highlight selected
+        mileOptions.forEach(btn => btn.classList.remove('selected'));
+        button.classList.add('selected');
 
-                    // Small delay so user can see yellow highlight
-                    setTimeout(() => {
-                        // Move to next step
-                        document.getElementById("quiz-step2").classList.add("d-none");
-                        document.getElementById("quiz-step3").classList.remove("d-none");
+        // Store selected value
+        window.carData = window.carData || {};
+        window.carData.mileage = button.dataset.value;
+        document.getElementById('input-mileage').value = button.dataset.value;
 
-                        // Simulate pressing the Continue button
-                        const continueBtn = document.getElementById('to-step3');
-                        if (continueBtn) {
-                            continueBtn.click();
-                        }
-                    }, 400);
-                });
-            });
+        // Small delay so user sees highlight
+        setTimeout(() => {
+            // Move to next step
+            document.getElementById('quiz-step2').classList.add('d-none');
+            document.getElementById('quiz-step3').classList.remove('d-none');
+
+            // Simulate pressing the Continue button
+            if (continueMileageBtn) {
+                continueMileageBtn.click();
+            }
+        }, 400);
+    });
+});
+
+// Continue button for mileage
+continueMileageBtn.addEventListener('click', (e) => {
+    const selectedOption = document.querySelector('.mile-opt1.selected');
+
+    if (!selectedOption) {
+        e.preventDefault();
+        alert("Please select an option before continuing.");
+        return;
+    }
+
+    // Store value again
+    window.carData = window.carData || {};
+    window.carData.mileage = selectedOption.dataset.value;
+    document.getElementById('input-mileage').value = selectedOption.dataset.value;
+
+    // Move to next step immediately
+    document.getElementById('quiz-step2').classList.add('d-none');
+    document.getElementById('quiz-step3').classList.remove('d-none');
+});
+
 
 
             document.getElementById("back-to-step1").addEventListener("click", function (e) {
@@ -2004,6 +1980,8 @@
             });
 
             const warrantyOptions = document.querySelectorAll('.warranty-urgency-opt1');
+            const continueBtn = document.getElementById('to-step4');
+
             warrantyOptions.forEach(button => {
                 button.addEventListener('click', () => {
                     // Highlight selected
@@ -2015,19 +1993,37 @@
                     window.carData.warranty = button.dataset.value;
                     document.getElementById('warranty').value = button.dataset.value;
 
-                    // Small delay so user can see yellow highlight
+                    // Small delay so user sees the highlight
                     setTimeout(() => {
                         // Move to next step
-                        document.getElementById("quiz-step3").classList.add("d-none");
-                        document.getElementById("quiz-step4").classList.remove("d-none");
+                        document.getElementById('quiz-step3').classList.add('d-none');
+                        document.getElementById('quiz-step4').classList.remove('d-none');
 
                         // Simulate pressing the Continue button
-                        const continueBtn = document.getElementById('to-step4');
                         if (continueBtn) {
                             continueBtn.click();
                         }
                     }, 400);
                 });
+            });
+
+            continueBtn.addEventListener('click', (e) => {
+                const selectedOption = document.querySelector('.warranty-urgency-opt1.selected');
+
+                if (!selectedOption) {
+                    e.preventDefault(); // Stop default behavior
+                    alert("Please select an option before continuing."); // Optional warning
+                    return;
+                }
+
+                // Store selected value (in case user navigated back)
+                window.carData = window.carData || {};
+                window.carData.warranty = selectedOption.dataset.value;
+                document.getElementById('warranty').value = selectedOption.dataset.value;
+
+                // Move to next step immediately
+                document.getElementById('quiz-step3').classList.add('d-none');
+                document.getElementById('quiz-step4').classList.remove('d-none');
             });
 
             document.getElementById("back-to-step2").addEventListener("click", function (e) {
@@ -2041,7 +2037,7 @@
                 const state = document.getElementById("user-state").value.trim();
 
                 if (!state) {
-                    alert("Please enter your state.");
+                    alert("Please select your state.");
                     return;
                 }
 
@@ -2057,101 +2053,64 @@
                 }, 2700);
             });
 
+            // Go Back to Step 3
             document.getElementById("back-to-step3").addEventListener("click", function (e) {
                 e.preventDefault();
                 document.getElementById("quiz-step4").classList.add("d-none");
                 document.getElementById("quiz-step3").classList.remove("d-none");
             });
 
-
-            document.getElementById("to-step6").addEventListener("click", function (e) {
-                e.preventDefault();
-                const zip = document.getElementById("user-zip").value.trim();
-
-                if (!/^\d{5}$/.test(zip)) {
-                    alert("Please enter a valid 5-digit ZIP code.");
-                    return;
-                }
-
-                window.carData = window.carData || {};
-                window.carData.zip = zip;
-
-                document.getElementById("quiz-step5").classList.add("d-none");
-                document.getElementById("quiz-step6").classList.remove("d-none");
-            });
-
-            document.getElementById("back-to-step4").addEventListener("click", function (e) {
-                e.preventDefault();
-                document.getElementById("quiz-step5").classList.add("d-none");
-                document.getElementById("quiz-step4").classList.remove("d-none");
-            });
-
-            document.getElementById("to-step7").addEventListener("click", function (e) {
-                e.preventDefault();
-                const email = document.getElementById("user-email").value.trim();
-
-                if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                    alert("Please enter a valid email address.");
-                    return;
-                }
-
-                window.carData = window.carData || {};
-                window.carData.email = email;
-
-                document.getElementById("quiz-step6").classList.add("d-none");
-                document.getElementById("quiz-step7").classList.remove("d-none");
-            });
-
-            document.getElementById("back-to-step5").addEventListener("click", function (e) {
-                e.preventDefault();
-                document.getElementById("quiz-step6").classList.add("d-none");
-                document.getElementById("quiz-step5").classList.remove("d-none");
-            });
-
-            document.getElementById("to-step8").addEventListener("click", function (e) {
-                e.preventDefault();
-                const name = document.getElementById("user-name").value.trim();
-
-                if (!name || !/^[a-zA-Z]+(?: [a-zA-Z]+)+$/.test(name)) {
-                    alert("Please enter your full name (first and last name).");
-                    return;
-                }
-
-                window.carData = window.carData || {};
-                window.carData.name = name;
-
-                document.getElementById("quiz-step7").classList.add("d-none");
-                document.getElementById("quiz-step8").classList.remove("d-none");
-            });
-
-            document.getElementById("back-to-step6").addEventListener("click", function (e) {
-                e.preventDefault();
-                document.getElementById("quiz-step7").classList.add("d-none");
-                document.getElementById("quiz-step6").classList.remove("d-none");
-            });
-
+            // Final Submit Button
             const finalButton = document.getElementById("to-card") || document.getElementById("to-final");
             if (finalButton) {
                 finalButton.addEventListener("click", function (e) {
                     e.preventDefault();
+
+                    const zip = document.getElementById("user-zip").value.trim();
+                    const email = document.getElementById("user-email").value.trim();
+                    const name = document.getElementById("user-name").value.trim();
                     const phone = document.getElementById("user-number").value.trim();
 
-                    if (!phone || !/^\d{10}$/.test(phone.replace(/\D/g, ''))) {
+                    // ZIP Validation
+                    if (!/^\d{5}$/.test(zip)) {
+                        alert("Please enter a valid 5-digit ZIP code.");
+                        return;
+                    }
+
+                    // Email Validation
+                    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                        alert("Please enter a valid email address.");
+                        return;
+                    }
+
+                    // Name Validation
+                    if (!name || !/^[a-zA-Z]+(?: [a-zA-Z]+)+$/.test(name)) {
+                        alert("Please enter your full name (first and last).");
+                        return;
+                    }
+
+                    // Phone Validation (Allow formats like 1234567890 or (123) 456-7890)
+                    const cleanPhone = phone.replace(/\D/g, '');
+                    if (!/^\d{10}$/.test(cleanPhone)) {
                         alert("Please enter a valid 10-digit phone number.");
                         return;
                     }
 
+                    // Save Data
                     window.carData = window.carData || {};
-                    window.carData.phone = phone;
+                    window.carData.zip = zip;
+                    window.carData.email = email;
+                    window.carData.name = name;
+                    window.carData.phone = cleanPhone;
 
+                    // Submit form data
                     submitFormData();
                 });
             }
-
-            document.getElementById("back-to-step7").addEventListener("click", function (e) {
+            document.getElementById("back-to-step4").addEventListener("click", function (e) {
                 e.preventDefault();
-                document.getElementById("quiz-step8").classList.add("d-none");
-                document.getElementById("quiz-step7").classList.remove("d-none");
+                document.getElementById("quiz-step5").classList.add("d-none");
+                document.getElementById("quiz-step4").classList.remove("d-none");
             });
 
         });
@@ -2169,7 +2128,9 @@
                     <div class="card-header">
                         <div class="logo-section">
                             <div class="logo">
-                                <img src="/img/1.png" alt="">
+                                <a href="https://endurancewarranty.com/lp/czcw" target="_blank" rel="noopener noreferrer">
+                                    <img src="/img/1.png" alt="">
+                                </a>
                             </div>
                             <div class="promo-badge">
                                 $300 off any new plan!
@@ -2239,143 +2200,152 @@
                     auto
                     warranty directly online in minutes.</h4>
 
-                <div class="mb-4">
+                <div class="cards-container mb-4">
+
                     <!-- chaiz card -->
                     <div class="service-card">
                         <div class="top-rated-ribbon">BUY NOW</div>
                         <div class="card-header">
-                            <div class="logo-section">
-                                <div class="logo">
-                                    <img src="/img/chaiz.png" alt="">
+                            <div class="logo-section2">
+                                <div class="logo2">
+                                    <a href="https://www.chaiz.com/?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
+                                        target="_blank" rel="noopener noreferrer">
+                                        <img src="/img/chaiz.png" alt="Chaiz Logo">
+                                    </a>
                                 </div>
-                                <div class="chaiz-promo-badge">
+                                <div class="promo-badge2">
                                     Buy directly online — No Email or Phone needed
                                 </div>
-                                <div class="rating-section">
-                                    <div class="rating-score">9.9</div>
+                                <div class="rating-section2">
+                                    <div class="rating-score2">9.9</div>
                                     <div class="stars">★★★★★</div>
                                 </div>
-                                <div class="cta-section">
+                                <div class="cta-section2">
                                     <a href="https://www.chaiz.com/?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
-                                        class="get-quote-btn" target="_blank" rel="noopener noreferrer">Buy Now</a>
+                                        class="get-quote-btn2" target="_blank" rel="noopener noreferrer">Buy Now</a>
                                     <a href="tel:8339429249">
-                                        <button class="phone-btn">833-942-9249</button>
+                                        <button class="phone-btn2">833-942-9249</button>
                                     </a>
                                 </div>
                             </div>
                         </div>
                         <div class="divider-line"></div>
                         <div class="card-body-row">
-                            <div class="description">
+                            <div class="description2">
                                 Chaiz shows you several plans from multiple providers within 30 seconds. Compare and buy
                                 breakdown protection from top providers today.
                             </div>
 
                             <div class="features-grid">
-                                <div class="feature">
-                                    <span class="checkmark">✓</span>
-                                    <span>Compare live quotes within less than a minute</span>
-                                </div>
-                                <div class="feature">
+                                <div class="feature2">
                                     <span class="checkmark">✓</span>
                                     <span>Best price guaranteed</span>
                                 </div>
-                                <div class="feature">
-                                    <span class="checkmark">✓</span>
-                                    <span>Purchase completely online 24/7</span>
-                                </div>
-                                <div class="feature">
+                                <div class="feature2">
                                     <span class="checkmark">✓</span>
                                     <span>No email or phone needed</span>
                                 </div>
-                                <div class="feature">
+                                <div class="feature2">
                                     <span class="checkmark">✓</span>
                                     <span>Independent and unbiased</span>
                                 </div>
-                                <div class="feature">
+                                <div class="feature2">
                                     <span class="checkmark">✓</span>
                                     <span>Hundreds of 5* reviews</span>
                                 </div>
-                                <div class="feature">
+                                <div class="feature2">
+                                    <span class="checkmark">✓</span>
+                                    <span>30-day money back guarantee</span>
+                                </div>
+                                <div class="feature2">
                                     <span class="checkmark">✓</span>
                                     <span>A+ customer service</span>
                                 </div>
-                                <div class="feature">
+                                <div class="feature2">
                                     <span class="checkmark">✓</span>
-                                    <span>30-day money back guarantee</span>
+                                    <span>Purchase completely online 24/7</span>
+                                </div>
+                                <div class="feature2">
+                                    <span class="checkmark">✓</span>
+                                    <span>Compare live quotes within less than a minute</span>
                                 </div>
                             </div>
                         </div>
                         <button class="more-btn">+ More</button>
                     </div>
 
-                </div>
 
-                <!-- american dream card -->
-                <div class="service-card">
-                    <div class="card-header">
-                        <div class="logo-section">
-                            <div class="logo">
-                                <img src="/img/american-dream.png" alt="">
-                            </div>
-                            <div class="promo-badge">
-                                $350 off + 3 months free!
-                            </div>
-                            <div class="rating-section">
-                                <div class="rating-score">8.4</div>
-                                <div class="stars">★★★★☆</div>
-                            </div>
-                            <div class="cta-section">
-                                <a href="https://www.americandreamautoprotect.com/u7izFNKM9E" class="get-quote-btn"
-                                    target="_blank" rel="noopener noreferrer">Get a Quote</a>
-                                <a href="tel:8333640947">
-                                    <button class="phone-btn">833-364-0947</button>
-                                </a>
+
+                    <!-- american dream card -->
+                    <div class="service-card">
+                        <div class="card-header">
+                            <div class="logo-section2">
+                                <div class="logo2">
+                                    <a href="https://www.americandreamautoprotect.com/u7izFNKM9E" target="_blank"
+                                        rel="noopener noreferrer">
+                                        <img src="/img/american-dream.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="promo-badge2">
+                                    $350 off + 3 months free!
+                                </div>
+                                <div class="rating-section2">
+                                    <div class="rating-score2">8.4</div>
+                                    <div class="stars">★★★★☆</div>
+                                </div>
+                                <div class="cta-section2">
+                                    <a href="https://www.americandreamautoprotect.com/u7izFNKM9E" class="get-quote-btn2"
+                                        target="_blank" rel="noopener noreferrer">Get a Quote</a>
+                                    <a href="tel:8333640947">
+                                        <button class="phone-btn2">833-364-0947</button>
+                                    </a>
+                                </div>
                             </div>
                         </div>
+                        <div class="divider-line"></div>
+                        <div class="card-body-row">
+                            <div class="description2">
+                                American Dream Auto Protect provides peace of mind by mitigating the high costs that come
+                                with
+                                unexpected repairs. Their stress-free claims process means you get approved in as little as
+                                48
+                                hours.
+                            </div>
+
+                            <div class="features-grid">
+                                <div class="feature2">
+                                    <span class="checkmark">✓</span>
+                                    <span>Choose your own repair facility</span>
+                                </div>
+                                <div class="feature2">
+                                    <span class="checkmark">✓</span>
+                                    <span>Customize your coverage plan</span>
+                                </div>
+                                <div class="feature2">
+                                    <span class="checkmark">✓</span>
+                                    <span>OFFER: $350 off + 3 months free!</span>
+                                </div>
+                                <div class="feature2">
+                                    <span class="checkmark">✓</span>
+                                    <span>Flexible payment plan options</span>
+                                </div>
+                                <div class="feature2">
+                                    <span class="checkmark">✓</span>
+                                    <span>24/7 Roadside Assistance</span>
+                                </div>
+                                <div class="feature2">
+                                    <span class="checkmark">✓</span>
+                                    <span>30 Day money back guarantee</span>
+                                </div>
+                                <div class="feature2">
+                                    <span class="checkmark">✓</span>
+                                    <span>Covers cars up to 20 years old / 200K miles</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="more-btn">+ More</button>
                     </div>
-                    <div class="divider-line"></div>
-                    <div class="card-body-row">
-                        <div class="description">
-                            American Dream Auto Protect provides peace of mind by mitigating the high costs that come with
-                            unexpected repairs. Their stress-free claims process means you get approved in as little as 48
-                            hours.
-                        </div>
-
-                        <div class="features-grid">
-                            <div class="feature">
-                                <span class="checkmark">✓</span>
-                                <span>Choose your own repair facility</span>
-                            </div>
-                            <div class="feature">
-                                <span class="checkmark">✓</span>
-                                <span>Covers cars up to 20 years old / 200K miles</span>
-                            </div>
-                            <div class="feature">
-                                <span class="checkmark">✓</span>
-                                <span>Customize your coverage plan</span>
-                            </div>
-                            <div class="feature">
-                                <span class="checkmark">✓</span>
-                                <span>OFFER: $350 off + 3 months free!</span>
-                            </div>
-                            <div class="feature">
-                                <span class="checkmark">✓</span>
-                                <span>Flexible payment plan options</span>
-                            </div>
-                            <div class="feature">
-                                <span class="checkmark">✓</span>
-                                <span>24/7 Roadside Assistance</span>
-                            </div>
-                            <div class="feature">
-                                <span class="checkmark">✓</span>
-                                <span>30 Day money back guarantee</span>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="more-btn">+ More</button>
                 </div>
-
                 <!-- omega card -->
                 <div class="service-card">
                     <div class="card-header">

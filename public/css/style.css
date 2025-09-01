@@ -212,15 +212,6 @@ body {
 }
 
 /* our providers section CARD SECTION */
-
-.service-card {
-    background: white;
-    padding: 30px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e9ecef;
-    position: relative;
-}
-
 .top-rated-ribbon {
     position: absolute;
     top: 0;
@@ -234,26 +225,46 @@ body {
     clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
 }
 
+/* whole card */
+.service-card {
+    background: white;
+    padding: 30px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef;
+    position: relative;
+}
+
+/* card top, logo etc */
 .card-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* reduced from 20px */
+    flex-wrap: wrap; /* ensure wrapping for smaller screens */
 }
 
 .logo-section {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
+    gap: 15px;
     width: 100%;
-    flex-wrap: nowrap;
+    flex-wrap: wrap; /* allow wrapping to prevent overflow */
+}
+
+.logo-section2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px; /* tighter gap */
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 .logo {
-    flex: 0 0 180px; /* increased from 120px */
-    height: 180px; /* increased from 150px */
-    width: 180px; /* increased from 150px */
+    flex: 0 0 180px;
+    height: 180px;
+    width: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -267,8 +278,27 @@ body {
     object-fit: contain; /* or "cover" if you want it to fill the box completely */
 }
 
+.logo2 {
+    flex: 0 0 100px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.logo2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
 .promo-badge {
-    flex: 0 0 200px; /* adjust width as needed */
+    flex: 1 1 auto;
+    min-width: 150px;
+    max-width: 250px;
     color: #000000;
     padding: 8px 12px;
     border-radius: 20px;
@@ -279,12 +309,12 @@ body {
     text-align: center;
 }
 
-.chaiz-promo-badge {
-    flex: 0 0 250px; /* adjust width as needed */
-    color: #000000;
-    padding: 8px 12px;
-    border-radius: 20px;
-    font-size: 15px;
+.promo-badge2 {
+    flex: 0 0 auto;
+    min-width: 100px;
+    max-width: 120px;
+    padding: 3px 6px; /* tighter */
+    font-size: 13px;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -292,8 +322,9 @@ body {
 }
 
 .rating-section {
-    flex: 0 0 100px; /* fixed width */
+    flex: 0 0 auto;
     text-align: center;
+    min-width: 80px;
 }
 
 .rating-score {
@@ -308,12 +339,33 @@ body {
     margin: 0px 0;
 }
 
+.rating-section2 {
+    flex: 0 0 auto;
+    text-align: center;
+    min-width: 45px;
+    margin-left: 3px; /* smaller spacing */
+}
+
+.rating-score2 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
 .cta-section {
-    flex: 0 0 140px; /* fixed width */
+    flex: 0 0 auto;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 10px;
+}
+
+.cta-section2 {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px; /* tighter */
 }
 
 .get-quote-btn {
@@ -335,6 +387,110 @@ body {
 .get-quote-btn:hover {
     background: #876d27;
     color: white;
+}
+
+.phone-btn {
+    background: white;
+    color: #000000;
+    border: 2px solid #000000;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 150px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* subtle shadow */
+}
+
+.phone-btn:hover {
+    background: #000000;
+    color: white;
+}
+
+.phone-btn2 {
+    background: #fff;
+    color: #000;
+    border: 1.8px solid #000;
+    padding: 7px 14px; /* Slightly bigger padding */
+    border-radius: 5px;
+    font-weight: 600; /* Slightly bolder for better readability */
+    font-size: 13px; /* Slightly larger text */
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+    width: auto;
+    min-width: 105px; /* Increased a bit for consistency */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    letter-spacing: 0.35px;
+}
+
+.phone-btn2:hover {
+    background: #000;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Get Quote Button */
+.get-quote-btn2 {
+    background: #ffcf4b;
+    color: #000;
+    border: none;
+    padding: 7px 16px; /* Slightly bigger padding */
+    border-radius: 8px;
+    font-size: 14px; /* Slightly bigger text */
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 120px; /* Slightly wider for balance */
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.12);
+    letter-spacing: 0.35px;
+}
+
+.get-quote-btn2:hover {
+    background: #e0b63e;
+    color: #fff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
+}
+
+@media screen and (max-width: 992px) {
+    .logo-section {
+        justify-content: center;
+    }
+
+    .cta-section {
+        align-items: center;
+        width: 100%;
+    }
+
+    .get-quote-btn,
+    .phone-btn {
+        width: 100%;
+        max-width: 220px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .logo-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .promo-badge,
+    .promo-badge2 {
+        max-width: 90%;
+    }
+
+    .rating-section {
+        margin-top: 10px;
+    }
+
+    .cta-section {
+        align-items: center;
+        margin-top: 10px;
+    }
 }
 
 .divider-line {
@@ -363,6 +519,15 @@ body {
     width: 400px;
 }
 
+.description2 {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.6;
+    color: #000000;
+    margin-bottom: 25px;
+    width: 400px;
+}
+
 .features-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -375,6 +540,14 @@ body {
     align-items: flex-start;
     gap: 8px;
     font-size: 14px;
+    color: #374151;
+}
+
+.feature2 {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 12px;
     color: #374151;
 }
 
@@ -409,30 +582,62 @@ body {
     color: rgb(255, 255, 255);
 }
 
-.phone-btn {
-    background: white;
-    color: #000000;
-    border: 2px solid #000000;
-    padding: 12px;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
-    width: 150px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* subtle shadow */
-}
-
-.phone-btn:hover {
-    background: #000000;
-    color: white;
-}
 @media (max-width: 1065px) {
+    .feature2 {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 14px;
+        color: #374151;
+    }
+
+    .description2 {
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.6;
+        color: #000000;
+        margin-bottom: 25px;
+        width: 400px;
+    }
+
+    .get-quote-btn2 {
+        background: #ffcf4b;
+        color: #000;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s, box-shadow 0.3s;
+        width: 150px;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        font-size: 1rem;
+    }
+
+    .phone-btn2 {
+        background: #fff;
+        color: #000;
+        border: 2px solid #000;
+        padding: 12px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        width: 150px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        font-size: 1rem;
+    }
+
     .service-card {
         position: relative;
     }
 
     /* Rating floating in top-right corner */
-    .rating-section {
+    .rating-section,
+    .rating-section2 {
         position: absolute;
         top: 2px;
         right: 10px;
@@ -448,17 +653,20 @@ body {
         z-index: 10;
     }
 
-    .rating-section .rating-score {
+    .rating-section .rating-score,
+    .rating-section2 .rating-score2 {
         font-size: 20px;
     }
 
-    .rating-section .stars {
+    .rating-section .stars,
+    .rating-section2 .stars {
         font-size: 14px;
         line-height: 1;
     }
 
     /* Ensure rating doesn't appear in its original place */
-    .logo-section .rating-section {
+    .logo-section .rating-section,
+    .logo-section2 .rating-section2 {
         order: unset;
     }
 
@@ -474,7 +682,8 @@ body {
         display: none;
     }
 
-    .card-body-row .description {
+    .card-body-row .description,
+    .card-body-row .description2 {
         width: 100%;
         box-sizing: border-box;
         padding: 10px;
@@ -482,7 +691,8 @@ body {
         word-wrap: break-word;
     }
 
-    .description {
+    .description,
+    .description2 {
         font-weight: normal;
     }
 
@@ -519,7 +729,8 @@ body {
     }
 
     /* Logo + promo side by side */
-    .logo-section {
+    .logo-section,
+    .logo-section2 {
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -530,18 +741,23 @@ body {
         width: 100%;
     }
 
-    .logo {
+    .logo,
+    .logo2 {
         width: 130px;
         height: 130px;
+        flex: 0 0 130px;
     }
 
-    .logo img {
-        width: 180px;
-        height: auto;
+    .logo img,
+    .logo2 img {
+        width: 100%; /* fill container */
+        height: 100%; /* fill container */
+        object-fit: contain; /* keep aspect ratio */
     }
 
     /* Buttons under logo + rating */
-    .cta-section {
+    .cta-section,
+    .cta-section2 {
         display: flex;
         justify-content: center;
         gap: 10px;
@@ -550,15 +766,27 @@ body {
         width: 100%;
         order: 2;
     }
+    .cta-section2 {
+        display: flex;
+        justify-content: center; /* center horizontally */
+        align-items: center; /* center vertically if multi-line */
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+        width: 100%;
+        order: 2;
+    }
 
     .get-quote-btn,
-    .phone-btn {
+    .get-quote-btn2,
+    .phone-btn,
+    .phone-btn2 {
         width: 150px;
     }
 
     /* Promo badge under buttons */
     .promo-badge,
-    .chaiz-promo-badge {
+    .promo-badge2 {
         padding: 6px 12px;
         font-size: 16px;
         font-weight: 600;
@@ -1155,6 +1383,32 @@ body {
     color: #010100;
 }
 
+/* Increase height on mobile */
+@media (max-width: 768px) {
+    .modal-dropdown1 {
+        padding: 13px; /* more vertical padding */
+        font-size: 1.1rem; /* optional: slightly bigger text */
+    }
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap; /* allows cards to wrap on smaller screens */
+    gap: 20px; /* space between cards */
+}
+
+.cards-container .service-card {
+    flex: 1 1 45%; /* grow, shrink, basis 45% */
+    min-width: 300px; /* ensures it doesn't get too small on mobile */
+}
+
+/* Optional: make it stack on small screens */
+@media (max-width: 768px) {
+    .cards-container .service-card {
+        flex: 1 1 100%;
+    }
+}
+
 .step-buttons-wrapper {
     text-align: center;
     margin-top: 1rem;
@@ -1692,8 +1946,8 @@ body {
 #chaizModal p {
     color: #000000;
     text-align: center;
-    margin: 0 auto 10px auto; /* top 0, horizontal auto, bottom 20px */
-    max-width: 600px; /* optional max width for better reading */
+    margin: 0 auto 10px auto;
+    max-width: 600px;
 }
 
 @media (max-width: 768px) {
