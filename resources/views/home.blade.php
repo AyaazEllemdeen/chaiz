@@ -228,11 +228,11 @@
                         </div>
 
                         <div id="quiz-step5" class="d-none">
+                            <h3 class="modal-question">Your Contact Details</h3>
+
                             <p class="zip-helper-text">
                                 Please fill in your details below so we can provide accurate quotes for your vehicle.
                             </p>
-
-                            <h3 class="modal-question">Your Contact Details</h3>
 
                             <!-- ZIP Code -->
                             <label for="user-zip" class="detail-label">ZIP Code</label>
