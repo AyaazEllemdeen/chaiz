@@ -243,7 +243,6 @@ body {
     flex-wrap: wrap; /* ensure wrapping for smaller screens */
 }
 
-
 .logo-section {
     display: flex;
     align-items: center;
@@ -346,7 +345,6 @@ body {
     min-width: 45px;
     margin-left: 3px; /* smaller spacing */
 }
-
 
 .rating-score2 {
     font-size: 18px;
@@ -747,6 +745,7 @@ body {
     .logo2 {
         width: 130px;
         height: 130px;
+        flex: 0 0 130px;
     }
 
     .logo img,
@@ -1947,8 +1946,8 @@ body {
 #chaizModal p {
     color: #000000;
     text-align: center;
-    margin: 0 auto 10px auto; 
-    max-width: 600px; 
+    margin: 0 auto 10px auto;
+    max-width: 600px;
 }
 
 @media (max-width: 768px) {
