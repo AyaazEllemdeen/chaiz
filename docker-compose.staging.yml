@@ -38,7 +38,7 @@ services:
     networks:
       - comparewarranties-staging-network
     ports:
-      - 3314:3306
+      - 3313:3306
 
 volumes:
   comparewarranties-staging-db-volume:
