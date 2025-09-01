@@ -357,10 +357,10 @@
         const sectionHeading = document.getElementById('quiz-section-heading');
 
         const stepProgress = {
-            'to-step2': 20,
-            'to-step3': 40,
-            'to-step4': 60,
-            'to-step5': 80,
+            'to-step2': 30,
+            'to-step3': 50,
+            'to-step4': 70,
+            'to-step5': 90,
             'to-step6': 60,
             'to-step7': 75,
             'to-step8': 90
@@ -1922,32 +1922,55 @@
                 document.getElementById("quiz-step2").classList.remove("d-none");
             });
 
-            const mileOptions = document.querySelectorAll('.mile-opt1');
-            mileOptions.forEach(button => {
-                button.addEventListener('click', () => {
-                    // Highlight selected
-                    mileOptions.forEach(btn => btn.classList.remove('selected'));
-                    button.classList.add('selected');
+            // Mileage options
+const mileOptions = document.querySelectorAll('.mile-opt1');
+const continueMileageBtn = document.getElementById('to-step3');
 
-                    // Store selected value
-                    window.carData = window.carData || {};
-                    window.carData.mileage = button.dataset.value;
-                    document.getElementById('input-mileage').value = button.dataset.value;
+mileOptions.forEach(button => {
+    button.addEventListener('click', () => {
+        // Highlight selected
+        mileOptions.forEach(btn => btn.classList.remove('selected'));
+        button.classList.add('selected');
 
-                    // Small delay so user can see yellow highlight
-                    setTimeout(() => {
-                        // Move to next step
-                        document.getElementById("quiz-step2").classList.add("d-none");
-                        document.getElementById("quiz-step3").classList.remove("d-none");
+        // Store selected value
+        window.carData = window.carData || {};
+        window.carData.mileage = button.dataset.value;
+        document.getElementById('input-mileage').value = button.dataset.value;
 
-                        // Simulate pressing the Continue button
-                        const continueBtn = document.getElementById('to-step3');
-                        if (continueBtn) {
-                            continueBtn.click();
-                        }
-                    }, 400);
-                });
-            });
+        // Small delay so user sees highlight
+        setTimeout(() => {
+            // Move to next step
+            document.getElementById('quiz-step2').classList.add('d-none');
+            document.getElementById('quiz-step3').classList.remove('d-none');
+
+            // Simulate pressing the Continue button
+            if (continueMileageBtn) {
+                continueMileageBtn.click();
+            }
+        }, 400);
+    });
+});
+
+// Continue button for mileage
+continueMileageBtn.addEventListener('click', (e) => {
+    const selectedOption = document.querySelector('.mile-opt1.selected');
+
+    if (!selectedOption) {
+        e.preventDefault();
+        alert("Please select an option before continuing.");
+        return;
+    }
+
+    // Store value again
+    window.carData = window.carData || {};
+    window.carData.mileage = selectedOption.dataset.value;
+    document.getElementById('input-mileage').value = selectedOption.dataset.value;
+
+    // Move to next step immediately
+    document.getElementById('quiz-step2').classList.add('d-none');
+    document.getElementById('quiz-step3').classList.remove('d-none');
+});
+
 
 
             document.getElementById("back-to-step1").addEventListener("click", function (e) {
@@ -1957,6 +1980,8 @@
             });
 
             const warrantyOptions = document.querySelectorAll('.warranty-urgency-opt1');
+            const continueBtn = document.getElementById('to-step4');
+
             warrantyOptions.forEach(button => {
                 button.addEventListener('click', () => {
                     // Highlight selected
@@ -1968,19 +1993,37 @@
                     window.carData.warranty = button.dataset.value;
                     document.getElementById('warranty').value = button.dataset.value;
 
-                    // Small delay so user can see yellow highlight
+                    // Small delay so user sees the highlight
                     setTimeout(() => {
                         // Move to next step
-                        document.getElementById("quiz-step3").classList.add("d-none");
-                        document.getElementById("quiz-step4").classList.remove("d-none");
+                        document.getElementById('quiz-step3').classList.add('d-none');
+                        document.getElementById('quiz-step4').classList.remove('d-none');
 
                         // Simulate pressing the Continue button
-                        const continueBtn = document.getElementById('to-step4');
                         if (continueBtn) {
                             continueBtn.click();
                         }
                     }, 400);
                 });
+            });
+
+            continueBtn.addEventListener('click', (e) => {
+                const selectedOption = document.querySelector('.warranty-urgency-opt1.selected');
+
+                if (!selectedOption) {
+                    e.preventDefault(); // Stop default behavior
+                    alert("Please select an option before continuing."); // Optional warning
+                    return;
+                }
+
+                // Store selected value (in case user navigated back)
+                window.carData = window.carData || {};
+                window.carData.warranty = selectedOption.dataset.value;
+                document.getElementById('warranty').value = selectedOption.dataset.value;
+
+                // Move to next step immediately
+                document.getElementById('quiz-step3').classList.add('d-none');
+                document.getElementById('quiz-step4').classList.remove('d-none');
             });
 
             document.getElementById("back-to-step2").addEventListener("click", function (e) {
@@ -2010,11 +2053,11 @@
                 }, 2700);
             });
 
-            // Go Back to Step 4
-            document.getElementById("back-to-step4").addEventListener("click", function (e) {
+            // Go Back to Step 3
+            document.getElementById("back-to-step3").addEventListener("click", function (e) {
                 e.preventDefault();
-                document.getElementById("quiz-step5").classList.add("d-none");
-                document.getElementById("quiz-step4").classList.remove("d-none");
+                document.getElementById("quiz-step4").classList.add("d-none");
+                document.getElementById("quiz-step3").classList.remove("d-none");
             });
 
             // Final Submit Button
@@ -2064,6 +2107,11 @@
                     submitFormData();
                 });
             }
+            document.getElementById("back-to-step4").addEventListener("click", function (e) {
+                e.preventDefault();
+                document.getElementById("quiz-step5").classList.add("d-none");
+                document.getElementById("quiz-step4").classList.remove("d-none");
+            });
 
         });
     </script>
