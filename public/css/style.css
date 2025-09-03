@@ -225,6 +225,23 @@ body {
     clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
 }
 
+.cards-container {
+    display: flex;
+    flex-wrap: wrap; /* allows cards to wrap on smaller screens */
+    gap: 5px; /* space between cards */
+}
+
+.cards-container .service-card {
+    flex: 1 1 30%; /* grow, shrink, basis 45% */
+    min-width: 300px; /* ensures it doesn't get too small on mobile */
+}
+
+/* Optional: make it stack on small screens */
+@media (max-width: 768px) {
+    .cards-container .service-card {
+        flex: 1 1 100%;
+    }
+}
 /* whole card */
 .service-card {
     background: white;
@@ -581,6 +598,31 @@ body {
     background: #ffcf4b;
     color: rgb(255, 255, 255);
 }
+.card-body-row2 {
+    display: flex;
+    flex-direction: column; /* stack description above features */
+    align-items: center; /* center the description horizontally */
+    gap: 15px;
+    padding: 10px 0;
+    text-align: center; /* center text inside the container */
+}
+
+.card-body-row2 .description2 {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.6;
+    color: #000000;
+    margin-bottom: 10px;
+    max-width: 90%; /* prevent text from stretching too wide */
+}
+
+.card-body-row2 .features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* keep two columns */
+    gap: 5px 15px;
+    width: 100%;
+    text-align: left; /* keep features aligned to the left */
+}
 
 @media (max-width: 1065px) {
     .feature2 {
@@ -682,8 +724,14 @@ body {
         display: none;
     }
 
+    .service-card > .card-body-row2,
+    .service-card > .divider-line {
+        display: none;
+    }
+
     .card-body-row .description,
-    .card-body-row .description2 {
+    .card-body-row .description2,
+    .card-body-row2 .description2 {
         width: 100%;
         box-sizing: border-box;
         padding: 10px;
@@ -697,6 +745,16 @@ body {
     }
 
     .card-body-row.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 15px;
+        box-sizing: border-box;
+        background: #fff;
+    }
+
+    .card-body-row2.active {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1388,24 +1446,6 @@ body {
     .modal-dropdown1 {
         padding: 13px; /* more vertical padding */
         font-size: 1.1rem; /* optional: slightly bigger text */
-    }
-}
-
-.cards-container {
-    display: flex;
-    flex-wrap: wrap; /* allows cards to wrap on smaller screens */
-    gap: 20px; /* space between cards */
-}
-
-.cards-container .service-card {
-    flex: 1 1 45%; /* grow, shrink, basis 45% */
-    min-width: 300px; /* ensures it doesn't get too small on mobile */
-}
-
-/* Optional: make it stack on small screens */
-@media (max-width: 768px) {
-    .cards-container .service-card {
-        flex: 1 1 100%;
     }
 }
 

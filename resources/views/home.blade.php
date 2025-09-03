@@ -2123,7 +2123,7 @@
 
             <div class="mb-4">
                 <!-- endurance card -->
-                <div class="service-card">
+                {{-- <div class="service-card">
                     <div class="top-rated-ribbon">TOP RATED</div>
                     <div class="card-header">
                         <div class="logo-section">
@@ -2195,157 +2195,229 @@
                     <!-- <button class="learn-more-btn">Learn More</button> -->
                 </div>
 
-                <!-- american dream card -->
-                <div class="service-card">
-                    <div class="card-header">
-                        <div class="logo-section">
-                            <div class="logo">
-                                <a href="https://www.americandreamautoprotect.com/u7izFNKM9E" target="_blank"
-                                    rel="noopener noreferrer">
-                                    <img src="/img/american-dream.png" alt="american dream logo">
-                                </a>
-                            </div>
-                            <div class="promo-badge">
-                                $350 off + 3 months free!
-                            </div>
-                            <div class="rating-section">
-                                <div class="rating-score">8.4</div>
-                                <div class="stars">★★★★☆</div>
-                            </div>
-                            <div class="cta-section">
-                                <a href="https://www.americandreamautoprotect.com/u7izFNKM9E" class="get-quote-btn"
-                                    target="_blank" rel="noopener noreferrer">Get a Quote</a>
-                                <a href="tel:8333640947">
-                                    <button class="phone-btn">833-364-0947</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="divider-line"></div>
-                    <div class="card-body-row">
-                        <div class="description">
-                            American Dream Auto Protect provides peace of mind by mitigating the high costs that come
-                            with
-                            unexpected repairs. Their stress-free claims process means you get approved in as little as
-                            48
-                            hours.
-                        </div>
-
-                        <div class="features-grid">
-                            <div class="feature">
-                                <span class="checkmark">✓</span>
-                                <span>Choose your own repair facility</span>
-                            </div>
-                            <div class="feature">
-                                <span class="checkmark">✓</span>
-                                <span>Customize your coverage plan</span>
-                            </div>
-                            <div class="feature">
-                                <span class="checkmark">✓</span>
-                                <span>OFFER: $350 off + 3 months free!</span>
-                            </div>
-                            <div class="feature">
-                                <span class="checkmark">✓</span>
-                                <span>Flexible payment plan options</span>
-                            </div>
-                            <div class="feature">
-                                <span class="checkmark">✓</span>
-                                <span>24/7 Roadside Assistance</span>
-                            </div>
-                            <div class="feature">
-                                <span class="checkmark">✓</span>
-                                <span>30 Day money back guarantee</span>
-                            </div>
-                            <div class="feature">
-                                <span class="checkmark">✓</span>
-                                <span>Covers cars up to 20 years old / 200K miles</span>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="more-btn">+ More</button>
-                    <!-- <button class="learn-more-btn">Learn More</button> -->
-                </div>
-
                 <div class="mt-5 divider-line"></div>
                 <h4 class="mt-5 mb-3" style="font-weight: 700;">Looking for a quick solution? Skip the wait and buy your
                     auto
-                    warranty directly online in minutes.</h4>
+                    warranty directly online in minutes.</h4> --}}
 
-                <!-- chaiz card -->
-                <div class="mb-4">
+                <div class="cards-container mb-4">
+
+                    <!-- chaiz card -->
                     <div class="service-card">
-                        <div class="top-rated-ribbon">BUY NOW</div>
-                        <div class="card-header">
-                            <div class="logo-section">
-                                <div class="logo">
-                                    <a href="https://www.chaiz.com/?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
-                                        target="_blank" rel="noopener noreferrer">
-                                        <img src="/img/chaiz.png" alt="chaiz logo">
+                        <div class="top-rated-ribbon">TOP RATED</div>
+                        <div class="card-header mb-3">
+                            <div class="logo-section2">
+                                <div class="logo2">
+                                    <a href="https://endurancewarranty.com/lp/czcw" target="_blank"
+                                        rel="noopener noreferrer">
+                                        <img src="/img/1.png" alt="Chaiz Logo">
                                     </a>
                                 </div>
-                                <div class="promo-badge">
-                                    Buy directly online — No Email or Phone needed
+                                <div class="promo-badge2">
+                                    $300 off any new plan!
                                 </div>
-                                <div class="rating-section">
-                                    <div class="rating-score">9.9</div>
+                                <div class="rating-section2">
+                                    <div class="rating-score2">9.9</div>
                                     <div class="stars">★★★★★</div>
                                 </div>
-                                <div class="cta-section">
-                                    <a href="https://www.chaiz.com/?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
-                                        class="get-quote-btn" target="_blank" rel="noopener noreferrer">Buy Now</a>
-                                    <a href="tel:8339429249">
-                                        <button class="phone-btn">833-942-9249</button>
+                                <div class="cta-section2">
+                                    <a href="https://endurancewarranty.com/lp/czcw" class="get-quote-btn2" target="_blank"
+                                        rel="noopener noreferrer">Get a Quote</a>
+                                    <a href="tel:8005980082">
+                                        <button class="phone-btn2">800-598-0082</button>
                                     </a>
                                 </div>
                             </div>
                         </div>
                         <div class="divider-line"></div>
-                        <div class="card-body-row">
-                            <div class="description">
-                                Chaiz shows you several plans from multiple providers within 30 seconds. Compare and buy
-                                breakdown protection from top providers today.
+                        <div class="card-body-row2">
+                            <div class="description2">
+                                Endurance offers flexibility to choose your certified mechanic, and a 30-day money-back
+                                guarantee
+                                for
+                                peace of mind. Also, get a free Year of Elite Benefits featuring 24/7 Roadside Assistance,
+                                Complete
+                                Tire
+                                Coverage, Key Replacement, and more!
                             </div>
 
                             <div class="features-grid">
-                                <div class="feature">
+                                <div class="feature2">
+                                    <span class="checkmark">✓</span>
+                                    <span>Covers cars up to 20 years old/200K miles</span>
+                                </div>
+                                <div class="feature2">
+                                    <span class="checkmark">✓</span>
+                                    <span>1 year of FREE Elite Benefits</span>
+                                </div>
+                                <div class="feature2">
+                                    <span class="checkmark">✓</span>
+                                    <span>Flexible down payment to fit your budget</span>
+                                </div>
+                                <div class="feature2">
+                                    <span class="checkmark">✓</span>
+                                    <span>6 coverage plans to choose from</span>
+                                </div>
+                                <div class="feature2">
+                                    <span class="checkmark">✓</span>
+                                    <span>No obligation fast quote</span>
+                                </div>
+                                <div class="feature2">
+                                    <span class="checkmark">✓</span>
+                                    <span>30 Day money back guarantee</span>
+                                </div>
+                                <div class="feature2">
+                                    <span class="checkmark">✓</span>
+                                    <span> Quick and easy claims process</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="more-btn">+ More</button>
+                    </div>
+
+                    <!-- american dream card -->
+                    <div class="service-card">
+                        <div class="card-header mb-3">
+                            <div class="logo-section2">
+                                <div class="logo2">
+                                    <a href="https://www.americandreamautoprotect.com/u7izFNKM9E" target="_blank"
+                                        rel="noopener noreferrer">
+                                        <img src="/img/american-dream.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="promo-badge2">
+                                    $350 off + 3 months free!
+                                </div>
+                                <div class="rating-section2">
+                                    <div class="rating-score2">8.4</div>
+                                    <div class="stars">★★★★☆</div>
+                                </div>
+                                <div class="cta-section2">
+                                    <a href="https://www.americandreamautoprotect.com/u7izFNKM9E" class="get-quote-btn2"
+                                        target="_blank" rel="noopener noreferrer">Get a Quote</a>
+                                    <a href="tel:8333640947">
+                                        <button class="phone-btn2">833-364-0947</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divider-line"></div>
+                        <div class="card-body-row2">
+                            <div class="description2">
+                                American Dream Auto Protect provides peace of mind by mitigating the high costs that come
+                                with
+                                unexpected repairs. Their stress-free claims process means you get approved in as little as
+                                48
+                                hours.
+                            </div>
+
+                            <div class="features-grid">
+                                <div class="feature2">
+                                    <span class="checkmark">✓</span>
+                                    <span>Choose your own repair facility</span>
+                                </div>
+                                <div class="feature2">
+                                    <span class="checkmark">✓</span>
+                                    <span>Customize your coverage plan</span>
+                                </div>
+                                <div class="feature2">
+                                    <span class="checkmark">✓</span>
+                                    <span>OFFER: $350 off + 3 months free!</span>
+                                </div>
+                                <div class="feature2">
+                                    <span class="checkmark">✓</span>
+                                    <span>Flexible payment plan options</span>
+                                </div>
+                                <div class="feature2">
+                                    <span class="checkmark">✓</span>
+                                    <span>24/7 Roadside Assistance</span>
+                                </div>
+                                <div class="feature2">
+                                    <span class="checkmark">✓</span>
+                                    <span>30 Day money back guarantee</span>
+                                </div>
+                                <div class="feature2">
+                                    <span class="checkmark">✓</span>
+                                    <span>Covers cars up to 20 years old / 200K miles</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="more-btn">+ More</button>
+                    </div>
+
+                    <!-- chaiz card -->
+                    <div class="service-card">
+                        <div class="top-rated-ribbon">BUY NOW</div>
+                        <div class="card-header mb-3">
+                            <div class="logo-section2">
+                                <div class="logo2">
+                                    <a href="https://www.chaiz.com/?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
+                                        target="_blank" rel="noopener noreferrer">
+                                        <img src="/img/chaiz.png" alt="Chaiz Logo">
+                                    </a>
+                                </div>
+                                <div class="promo-badge2">
+                                    Buy directly online — No Email or Phone needed
+                                </div>
+                                <div class="rating-section2">
+                                    <div class="rating-score2">9.9</div>
+                                    <div class="stars">★★★★★</div>
+                                </div>
+                                <div class="cta-section2">
+                                    <a href="https://www.chaiz.com/?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
+                                        class="get-quote-btn2" target="_blank" rel="noopener noreferrer">Buy Now</a>
+                                    <a href="tel:8339429249">
+                                        <button class="phone-btn2">833-942-9249</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divider-line"></div>
+                        <div class="card-body-row2">
+                            <div class="description2">
+                                Chaiz shows you several plans from multiple providers within 30 seconds.
+                                Compare and buy breakdown protection from top providers today.
+                            </div>
+
+                            <div class="features-grid">
+                                <div class="feature2">
                                     <span class="checkmark">✓</span>
                                     <span>Best price guaranteed</span>
                                 </div>
-                                <div class="feature">
+                                <div class="feature2">
                                     <span class="checkmark">✓</span>
                                     <span>No email or phone needed</span>
                                 </div>
-                                <div class="feature">
+                                <div class="feature2">
                                     <span class="checkmark">✓</span>
                                     <span>Independent and unbiased</span>
                                 </div>
-                                <div class="feature">
+                                <div class="feature2">
                                     <span class="checkmark">✓</span>
                                     <span>Hundreds of 5* reviews</span>
                                 </div>
-                                <div class="feature">
+                                <div class="feature2">
                                     <span class="checkmark">✓</span>
                                     <span>30-day money back guarantee</span>
                                 </div>
-                                <div class="feature">
+                                <div class="feature2">
                                     <span class="checkmark">✓</span>
                                     <span>A+ customer service</span>
                                 </div>
-                                <div class="feature">
+                                <div class="feature2">
                                     <span class="checkmark">✓</span>
                                     <span>Purchase completely online 24/7</span>
                                 </div>
-                                <div class="feature">
+                                <div class="feature2">
                                     <span class="checkmark">✓</span>
                                     <span>Compare live quotes within less than a minute</span>
                                 </div>
                             </div>
                         </div>
+
                         <button class="more-btn">+ More</button>
-                        <!-- <button class="learn-more-btn">Learn More</button> -->
                     </div>
                 </div>
-                
                 <!-- omega card -->
                 <div class="service-card">
                     <div class="card-header">
