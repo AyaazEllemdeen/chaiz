@@ -13,7 +13,6 @@ class LeadService
             'make' => $data['make'],
             'model' => $data['model'],
             'car_mileage' => $data['mileage'],
-            'warranty' => $data['warranty'],
             'state' => $data['state'],
             'zip' => $data['zip'],
             'email' => $data['email'],

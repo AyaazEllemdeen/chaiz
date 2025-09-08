@@ -14,7 +14,6 @@ class Lead extends Model
         'make',
         'model',
         'car_mileage',
-        'warranty',
         'state',
         'zip',
         'email',

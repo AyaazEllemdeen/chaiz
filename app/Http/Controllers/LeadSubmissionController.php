@@ -18,7 +18,6 @@ class LeadSubmissionController extends Controller
             'sel-make' => 'required|string',
             'sel-model' => 'required|string',
             'car_mileage' => 'required|string',
-            'warranty' => 'required|string',
             'user-state' => 'required|string',
             'user-zip' => 'required|digits:5',
             'email' => 'required|email',

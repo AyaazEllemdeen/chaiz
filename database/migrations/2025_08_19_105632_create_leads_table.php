@@ -13,7 +13,7 @@ return new class extends Migration {
             $table->string('make');
             $table->string('model');
             $table->string('car_mileage');
-            $table->string('warranty');
+            // $table->string('warranty'); // removed
             $table->string('state');
             $table->string('zip');
             $table->string('email');

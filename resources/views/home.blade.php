@@ -139,7 +139,7 @@
                             <input type="hidden" name="car_mileage" id="input-mileage" value="">
                         </div>
 
-                        <div id="quiz-step3" class="d-none">
+                        {{-- <div id="quiz-step3" class="d-none">
                             <h3 class="modal-question">How soon do you want your new auto warranty?</h3>
                             <div class="options-grid1">
                                 <button type="button" class="warranty-urgency-opt1" data-value="As soon as possible">As soon
@@ -157,7 +157,7 @@
                                 <button id="to-step4" class="to-step-btn">Continue</button>
                             </div>
                             <input type="hidden" name="warranty" id="warranty" value="">
-                        </div>
+                        </div> --}}
 
                         <div id="quiz-step4" class="d-none">
                             <h3 class="modal-question">What state would you like coverage in?</h3>
@@ -360,7 +360,7 @@
             'to-step2': 30,
             'to-step3': 50,
             'to-step4': 70,
-            'to-step5': 90,
+            'to-step5': 80,
             'to-step6': 60,
             'to-step7': 75,
             'to-step8': 90
@@ -569,7 +569,6 @@
                 formData.append('sel-make', window.carData.make);
                 formData.append('sel-model', window.carData.model);
                 formData.append('car_mileage', window.carData.mileage);
-                formData.append('warranty', window.carData.warranty);
                 formData.append('user-state', window.carData.state);
                 formData.append('user-zip', window.carData.zip);
                 formData.append('email', window.carData.email);
@@ -581,7 +580,7 @@
                     console.log(key, value);
                 }
 
-                const requiredFields = ['year', 'make', 'model', 'mileage', 'warranty', 'state', 'zip', 'email', 'name', 'phone'];
+                const requiredFields = ['year', 'make', 'model', 'mileage', 'state', 'zip', 'email', 'name', 'phone'];
                 const missingFields = requiredFields.filter(field => !window.carData[field]);
 
                 if (missingFields.length > 0) {
@@ -1941,7 +1940,7 @@
                     setTimeout(() => {
                         // Move to next step
                         document.getElementById('quiz-step2').classList.add('d-none');
-                        document.getElementById('quiz-step3').classList.remove('d-none');
+                        document.getElementById('quiz-step4').classList.remove('d-none');
 
                         // Simulate pressing the Continue button
                         if (continueMileageBtn) {
@@ -1971,67 +1970,13 @@
                 document.getElementById('quiz-step3').classList.remove('d-none');
             });
 
-
-
             document.getElementById("back-to-step1").addEventListener("click", function (e) {
                 e.preventDefault();
                 document.getElementById("quiz-step2").classList.add("d-none");
                 document.getElementById("quiz-step1").classList.remove("d-none");
             });
 
-            const warrantyOptions = document.querySelectorAll('.warranty-urgency-opt1');
-            const continueBtn = document.getElementById('to-step4');
-
-            warrantyOptions.forEach(button => {
-                button.addEventListener('click', () => {
-                    // Highlight selected
-                    warrantyOptions.forEach(btn => btn.classList.remove('selected'));
-                    button.classList.add('selected');
-
-                    // Store selected value
-                    window.carData = window.carData || {};
-                    window.carData.warranty = button.dataset.value;
-                    document.getElementById('warranty').value = button.dataset.value;
-
-                    // Small delay so user sees the highlight
-                    setTimeout(() => {
-                        // Move to next step
-                        document.getElementById('quiz-step3').classList.add('d-none');
-                        document.getElementById('quiz-step4').classList.remove('d-none');
-
-                        // Simulate pressing the Continue button
-                        if (continueBtn) {
-                            continueBtn.click();
-                        }
-                    }, 400);
-                });
-            });
-
-            continueBtn.addEventListener('click', (e) => {
-                const selectedOption = document.querySelector('.warranty-urgency-opt1.selected');
-
-                if (!selectedOption) {
-                    e.preventDefault(); // Stop default behavior
-                    alert("Please select an option before continuing."); // Optional warning
-                    return;
-                }
-
-                // Store selected value (in case user navigated back)
-                window.carData = window.carData || {};
-                window.carData.warranty = selectedOption.dataset.value;
-                document.getElementById('warranty').value = selectedOption.dataset.value;
-
-                // Move to next step immediately
-                document.getElementById('quiz-step3').classList.add('d-none');
-                document.getElementById('quiz-step4').classList.remove('d-none');
-            });
-
-            document.getElementById("back-to-step2").addEventListener("click", function (e) {
-                e.preventDefault();
-                document.getElementById("quiz-step3").classList.add("d-none");
-                document.getElementById("quiz-step2").classList.remove("d-none");
-            });
-
+            
             document.getElementById("to-step5").addEventListener("click", function (e) {
                 e.preventDefault();
                 const state = document.getElementById("user-state").value.trim();
