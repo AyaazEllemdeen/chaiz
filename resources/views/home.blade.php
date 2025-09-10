@@ -538,10 +538,10 @@
                     }, spinDuration);
                 }
 
-                const existingScript = document.querySelector('script[src="https://uat.warranty-search.chaiz.com/initialize.js"]');
+                const existingScript = document.querySelector('script[src="https://warranty-search.chaiz.com/initialize.js"]');
                 if (!existingScript) {
                     const script = document.createElement('script');
-                    script.src = 'https://uat.warranty-search.chaiz.com/initialize.js';
+                    script.src = 'https://warranty-search.chaiz.com/initialize.js';
                     script.onload = () => {
                         startPollingForResults();
                     };
@@ -718,9 +718,9 @@
                         }
                     };
 
-                    if (!document.querySelector('script[src="https://uat.warranty-search.chaiz.com/initialize.js"]')) {
+                    if (!document.querySelector('script[src="https://warranty-search.chaiz.com/initialize.js"]')) {
                         const script = document.createElement('script');
-                        script.src = 'https://uat.warranty-search.chaiz.com/initialize.js';
+                        script.src = 'https://warranty-search.chaiz.com/initialize.js';
                         document.body.appendChild(script);
                     }
                 }
