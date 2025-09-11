@@ -53,14 +53,18 @@
                     </div>
                 </div>
             </div>
-
             <!-- End What Happens Next & Awareness Section -->
-
-            <!-- Chaiz Results Container -->
-            <div id="search-results" class="chaiz-results mb-3 mt-3"></div>
 
         </div>
     </section>
+
+    <!-- 90%-width Chaiz Results Section -->
+    <section class="chaiz-results-section py-4" style="width: 100%; background-color: #FAF9F6;">
+        <div style="width: 90%; margin: 0 auto;">
+            <div id="search-results" class="chaiz-results"></div>
+        </div>
+    </section>
+
 
 
     <script>
