@@ -298,9 +298,9 @@ body {
 }
 
 .logo2 {
-    flex: 0 0 150px;
-    width: 150px;
-    height: 150px;
+    flex: 0 0 110px;
+    width: 110px;
+    height: 110px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -330,7 +330,8 @@ body {
 
 .promo-badge2 {
     flex: 0 0 auto;
-    width: 120px;
+    width: 110px;
+    height: 110px;
     padding: 3px 6px;
     font-size: 14px;
     font-weight: 600;
@@ -361,10 +362,17 @@ body {
 
 .rating-section2 {
     flex: 0 0 auto;
-    text-align: center;
     width: 100px;
-    margin-left: 16px; /* smaller spacing */
+    height: 110px;
+    margin-left: 16px; /* keep if needed */
+    
+    display: flex;
+    flex-direction: column;   /* stack score + stars */
+    align-items: center;      /* center horizontally */
+    justify-content: center;  /* center vertically */
+    text-align: center;
 }
+
 
 .rating-score2 {
     font-size: 18px;
@@ -388,6 +396,7 @@ body {
     justify-content: flex-end;
     gap: 10px; /* space between buttons */
     flex-wrap: wrap; /* allows wrapping if too narrow on mobile */
+    height: 110px;
 }
 
 .get-quote-btn2,
