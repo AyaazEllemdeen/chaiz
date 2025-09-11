@@ -5,7 +5,7 @@ body {
 }
 
 .container {
-    width: 75% !important;
+    width: 85% !important;
     margin: 0 auto;
 }
 
@@ -296,9 +296,9 @@ body {
 }
 
 .logo2 {
-    flex: 0 0 100px;
-    width: 100px;
-    height: 100px;
+    flex: 0 0 150px;
+    width: 150px;
+    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -331,7 +331,7 @@ body {
     min-width: 100px;
     max-width: 120px;
     padding: 3px 6px; /* tighter */
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -359,8 +359,8 @@ body {
 .rating-section2 {
     flex: 0 0 auto;
     text-align: center;
-    min-width: 45px;
-    margin-left: 3px; /* smaller spacing */
+    width: 100px;
+    margin-left: 16px; /* smaller spacing */
 }
 
 .rating-score2 {
