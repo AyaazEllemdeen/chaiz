@@ -66,8 +66,6 @@
         </div>
     </section>
 
-
-
     <script>
         window.carData = @json($carData);
         window.leadAlreadySubmitted = @json($leadAlreadySubmitted);

@@ -10,8 +10,8 @@ class LeadSubmissionController extends Controller
 {
     public function store(Request $request)
     {
-         \Log::info('LeadSubmissionController@store called');
-         \Log::info('Request data:', $request->all());
+        //  \Log::info('LeadSubmissionController@store called');
+        //  \Log::info('Request data:', $request->all());
 
         $validated = $request->validate([
             'sel-year' => 'required|integer',
@@ -52,8 +52,8 @@ class LeadSubmissionController extends Controller
                 ->withBasicAuth('CHAIZ-INT-chaizcwhp', 'NqkTOZ2vJBEi3cpn')
                 ->post($url, $payload);
 
-             \Log::info('LeadSubmission API response status: ' . $response->status());
-             \Log::info('LeadSubmission API response body: ' . $response->body());
+            //  \Log::info('LeadSubmission API response status: ' . $response->status());
+            //  \Log::info('LeadSubmission API response body: ' . $response->body());
 
             $chaizData = [
                 'make' => strtolower($validated['sel-make']),
