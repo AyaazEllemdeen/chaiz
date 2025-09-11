@@ -271,12 +271,14 @@ body {
 
 .logo-section2 {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px; /* tighter gap */
+    align-items: center;   /* vertical center */
+    justify-content: center; /* horizontal center */
+    gap: 16px; /* adjust spacing */
     width: 100%;
     flex-wrap: wrap;
+    text-align: center; /* helpful for text inside */
 }
+
 
 .logo {
     flex: 0 0 180px;
