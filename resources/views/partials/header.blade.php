@@ -1,7 +1,9 @@
 <header class="site-header bg-black shadow-sm">
     <div class="d-flex justify-content-between align-items-center py-3">
         <div class="logo-wrap">
-            <img src="{{ asset('img/logo.png') }}" alt="Logo" class="logo-img" style="height: 40px;">
+            <a href="{{ url('/') }}">
+                <img src="{{ asset('img/logo.png') }}" alt="Logo" class="logo-img" style="height: 40px;">
+            </a>
         </div>
 
         <!-- Hamburger Icon (Visible on small screens) -->
@@ -10,6 +12,7 @@
         </button>
     </div>
 </header>
+
 
 <!-- Overlay -->
 <div class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none" id="overlay" style="z-index: 1040;">
