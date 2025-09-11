@@ -5,23 +5,23 @@
         $carData = session('carData', []);
     @endphp
 
-<section class="car-data-debug py-5">
-    <div class="container">
-        <h4 class="mb-3">Car Data Debug</h4>
+    <section class="car-data-debug py-5">
+        <div class="container">
+            <h4 class="mb-3">Car Data Debug</h4>
 
-        @if(!empty($carData))
-            <ul class="list-group">
-                @foreach($carData as $key => $value)
-                    <li class="list-group-item">
-                        <strong>{{ $key }}:</strong> {{ $value }}
-                    </li>
-                @endforeach
-            </ul>
-        @else
-            <p class="text-danger">No car data in session.</p>
-        @endif
-    </div>
-</section>
+            @if(!empty($carData))
+                <ul class="list-group">
+                    @foreach($carData as $key => $value)
+                        <li class="list-group-item">
+                            <strong>{{ $key }}:</strong> {{ $value }}
+                        </li>
+                    @endforeach
+                </ul>
+            @else
+                <p class="text-danger">No car data in session.</p>
+            @endif
+        </div>
+    </section>
 
     <section class="thank-you-page py-5">
         <div class="container">
