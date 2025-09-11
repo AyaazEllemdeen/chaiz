@@ -17,6 +17,13 @@ class SubmitController extends Controller
     // Show the final thank-you page
     public function submit(Request $request)
     {
-        return view('final');
+        $carData = session('carData');
+
+        // Redirect back to home if no car data
+        if (!$carData || empty($carData)) {
+            return redirect('/');
+        }
+
+        return view('final', compact('carData'));
     }
 }
