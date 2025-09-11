@@ -2030,3 +2030,12 @@ select:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px #fff inset !important; /* Match your input background */
     -webkit-text-fill-color: #000 !important;
 }
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

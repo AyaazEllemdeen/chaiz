@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SubmitController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LeadSubmissionController;
 use App\Http\Controllers\LeadController;
@@ -18,3 +19,5 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::post('/store-car-data', [SubmitController::class, 'storeCarData']);
+Route::get('/thank-you', [SubmitController::class, 'submit'])->name('final.page');
