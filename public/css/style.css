@@ -273,7 +273,7 @@ body {
     display: flex;
     align-items: center;   /* vertical center */
     justify-content: center; /* horizontal center */
-    gap: 16px; /* adjust spacing */
+    gap: 20px; /* adjust spacing */
     width: 100%;
     flex-wrap: wrap;
     text-align: center; /* helpful for text inside */
@@ -330,7 +330,7 @@ body {
 
 .promo-badge2 {
     flex: 0 0 auto;
-    width: 110px;
+    width: 200px;
     height: 110px;
     padding: 3px 6px;
     font-size: 14px;
