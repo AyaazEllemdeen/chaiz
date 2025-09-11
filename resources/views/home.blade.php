@@ -2147,7 +2147,7 @@
 
                 <div class="cards-container mb-4">
 
-                    <!-- chaiz card -->
+                    <!-- endurance card -->
                     <div class="service-card">
                         <div class="top-rated-ribbon">TOP RATED</div>
                         <div class="card-header mb-3">
@@ -2234,8 +2234,8 @@
                                     $350 off + 3 months free!
                                 </div>
                                 <div class="rating-section2">
-                                    <div class="rating-score2">8.4</div>
-                                    <div class="stars">★★★★☆</div>
+                                    <div class="rating-score2">9.2</div>
+                                    <div class="stars">★★★★★</div>
                                 </div>
                                 <div class="cta-section2">
                                     <a href="https://www.americandreamautoprotect.com/u7izFNKM9E" class="get-quote-btn2"
