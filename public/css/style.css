@@ -341,6 +341,12 @@ body {
     text-align: center;   /* keeps text centered on wrap */
 }
 
+/* For iPads in portrait and landscape */
+@media (min-width: 768px) and (max-width: 1424px) {
+    .promo-badge2 {
+        width: 120px;
+    }
+}
 
 .rating-section {
     flex: 0 0 auto;
