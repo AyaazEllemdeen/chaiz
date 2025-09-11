@@ -2144,7 +2144,7 @@
                                         <img src="/img/american-dream.png" alt="">
                                     </a>
                                 </div>
-                                <div class="promo-badge2" style="width: 200px; align-items-center">
+                                <div class="promo-badge2">
                                     $350 off
                                 </div>
                                 <div class="rating-section2">
