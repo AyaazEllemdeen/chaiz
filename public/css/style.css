@@ -173,6 +173,13 @@ body {
     max-width: 1000px;
     transition: box-shadow 0.3s ease;
 }
+
+.start-question {
+    font-size: 25px;
+    margin-bottom: 15px;
+    color: #000;
+}
+
 .quiz-modal-content-box {
     background: #fff;
     padding: 20px 40px;
@@ -271,14 +278,13 @@ body {
 
 .logo-section2 {
     display: flex;
-    align-items: center;   /* vertical center */
+    align-items: center; /* vertical center */
     justify-content: center; /* horizontal center */
     gap: 20px; /* adjust spacing */
     width: 100%;
     flex-wrap: wrap;
     text-align: center; /* helpful for text inside */
 }
-
 
 .logo {
     flex: 0 0 180px;
@@ -336,9 +342,9 @@ body {
     font-size: 14px;
     font-weight: 600;
     display: flex;
-    align-items: center;   /* vertical center */
+    align-items: center; /* vertical center */
     justify-content: center; /* horizontal center */
-    text-align: center;   /* keeps text centered on wrap */
+    text-align: center; /* keeps text centered on wrap */
 }
 
 /* For iPads in portrait and landscape */
@@ -371,14 +377,13 @@ body {
     width: 100px;
     height: 110px;
     margin-left: 16px; /* keep if needed */
-    
+
     display: flex;
-    flex-direction: column;   /* stack score + stars */
-    align-items: center;      /* center horizontally */
-    justify-content: center;  /* center vertically */
+    flex-direction: column; /* stack score + stars */
+    align-items: center; /* center horizontally */
+    justify-content: center; /* center vertically */
     text-align: center;
 }
-
 
 .rating-score2 {
     font-size: 18px;
@@ -449,7 +454,6 @@ body {
     color: white;
 }
 
-
 .phone-btn2:hover {
     background: #000;
     color: #fff;
@@ -489,7 +493,6 @@ body {
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
     letter-spacing: 0.3px;
 }
-
 
 .get-quote-btn2:hover {
     background: #e0b63e;
