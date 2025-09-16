@@ -19,6 +19,10 @@ class SubmitController extends Controller
     {
         $carData = session('carData');
 
+        // Redirect back to home if no car data
+        if (!$carData || empty($carData)) {
+            return redirect('/');
+        }
 
         return view('final', compact('carData'));
     }
