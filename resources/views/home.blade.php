@@ -483,29 +483,28 @@
                     fetch(url, {
                         method: 'POST',
                         body: formData,
-                        headers: { 'X-Requested-With': 'XMLHttpRequest' },
-                        credentials: 'include'  // <- important for non-standard port
-                    });
-                            .then(response => {
-                        console.log(`Response from ${url}:`, response.status);
-                        const contentType = response.headers.get('content-type');
-
-                        if (response.status === 422) {
-                            return response.json().then(data => { throw { status: 422, data, url }; });
-                        }
-
-                        if (!response.ok) {
-                            return response.text().then(text => { throw new Error(`HTTP ${response.status}: ${text}`); });
-                        }
-
-                        if (contentType && contentType.includes('application/json')) {
-                            return response.json();
-                        } else {
-                            return { success: true, redirect: response.url };
-                        }
+                        headers: { 'X-Requested-With': 'XMLHttpRequest' }
                     })
-                    ))
-                        .then(results => {
+                        .then(response => {
+                            console.log(`Response from ${url}:`, response.status);
+                            const contentType = response.headers.get('content-type');
+
+                            if (response.status === 422) {
+                                return response.json().then(data => { throw { status: 422, data, url }; });
+                            }
+
+                            if (!response.ok) {
+                                return response.text().then(text => { throw new Error(`HTTP ${response.status}: ${text}`); });
+                            }
+
+                            if (contentType && contentType.includes('application/json')) {
+                                return response.json();
+                            } else {
+                                return { success: true, redirect: response.url };
+                            }
+                        })
+                ))
+                    .then(results => {
                         console.log('Both submissions succeeded:', results);
 
                         const leadDestination = results[0].destination || 'Unknown';
@@ -522,275 +521,275 @@
                         }
                     })
 
-            .catch(error => {
-                console.error('Submission error:', error);
+                    .catch(error => {
+                        console.error('Submission error:', error);
 
-                if (error.status === 422 && error.data && error.data.errors) {
-                    let errorMessage = `Validation error on ${error.url}:\n`;
-                    Object.keys(error.data.errors).forEach(key => {
-                        errorMessage += `- ${error.data.errors[key][0]}\n`;
+                        if (error.status === 422 && error.data && error.data.errors) {
+                            let errorMessage = `Validation error on ${error.url}:\n`;
+                            Object.keys(error.data.errors).forEach(key => {
+                                errorMessage += `- ${error.data.errors[key][0]}\n`;
+                            });
+                            alert(errorMessage);
+                        } else if (error.message) {
+                            alert('Error: ' + error.message);
+                        } else {
+                            alert('Error: Failed to submit your information. Check console for details.');
+                        }
+                    })
+                    .finally(() => {
+                        finalButton.disabled = false;
+                        finalButton.textContent = originalText;
                     });
-                    alert(errorMessage);
-                } else if (error.message) {
-                    alert('Error: ' + error.message);
-                } else {
-                    alert('Error: Failed to submit your information. Check console for details.');
+            }
+            // Make functions available globally
+            window.skipMyDetails = skipMyDetails;
+            // Rest of your event listeners and initialization code...
+            const skipButton = document.querySelector('button[onclick="skipMyDetails()"]');
+            if (skipButton) {
+                skipButton.removeAttribute('onclick');
+                skipButton.addEventListener('click', skipMyDetails);
+            }
+
+            //populate the dropdowns
+            const yearSelect = document.getElementById("sel_year");
+            const makeSelect = document.getElementById("sel_make");
+            const modelSelect = document.getElementById("sel_model");
+            const beginBtn = document.querySelector(".begin-btn");
+
+            // Populate years
+            const currentYear = new Date().getFullYear();
+            for (let y = currentYear; y >= 2005; y--) {
+                const opt = document.createElement("option");
+                opt.value = y;
+                opt.textContent = y;
+                yearSelect.appendChild(opt);
+            }
+
+            // Build makes/models map
+            const vehicles = [
+                "ACURA 2.3CL",
+                "VOLVO XC90",
+            ];
+
+            const makesModelsMap = {};
+            vehicles.forEach(vehicle => {
+                const [make, ...modelParts] = vehicle.split(" ");
+                const model = modelParts.join(" ");
+                if (!makesModelsMap[make]) makesModelsMap[make] = [];
+                if (!makesModelsMap[make].includes(model)) {
+                    makesModelsMap[make].push(model);
                 }
-            })
-            .finally(() => {
-                finalButton.disabled = false;
-                finalButton.textContent = originalText;
             });
+
+            // Populate makes
+            makeSelect.innerHTML = `<option value="">Select Make</option>`;
+            Object.keys(makesModelsMap).forEach(make => {
+                const opt = document.createElement("option");
+                opt.value = make;
+                opt.textContent = make;
+                makeSelect.appendChild(opt);
+            });
+
+            // Update models when make changes
+            makeSelect.addEventListener("change", () => {
+                const selectedMake = makeSelect.value;
+                modelSelect.innerHTML = `<option value="">Select Model</option>`;
+                if (makesModelsMap[selectedMake]) {
+                    makesModelsMap[selectedMake].forEach(model => {
+                        const opt = document.createElement("option");
+                        opt.value = model;
+                        opt.textContent = model;
+                        modelSelect.appendChild(opt);
+                    });
                 }
-        // Make functions available globally
-        window.skipMyDetails = skipMyDetails;
-        // Rest of your event listeners and initialization code...
-        const skipButton = document.querySelector('button[onclick="skipMyDetails()"]');
-        if (skipButton) {
-            skipButton.removeAttribute('onclick');
-            skipButton.addEventListener('click', skipMyDetails);
-        }
+            });
 
-        //populate the dropdowns
-        const yearSelect = document.getElementById("sel_year");
-        const makeSelect = document.getElementById("sel_make");
-        const modelSelect = document.getElementById("sel_model");
-        const beginBtn = document.querySelector(".begin-btn");
-
-        // Populate years
-        const currentYear = new Date().getFullYear();
-        for (let y = currentYear; y >= 2005; y--) {
-            const opt = document.createElement("option");
-            opt.value = y;
-            opt.textContent = y;
-            yearSelect.appendChild(opt);
-        }
-
-        // Build makes/models map
-        const vehicles = [
-            "ACURA 2.3CL",
-            "VOLVO XC90",
-        ];
-
-        const makesModelsMap = {};
-        vehicles.forEach(vehicle => {
-            const [make, ...modelParts] = vehicle.split(" ");
-            const model = modelParts.join(" ");
-            if (!makesModelsMap[make]) makesModelsMap[make] = [];
-            if (!makesModelsMap[make].includes(model)) {
-                makesModelsMap[make].push(model);
+            function openModal() {
+                const quizModal = document.getElementById('car-quiz');
+                if (quizModal) {
+                    quizModal.classList.add('show');
+                }
             }
-        });
 
-        // Populate makes
-        makeSelect.innerHTML = `<option value="">Select Make</option>`;
-        Object.keys(makesModelsMap).forEach(make => {
-            const opt = document.createElement("option");
-            opt.value = make;
-            opt.textContent = make;
-            makeSelect.appendChild(opt);
-        });
+            document.querySelectorAll('.match-cta-button').forEach(btn => {
+                btn.addEventListener('click', (event) => {
+                    const year = yearSelect.value;
+                    const make = makeSelect.value;
+                    const model = modelSelect.value;
 
-        // Update models when make changes
-        makeSelect.addEventListener("change", () => {
-            const selectedMake = makeSelect.value;
-            modelSelect.innerHTML = `<option value="">Select Model</option>`;
-            if (makesModelsMap[selectedMake]) {
-                makesModelsMap[selectedMake].forEach(model => {
-                    const opt = document.createElement("option");
-                    opt.value = model;
-                    opt.textContent = model;
-                    modelSelect.appendChild(opt);
+                    if (!year || !make || !model) {
+                        alert("Please select year, make & model before continuing.");
+
+                        // Scroll to top after alert
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        return; // stop if dropdowns not filled
+                    }
+
+                    // Store globally
+                    window.carData = { year, make, model };
+                    document.getElementById("car-make").value = `${year} ${make} ${model}`;
+
+                    // Open modal
+                    openModal();
                 });
-            }
-        });
+            });
 
-        function openModal() {
-            const quizModal = document.getElementById('car-quiz');
-            if (quizModal) {
-                quizModal.classList.add('show');
-            }
-        }
+            // Handle Begin button
+            beginBtn.addEventListener("click", (e) => {
+                e.preventDefault();
 
-        document.querySelectorAll('.match-cta-button').forEach(btn => {
-            btn.addEventListener('click', (event) => {
                 const year = yearSelect.value;
                 const make = makeSelect.value;
                 const model = modelSelect.value;
 
                 if (!year || !make || !model) {
                     alert("Please select year, make & model before continuing.");
-
-                    // Scroll to top after alert
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    return; // stop if dropdowns not filled
+                    return;
                 }
 
-                // Store globally
+                // Store values globally or in hidden input
                 window.carData = { year, make, model };
                 document.getElementById("car-make").value = `${year} ${make} ${model}`;
 
-                // Open modal
+                // Open quiz modal (your existing function)
                 openModal();
+
+                // Change button text to Continue
+                beginBtn.textContent = "Continue";
             });
-        });
 
-        // Handle Begin button
-        beginBtn.addEventListener("click", (e) => {
-            e.preventDefault();
+            // Mileage options
+            const mileOptions = document.querySelectorAll('.mile-opt1');
+            const continueMileageBtn = document.getElementById('to-step2');
 
-            const year = yearSelect.value;
-            const make = makeSelect.value;
-            const model = modelSelect.value;
+            mileOptions.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Highlight selected
+                    mileOptions.forEach(btn => btn.classList.remove('selected'));
+                    button.classList.add('selected');
 
-            if (!year || !make || !model) {
-                alert("Please select year, make & model before continuing.");
-                return;
-            }
+                    // Store selected value
+                    window.carData = window.carData || {};
+                    window.carData.mileage = button.dataset.value;
+                    document.getElementById('input-mileage').value = button.dataset.value;
 
-            // Store values globally or in hidden input
-            window.carData = { year, make, model };
-            document.getElementById("car-make").value = `${year} ${make} ${model}`;
+                    // Small delay so user sees highlight
+                    setTimeout(() => {
+                        // Move to next step
+                        document.getElementById('quiz-step1').classList.add('d-none');
+                        document.getElementById('quiz-step2').classList.remove('d-none');
 
-            // Open quiz modal (your existing function)
-            openModal();
+                        // Simulate pressing the Continue button
+                        if (continueMileageBtn) {
+                            continueMileageBtn.click();
+                        }
+                    }, 400);
+                });
+            });
 
-            // Change button text to Continue
-            beginBtn.textContent = "Continue";
-        });
+            // Continue button for mileage
+            continueMileageBtn.addEventListener('click', (e) => {
+                const selectedOption = document.querySelector('.mile-opt1.selected');
 
-        // Mileage options
-        const mileOptions = document.querySelectorAll('.mile-opt1');
-        const continueMileageBtn = document.getElementById('to-step2');
+                if (!selectedOption) {
+                    e.preventDefault();
+                    alert("Please select an option before continuing.");
+                    return;
+                }
 
-        mileOptions.forEach(button => {
-            button.addEventListener('click', () => {
-                // Highlight selected
-                mileOptions.forEach(btn => btn.classList.remove('selected'));
-                button.classList.add('selected');
-
-                // Store selected value
+                // Store value again
                 window.carData = window.carData || {};
-                window.carData.mileage = button.dataset.value;
-                document.getElementById('input-mileage').value = button.dataset.value;
+                window.carData.mileage = selectedOption.dataset.value;
+                document.getElementById('input-mileage').value = selectedOption.dataset.value;
 
-                // Small delay so user sees highlight
+                // Move to next step immediately
+                document.getElementById('quiz-step1').classList.add('d-none');
+                document.getElementById('quiz-step2').classList.remove('d-none');
+            });
+
+
+            document.getElementById("to-step3").addEventListener("click", function (e) {
+                e.preventDefault();
+                const state = document.getElementById("user-state").value.trim();
+
+                if (!state) {
+                    alert("Please select your state.");
+                    return;
+                }
+
+                window.carData = window.carData || {};
+                window.carData.state = state;
+
+                document.getElementById("quiz-step2").classList.add("d-none");
+                document.getElementById("quiz-loading").classList.remove("d-none");
+
                 setTimeout(() => {
-                    // Move to next step
-                    document.getElementById('quiz-step1').classList.add('d-none');
-                    document.getElementById('quiz-step2').classList.remove('d-none');
+                    document.getElementById("quiz-loading").classList.add("d-none");
+                    document.getElementById("quiz-step3").classList.remove("d-none");
+                }, 2700);
+            });
 
-                    // Simulate pressing the Continue button
-                    if (continueMileageBtn) {
-                        continueMileageBtn.click();
+            // Go Back to Step 1
+            document.getElementById("back-to-step1").addEventListener("click", function (e) {
+                e.preventDefault();
+                document.getElementById("quiz-step2").classList.add("d-none");
+                document.getElementById("quiz-step1").classList.remove("d-none");
+            });
+
+            // Final Submit Button
+            const finalButton = document.getElementById("to-card") || document.getElementById("to-final");
+            if (finalButton) {
+                finalButton.addEventListener("click", function (e) {
+                    e.preventDefault();
+
+                    const zip = document.getElementById("user-zip").value.trim();
+                    const email = document.getElementById("user-email").value.trim();
+                    const name = document.getElementById("user-name").value.trim();
+                    const phone = document.getElementById("user-number").value.trim();
+
+                    // ZIP Validation
+                    if (!/^\d{5}$/.test(zip)) {
+                        alert("Please enter a valid 5-digit ZIP code.");
+                        return;
                     }
-                }, 400);
-            });
-        });
 
-        // Continue button for mileage
-        continueMileageBtn.addEventListener('click', (e) => {
-            const selectedOption = document.querySelector('.mile-opt1.selected');
+                    // Email Validation
+                    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                        alert("Please enter a valid email address.");
+                        return;
+                    }
 
-            if (!selectedOption) {
-                e.preventDefault();
-                alert("Please select an option before continuing.");
-                return;
+                    // Name Validation
+                    if (!name || !/^[a-zA-Z]+(?: [a-zA-Z]+)+$/.test(name)) {
+                        alert("Please enter your full name (first and last).");
+                        return;
+                    }
+
+                    // Phone Validation (Allow formats like 1234567890 or (123) 456-7890)
+                    const cleanPhone = phone.replace(/\D/g, '');
+                    if (!/^\d{10}$/.test(cleanPhone)) {
+                        alert("Please enter a valid 10-digit phone number.");
+                        return;
+                    }
+
+                    // Save Data
+                    window.carData = window.carData || {};
+                    window.carData.zip = zip;
+                    window.carData.email = email;
+                    window.carData.name = name;
+                    window.carData.phone = cleanPhone;
+
+                    // Submit form data
+                    submitFormData();
+                });
             }
-
-            // Store value again
-            window.carData = window.carData || {};
-            window.carData.mileage = selectedOption.dataset.value;
-            document.getElementById('input-mileage').value = selectedOption.dataset.value;
-
-            // Move to next step immediately
-            document.getElementById('quiz-step1').classList.add('d-none');
-            document.getElementById('quiz-step2').classList.remove('d-none');
-        });
-
-
-        document.getElementById("to-step3").addEventListener("click", function (e) {
-            e.preventDefault();
-            const state = document.getElementById("user-state").value.trim();
-
-            if (!state) {
-                alert("Please select your state.");
-                return;
-            }
-
-            window.carData = window.carData || {};
-            window.carData.state = state;
-
-            document.getElementById("quiz-step2").classList.add("d-none");
-            document.getElementById("quiz-loading").classList.remove("d-none");
-
-            setTimeout(() => {
-                document.getElementById("quiz-loading").classList.add("d-none");
-                document.getElementById("quiz-step3").classList.remove("d-none");
-            }, 2700);
-        });
-
-        // Go Back to Step 1
-        document.getElementById("back-to-step1").addEventListener("click", function (e) {
-            e.preventDefault();
-            document.getElementById("quiz-step2").classList.add("d-none");
-            document.getElementById("quiz-step1").classList.remove("d-none");
-        });
-
-        // Final Submit Button
-        const finalButton = document.getElementById("to-card") || document.getElementById("to-final");
-        if (finalButton) {
-            finalButton.addEventListener("click", function (e) {
+            document.getElementById("back-to-step2").addEventListener("click", function (e) {
                 e.preventDefault();
-
-                const zip = document.getElementById("user-zip").value.trim();
-                const email = document.getElementById("user-email").value.trim();
-                const name = document.getElementById("user-name").value.trim();
-                const phone = document.getElementById("user-number").value.trim();
-
-                // ZIP Validation
-                if (!/^\d{5}$/.test(zip)) {
-                    alert("Please enter a valid 5-digit ZIP code.");
-                    return;
-                }
-
-                // Email Validation
-                if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                    alert("Please enter a valid email address.");
-                    return;
-                }
-
-                // Name Validation
-                if (!name || !/^[a-zA-Z]+(?: [a-zA-Z]+)+$/.test(name)) {
-                    alert("Please enter your full name (first and last).");
-                    return;
-                }
-
-                // Phone Validation (Allow formats like 1234567890 or (123) 456-7890)
-                const cleanPhone = phone.replace(/\D/g, '');
-                if (!/^\d{10}$/.test(cleanPhone)) {
-                    alert("Please enter a valid 10-digit phone number.");
-                    return;
-                }
-
-                // Save Data
-                window.carData = window.carData || {};
-                window.carData.zip = zip;
-                window.carData.email = email;
-                window.carData.name = name;
-                window.carData.phone = cleanPhone;
-
-                // Submit form data
-                submitFormData();
+                document.getElementById("quiz-step3").classList.add("d-none");
+                document.getElementById("quiz-step2").classList.remove("d-none");
             });
-        }
-        document.getElementById("back-to-step2").addEventListener("click", function (e) {
-            e.preventDefault();
-            document.getElementById("quiz-step3").classList.add("d-none");
-            document.getElementById("quiz-step2").classList.remove("d-none");
+
         });
-
-            });
     </script>
     <!-- quiz modal end -->
 
