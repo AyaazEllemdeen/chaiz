@@ -1526,7 +1526,7 @@ body {
 
 .to-skip-btn:hover {
     background-color: #ffcf4b;
-    color: #fff;
+    color: #000000;
     transition: background-color 0.3s ease;
 }
 
