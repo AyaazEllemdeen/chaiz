@@ -483,7 +483,8 @@
                     fetch(url, {
                         method: 'POST',
                         body: formData,
-                        headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                        headers: { 'X-Requested-With': 'XMLHttpRequest' },
+                        credentials: 'same-origin'  // ← This is the key
                     })
                         .then(response => {
                             console.log(`Response from ${url}:`, response.status);
