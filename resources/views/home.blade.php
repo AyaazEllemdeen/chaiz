@@ -538,6 +538,23 @@
                 beginBtn.textContent = "Continue";
             });
 
+            const ctaBtn = document.querySelector(".match-cta-button");
+            ctaBtn?.addEventListener("click", e => {
+                e.preventDefault();
+                const year = yearSelect.value, make = makeSelect.value, model = modelSelect.value;
+
+                if (!year || !make || !model) {
+                    alert("Please select year, make & model before continuing.");
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    return;
+                }
+
+                saveCarData({ year, make, model });
+                document.getElementById("car-make").value = `${year} ${make} ${model}`;
+                openModal();
+                beginBtn.textContent = "Continue";
+            });
+
             // Mileage selection
             const mileOptions = document.querySelectorAll('.mile-opt1');
             const continueMileageBtn = document.getElementById('to-step2');
