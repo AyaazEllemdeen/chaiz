@@ -17,42 +17,43 @@
             </div>
 
             <!-- What Happens Next & Awareness Section -->
-            <div class="content-grid text-center mx-auto" style="max-width: 800px;">
-                <div class="what-happens-next mb-4">
-                    <h4>What happens next?</h4>
-                    <div class="steps-container">
-                        <div class="step-item">
-                            <div class="step-number">1</div>
-                            <div class="step-content">
-                                <p>If there is a match between your specifications and our provider's criteria,
-                                    you will receive a call from between 1-5 providers within the next working day.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-number">2</div>
-                            <div class="step-content">
-                                <p>You will have a free phone consultation with the relevant provider(s) to discuss
-                                    prices and ask any questions.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="awareness-section">
-                    <h5>Please be aware that you may not receive quotes if:</h5>
-                    <div class="awareness-items">
-                        <div class="awareness-item">
-                            <div class="awareness-number">1</div>
-                            <p>Your specifications don't match the provider's criteria</p>
-                        </div>
-                        <div class="awareness-item">
-                            <div class="awareness-number">2</div>
-                            <p>There's an error in your contact details</p>
-                        </div>
-                    </div>
+            <div class="content-grid mx-auto" style="max-width: 800px; text-align: left;">
+    <div class="what-happens-next mb-4">
+        <h4>What happens next?</h4>
+        <div class="steps-container">
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <p>If there is a match between your specifications and our provider's criteria,
+                        you will receive a call from between 1-5 providers within the next working day.
+                    </p>
                 </div>
             </div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <p>You will have a free phone consultation with the relevant provider(s) to discuss
+                        prices and ask any questions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="awareness-section">
+        <h5>Please be aware that you may not receive quotes if:</h5>
+        <div class="awareness-items">
+            <div class="awareness-item">
+                <div class="awareness-number">1</div>
+                <p>Your specifications don't match the provider's criteria</p>
+            </div>
+            <div class="awareness-item">
+                <div class="awareness-number">2</div>
+                <p>There's an error in your contact details</p>
+            </div>
+        </div>
+    </div>
+</div>
+
             <!-- End What Happens Next & Awareness Section -->
 
         </div>
