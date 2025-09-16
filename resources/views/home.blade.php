@@ -363,6 +363,7 @@
         }
 
         document.addEventListener("DOMContentLoaded", () => {
+            window.carData = JSON.parse(sessionStorage.getItem('carData') || '{}');
             function skipMyDetails() {
                 console.log('Skip button clicked');
                 window.chaizSkipPressed = true;
@@ -628,6 +629,7 @@
 
                     // Store globally
                     window.carData = { year, make, model };
+                    sessionStorage.setItem('carData', JSON.stringify(window.carData));
                     document.getElementById("car-make").value = `${year} ${make} ${model}`;
 
                     // Open modal
@@ -650,6 +652,7 @@
 
                 // Store values globally or in hidden input
                 window.carData = { year, make, model };
+                sessionStorage.setItem('carData', JSON.stringify(window.carData));
                 document.getElementById("car-make").value = `${year} ${make} ${model}`;
 
                 // Open quiz modal (your existing function)
@@ -701,6 +704,7 @@
                 // Store value again
                 window.carData = window.carData || {};
                 window.carData.mileage = selectedOption.dataset.value;
+                sessionStorage.setItem('carData', JSON.stringify(window.carData));
                 document.getElementById('input-mileage').value = selectedOption.dataset.value;
 
                 // Move to next step immediately
@@ -720,7 +724,7 @@
 
                 window.carData = window.carData || {};
                 window.carData.state = state;
-
+                sessionStorage.setItem('carData', JSON.stringify(window.carData));
                 document.getElementById("quiz-step2").classList.add("d-none");
                 document.getElementById("quiz-loading").classList.remove("d-none");
 
@@ -779,7 +783,7 @@
                     window.carData.email = email;
                     window.carData.name = name;
                     window.carData.phone = cleanPhone;
-
+                    sessionStorage.setItem('carData', JSON.stringify(window.carData));
                     // Submit form data
                     submitFormData();
                 });
