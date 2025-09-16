@@ -20,8 +20,12 @@ Route::get('/', function () {
 });
 
 Route::post('/store-car-data', [SubmitController::class, 'storeCarData']);
+
 Route::get('/thank-you', [SubmitController::class, 'submit'])->name('final.page');
+
 Route::get('/test-session', function (Request $request) {
     session(['test_key' => 'hello']);
     return session('test_key', 'not set');
 });
+
+Route::post('/submit-car-data', [SubmitController::class, 'submit'])->name('submit.car');
