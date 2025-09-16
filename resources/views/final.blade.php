@@ -3,6 +3,7 @@
 @section('content')
     @php
         $carData = session('carData', []);
+        $leadAlreadySubmitted = session('lead_already_submitted', false);
     @endphp
 
     <section class="thank-you-page py-5">
@@ -67,6 +68,7 @@
 
     <script>
         window.carData = @json($carData);
+        window.leadAlreadySubmitted = @json($leadAlreadySubmitted);
 
         async function submitLeadAndLoadChaiz() {
             if (!window.carData || Object.keys(window.carData).length === 0) return;
