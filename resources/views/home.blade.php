@@ -484,7 +484,7 @@
                         method: 'POST',
                         body: formData,
                         headers: { 'X-Requested-With': 'XMLHttpRequest' },
-                        credentials: 'include'   // ← this is the key
+                        credentials: 'same-origin'
                     })
                         .then(response => {
                             console.log(`Response from ${url}:`, response.status);
