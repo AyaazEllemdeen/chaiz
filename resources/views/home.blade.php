@@ -870,7 +870,10 @@
                     <div class="card-header">
                         <div class="logo-section">
                             <div class="logo">
-                                <img src="/img/omega.png" alt="">
+                                <a href="https://www.chaiz.com/p/omega?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
+                                    target="_blank" rel="noopener noreferrer">
+                                    <img src="/img/omega.png" alt="Chaiz Logo">
+                                </a>
                             </div>
                             <div class="promo-badge"></div>
                             <div class="rating-section">
@@ -926,7 +929,10 @@
                     <div class="card-header">
                         <div class="logo-section">
                             <div class="logo">
-                                <img src="/img/naac.png" alt="">
+                                <a href="https://www.chaiz.com/p/naac?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
+                                    target="_blank" rel="noopener noreferrer">
+                                    <img src="/img/naac.png" alt="Chaiz Logo">
+                                </a>
                             </div>
                             <div class="promo-badge"></div>
                             <div class="rating-section">
