@@ -43,7 +43,7 @@ class LeadSubmissionController extends Controller
             'smsOptIn' => true,
         ];
 
-        $url = 'httpss://leadsubmission.enduranceapi.com/api/v1/leads';
+        $url = 'https://leadsubmission.enduranceapi.com/api/v1/leads';
 
         try {
             $response = Http::withHeaders([
@@ -77,7 +77,7 @@ class LeadSubmissionController extends Controller
                 ]);
             } else {
                 // Fallback to LeadConduit if Endurance fails
-                $fallbackUrl = 'httpss://app.leadconduit.com/flows/65832665b40f680b034dae9b/sources/68471ebce9693c54cfa25e07/submit';
+                $fallbackUrl = 'https://app.leadconduit.com/flows/65832665b40f680b034dae9b/sources/68471ebce9693c54cfa25e07/submit';
 
                 // Generate random UMIDs
                 $umid_adap = bin2hex(random_bytes(6));
