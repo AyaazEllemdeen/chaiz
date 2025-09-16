@@ -12,12 +12,6 @@ class SubmitController extends Controller
     {
         session(['carData' => $request->all()]);
 
-        // Log what was stored
-        Log::debug('storeCarData called', [
-            'request_data' => $request->all(),
-            'session_after_store' => session('carData')
-        ]);
-
         return response()->json(['status' => 'stored']);
     }
 

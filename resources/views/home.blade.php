@@ -371,6 +371,7 @@
                 const quizModal = document.getElementById('car-quiz');
                 if (quizModal) quizModal.classList.remove('show');
             }
+            window.closeModalskip = closeModalskip;
 
             function skipMyDetails() {
                 console.log('Skip button clicked');
