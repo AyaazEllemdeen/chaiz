@@ -15,7 +15,7 @@
                 <div class="quiz-content-box mt-4">
                     <form id="quiz-start-form">
 
-                        <h3 class="start-question">What is the year, make & model of your vehicle?</h3>
+                        <h3 class="quiz-question">What is the year, make & model of your vehicle?</h3>
                         <div id="first-question">
 
                             <select id="sel_year" name="sel-year" class="modal-dropdown1">
