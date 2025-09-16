@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class SubmitController extends Controller
 {
@@ -17,9 +18,13 @@ class SubmitController extends Controller
     // Show the final thank-you page
     public function submit(Request $request)
     {
+        // Merge request data into session (optional)
+        if ($request->all()) {
+            session(['carData' => $request->all()]);
+        }
+
         $carData = session('carData');
 
-        // Redirect back to home if no car data
         if (!$carData || empty($carData)) {
             return redirect('/');
         }
