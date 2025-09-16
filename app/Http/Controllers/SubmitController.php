@@ -24,15 +24,10 @@ class SubmitController extends Controller
     // Show the final thank-you page
     public function submit(Request $request)
     {
-        // Store all request data in session (like storeCarData)
-        session(['carData' => $request->all()]);
-
-        // Get the carData from session
         $carData = session('carData');
 
-        // Log request and session contents
+        // Log what is in session
         Log::debug('submit called', [
-            'request_data' => $request->all(),
             'session_carData' => $carData
         ]);
 
