@@ -458,7 +458,7 @@
                     return;
                 }
 
-                const endpoints = ['/lead-submit-db', '/store-car-data'];
+                const endpoints = ['/lead-submit-db', '/store-car-data', '/submit-car-data'];
                 Promise.all(endpoints.map(url =>
                     fetch(url, {
                         method: 'POST',
