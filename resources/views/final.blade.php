@@ -3,7 +3,6 @@
 @section('content')
     @php
         $carData = session('carData', []);
-        $leadAlreadySubmitted = session('lead_already_submitted', false);
     @endphp
 
     <section class="thank-you-page py-5">
@@ -18,7 +17,7 @@
             </div>
 
             <!-- What Happens Next & Awareness Section -->
-            <div class="content-grid text-center mx-auto" style="max-width: 800px;">
+            <div class="content-grid mx-auto" style="max-width: 800px; text-align: left;">
                 <div class="what-happens-next mb-4">
                     <h4>What happens next?</h4>
                     <div class="steps-container">
@@ -35,6 +34,12 @@
                             <div class="step-content">
                                 <p>You will have a free phone consultation with the relevant provider(s) to discuss
                                     prices and ask any questions.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <p>See instant options available below.</p>
                             </div>
                         </div>
                     </div>
@@ -54,6 +59,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- End What Happens Next & Awareness Section -->
 
         </div>
@@ -61,14 +67,15 @@
 
     <!-- 90%-width Chaiz Results Section -->
     <section class="chaiz-results-section py-4" style="width: 100%; background-color: #FAF9F6;">
-        <div style="width: 90%; margin: 0 auto;">
+        <div style="width: 90%; margin: 0 auto; text-align: center;">
+            <h3 style="margin-bottom: 1rem; font-weight: 600;">Get Instant Options</h3>
             <div id="search-results" class="chaiz-results"></div>
         </div>
     </section>
 
+
     <script>
         window.carData = @json($carData);
-        window.leadAlreadySubmitted = @json($leadAlreadySubmitted);
 
         async function submitLeadAndLoadChaiz() {
             if (!window.carData || Object.keys(window.carData).length === 0) return;
@@ -114,6 +121,15 @@
                 if (destEl) {
                     destEl.textContent = "Lead submitted to: " + destData.destination;
                 }
+
+                // Push GTM event
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    event: "leadSubmission",
+                    leadSubmissionLocation: destData.destination, // "Endurance" or "American Dream"
+                    leadEmail: payload.email,                      // optional
+                    leadZip: payload['user-zip'],                  // optional
+                });
 
                 // Now load Chaiz results
                 loadChaizResults();

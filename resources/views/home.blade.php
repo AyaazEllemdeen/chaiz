@@ -14,60 +14,24 @@
                 <!-- Quiz starts directly below text -->
                 <div class="quiz-content-box mt-4">
                     <form id="quiz-start-form">
-                        <h3 class="quiz-question">Choose your vehicle type:</h3>
 
+                        <h3 class="quiz-question">What is the year, make & model of your vehicle?</h3>
+                        <div id="first-question">
 
-                        <div class="vehicle-grid">
-                            <button type="button" class="vehicle-option" data-value="Hatchback">
-                                <span class="vehicle-img">
-                                    <img src="https://images-ulpn.ecs.prd9.eu-west-1.mvfglobal.net/wp-content/uploads/2025/05/hatchback.svg?width=58&height=25&format=webply"
-                                        alt="Hatchback" />
-                                </span>
-                                <span class="vehicle-label">Hatchback <span class="arrow">→</span></span>
-                            </button>
+                            <select id="sel_year" name="sel-year" class="modal-dropdown1">
+                                <option value="">Select Year</option>
+                            </select>
 
-                            <button type="button" class="vehicle-option" data-value="Sedan">
-                                <span class="vehicle-img">
-                                    <img src="https://images-ulpn.ecs.prd9.eu-west-1.mvfglobal.net/wp-content/uploads/2025/05/sedan.svg?width=58&height=25&format=webply"
-                                        alt="Sedan" />
-                                </span>
-                                <span class="vehicle-label">Sedan <span class="arrow">→</span></span>
-                            </button>
+                            <select id="sel_make" name="sel-make" class="modal-dropdown1">
+                                <option value="">Select Make</option>
+                            </select>
 
-                            <button type="button" class="vehicle-option" data-value="Coupe">
-                                <span class="vehicle-img">
-                                    <img src="https://images-ulpn.ecs.prd9.eu-west-1.mvfglobal.net/wp-content/uploads/2025/05/coupe.svg?width=63&height=25&format=webply"
-                                        alt="Coupe" />
-                                </span>
-                                <span class="vehicle-label">Coupe <span class="arrow">→</span></span>
-                            </button>
-
-                            <button type="button" class="vehicle-option" data-value="Truck">
-                                <span class="vehicle-img">
-                                    <img src="https://images-ulpn.ecs.prd9.eu-west-1.mvfglobal.net/wp-content/uploads/2025/05/truck-1.svg?width=51&height=25&format=webply"
-                                        alt="Truck" />
-                                </span>
-                                <span class="vehicle-label">Truck <span class="arrow">→</span></span>
-                            </button>
-
-                            <button type="button" class="vehicle-option" data-value="SUV">
-                                <span class="vehicle-img">
-                                    <img src="https://images-ulpn.ecs.prd9.eu-west-1.mvfglobal.net/wp-content/uploads/2025/05/suv.svg?width=51&height=25&format=webply"
-                                        alt="SUV" />
-                                </span>
-                                <span class="vehicle-label">SUV <span class="arrow">→</span></span>
-                            </button>
-
-                            <button type="button" class="vehicle-option" data-value="Other">
-                                <span class="vehicle-img">
-                                    <img src="https://images-ulpn.ecs.prd9.eu-west-1.mvfglobal.net/wp-content/uploads/2025/05/question.svg?width=16&height=25&format=webply"
-                                        alt="Other" />
-                                </span>
-                                <span class="vehicle-label">Other <span class="arrow">→</span></span>
-                            </button>
+                            <select id="sel_model" name="sel-model" class="modal-dropdown1">
+                                <option value="">Select Model</option>
+                            </select>
                         </div>
 
-                        <input type="hidden" name="car_make" id="car-make" required>
+                        <input type="hidden" id="car-make" name="car-make" value="">
 
                         <div class="quiz-intro-actions d-flex align-items-center gap-3 mb-4">
                             <button type="button" class="begin-btn get-quote-btn">Begin</button>
@@ -107,7 +71,7 @@
                             </div>
                         </div>
                         <!-- Step 1: Year, Make, Model -->
-                        <div id="quiz-step1">
+                        {{-- <div id="quiz-step1">
                             <h3 class="modal-question">What is the year, make & model of your vehicle?</h3>
                             <select id="sel_year" name="sel-year" class="modal-dropdown1">
                                 <option value="">Select Year</option>
@@ -121,10 +85,10 @@
                             <div class="step-buttons">
                                 <button id="to-step2" class="to-step-btn">Continue</button>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <!-- Step 2: Mileage -->
-                        <div id="quiz-step2" class="d-none">
+                        <div id="quiz-step1">
                             <h3 class="modal-question">Roughly, how many miles are on the vehicle?</h3>
                             <div class="options-grid1">
                                 <button type="button" class="mile-opt1" data-value="<100000">Less than 100k</button>
@@ -133,8 +97,7 @@
                                 <button type="button" class="mile-opt1" data-value=">200000">More than 200k</button>
                             </div>
                             <div class="step-buttons">
-                                <button id="back-to-step1" class="to-step-btn">Back</button>
-                                <button id="to-step3" class="to-step-btn">Continue</button>
+                                <button id="to-step2" class="to-step-btn">Continue</button>
                             </div>
                             <input type="hidden" name="car_mileage" id="input-mileage" value="">
                         </div>
@@ -159,7 +122,7 @@
                             <input type="hidden" name="warranty" id="warranty" value="">
                         </div> --}}
 
-                        <div id="quiz-step4" class="d-none">
+                        <div id="quiz-step2" class="d-none">
                             <h3 class="modal-question">What state would you like coverage in?</h3>
                             <select id="user-state" name="user-state" class="modal-dropdown1" required>
                                 <option value="">Select your state</option>
@@ -215,8 +178,8 @@
                                 <option value="WY">Wyoming</option>
                             </select>
                             <div class="step-buttons">
-                                <button id="back-to-step3" class="to-step-btn">Back</button>
-                                <button id="to-step5" class="to-step-btn">Continue</button>
+                                <button id="back-to-step1" class="to-step-btn">Back</button>
+                                <button id="to-step3" class="to-step-btn">Continue</button>
                             </div>
                         </div>
 
@@ -227,7 +190,7 @@
                             </div>
                         </div>
 
-                        <div id="quiz-step5" class="d-none">
+                        <div id="quiz-step3" class="d-none">
                             <h3 class="modal-question">Your Contact Details</h3>
 
                             <p class="zip-helper-text">
@@ -257,7 +220,7 @@
 
                             <div class="step-buttons-wrapper">
                                 <div class="step-buttons">
-                                    <button id="back-to-step4" class="to-step-btn">Back</button>
+                                    <button id="back-to-step2" class="to-step-btn">Back</button>
                                     <button id="to-card" class="to-step-btn">Submit</button>
                                 </div>
 
@@ -268,8 +231,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -324,11 +285,7 @@
 
             <div class="car-quiz-right">
                 <div id="quiz-right-div">
-
                     <h2 id="quiz-title">Best Extended Auto Warranty in </h2>
-
-
-
                     <p>Continue our short quiz to get matched to an auto warranty provider suited to you.</p>
                 </div>
                 <div id="chaiz-inline-container" class="d-none">
@@ -393,115 +350,49 @@
         });
     </script>
 
-    <!-- Success Modal -->
-    <div id="success-modal" class="success-modal-container" style="display:none;">
-        <div class="success-modal-content">
-            <button class="car-quiz-close1" onclick="closeModal()" aria-label="Close modal">×</button>
-            <div class="modal-right-section">
-                <div class="content-wrapper success-card">
-                    <div class="success-header">
-                        <h2>Your Lead Has Been Submitted Successfully!</h2>
-                    </div>
-                    <div class="lead-destination-card">
-                        <p class="lead-destination-info">
-                            <strong>Submitted to:</strong> <span class="destination-name">Processing...</span>
-                        </p>
-                    </div>
-                    <div class="content-grid">
-                        <div class="what-happens-next">
-                            <h4>What happens next?</h4>
-                            <div class="steps-container">
-                                <div class="step-item">
-                                    <div class="step-number">1</div>
-                                    <div class="step-content">
-                                        <p>If there is a match between your specifications and our provider's criteria, you
-                                            will receive a call from between 1-5 providers within the next working day.</p>
-                                    </div>
-                                </div>
-                                <div class="step-item">
-                                    <div class="step-number">2</div>
-                                    <div class="step-content">
-                                        <p>You will have a free phone consultation with the relevant provider(s) to discuss
-                                            prices and ask any questions.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="awareness-section">
-                            <h5>Please be aware that you may not receive quotes if:</h5>
-                            <div class="awareness-items">
-                                <div class="awareness-item">
-                                    <div class="awareness-number">1</div>
-                                    <p>Your specifications don't match the provider's criteria</p>
-                                </div>
-                                <div class="awareness-item">
-                                    <div class="awareness-number">2</div>
-                                    <p>There's an error in your contact details</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="btn-continue" onclick="closeModal()">Continue</button>
-                </div>
-            </div>
-            <div class="modal-left-section">
-                <div class="plans-heading">
-                    <h1>Plans for your car</h1>
-                    <p>Buy coverage from leading providers, right here, right now.</p>
-                </div>
-                <div id="search-results"></div>
-            </div>
-        </div>
-    </div>
-
     <script>
-        function closeModalskip() {
-            const quizModal = document.getElementById('car-quiz');
-            if (quizModal) {
-                quizModal.classList.add('d-none');
-                quizModal.classList.remove('show');
-            }
-        }
-
         document.addEventListener("DOMContentLoaded", () => {
+
+            // Helper: get carData from sessionStorage
+            function getCarData() {
+                return JSON.parse(sessionStorage.getItem('carData') || '{}');
+            }
+
+            // Helper: save carData to sessionStorage
+            function saveCarData(data) {
+                sessionStorage.setItem('carData', JSON.stringify(data));
+            }
+
+            function closeModalskip() {
+                const quizModal = document.getElementById('car-quiz');
+                if (quizModal) quizModal.classList.remove('show');
+            }
+            window.closeModalskip = closeModalskip;
+
             function skipMyDetails() {
                 console.log('Skip button clicked');
                 window.chaizSkipPressed = true;
 
-                const make = window.carData?.make?.toLowerCase().replace(/\s+/g, '-') || 'default-make';
-                const model = window.carData?.model?.toLowerCase().replace(/\s+/g, '-') || 'default-model';
-                const year = window.carData?.year ? parseInt(window.carData.year, 10) : 2020;
-                const state = window.carData?.state?.toUpperCase() || 'NJ';
+                const carData = getCarData();
+                const make = carData.make?.toLowerCase().replace(/\s+/g, '-') || 'default-make';
+                const model = carData.model?.toLowerCase().replace(/\s+/g, '-') || 'default-model';
+                const year = carData.year ? parseInt(carData.year, 10) : 2020;
+                const state = carData.state?.toUpperCase() || 'NJ';
 
                 let mileage = 30000;
-                if (typeof window.carData?.mileage === 'string') {
-                    const digits = window.carData.mileage.replace(/\D/g, '');
-                    if (digits) {
-                        mileage = parseInt(digits, 10);
-                    }
+                if (typeof carData.mileage === 'string') {
+                    const digits = carData.mileage.replace(/\D/g, '');
+                    if (digits) mileage = parseInt(digits, 10);
                 }
 
                 window.chaizWarrantySearchConfig = {
                     targetElementId: "search-results-skip",
-                    searchData: {
-                        make,
-                        model,
-                        year,
-                        state,
-                        mileage,
-                        userId: "96d8841b-6ae6-4cb6-9b43-401662e25560"
-                    }
+                    searchData: { make, model, year, state, mileage, userId: "96d8841b-6ae6-4cb6-9b43-401662e25560" }
                 };
-
-                const quizModal = document.getElementById('car-quiz');
-                const loadingSpinner = document.getElementById('chaiz-loading');
-                const loadingInline = document.getElementById('chaiz-loading-inline');
-                const resultContainer = document.getElementById('search-results-skip');
 
                 const rightPane = document.querySelector('.car-quiz-right');
                 const chaizContainer = document.getElementById('chaiz-inline-container');
                 const quizRightDiv = document.getElementById('quiz-right-div');
-
                 if (rightPane && chaizContainer && quizRightDiv) {
                     rightPane.classList.remove('d-none');
                     chaizContainer.classList.remove('d-none');
@@ -509,29 +400,24 @@
                     rightPane.scrollIntoView({ behavior: 'smooth' });
                 }
 
+                const loadingSpinner = document.getElementById('chaiz-loading');
+                const loadingInline = document.getElementById('chaiz-loading-inline');
                 if (loadingSpinner) loadingSpinner.style.display = 'block';
                 if (loadingInline) loadingInline.style.display = 'block';
-                if (resultContainer) resultContainer.innerHTML = '';
+                document.getElementById('search-results-skip').innerHTML = '';
 
                 function startPollingForResults() {
                     const spinDuration = 4000;
-
-                    if (loadingSpinner) loadingSpinner.style.display = 'block';
-                    if (loadingInline) loadingInline.style.display = 'block';
-
                     setTimeout(() => {
                         if (loadingSpinner) loadingSpinner.style.display = 'none';
                         if (loadingInline) loadingInline.style.display = 'none';
                     }, spinDuration);
                 }
 
-                const existingScript = document.querySelector('script[src="https://warranty-search.chaiz.com/initialize.js"]');
-                if (!existingScript) {
+                if (!document.querySelector('script[src="https://warranty-search.chaiz.com/initialize.js"]')) {
                     const script = document.createElement('script');
                     script.src = 'https://warranty-search.chaiz.com/initialize.js';
-                    script.onload = () => {
-                        startPollingForResults();
-                    };
+                    script.onload = startPollingForResults;
                     document.body.appendChild(script);
                 } else {
                     startPollingForResults();
@@ -547,29 +433,21 @@
                 const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') ||
                     document.querySelector('input[name="_token"]')?.value;
 
-                console.log('CSRF Token:', csrfToken);
-                console.log('Car Data:', window.carData);
-
+                const carData = getCarData();
                 const formData = new FormData();
                 formData.append('_token', csrfToken);
-                formData.append('sel-year', window.carData.year);
-                formData.append('sel-make', window.carData.make);
-                formData.append('sel-model', window.carData.model);
-                formData.append('car_mileage', window.carData.mileage);
-                formData.append('user-state', window.carData.state);
-                formData.append('user-zip', window.carData.zip);
-                formData.append('email', window.carData.email);
-                formData.append('user-name', window.carData.name);
-                formData.append('user-number', window.carData.phone);
-
-                console.log('Form data being sent:');
-                for (let [key, value] of formData.entries()) {
-                    console.log(key, value);
-                }
+                formData.append('sel-year', carData.year);
+                formData.append('sel-make', carData.make);
+                formData.append('sel-model', carData.model);
+                formData.append('car_mileage', carData.mileage);
+                formData.append('user-state', carData.state);
+                formData.append('user-zip', carData.zip);
+                formData.append('email', carData.email);
+                formData.append('user-name', carData.name);
+                formData.append('user-number', carData.phone);
 
                 const requiredFields = ['year', 'make', 'model', 'mileage', 'state', 'zip', 'email', 'name', 'phone'];
-                const missingFields = requiredFields.filter(field => !window.carData[field]);
-
+                const missingFields = requiredFields.filter(field => !carData[field]);
                 if (missingFields.length > 0) {
                     alert('Missing required fields: ' + missingFields.join(', '));
                     finalButton.disabled = false;
@@ -577,65 +455,25 @@
                     return;
                 }
 
-                // Send to both endpoints
                 const endpoints = ['/lead-submit-db', '/store-car-data', '/submit-car-data'];
-
                 Promise.all(endpoints.map(url =>
                     fetch(url, {
                         method: 'POST',
                         body: formData,
-                        headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                        headers: { 'X-Requested-With': 'XMLHttpRequest' },
+                        credentials: 'same-origin'
+                    }).then(response => {
+                        if (!response.ok) return response.text().then(text => { throw new Error(`HTTP ${response.status}: ${text}`); });
+                        return response.json().catch(() => ({ success: true }));
                     })
-                        .then(response => {
-                            console.log(`Response from ${url}:`, response.status);
-                            const contentType = response.headers.get('content-type');
-
-                            if (response.status === 422) {
-                                return response.json().then(data => { throw { status: 422, data, url }; });
-                            }
-
-                            if (!response.ok) {
-                                return response.text().then(text => { throw new Error(`HTTP ${response.status}: ${text}`); });
-                            }
-
-                            if (contentType && contentType.includes('application/json')) {
-                                return response.json();
-                            } else {
-                                return { success: true, redirect: response.url };
-                            }
-                        })
                 ))
                     .then(results => {
                         console.log('Both submissions succeeded:', results);
-
-                        const leadDestination = results[0].destination || 'Unknown';
-
-                        // Redirect WITH destination in query params
-                        const redirectUrl = "{{ route('final.page') }}";
-                        window.location.href = redirectUrl;
-
-                        if (window.dataLayer) {
-                            window.dataLayer.push({
-                                event: 'leadSubmission',
-                                leadDestination
-                            });
-                        }
+                        window.location.href = "{{ route('final.page') }}";
                     })
-
-                    .catch(error => {
-                        console.error('Submission error:', error);
-
-                        if (error.status === 422 && error.data && error.data.errors) {
-                            let errorMessage = `Validation error on ${error.url}:\n`;
-                            Object.keys(error.data.errors).forEach(key => {
-                                errorMessage += `- ${error.data.errors[key][0]}\n`;
-                            });
-                            alert(errorMessage);
-                        } else if (error.message) {
-                            alert('Error: ' + error.message);
-                        } else {
-                            alert('Error: Failed to submit your information. Check console for details.');
-                        }
+                    .catch(err => {
+                        console.error('Submission error:', err);
+                        alert('Error submitting data. Check console.');
                     })
                     .finally(() => {
                         finalButton.disabled = false;
@@ -643,185 +481,24 @@
                     });
             }
 
-            function showSuccessModal(responseData) {
-                if (window.chaizSkipPressed) {
-                    // Toggle visibility of sections
-                    const modalRightSection = document.querySelector('.modal-right-section.d-none');
-                    const carQuizLeft = document.querySelector('.car-quiz-left');
-                    const carQuizModal = document.getElementById('car-quiz');
-
-                    if (modalRightSection) {
-                        modalRightSection.classList.remove('d-none');
-                    }
-
-                    if (carQuizLeft) {
-                        carQuizLeft.classList.add('d-none');
-                    }
-
-                    if (carQuizModal) {
-                        carQuizModal.style.display = 'flex';  // or 'flex' depending on your CSS
-                    }
-
-                    setLeadDestination(responseData.destination || 'Endurance API');
-                    // Don't show the success modal or run the Chaiz script
-                    return;
-                }
-
-                const successModal = document.getElementById('success-modal');
-                if (!successModal) return;
-
-                setLeadDestination(responseData.destination || 'Endurance API');
-                successModal.style.display = 'flex';
-
-                if (window.carData) {
-                    const make = window.carData.make
-                        ? window.carData.make.toLowerCase().replace(/\s+/g, '-')
-                        : 'default-make';
-
-                    const model = window.carData.model
-                        ? window.carData.model.toLowerCase().replace(/\s+/g, '-')
-                        : 'default-model';
-
-                    const year = window.carData.year
-                        ? parseInt(window.carData.year, 10)
-                        : 2020;
-
-                    const state = window.carData.state
-                        ? window.carData.state.toUpperCase()
-                        : 'NJ';
-
-                    let mileage = 30000;
-                    if (typeof window.carData.mileage === 'string') {
-                        const digits = window.carData.mileage.replace(/\D/g, '');
-                        if (digits) {
-                            mileage = parseInt(digits, 10);
-                        }
-                    }
-
-                    window.chaizWarrantySearchConfig = {
-                        targetElementId: "search-results",
-                        searchData: {
-                            make,
-                            model,
-                            year,
-                            state,
-                            mileage,
-                            userId: "96d8841b-6ae6-4cb6-9b43-401662e25560"
-                        }
-                    };
-
-                    if (!document.querySelector('script[src="https://warranty-search.chaiz.com/initialize.js"]')) {
-                        const script = document.createElement('script');
-                        script.src = 'https://warranty-search.chaiz.com/initialize.js';
-                        document.body.appendChild(script);
-                    }
-                }
-            }
-
-            function setLeadDestination(destination) {
-                const destinationElements = document.querySelectorAll('.destination-name');
-                if (!destinationElements.length) return;
-
-                let destinationText = '';
-                let destinationColor = '';
-
-                switch (destination) {
-                    case 'Endurance':
-                        destinationText = 'Endurance';
-                        destinationColor = '#ffc107';
-                        break;
-                    case 'American Dream':
-                        destinationText = 'American Dream';
-                        destinationColor = '#ffc107';
-                        break;
-                    case 'Submission Failed':
-                        destinationText = '❌ Submission Failed';
-                        destinationColor = '#dc3545';
-                        break;
-                    case 'System Error':
-                        destinationText = '⚠️ System Error';
-                        destinationColor = '#dc3545';
-                        break;
-                    default:
-                        destinationText = '✅ Successfully Submitted';
-                        destinationColor = '#28a745';
-                }
-
-                destinationElements.forEach((el) => {
-                    el.textContent = destinationText;
-                    el.style.color = destinationColor;
-                });
-            }
-
-            function closeSuccessModal() {
-                const successModal = document.getElementById('success-modal');
-                if (successModal) {
-                    successModal.remove();
-                }
-            }
-
-            function showSuccessStep() {
-                showSuccessModal({});
-            }
-
-            // Make functions available globally
+            // Make functions globally available
             window.skipMyDetails = skipMyDetails;
-            window.closeModal = closeSuccessModal;
-            window.closeSuccessModal = closeSuccessModal;
 
-            // Rest of your event listeners and initialization code...
             const skipButton = document.querySelector('button[onclick="skipMyDetails()"]');
             if (skipButton) {
                 skipButton.removeAttribute('onclick');
                 skipButton.addEventListener('click', skipMyDetails);
             }
 
-            document.querySelectorAll('.vehicle-option').forEach(button => {
-                button.addEventListener('click', () => {
-                    document.getElementById('car-make').value = button.dataset.value;
-                    const quizModal = document.getElementById('car-quiz');
-                    quizModal.classList.remove('d-none');
-                    quizModal.classList.add('show');
-                    document.querySelector('.begin-btn').textContent = 'Continue';
-                });
-            });
-
-            document.addEventListener('click', (event) => {
-                if (event.target.matches('.match-cta-button')) {
-                    openModal();
-                }
-
-                if (event.target.matches('.begin-btn')) {
-                    openModal();
-                    event.target.textContent = 'Continue';
-                }
-            });
-
-            function openModal() {
-                const quizModal = document.getElementById('car-quiz');
-                if (quizModal) {
-                    quizModal.classList.remove('d-none');
-                    quizModal.classList.add('show');
-                }
-            }
-
-            document.getElementById('car-quiz').addEventListener('click', (e) => {
-                if (e.target.id === 'car-quiz') {
-                    e.currentTarget.classList.remove('show');
-                }
-            });
-
-            // Rest of your existing initialization code...
+            // Dropdown initialization
             const yearSelect = document.getElementById("sel_year");
             const makeSelect = document.getElementById("sel_make");
             const modelSelect = document.getElementById("sel_model");
+            const beginBtn = document.querySelector(".begin-btn");
 
             const currentYear = new Date().getFullYear();
             for (let y = currentYear; y >= 2005; y--) {
-                const opt = document.createElement("option");
-                opt.value = y;
-                opt.textContent = y;
-                yearSelect.appendChild(opt);
+                yearSelect.appendChild(new Option(y, y));
             }
 
             const vehicles = [
@@ -1861,194 +1538,137 @@
                 "VOLVO XC70",
                 "VOLVO XC90",
             ];
-
             const makesModelsMap = {};
             vehicles.forEach(vehicle => {
                 const [make, ...modelParts] = vehicle.split(" ");
                 const model = modelParts.join(" ");
-                if (!makesModelsMap[make]) makesModelsMap[make] = [];
-                if (!makesModelsMap[make].includes(model)) {
-                    makesModelsMap[make].push(model);
-                }
+                makesModelsMap[make] = makesModelsMap[make] || [];
+                if (!makesModelsMap[make].includes(model)) makesModelsMap[make].push(model);
             });
 
             makeSelect.innerHTML = `<option value="">Select Make</option>`;
-            Object.keys(makesModelsMap).forEach(make => {
-                const opt = document.createElement("option");
-                opt.value = make;
-                opt.textContent = make;
-                makeSelect.appendChild(opt);
-            });
+            Object.keys(makesModelsMap).forEach(make => makeSelect.appendChild(new Option(make, make)));
 
             makeSelect.addEventListener("change", () => {
                 const selectedMake = makeSelect.value;
                 modelSelect.innerHTML = `<option value="">Select Model</option>`;
-                if (makesModelsMap[selectedMake]) {
-                    makesModelsMap[selectedMake].forEach(model => {
-                        const opt = document.createElement("option");
-                        opt.value = model;
-                        opt.textContent = model;
-                        modelSelect.appendChild(opt);
-                    });
-                }
+                (makesModelsMap[selectedMake] || []).forEach(model => modelSelect.appendChild(new Option(model, model)));
             });
 
-            document.getElementById("to-step2").addEventListener("click", function (e) {
+            function openModal() {
+                const quizModal = document.getElementById('car-quiz');
+                if (quizModal) quizModal.classList.add('show');
+            }
+
+            beginBtn.addEventListener("click", e => {
                 e.preventDefault();
-                const year = yearSelect.value;
-                const make = makeSelect.value;
-                const model = modelSelect.value;
+                const year = yearSelect.value, make = makeSelect.value, model = modelSelect.value;
+                if (!year || !make || !model) return alert("Please select year, make & model before continuing.");
+                saveCarData({ year, make, model });
+                document.getElementById("car-make").value = `${year} ${make} ${model}`;
+                openModal();
+                beginBtn.textContent = "Continue";
+            });
+
+            const ctaBtn = document.querySelector(".match-cta-button");
+            ctaBtn?.addEventListener("click", e => {
+                e.preventDefault();
+                const year = yearSelect.value, make = makeSelect.value, model = modelSelect.value;
 
                 if (!year || !make || !model) {
-                    alert("Please fill out year, make & model.");
+                    alert("Please select year, make & model before continuing.");
+                    window.scrollTo({ top: 0, behavior: "smooth" });
                     return;
                 }
 
-                window.carData = window.carData || {};
-                window.carData.year = year;
-                window.carData.make = make;
-                window.carData.model = model;
-
-                document.getElementById("quiz-step1").classList.add("d-none");
-                document.getElementById("quiz-step2").classList.remove("d-none");
+                saveCarData({ year, make, model });
+                document.getElementById("car-make").value = `${year} ${make} ${model}`;
+                openModal();
+                beginBtn.textContent = "Continue";
             });
 
-            // Mileage options
+            // Mileage selection
             const mileOptions = document.querySelectorAll('.mile-opt1');
-            const continueMileageBtn = document.getElementById('to-step3');
+            const continueMileageBtn = document.getElementById('to-step2');
+            mileOptions.forEach(btn => btn.addEventListener('click', () => {
+                mileOptions.forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                const data = getCarData();
+                data.mileage = btn.dataset.value;
+                saveCarData(data);
+                document.getElementById('input-mileage').value = btn.dataset.value;
+                setTimeout(() => {
+                    document.getElementById('quiz-step1').classList.add('d-none');
+                    document.getElementById('quiz-step2').classList.remove('d-none');
+                    continueMileageBtn.click();
+                }, 400);
+            }));
 
-            mileOptions.forEach(button => {
-                button.addEventListener('click', () => {
-                    // Highlight selected
-                    mileOptions.forEach(btn => btn.classList.remove('selected'));
-                    button.classList.add('selected');
-
-                    // Store selected value
-                    window.carData = window.carData || {};
-                    window.carData.mileage = button.dataset.value;
-                    document.getElementById('input-mileage').value = button.dataset.value;
-
-                    // Small delay so user sees highlight
-                    setTimeout(() => {
-                        // Move to next step
-                        document.getElementById('quiz-step2').classList.add('d-none');
-                        document.getElementById('quiz-step4').classList.remove('d-none');
-
-                        // Simulate pressing the Continue button
-                        if (continueMileageBtn) {
-                            continueMileageBtn.click();
-                        }
-                    }, 400);
-                });
-            });
-
-            // Continue button for mileage
-            continueMileageBtn.addEventListener('click', (e) => {
+            continueMileageBtn.addEventListener('click', e => {
                 const selectedOption = document.querySelector('.mile-opt1.selected');
-
-                if (!selectedOption) {
-                    e.preventDefault();
-                    alert("Please select an option before continuing.");
-                    return;
-                }
-
-                // Store value again
-                window.carData = window.carData || {};
-                window.carData.mileage = selectedOption.dataset.value;
+                if (!selectedOption) return alert("Please select an option before continuing.");
+                const data = getCarData();
+                data.mileage = selectedOption.dataset.value;
+                saveCarData(data);
                 document.getElementById('input-mileage').value = selectedOption.dataset.value;
-
-                // Move to next step immediately
-                document.getElementById('quiz-step2').classList.add('d-none');
-                document.getElementById('quiz-step3').classList.remove('d-none');
+                document.getElementById('quiz-step1').classList.add('d-none');
+                document.getElementById('quiz-step2').classList.remove('d-none');
             });
 
-            document.getElementById("back-to-step1").addEventListener("click", function (e) {
+            // Step 2 → Step 3
+            document.getElementById("to-step3").addEventListener("click", e => {
+                e.preventDefault();
+                const state = document.getElementById("user-state").value.trim();
+                if (!state) return alert("Please select your state.");
+                const data = getCarData();
+                data.state = state;
+                saveCarData(data);
+                document.getElementById("quiz-step2").classList.add("d-none");
+                document.getElementById("quiz-loading").classList.remove("d-none");
+                setTimeout(() => {
+                    document.getElementById("quiz-loading").classList.add("d-none");
+                    document.getElementById("quiz-step3").classList.remove("d-none");
+                }, 2700);
+            });
+
+            document.getElementById("back-to-step1").addEventListener("click", e => {
                 e.preventDefault();
                 document.getElementById("quiz-step2").classList.add("d-none");
                 document.getElementById("quiz-step1").classList.remove("d-none");
             });
 
-
-            document.getElementById("to-step5").addEventListener("click", function (e) {
+            document.getElementById("back-to-step2").addEventListener("click", e => {
                 e.preventDefault();
-                const state = document.getElementById("user-state").value.trim();
-
-                if (!state) {
-                    alert("Please select your state.");
-                    return;
-                }
-
-                window.carData = window.carData || {};
-                window.carData.state = state;
-
-                document.getElementById("quiz-step4").classList.add("d-none");
-                document.getElementById("quiz-loading").classList.remove("d-none");
-
-                setTimeout(() => {
-                    document.getElementById("quiz-loading").classList.add("d-none");
-                    document.getElementById("quiz-step5").classList.remove("d-none");
-                }, 2700);
+                document.getElementById("quiz-step3").classList.add("d-none");
+                document.getElementById("quiz-step2").classList.remove("d-none");
             });
 
-            // Go Back to Step 3
-            document.getElementById("back-to-step3").addEventListener("click", function (e) {
-                e.preventDefault();
-                document.getElementById("quiz-step4").classList.add("d-none");
-                document.getElementById("quiz-step3").classList.remove("d-none");
-            });
-
-            // Final Submit Button
+            // Final submit
             const finalButton = document.getElementById("to-card") || document.getElementById("to-final");
             if (finalButton) {
-                finalButton.addEventListener("click", function (e) {
+                finalButton.addEventListener("click", e => {
                     e.preventDefault();
-
                     const zip = document.getElementById("user-zip").value.trim();
                     const email = document.getElementById("user-email").value.trim();
                     const name = document.getElementById("user-name").value.trim();
                     const phone = document.getElementById("user-number").value.trim();
 
-                    // ZIP Validation
-                    if (!/^\d{5}$/.test(zip)) {
-                        alert("Please enter a valid 5-digit ZIP code.");
-                        return;
-                    }
-
-                    // Email Validation
-                    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                        alert("Please enter a valid email address.");
-                        return;
-                    }
-
-                    // Name Validation
-                    if (!name || !/^[a-zA-Z]+(?: [a-zA-Z]+)+$/.test(name)) {
-                        alert("Please enter your full name (first and last).");
-                        return;
-                    }
-
-                    // Phone Validation (Allow formats like 1234567890 or (123) 456-7890)
+                    if (!/^\d{5}$/.test(zip)) return alert("Please enter a valid 5-digit ZIP code.");
+                    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return alert("Please enter a valid email address.");
+                    if (!name || !/^[a-zA-Z]+(?: [a-zA-Z]+)+$/.test(name)) return alert("Please enter your full name.");
                     const cleanPhone = phone.replace(/\D/g, '');
-                    if (!/^\d{10}$/.test(cleanPhone)) {
-                        alert("Please enter a valid 10-digit phone number.");
-                        return;
-                    }
+                    if (!/^\d{10}$/.test(cleanPhone)) return alert("Please enter a valid 10-digit phone number.");
 
-                    // Save Data
-                    window.carData = window.carData || {};
-                    window.carData.zip = zip;
-                    window.carData.email = email;
-                    window.carData.name = name;
-                    window.carData.phone = cleanPhone;
+                    const data = getCarData();
+                    data.zip = zip;
+                    data.email = email;
+                    data.name = name;
+                    data.phone = cleanPhone;
+                    saveCarData(data);
 
-                    // Submit form data
                     submitFormData();
                 });
             }
-            document.getElementById("back-to-step4").addEventListener("click", function (e) {
-                e.preventDefault();
-                document.getElementById("quiz-step5").classList.add("d-none");
-                document.getElementById("quiz-step4").classList.remove("d-none");
-            });
 
         });
     </script>
@@ -2206,7 +1826,7 @@
 
                     <!-- chaiz card -->
                     <div class="service-card">
-                        <div class="top-rated-ribbon">BUY NOW</div>
+                        <div class="top-rated-ribbon">BEST COVERAGE</div>
                         <div class="card-header mb-3">
                             <div class="logo-section2">
                                 <div class="logo2">
@@ -2282,7 +1902,10 @@
                     <div class="card-header">
                         <div class="logo-section">
                             <div class="logo">
-                                <img src="/img/omega.png" alt="">
+                                <a href="https://www.chaiz.com/p/omega?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
+                                    target="_blank" rel="noopener noreferrer">
+                                    <img src="/img/omega.png" alt="Chaiz Logo">
+                                </a>
                             </div>
                             <div class="promo-badge"></div>
                             <div class="rating-section">
@@ -2338,7 +1961,10 @@
                     <div class="card-header">
                         <div class="logo-section">
                             <div class="logo">
-                                <img src="/img/naac.png" alt="">
+                                <a href="https://www.chaiz.com/p/naac?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
+                                    target="_blank" rel="noopener noreferrer">
+                                    <img src="/img/naac.png" alt="Chaiz Logo">
+                                </a>
                             </div>
                             <div class="promo-badge"></div>
                             <div class="rating-section">
