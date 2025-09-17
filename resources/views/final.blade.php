@@ -126,9 +126,9 @@
                 window.dataLayer = window.dataLayer || [];
                 window.dataLayer.push({
                     event: "leadSubmission",
-                    leadDestination: destData.destination, // "Endurance", "American Dream", etc.
-                    leadEmail: payload.email,              // optional: only if you need it
-                    leadZip: payload['user-zip'],          // optional: can enrich attribution
+                    leadSubmissionLocation: destData.destination, // "Endurance" or "American Dream"
+                    leadEmail: payload.email,                      // optional
+                    leadZip: payload['user-zip'],                  // optional
                 });
 
                 // Now load Chaiz results
