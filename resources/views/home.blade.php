@@ -285,11 +285,7 @@
 
             <div class="car-quiz-right">
                 <div id="quiz-right-div">
-
                     <h2 id="quiz-title">Best Extended Auto Warranty in </h2>
-
-
-
                     <p>Continue our short quiz to get matched to an auto warranty provider suited to you.</p>
                 </div>
                 <div id="chaiz-inline-container" class="d-none">

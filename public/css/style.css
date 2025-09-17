@@ -1306,6 +1306,29 @@ body {
     box-sizing: border-box;
 }
 
+.car-quiz-right {
+    position: relative;
+    overflow: hidden;
+}
+
+#chaiz-inline-container {
+    position: absolute;
+    top: 0;
+    right: -100%; /* start offscreen */
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    box-shadow: -4px 0 12px rgba(0,0,0,0.15);
+    transition: right 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    opacity: 0;
+    z-index: 10;
+}
+
+#chaiz-inline-container.slide-in {
+    right: 0;
+    opacity: 1;
+}
+
 #quiz-right-div {
     flex: 1;
     display: flex;
