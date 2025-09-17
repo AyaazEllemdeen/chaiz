@@ -75,97 +75,96 @@
 
 
     <script>
-window.carData = @json($carData);
+        window.carData = @json($carData);
 
-async function submitLeadAndLoadChaiz() {
-    if (!window.carData || Object.keys(window.carData).length === 0) return;
+        async function submitLeadAndLoadChaiz() {
+            if (!window.carData || Object.keys(window.carData).length === 0) return;
 
-    if (window.leadAlreadySubmitted) {
-        console.log("Lead already submitted, skipping...");
-        loadChaizResults();
-        return;
-    }
+            if (window.leadAlreadySubmitted) {
+                console.log("Lead already submitted, skipping...");
+                loadChaizResults();
+                return;
+            }
 
-    const payload = {
-        'sel-year': window.carData['sel-year'],
-        'sel-make': window.carData['sel-make'],
-        'sel-model': window.carData['sel-model'],
-        'car_mileage': window.carData['car_mileage'],
-        'user-state': window.carData['user-state'],
-        'user-zip': window.carData['user-zip'],
-        'email': window.carData['email'],
-        'user-name': window.carData['user-name'],
-        'user-number': window.carData['user-number']
-    };
+            const payload = {
+                'sel-year': window.carData['sel-year'],
+                'sel-make': window.carData['sel-make'],
+                'sel-model': window.carData['sel-model'],
+                'car_mileage': window.carData['car_mileage'],
+                'user-state': window.carData['user-state'],
+                'user-zip': window.carData['user-zip'],
+                'email': window.carData['email'],
+                'user-name': window.carData['user-name'],
+                'user-number': window.carData['user-number']
+            };
 
-    try {
-        // Submit the lead
-        const response = await fetch('{{ route('lead.submit') }}', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            },
-            body: JSON.stringify(payload)
-        });
+            try {
+                // Submit the lead
+                const response = await fetch('{{ route('lead.submit') }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify(payload)
+                });
 
-        const data = await response.json();
-        console.log('Lead submit response:', data);
+                const data = await response.json();
+                console.log('Lead submit response:', data);
 
-        // Push GTM event using ONLY the destination
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-            event: "leadSubmission",
-            destination: data.destination // just the destination
-        });
+                // Push GTM event using ONLY the destination
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    event: "leadSubmission",
+                    destination: data.destination // just the destination
+                });
 
-        // Optional: show the destination on the page
-        const destEl = document.getElementById('lead-destination');
-        if (destEl) {
-            destEl.textContent = "Lead submitted to: " + data.destination;
+                // Optional: show the destination on the page
+                const destEl = document.getElementById('lead-destination');
+                if (destEl) {
+                    destEl.textContent = "Lead submitted to: " + data.destination;
+                }
+
+                // Now load Chaiz results
+                loadChaizResults();
+
+            } catch (err) {
+                console.error('Error submitting lead:', err);
+                loadChaizResults(); // Still load Chaiz even if lead submission fails
+            }
         }
 
-        // Now load Chaiz results
-        loadChaizResults();
+        function loadChaizResults() {
+            const make = window.carData['sel-make']?.toLowerCase().replace(/\s+/g, '-') || 'default-make';
+            const model = window.carData['sel-model']?.toLowerCase().replace(/\s+/g, '-') || 'default-model';
+            const year = window.carData['sel-year'] || 2020;
+            const state = window.carData['user-state']?.toUpperCase() || 'NJ';
+            let mileage = 30000;
 
-    } catch (err) {
-        console.error('Error submitting lead:', err);
-        loadChaizResults(); // Still load Chaiz even if lead submission fails
-    }
-}
+            if (typeof window.carData['car_mileage'] === 'string') {
+                const digits = window.carData['car_mileage'].replace(/\D/g, '');
+                if (digits) mileage = parseInt(digits, 10);
+            }
 
-function loadChaizResults() {
-    const make = window.carData['sel-make']?.toLowerCase().replace(/\s+/g, '-') || 'default-make';
-    const model = window.carData['sel-model']?.toLowerCase().replace(/\s+/g, '-') || 'default-model';
-    const year = window.carData['sel-year'] || 2020;
-    const state = window.carData['user-state']?.toUpperCase() || 'NJ';
-    let mileage = 30000;
+            window.chaizWarrantySearchConfig = {
+                targetElementId: "search-results",
+                searchData: {
+                    make,
+                    model,
+                    year,
+                    state,
+                    mileage,
+                    userId: "96d8841b-6ae6-4cb6-9b43-401662e25560"
+                }
+            };
 
-    if (typeof window.carData['car_mileage'] === 'string') {
-        const digits = window.carData['car_mileage'].replace(/\D/g, '');
-        if (digits) mileage = parseInt(digits, 10);
-    }
-
-    window.chaizWarrantySearchConfig = {
-        targetElementId: "search-results",
-        searchData: {
-            make,
-            model,
-            year,
-            state,
-            mileage,
-            userId: "96d8841b-6ae6-4cb6-9b43-401662e25560"
+            if (!document.querySelector('script[src="https://warranty-search.chaiz.com/initialize.js"]')) {
+                const script = document.createElement('script');
+                script.src = 'https://warranty-search.chaiz.com/initialize.js';
+                document.body.appendChild(script);
+            }
         }
-    };
 
-    if (!document.querySelector('script[src="https://warranty-search.chaiz.com/initialize.js"]')) {
-        const script = document.createElement('script');
-        script.src = 'https://warranty-search.chaiz.com/initialize.js';
-        document.body.appendChild(script);
-    }
-}
-
-document.addEventListener('DOMContentLoaded', submitLeadAndLoadChaiz);
-</script>
-
+        document.addEventListener('DOMContentLoaded', submitLeadAndLoadChaiz);
+    </script>
 @endsection
