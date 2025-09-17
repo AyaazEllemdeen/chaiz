@@ -67,11 +67,11 @@
 
     <!-- 90%-width Chaiz Results Section -->
     <section class="chaiz-results-section py-4" style="width: 100%; background-color: #FAF9F6;">
-    <div style="width: 90%; margin: 0 auto; text-align: center;">
-        <h3 style="margin-bottom: 1rem; font-weight: 600;">Get Instant Options</h3>
-        <div id="search-results" class="chaiz-results"></div>
-    </div>
-</section>
+        <div style="width: 90%; margin: 0 auto; text-align: center;">
+            <h3 style="margin-bottom: 1rem; font-weight: 600;">Get Instant Options</h3>
+            <div id="search-results" class="chaiz-results"></div>
+        </div>
+    </section>
 
 
     <script>
@@ -121,6 +121,15 @@
                 if (destEl) {
                     destEl.textContent = "Lead submitted to: " + destData.destination;
                 }
+
+                // Push GTM event
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    event: "leadSubmission",
+                    leadDestination: destData.destination, // "Endurance", "American Dream", etc.
+                    leadEmail: payload.email,              // optional: only if you need it
+                    leadZip: payload['user-zip'],          // optional: can enrich attribution
+                });
 
                 // Now load Chaiz results
                 loadChaizResults();
