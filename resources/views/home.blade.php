@@ -1830,7 +1830,7 @@
 
                     <!-- chaiz card -->
                     <div class="service-card">
-                        <div class="top-rated-ribbon">BUY NOW</div>
+                        <div class="top-rated-ribbon">BEST COVERAGE</div>
                         <div class="card-header mb-3">
                             <div class="logo-section2">
                                 <div class="logo2">
