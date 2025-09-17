@@ -71,7 +71,9 @@ class LeadSubmissionController extends Controller
                 session()->put('lead_already_submitted', true);
                 session()->flash('lead_destination', 'Endurance');
                 return response()->json([
-                   'destination' => 'Endurance'
+                    'success' => true,
+                    'message' => 'Your lead has been successfully submitted to Endurance for processing. You should receive a response shortly.',
+                    'destination' => 'Endurance'
                 ]);
             } else {
                 // Fallback to LeadConduit if Endurance fails
@@ -105,6 +107,8 @@ class LeadSubmissionController extends Controller
                     session()->flash('lead_destination', 'American Dream');
                     session()->put('lead_already_submitted', true);
                     return response()->json([
+                        'success' => true,
+                        'message' => 'Your lead has been successfully submitted via our backup system. You should receive a response shortly.',
                         'destination' => 'American Dream'
                     ]);
                 } else {
