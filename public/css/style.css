@@ -1246,7 +1246,7 @@ body {
     z-index: 9999;
     background-color: #fff;
     font-family: Arial, sans-serif;
-    overflow-y: auto; /* Single scrollbar for entire modal */
+    overflow-y: auto;
 }
 
 .car-quiz-modal.show {
@@ -1254,24 +1254,34 @@ body {
     flex-direction: column;
 }
 
-/* Split layout */
 .car-quiz-split {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
+    align-items: stretch; /* left and right match height */
 }
 
 /* Left section */
 .car-quiz-left {
-    background-color: #000;
+    background: #000;
     display: flex;
-    flex-direction: column;
-    justify-content: center; /* Horizontal & vertical centering */
+    justify-content: center;
     align-items: center;
-    width: 100%;
+    flex: 1;
     min-height: 100vh;
-    padding: 2rem;
-    box-sizing: border-box;
+    padding: 20px 5px; /* adds extra space at top and bottom */
+}
+
+/* Right section (body) */
+.car-quiz-body {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    border: 2px solid #ffcf4b;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 500px;
+    height: auto; /* grows naturally */
 }
 
 #quiz-left-logo {
@@ -1283,16 +1293,6 @@ body {
     max-width: 200px;
     height: auto;
     display: block;
-}
-
-.car-quiz-left .car-quiz-body {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    border: 2px solid #ffcf4b;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-    width: 100%;
-    max-width: 700px;
 }
 
 /* Right section */
@@ -1364,13 +1364,20 @@ body {
     display: none;
 }
 
+.chaiz-results-skip {
+    flex: 0 0 65%; /* default width when shown */
+    background: #111;
+    color: #fff;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+
+/* Results inner container */
 #search-results-skip {
     width: 100%;
-    margin-top: 1rem;
     color: #fff;
-    text-align: left; /* usually better for results */
-    overflow: visible; /* ensure no scrolling */
-    word-break: break-word;
+    text-align: left;
 }
 
 /* Remove any height or max-height or overflow from chaiz result container if present */
