@@ -1365,20 +1365,20 @@ body {
 }
 
 .chaiz-results-skip {
-    flex: 0 0 57%;
+    flex: 0 0 65%;
     background: #111;
     color: #fff;
     padding: 2rem;
-    overflow-x: hidden; /* hide the extra width */
-    overflow-y: auto;
+    overflow: hidden; /* clip any extra */
     position: relative;
 }
 
 .chaiz-results-skip-inner {
-    width: 100vw;          /* original full width */
-    transform: scale(0.65);
+    width: 100vw;              /* make it think it’s full screen */
+    transform: scale(0.58);    /* shrink it to fit the parent */
     transform-origin: top left;
 }
+
 
 
 /* Results inner container */
