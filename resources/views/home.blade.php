@@ -200,8 +200,10 @@
 
             <!-- RIGHT SIDE: Results -->
             <div class="chaiz-results-skip d-none" id="chaiz-results-wrapper">
-                <div id="search-results-skip">
-                    <!-- Chaiz results will be injected here -->
+                <div class="chaiz-results-skip-inner">
+                    <div id="search-results-skip">
+                        <!-- Chaiz results will be injected here -->
+                    </div>
                 </div>
             </div>
         </div>
