@@ -201,6 +201,10 @@
             <!-- RIGHT SIDE: Results -->
             <div class="chaiz-results-skip d-none" id="chaiz-results-wrapper">
                 <div class="chaiz-results-skip-inner">
+                    <div id="quiz-right-div" style="margin-bottom: 37px;">
+                        <h2 id="quiz-title">Best Extended Auto Warranty in </h2>
+                        <p>Continue our short quiz to get matched to an auto warranty provider suited to you.</p>
+                    </div>
                     <div id="search-results-skip">
                         <!-- Chaiz results will be injected here -->
                     </div>
