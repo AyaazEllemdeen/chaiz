@@ -1365,7 +1365,7 @@ body {
 }
 
 .chaiz-results-skip {
-    flex: 0 0 65%;
+    flex: 0 0 55%;
     background: #111;
     color: #fff;
     padding: 2rem;
@@ -1374,9 +1374,7 @@ body {
 }
 
 .chaiz-results-skip-inner {
-    width: 100vw;              /* make it think it’s full screen */
-    transform: scale(0.58);    /* shrink it to fit the parent */
-    transform-origin: top left;
+
 }
 
 
@@ -1592,22 +1590,34 @@ body {
     }
 
     .car-quiz-split {
+        display: flex;
         flex-direction: column;
-        height: auto;
-    }
-
-    .car-quiz-left,
-    .car-quiz-right {
         width: 100%;
-        padding: 2rem 1.5rem;
-        overflow: unset;
+        height: auto; /* let content decide height */
     }
 
     .car-quiz-left {
-        min-height: 100vh;
+        width: 100%;
+        padding: 2rem 1.5rem;
+        min-height: 100vh;      /* at least full height */
+        height: auto;           /* can grow taller if needed */
+        display: flex;
+        flex-direction: column; /* body pushes wrapper */
+    }
+
+    .car-quiz-body {
+        flex-grow: 1;           /* expand if needed */
+    }
+
+    .chaiz-results-skip {
+        width: 100%;
+        flex: none;             /* no shrinking */
+        position: relative;     /* no overlap */
     }
 
     .car-quiz-right {
+        width: 100%;
+        padding: 2rem 1.5rem;
         background-color: #000;
         color: #fff;
         text-align: center;
@@ -1617,12 +1627,7 @@ body {
         top: 10px;
         right: 15px;
     }
-    .car-quiz-close1 {
-        top: 10px;
-        right: 15px;
-    }
 }
-
 .success-modal-container {
     position: fixed;
     top: 0;
