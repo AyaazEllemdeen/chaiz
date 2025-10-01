@@ -205,10 +205,41 @@
                         <h2>Plans for your car</h2>
                         <p>Buy coverage from leading providers, right here, right now.</p>
                     </div>
+                    <div id="chaiz-loading-inline" class="chaiz-loading">
+                        <div class="spinner"></div>
+                        <p>Loading plans...</p>
+                    </div>
                     <div id="search-results-skip">
                         <!-- Chaiz results will be injected here -->
                     </div>
                 </div>
+                <style>
+                    .chaiz-loading {
+                        display: none;
+                        text-align: center;
+                        padding: 20px;
+                    }
+
+                    .chaiz-loading .spinner {
+                        border: 4px solid #f3f3f3;
+                        border-top: 4px solid #007bff;
+                        border-radius: 50%;
+                        width: 36px;
+                        height: 36px;
+                        animation: spin 1s linear infinite;
+                        margin: 0 auto 10px;
+                    }
+
+                    @keyframes spin {
+                        0% {
+                            transform: rotate(0deg);
+                        }
+
+                        100% {
+                            transform: rotate(360deg);
+                        }
+                    }
+                </style>
             </div>
         </div>
     </div>
@@ -261,20 +292,48 @@
                     resultsWrapper.scrollIntoView({ behavior: 'smooth' });
                 }
 
-                // Show loading state
-                const loadingSpinner = document.getElementById('chaiz-loading');
+                // SHOW spinner before fetching
                 const loadingInline = document.getElementById('chaiz-loading-inline');
-                if (loadingSpinner) loadingSpinner.style.display = 'block';
                 if (loadingInline) loadingInline.style.display = 'block';
-                document.getElementById('search-results-skip').innerHTML = '';
+                const resultsContainer = document.getElementById('search-results-skip');
+                if (resultsContainer) resultsContainer.innerHTML = '';
 
-                function startPollingForResults() {
-                    const spinDuration = 4000;
-                    setTimeout(() => {
-                        if (loadingSpinner) loadingSpinner.style.display = 'none';
-                        if (loadingInline) loadingInline.style.display = 'none';
-                    }, spinDuration);
+                function watchForChaizResults() {
+                    const container = document.getElementById('search-results-skip');
+                    if (!container) return;
+
+                    const loadingInline = document.getElementById('chaiz-loading-inline');
+
+                    const checkShadow = () => {
+                        if (container.shadowRoot && container.shadowRoot.querySelector('.chaiz-warranties_list')) {
+                            if (loadingInline) loadingInline.style.display = 'none';
+                            console.log('Results rendered ✅ (found chaiz-warranties_list inside shadow DOM)');
+                            return true;
+                        }
+                        return false;
+                    };
+
+                    // try immediately
+                    if (checkShadow()) return;
+
+                    // observer for shadow root
+                    const observer = new MutationObserver(() => {
+                        if (checkShadow()) {
+                            observer.disconnect();
+                        }
+                    });
+
+                    observer.observe(container, { childList: true });
+
+                    // fallback polling
+                    const intervalId = setInterval(() => {
+                        if (checkShadow()) {
+                            clearInterval(intervalId);
+                            observer.disconnect();
+                        }
+                    }, 500);
                 }
+
 
                 // Load Chaiz script & initialize
                 if (!document.querySelector('script[src="https://warranty-search.chaiz.com/initialize.js"]')) {
@@ -284,14 +343,14 @@
                         if (typeof initializeWarrantySearch === "function") {
                             initializeWarrantySearch(window.chaizWarrantySearchConfig);
                         }
-                        startPollingForResults();
+                        watchForChaizResults();
                     };
                     document.body.appendChild(script);
                 } else {
                     if (typeof initializeWarrantySearch === "function") {
                         initializeWarrantySearch(window.chaizWarrantySearchConfig);
                     }
-                    startPollingForResults();
+                    watchForChaizResults();
                 }
             }
 
@@ -1585,7 +1644,7 @@
         });
     </script>
     <!-- quiz modal end -->
-     
+
     <section id="card-section">
         <div class="container">
             <h4 class="mt-5 mb-3" style="font-weight: 700;">Our providers</h4>
