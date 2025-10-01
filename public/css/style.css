@@ -771,7 +771,7 @@ body {
 
     .description,
     .description2 {
-        font-weight: normal;
+        font-weight: 600;
     }
 
     .card-body-row.active {
