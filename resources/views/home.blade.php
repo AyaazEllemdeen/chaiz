@@ -213,7 +213,6 @@
         </div>
     </div>
 
-
     <script>
         document.addEventListener("DOMContentLoaded", () => {
 
@@ -1586,7 +1585,7 @@
         });
     </script>
     <!-- quiz modal end -->
-
+     
     <section id="card-section">
         <div class="container">
             <h4 class="mt-5 mb-3" style="font-weight: 700;">Our providers</h4>

@@ -99,7 +99,6 @@
             };
 
             try {
-                // Submit the lead
                 const response = await fetch('{{ route('lead.submit') }}', {
                     method: 'POST',
                     headers: {
@@ -112,25 +111,21 @@
                 const data = await response.json();
                 console.log('Lead submit response:', data);
 
-                // Push GTM event using ONLY the destination
                 window.dataLayer = window.dataLayer || [];
                 window.dataLayer.push({
                     event: "leadSubmission",
-                    destination: data.destination // just the destination
+                    destination: data.destination 
                 });
 
-                // Optional: show the destination on the page
                 const destEl = document.getElementById('lead-destination');
                 if (destEl) {
                     destEl.textContent = "Lead submitted to: " + data.destination;
                 }
 
-                // Now load Chaiz results
                 loadChaizResults();
-
             } catch (err) {
                 console.error('Error submitting lead:', err);
-                loadChaizResults(); // Still load Chaiz even if lead submission fails
+                loadChaizResults();
             }
         }
 
