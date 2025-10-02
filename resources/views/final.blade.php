@@ -5,73 +5,73 @@
         $carData = session('carData', []);
     @endphp
 
-    <section class="thank-you-page py-5">
-        <div class="container">
+    <section class="results-layout py-5" style="background-color: #FAF9F6;">
+        <div class="container d-flex flex-wrap" style="gap: 2rem; align-items: flex-start; min-width: 93%;">
+            <!-- Left: Thank You Section (smaller) -->
+            <div class="thank-you-page" style="flex: 1; min-width: 280px; max-width: 400px;">
+                <!-- Header -->
+                <div class="text-center mb-4">
+                    <h3 style="margin-bottom: 1rem; font-weight: 600; text-align: center;">Thank You!</h3>
+                    <div id="lead-destination" class="mb-3 text-center fw-bold"></div>
+                    <p class="text-muted">Here are the plans for your car:</p>
+                </div>
 
-            <!-- Header -->
-            <div class="text-center mb-4">
-                <h2 class="fw-bold">Thank You!</h2>
-                <!-- Lead Destination -->
-                <div id="lead-destination" class="mb-3 text-center fw-bold"></div>
-                <p class="text-muted">Here are the plans for your car:</p>
-            </div>
-
-            <!-- What Happens Next & Awareness Section -->
-            <div class="content-grid mx-auto" style="max-width: 800px; text-align: left;">
-                <div class="what-happens-next mb-4">
-                    <h4>What happens next?</h4>
-                    <div class="steps-container">
-                        <div class="step-item">
-                            <div class="step-number">1</div>
-                            <div class="step-content">
-                                <p>If there is a match between your specifications and our provider's criteria,
-                                    you will receive a call from between 1-5 providers within the next working day.
-                                </p>
+                <!-- What Happens Next & Awareness Section -->
+                <div class="content-grid mx-auto" style="text-align: left;">
+                    <div class="what-happens-next mb-4">
+                        <h4>What happens next?</h4>
+                        <div class="steps-container">
+                            <div class="step-item">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p>If there is a match between your specifications and our provider's criteria,
+                                        you will receive a call from between 1-5 providers within the next working day.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p>You will have a free phone consultation with the relevant provider(s) to discuss
+                                        prices and ask any questions.</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p>See instant options available below.</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="step-item">
-                            <div class="step-number">2</div>
-                            <div class="step-content">
-                                <p>You will have a free phone consultation with the relevant provider(s) to discuss
-                                    prices and ask any questions.</p>
+                    </div>
+
+                    <div class="awareness-section">
+                        <h5>Please be aware that you may not receive quotes if:</h5>
+                        <div class="awareness-items">
+                            <div class="awareness-item">
+                                <div class="awareness-number">1</div>
+                                <p>Your specifications don't match the provider's criteria</p>
                             </div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-number">3</div>
-                            <div class="step-content">
-                                <p>See instant options available below.</p>
+                            <div class="awareness-item">
+                                <div class="awareness-number">2</div>
+                                <p>There's an error in your contact details</p>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="awareness-section">
-                    <h5>Please be aware that you may not receive quotes if:</h5>
-                    <div class="awareness-items">
-                        <div class="awareness-item">
-                            <div class="awareness-number">1</div>
-                            <p>Your specifications don't match the provider's criteria</p>
-                        </div>
-                        <div class="awareness-item">
-                            <div class="awareness-number">2</div>
-                            <p>There's an error in your contact details</p>
-                        </div>
-                    </div>
-                </div>
             </div>
 
-            <!-- End What Happens Next & Awareness Section -->
+            <!-- Right: Chaiz Results (bigger) -->
+            <div class="chaiz-results-section" style="flex: 2; min-width: 400px;">
+                <h3 style="margin-bottom: 1rem; font-weight: 600; text-align: center;">
+                    Get Instant Options
+                </h3>
+                <div id="search-results" class="chaiz-results"></div>
+            </div>
 
         </div>
     </section>
 
-    <!-- 90%-width Chaiz Results Section -->
-    <section class="chaiz-results-section py-4" style="width: 100%; background-color: #FAF9F6;">
-        <div style="width: 90%; margin: 0 auto; text-align: center;">
-            <h3 style="margin-bottom: 1rem; font-weight: 600;">Get Instant Options</h3>
-            <div id="search-results" class="chaiz-results"></div>
-        </div>
-    </section>
 
 
     <script>
@@ -114,7 +114,7 @@
                 window.dataLayer = window.dataLayer || [];
                 window.dataLayer.push({
                     event: "leadSubmission",
-                    destination: data.destination 
+                    destination: data.destination
                 });
 
                 const destEl = document.getElementById('lead-destination');
