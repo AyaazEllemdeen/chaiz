@@ -5,14 +5,14 @@
         $carData = session('carData', []);
     @endphp
 
-    <section class="results-layout py-5" style="background-color: #FAF9F6;">
+    <section class="results-layout py-5" style="background-color: #e3e3e3ff;">
         <div class="container results-container">
 
             <!-- Left: Thank You Section (smaller) -->
             <div class="thank-you-page">
                 <!-- Header -->
                 <div class="text-center mb-4">
-                    <h3 class="fw-bold mb-3">Thank You!</h3>
+                    <h3 class="mb-3">Thank You!</h3>
                     <div id="lead-destination" class="mb-3 text-center fw-bold"></div>
                     <p class="text-muted">Here are the plans for your car:</p>
                 </div>
@@ -64,7 +64,7 @@
 
             <!-- Right: Chaiz Results (bigger) -->
             <div class="chaiz-results-section">
-                <h3 class="fw-bold mb-3 text-center">Get Instant Options</h3>
+                <h3 class="mb-3 text-center">Get Instant Options</h3>
                 <div id="search-results" class="chaiz-results"></div>
             </div>
 
