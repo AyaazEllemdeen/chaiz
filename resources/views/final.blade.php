@@ -6,18 +6,19 @@
     @endphp
 
     <section class="results-layout py-5" style="background-color: #FAF9F6;">
-        <div class="container d-flex flex-wrap" style="gap: 2rem; align-items: flex-start; min-width: 93%;">
+        <div class="container results-container">
+
             <!-- Left: Thank You Section (smaller) -->
-            <div class="thank-you-page" style="flex: 1; min-width: 280px; max-width: 400px;">
+            <div class="thank-you-page">
                 <!-- Header -->
                 <div class="text-center mb-4">
-                    <h3 style="margin-bottom: 1rem; font-weight: 600; text-align: center;">Thank You!</h3>
+                    <h3 class="fw-bold mb-3">Thank You!</h3>
                     <div id="lead-destination" class="mb-3 text-center fw-bold"></div>
                     <p class="text-muted">Here are the plans for your car:</p>
                 </div>
 
                 <!-- What Happens Next & Awareness Section -->
-                <div class="content-grid mx-auto" style="text-align: left;">
+                <div class="content-grid">
                     <div class="what-happens-next mb-4">
                         <h4>What happens next?</h4>
                         <div class="steps-container">
@@ -62,17 +63,50 @@
             </div>
 
             <!-- Right: Chaiz Results (bigger) -->
-            <div class="chaiz-results-section" style="flex: 2; min-width: 400px;">
-                <h3 style="margin-bottom: 1rem; font-weight: 600; text-align: center;">
-                    Get Instant Options
-                </h3>
+            <div class="chaiz-results-section">
+                <h3 class="fw-bold mb-3 text-center">Get Instant Options</h3>
                 <div id="search-results" class="chaiz-results"></div>
             </div>
 
         </div>
     </section>
 
+    <style>
+        /* Flex container */
+        .results-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: flex-start;
+            min-width: 93%;
+            /* make wider than default bootstrap container */
+            margin: 0 auto;
+        }
 
+        /* Thank You column (smaller) */
+        .thank-you-page {
+            flex: 1;
+            min-width: 280px;
+            max-width: 400px;
+        }
+
+        /* Chaiz column (larger) */
+        .chaiz-results-section {
+            flex: 2;
+            min-width: 400px;
+        }
+
+        /* Mobile stacking */
+        @media (max-width: 768px) {
+
+            .thank-you-page,
+            .chaiz-results-section {
+                flex: 1 1 100%;
+                max-width: 100%;
+                min-width: 100%;
+            }
+        }
+    </style>
 
     <script>
         window.carData = @json($carData);
