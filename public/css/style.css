@@ -1469,9 +1469,6 @@ body {
 }
 
 .modal-dropdown1 {
-    -webkit-appearance: none; /* important for iOS */
-    -moz-appearance: none;
-    appearance: none;
     width: 100%;
     padding: 10px;
     margin-bottom: 1rem;
@@ -1479,7 +1476,6 @@ body {
     border-radius: 5px;
     font-size: 1rem;
     color: #010100;
-    background-color: #fff; /* explicit background */
 }
 
 /* Increase height on mobile */
@@ -1489,17 +1485,19 @@ body {
         font-size: 1.1rem; /* optional: slightly bigger text */
     }
 }
-
-.quiz-step {
-    display: none;
+#first-question {
+    -webkit-user-select: none; /* Safari/Chrome */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    user-select: none; /* Standard */
 }
 
-.quiz-step.show {
-    display: block;
-    opacity: 1;
-    visibility: visible;
+#first-question select {
     pointer-events: auto;
-    transition: opacity 0.3s ease;
+    -webkit-user-select: auto;
+    -moz-user-select: auto;
+    -ms-user-select: auto;
+    user-select: auto;
 }
 
 .step-buttons-wrapper {
