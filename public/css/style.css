@@ -1470,35 +1470,30 @@ body {
 
 .modal-dropdown1 {
     width: 100%;
-    padding: 10px;
+    padding: 12px 14px;
     margin-bottom: 1rem;
     border: 1px solid #ffcf4b;
-    border-radius: 5px;
+    border-radius: 6px;
     font-size: 1rem;
+    background-color: #fff;
     color: #010100;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* Increase height on mobile */
+.modal-dropdown1:focus {
+    outline: none;
+    border-color: #facc15; /* brighter yellow */
+    box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.4);
+}
+
+/* More padding & font-size on mobile */
 @media (max-width: 768px) {
     .modal-dropdown1 {
-        padding: 13px; /* more vertical padding */
-        font-size: 1.1rem; /* optional: slightly bigger text */
+        padding: 14px;
+        font-size: 1.1rem;
     }
 }
-#first-question {
-    -webkit-user-select: none; /* Safari/Chrome */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+ */
-    user-select: none; /* Standard */
-}
 
-#first-question select {
-    pointer-events: auto;
-    -webkit-user-select: auto;
-    -moz-user-select: auto;
-    -ms-user-select: auto;
-    user-select: auto;
-}
 
 .step-buttons-wrapper {
     text-align: center;
@@ -1607,20 +1602,20 @@ body {
     .car-quiz-left {
         width: 100%;
         padding: 2rem 1.5rem;
-        min-height: 100vh; /* at least full height */
-        height: auto; /* can grow taller if needed */
+        min-height: 100vh;      /* at least full height */
+        height: auto;           /* can grow taller if needed */
         display: flex;
         flex-direction: column; /* body pushes wrapper */
     }
 
     .car-quiz-body {
-        flex-grow: 1; /* expand if needed */
+        flex-grow: 1;           /* expand if needed */
     }
 
     .chaiz-results-skip {
         width: 100%;
-        flex: none; /* no shrinking */
-        position: relative; /* no overlap */
+        flex: none;             /* no shrinking */
+        position: relative;     /* no overlap */
     }
 
     .car-quiz-right {
