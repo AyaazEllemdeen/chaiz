@@ -1481,15 +1481,23 @@ body {
 /* Increase height on mobile */
 @media (max-width: 768px) {
     .modal-dropdown1 {
-        padding: 16px;
-        font-size: 1.3rem;
-    }
-
-    #quiz-step3 .modal-dropdown1 {
-        padding: 8px; /* smaller padding for step 3 */
-        font-size: 1rem; /* smaller font size */
+        padding: 13px; /* more vertical padding */
+        font-size: 1.1rem; /* optional: slightly bigger text */
     }
 }
+
+.quiz-step {
+    display: none;
+}
+
+.quiz-step.show {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 0.3s ease;
+}
+
 
 .step-buttons-wrapper {
     text-align: center;
@@ -1598,20 +1606,20 @@ body {
     .car-quiz-left {
         width: 100%;
         padding: 2rem 1.5rem;
-        min-height: 100vh; /* at least full height */
-        height: auto; /* can grow taller if needed */
+        min-height: 100vh;      /* at least full height */
+        height: auto;           /* can grow taller if needed */
         display: flex;
         flex-direction: column; /* body pushes wrapper */
     }
 
     .car-quiz-body {
-        flex-grow: 1; /* expand if needed */
+        flex-grow: 1;           /* expand if needed */
     }
 
     .chaiz-results-skip {
         width: 100%;
-        flex: none; /* no shrinking */
-        position: relative; /* no overlap */
+        flex: none;             /* no shrinking */
+        position: relative;     /* no overlap */
     }
 
     .car-quiz-right {
