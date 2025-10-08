@@ -1469,6 +1469,9 @@ body {
 }
 
 .modal-dropdown1 {
+    -webkit-appearance: none; /* important for iOS */
+    -moz-appearance: none;
+    appearance: none;
     width: 100%;
     padding: 10px;
     margin-bottom: 1rem;
@@ -1476,6 +1479,7 @@ body {
     border-radius: 5px;
     font-size: 1rem;
     color: #010100;
+    background-color: #fff; /* explicit background */
 }
 
 /* Increase height on mobile */
@@ -1497,7 +1501,6 @@ body {
     pointer-events: auto;
     transition: opacity 0.3s ease;
 }
-
 
 .step-buttons-wrapper {
     text-align: center;
@@ -1606,20 +1609,20 @@ body {
     .car-quiz-left {
         width: 100%;
         padding: 2rem 1.5rem;
-        min-height: 100vh;      /* at least full height */
-        height: auto;           /* can grow taller if needed */
+        min-height: 100vh; /* at least full height */
+        height: auto; /* can grow taller if needed */
         display: flex;
         flex-direction: column; /* body pushes wrapper */
     }
 
     .car-quiz-body {
-        flex-grow: 1;           /* expand if needed */
+        flex-grow: 1; /* expand if needed */
     }
 
     .chaiz-results-skip {
         width: 100%;
-        flex: none;             /* no shrinking */
-        position: relative;     /* no overlap */
+        flex: none; /* no shrinking */
+        position: relative; /* no overlap */
     }
 
     .car-quiz-right {
