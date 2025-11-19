@@ -3,7 +3,7 @@
 @section('content')
 
     <section id="hero-section" class="hero-section">
-        <div class="hero-content py-5">
+        <div class="hero-content pt-5">
             <div class="row align-items-center g-0">
                 <!-- Left side - Text and Button -->
                 <div class="col-lg-5">
@@ -237,7 +237,8 @@
         }
 
         .hero-content {
-            padding: 3rem 0;
+            padding: 3rem 0 0 0;
+            /* top right bottom left */
         }
 
         .hero-left-container {
