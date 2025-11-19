@@ -1532,14 +1532,14 @@ h6 {
 .warranty-title {
     font-weight: 600;
 }
-
 /* Footer Styles */
 .site-footer {
     background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
     color: #ffffff;
     padding: 3rem 0 1.5rem;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    min-height: 250px;
 }
 
 .site-footer::before {
@@ -1630,6 +1630,7 @@ h6 {
     border-radius: 8px;
     background: rgba(29, 209, 161, 0.1);
     backdrop-filter: blur(10px);
+    z-index: 1;
 }
 
 .disclaimer-trigger:hover {
@@ -1650,59 +1651,52 @@ h6 {
 /* Desktop hover popup */
 .disclaimer-popup {
     position: absolute;
-    bottom: 120%;
+    bottom: calc(100% + 20px);
     left: 0;
-    width: 480px;
-    background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
-    color: #ffffff;
-    padding: 24px;
+    transform: translateY(15px);
+    width: 650px;
+    max-width: 90vw;
+    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+    color: #1a1a1a;
+    padding: 28px 32px;
     border-radius: 16px;
-    font-size: 13px;
-    line-height: 1.7;
+    font-size: 14px;
+    line-height: 1.8;
     text-align: left;
-    z-index: 999;
+    z-index: 99999;
     opacity: 0;
     visibility: hidden;
     transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8),
-        0 0 0 1px rgba(29, 209, 161, 0.2);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5), 0 10px 30px rgba(0, 0, 0, 0.3),
+        0 0 0 2px rgba(29, 209, 161, 0.4);
     pointer-events: none;
-    transform: translateY(10px);
+    border: 2px solid #1dd1a1;
 }
 
 .disclaimer-title {
     color: #1dd1a1;
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid rgba(29, 209, 161, 0.3);
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #1dd1a1;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .disclaimer-popup p {
-    margin-bottom: 12px;
-    color: #e0e0e0;
+    margin-bottom: 14px;
+    color: #2d2d2d;
+    font-weight: 500;
 }
 
 .disclaimer-popup strong {
     color: #1dd1a1;
-    font-weight: 600;
+    font-weight: 700;
 }
 
-.disclaimer-popup::before {
-    content: "";
-    position: absolute;
-    bottom: -12px;
-    left: 35px;
-    width: 0;
-    height: 0;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-top: 12px solid #2d2d2d;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-}
-
-.disclaimer-trigger:hover .disclaimer-popup {
+/* Show popup with class */
+.disclaimer-popup.show {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);

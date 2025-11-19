@@ -35,17 +35,6 @@
                 </span>
             </div>
 
-            <!-- Center: Quick Links -->
-            {{-- <div class="footer-center">
-                <div class="footer-links">
-                    <a href="#" class="footer-link">Privacy Policy</a>
-                    <span class="footer-separator">|</span>
-                    <a href="#" class="footer-link">Terms of Use</a>
-                    <span class="footer-separator">|</span>
-                    <a href="#" class="footer-link">Contact Us</a>
-                </div>
-            </div> --}}
-
             <!-- Right: Logo -->
             <div class="footer-right">
                 <img src="{{ asset('img/logo/logo.png') }}" alt="Compare Warranties Logo" class="footer-logo">
@@ -102,13 +91,78 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const trigger = document.getElementById("disclaimerTrigger");
+        const popup = trigger ? trigger.querySelector('.disclaimer-popup') : null;
+        const modalElement = document.getElementById('disclaimerModal');
+        let closeTimer;
+
+        function showPopup() {
+            if (closeTimer) {
+                clearTimeout(closeTimer);
+            }
+            if (popup) {
+                popup.classList.add('show');
+            }
+        }
+
+        function hidePopup() {
+            closeTimer = setTimeout(function() {
+                if (popup) {
+                    popup.classList.remove('show');
+                }
+            }, 200); // 1 second delay
+        }
 
         if (window.innerWidth <= 768) {
-            trigger.setAttribute("data-bs-toggle", "modal");
-            trigger.setAttribute("data-bs-target", "#disclaimerModal");
+            // Mobile: use modal - add click event
+            trigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Check if Bootstrap 5 is available
+                if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+                    const modal = new bootstrap.Modal(modalElement);
+                    modal.show();
+                }
+                // Check if jQuery and Bootstrap 4/3 is available
+                else if (typeof $ !== 'undefined' && $.fn.modal) {
+                    $('#disclaimerModal').modal('show');
+                }
+                // Fallback: manually show modal
+                else {
+                    modalElement.classList.add('show');
+                    modalElement.style.display = 'block';
+                    document.body.classList.add('modal-open');
+                    
+                    // Create backdrop
+                    const backdrop = document.createElement('div');
+                    backdrop.className = 'modal-backdrop fade show';
+                    document.body.appendChild(backdrop);
+                    
+                    // Close button functionality
+                    const closeBtn = modalElement.querySelector('.btn-close');
+                    if (closeBtn) {
+                        closeBtn.addEventListener('click', function() {
+                            modalElement.classList.remove('show');
+                            modalElement.style.display = 'none';
+                            document.body.classList.remove('modal-open');
+                            backdrop.remove();
+                        });
+                    }
+                }
+            });
         } else {
+            // Desktop: use hover popup
             trigger.removeAttribute("data-bs-toggle");
             trigger.removeAttribute("data-bs-target");
+
+            // Show popup on trigger hover
+            trigger.addEventListener('mouseenter', showPopup);
+            trigger.addEventListener('mouseleave', hidePopup);
+
+            // Keep popup open when hovering over it
+            if (popup) {
+                popup.addEventListener('mouseenter', showPopup);
+                popup.addEventListener('mouseleave', hidePopup);
+            }
         }
     });
 </script>
