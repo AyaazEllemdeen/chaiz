@@ -607,7 +607,7 @@
             <div class="match-steps-container">
                 <div class="match-step">
                     <div class="match-step-icon">
-                        <img src="/img/1icon.png" alt="">
+                        <img src="/img/icons/icon1.png" alt="">
                     </div>
                     <h3 class="match-step-title">Your vehicle details</h3>
                     <p class="match-step-description">Provide information about your vehicle and the coverage you require.
@@ -616,7 +616,7 @@
 
                 <div class="match-step">
                     <div class="match-step-icon">
-                        <img src="/img/2icon.png" alt="">
+                        <img src="/img/icons/icon2.png" alt="">
                     </div>
                     <h3 class="match-step-title">Extensive provider network</h3>
                     <p class="match-step-description">We carefully review offers from leading warranty providers to identify
@@ -625,7 +625,7 @@
 
                 <div class="match-step">
                     <div class="match-step-icon">
-                        <img src="/img/3icon.png" alt="">
+                        <img src="/img/icons/icon3.png" alt="">
                     </div>
                     <h3 class="match-step-title">Your personalized solution</h3>
                     <p class="match-step-description">Choose to submit a quote request for a tailored proposal or purchase
@@ -652,7 +652,7 @@
             </div>
 
             <div class="score-illustration">
-                <img src="/img/4icon.png" alt="">
+                <img src="/img/icons/icon4.png" alt="">
             </div>
         </div>
     </section>
