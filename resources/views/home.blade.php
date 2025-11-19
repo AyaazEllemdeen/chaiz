@@ -2,168 +2,168 @@
 
 @section('content')
 
-    <section id="hero-section" class="hero-section">
-        <div class="hero-content">
-            <div class="row align-items-center g-0">
-                <!-- Left side - Text and Button -->
-                <div class="col-lg-5">
-                    <div class="hero-left-container">
-                        <h1 class="hero-title mb-3">Compare Car<br>Warranties</h1>
-                        <p class="hero-subtitle mb-4">Find the best extended auto warranty for your vehicle</p>
-                        <button type="button" class="hero-cta-btn" id="instant-quote-btn">Compare Warranties</button>
-                    </div>
+   <section id="hero-section" class="hero-section">
+    <div class="hero-content">
+        <div class="row align-items-center g-0">
+            <!-- Left side - Text and Button -->
+            <div class="col-md-5">
+                <div class="hero-left-container">
+                    <h1 class="hero-title mb-3">Compare Car<br>Warranties</h1>
+                    <p class="hero-subtitle mb-4">Find the best extended auto warranty for your vehicle</p>
+                    <button type="button" class="hero-cta-btn" id="instant-quote-btn">Compare Warranties</button>
                 </div>
+            </div>
 
-                <!-- Right side - Form -->
-                <div class="col-lg-7">
-                    <div class="form-card">
-                        <form id="quiz-start-form">
-                            @csrf
-                            <h3 class="form-title mb-4">Your Details</h3>
+            <!-- Right side - Form -->
+            <div class="col-md-7">
+                <div class="form-card">
+                    <form id="quiz-start-form">
+                        @csrf
+                        <h3 class="form-title mb-4">Your Details</h3>
 
-                            <div class="row g-3 mb-3">
-                                <div class="col-6 col-md-6">
-                                    <input type="text" name="user-name" class="form-input" placeholder="Full Name" required>
-                                </div>
-                                <div class="col-6 col-md-6">
-                                    <input type="text" name="user-number" class="form-input" placeholder="Cell Number"
-                                        required>
-                                </div>
+                        <div class="row g-3 mb-3">
+                            <div class="col-6 col-md-6">
+                                <input type="text" name="user-name" class="form-input" placeholder="Full Name" required>
                             </div>
-
-                            <div class="row g-3 mb-3">
-                                <div class="col-6 col-md-6">
-                                    <input type="email" name="email" class="form-input" placeholder="Email Address"
-                                        required>
-                                </div>
-                                <div class="col-6 col-md-6">
-                                    <select name="user-state" class="form-input" required>
-                                        <option value="">Select Your State</option>
-                                        @php
-                                            $states = [
-                                                'AL' => 'Alabama',
-                                                'AK' => 'Alaska',
-                                                'AZ' => 'Arizona',
-                                                'AR' => 'Arkansas',
-                                                'CA' => 'California',
-                                                'CO' => 'Colorado',
-                                                'CT' => 'Connecticut',
-                                                'DE' => 'Delaware',
-                                                'FL' => 'Florida',
-                                                'GA' => 'Georgia',
-                                                'HI' => 'Hawaii',
-                                                'ID' => 'Idaho',
-                                                'IL' => 'Illinois',
-                                                'IN' => 'Indiana',
-                                                'IA' => 'Iowa',
-                                                'KS' => 'Kansas',
-                                                'KY' => 'Kentucky',
-                                                'LA' => 'Louisiana',
-                                                'ME' => 'Maine',
-                                                'MD' => 'Maryland',
-                                                'MA' => 'Massachusetts',
-                                                'MI' => 'Michigan',
-                                                'MN' => 'Minnesota',
-                                                'MS' => 'Mississippi',
-                                                'MO' => 'Missouri',
-                                                'MT' => 'Montana',
-                                                'NE' => 'Nebraska',
-                                                'NV' => 'Nevada',
-                                                'NH' => 'New Hampshire',
-                                                'NJ' => 'New Jersey',
-                                                'NM' => 'New Mexico',
-                                                'NY' => 'New York',
-                                                'NC' => 'North Carolina',
-                                                'ND' => 'North Dakota',
-                                                'OH' => 'Ohio',
-                                                'OK' => 'Oklahoma',
-                                                'OR' => 'Oregon',
-                                                'PA' => 'Pennsylvania',
-                                                'RI' => 'Rhode Island',
-                                                'SC' => 'South Carolina',
-                                                'SD' => 'South Dakota',
-                                                'TN' => 'Tennessee',
-                                                'TX' => 'Texas',
-                                                'UT' => 'Utah',
-                                                'VT' => 'Vermont',
-                                                'VA' => 'Virginia',
-                                                'WA' => 'Washington',
-                                                'WV' => 'West Virginia',
-                                                'WI' => 'Wisconsin',
-                                                'WY' => 'Wyoming',
-                                                'DC' => 'District of Columbia',
-                                                'PR' => 'Puerto Rico',
-                                                'GU' => 'Guam',
-                                                'VI' => 'U.S. Virgin Islands',
-                                                'AS' => 'American Samoa',
-                                                'MP' => 'Northern Mariana Islands'
-                                            ];
-                                        @endphp
-                                        @foreach($states as $abbr => $name)
-                                            <option value="{{ $abbr }}">{{ $name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                            <div class="col-6 col-md-6">
+                                <input type="text" name="user-number" class="form-input" placeholder="Cell Number"
+                                    required>
                             </div>
+                        </div>
 
-                            <div class="row g-3 mb-3">
-                                <div class="col-6 col-md-6">
-                                    <select id="sel_make" name="sel-make" class="form-input" required>
-                                        <option value="">Select Vehicle Make</option>
-                                        @php
-                                            $makes = call_user_func(config('vehicles.makes'));
-                                        @endphp
-                                        @foreach($makes as $make)
-                                            <option value="{{ $make }}">{{ $make }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-6 col-md-6">
-                                    <select id="sel_model" name="sel-model" class="form-input" required>
-                                        <option value="">Select Vehicle Model</option>
-                                    </select>
-                                </div>
+                        <div class="row g-3 mb-3">
+                            <div class="col-6 col-md-6">
+                                <input type="email" name="email" class="form-input" placeholder="Email Address"
+                                    required>
                             </div>
-
-                            <div class="row g-3 mb-4">
-                                <div class="col-6 col-md-6">
-                                    <select id="sel_year" name="sel-year" class="form-input" required>
-                                        <option value="">Select Vehicle Year</option>
-                                        @for($year = 2026; $year >= 1990; $year--)
-                                            <option value="{{ $year }}">{{ $year }}</option>
-                                        @endfor
-                                    </select>
-                                </div>
-                                <div class="col-6 col-md-6">
-                                    <select name="car_mileage" class="form-input" required>
-                                        <option value="">Select Vehicle Mileage</option>
-                                        <option value="less-than-100k">Less than 100,000 miles</option>
-                                        <option value="100k-140k">100,000 - 140,000 miles</option>
-                                        <option value="140k-200k">140,000 - 200,000 miles</option>
-                                        <option value="more-than-200k">More than 200,000 miles</option>
-                                    </select>
-                                </div>
+                            <div class="col-6 col-md-6">
+                                <select name="user-state" class="form-input" required>
+                                    <option value="">Select Your State</option>
+                                    @php
+                                        $states = [
+                                            'AL' => 'Alabama',
+                                            'AK' => 'Alaska',
+                                            'AZ' => 'Arizona',
+                                            'AR' => 'Arkansas',
+                                            'CA' => 'California',
+                                            'CO' => 'Colorado',
+                                            'CT' => 'Connecticut',
+                                            'DE' => 'Delaware',
+                                            'FL' => 'Florida',
+                                            'GA' => 'Georgia',
+                                            'HI' => 'Hawaii',
+                                            'ID' => 'Idaho',
+                                            'IL' => 'Illinois',
+                                            'IN' => 'Indiana',
+                                            'IA' => 'Iowa',
+                                            'KS' => 'Kansas',
+                                            'KY' => 'Kentucky',
+                                            'LA' => 'Louisiana',
+                                            'ME' => 'Maine',
+                                            'MD' => 'Maryland',
+                                            'MA' => 'Massachusetts',
+                                            'MI' => 'Michigan',
+                                            'MN' => 'Minnesota',
+                                            'MS' => 'Mississippi',
+                                            'MO' => 'Missouri',
+                                            'MT' => 'Montana',
+                                            'NE' => 'Nebraska',
+                                            'NV' => 'Nevada',
+                                            'NH' => 'New Hampshire',
+                                            'NJ' => 'New Jersey',
+                                            'NM' => 'New Mexico',
+                                            'NY' => 'New York',
+                                            'NC' => 'North Carolina',
+                                            'ND' => 'North Dakota',
+                                            'OH' => 'Ohio',
+                                            'OK' => 'Oklahoma',
+                                            'OR' => 'Oregon',
+                                            'PA' => 'Pennsylvania',
+                                            'RI' => 'Rhode Island',
+                                            'SC' => 'South Carolina',
+                                            'SD' => 'South Dakota',
+                                            'TN' => 'Tennessee',
+                                            'TX' => 'Texas',
+                                            'UT' => 'Utah',
+                                            'VT' => 'Vermont',
+                                            'VA' => 'Virginia',
+                                            'WA' => 'Washington',
+                                            'WV' => 'West Virginia',
+                                            'WI' => 'Wisconsin',
+                                            'WY' => 'Wyoming',
+                                            'DC' => 'District of Columbia',
+                                            'PR' => 'Puerto Rico',
+                                            'GU' => 'Guam',
+                                            'VI' => 'U.S. Virgin Islands',
+                                            'AS' => 'American Samoa',
+                                            'MP' => 'Northern Mariana Islands'
+                                        ];
+                                    @endphp
+                                    @foreach($states as $abbr => $name)
+                                        <option value="{{ $abbr }}">{{ $name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
+                        </div>
 
-                            <button type="submit" id="submit-btn" class="form-submit-btn">
-                                <span id="submit-text">Submit</span>
-                                <span id="submit-loader" class="submit-loader" style="display: none;">
-                                    <svg width="20" height="20" viewBox="0 0 50 50" style="vertical-align: middle;">
-                                        <circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="5"
-                                            stroke-dasharray="31.415, 31.415" transform="rotate(-90 25 25)">
-                                            <animateTransform attributeName="transform" type="rotate" from="0 25 25"
-                                                to="360 25 25" dur="1s" repeatCount="indefinite" />
-                                        </circle>
-                                    </svg>
-                                    Processing...
-                                </span>
-                            </button>
-                        </form>
-                    </div>
+                        <div class="row g-3 mb-3">
+                            <div class="col-6 col-md-6">
+                                <select id="sel_make" name="sel-make" class="form-input" required>
+                                    <option value="">Select Vehicle Make</option>
+                                    @php
+                                        $makes = call_user_func(config('vehicles.makes'));
+                                    @endphp
+                                    @foreach($makes as $make)
+                                        <option value="{{ $make }}">{{ $make }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-6 col-md-6">
+                                <select id="sel_model" name="sel-model" class="form-input" required>
+                                    <option value="">Select Vehicle Model</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mb-4">
+                            <div class="col-6 col-md-6">
+                                <select id="sel_year" name="sel-year" class="form-input" required>
+                                    <option value="">Select Vehicle Year</option>
+                                    @for($year = 2026; $year >= 1990; $year--)
+                                        <option value="{{ $year }}">{{ $year }}</option>
+                                    @endfor
+                                </select>
+                            </div>
+                            <div class="col-6 col-md-6">
+                                <select name="car_mileage" class="form-input" required>
+                                    <option value="">Select Vehicle Mileage</option>
+                                    <option value="less-than-100k">Less than 100,000 miles</option>
+                                    <option value="100k-140k">100,000 - 140,000 miles</option>
+                                    <option value="140k-200k">140,000 - 200,000 miles</option>
+                                    <option value="more-than-200k">More than 200,000 miles</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" id="submit-btn" class="form-submit-btn">
+                            <span id="submit-text">Submit</span>
+                            <span id="submit-loader" class="submit-loader" style="display: none;">
+                                <svg width="20" height="20" viewBox="0 0 50 50" style="vertical-align: middle;">
+                                    <circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="5"
+                                        stroke-dasharray="31.415, 31.415" transform="rotate(-90 25 25)">
+                                        <animateTransform attributeName="transform" type="rotate" from="0 25 25"
+                                            to="360 25 25" dur="1s" repeatCount="indefinite" />
+                                    </circle>
+                                </svg>
+                                Processing...
+                            </span>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <section class="card-section" id="card-section">
         <div class="container">
