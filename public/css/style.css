@@ -1138,7 +1138,7 @@ h6 {
 /* scrores section */
 
 .score-section {
-    background-color: #fff7e0;
+    background-color: #6c757d;
     padding: 40px 0;
 }
 
@@ -1157,14 +1157,14 @@ h6 {
 .score-title {
     font-size: 2rem;
     font-weight: 800;
-    color: #2d3748;
+    color: #000000;
     margin-bottom: 30px;
     line-height: 1.2;
 }
 
 .score-description {
     font-size: 1.2rem;
-    color: #4a5568;
+    color: #000000;
     line-height: 1.6;
     margin-bottom: 40px;
     width: 500px;
@@ -1172,7 +1172,7 @@ h6 {
 
 .score-highlight {
     font-weight: 700;
-    color: #2d3748;
+    color: #000000;
 }
 
 .score-cta-button {
