@@ -10,7 +10,7 @@
                     <div class="hero-left-container">
                         <h1 class="hero-title mb-3">Compare Car<br>Warranties</h1>
                         <p class="hero-subtitle mb-4">Find the best extended auto warranty for your vehicle</p>
-                        <button type="button" class="hero-cta-btn">Get Instant Quote</button>
+                        <button type="button" class="hero-cta-btn" id="instant-quote-btn">Compare Warranties</button>
                     </div>
                 </div>
 
@@ -105,119 +105,9 @@
         </div>
     </section>
 
-    <script>
-        // Store all vehicles data
-        const vehiclesData = @json(config('vehicles.vehicles'));
-
-        // Handle make selection to populate models
-        document.getElementById('sel_make').addEventListener('change', function () {
-            const selectedMake = this.value;
-            const modelSelect = document.getElementById('sel_model');
-
-            // Clear existing options
-            modelSelect.innerHTML = '<option value="">Select Vehicle Model</option>';
-
-            if (selectedMake) {
-                // Filter models for selected make
-                const models = vehiclesData
-                    .filter(vehicle => vehicle.startsWith(selectedMake + ' '))
-                    .map(vehicle => vehicle.substring(selectedMake.length + 1))
-                    .sort();
-
-                // Add model options
-                models.forEach(model => {
-                    const option = document.createElement('option');
-                    option.value = model;
-                    option.textContent = model;
-                    modelSelect.appendChild(option);
-                });
-            }
-        });
-
-        // Form submission
-        let isSubmitting = false;
-
-        document.getElementById('quiz-start-form').addEventListener('submit', async function (e) {
-            e.preventDefault();
-
-            // Prevent multiple submissions
-            if (isSubmitting) {
-                return;
-            }
-
-            isSubmitting = true;
-
-            // Get button and show loading state
-            const submitBtn = document.getElementById('submit-btn');
-            const submitText = document.getElementById('submit-text');
-            const submitLoader = document.getElementById('submit-loader');
-
-            submitBtn.disabled = true;
-            submitText.style.display = 'none';
-            submitLoader.style.display = 'inline-flex';
-
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-
-            try {
-                // 1. Submit to Endurance/LeadConduit via LeadSubmissionController (this sets the session)
-                const apiResponse = await fetch('{{ route('lead.submit') }}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify(data)
-                });
-
-                const apiResult = await apiResponse.json();
-                console.log('API submission result:', apiResult);
-
-                // 2. Save to database via LeadController
-                const dbResponse = await fetch('{{ route('lead.store') }}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify(data)
-                });
-
-                const dbResult = await dbResponse.json();
-                console.log('Database save result:', dbResult);
-
-                // 3. Store data in session (this should happen AFTER the API call sets lead_destination)
-                await fetch('{{ route('store.car.data') }}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify(data)
-                });
-
-                // Small delay to ensure session is saved
-                await new Promise(resolve => setTimeout(resolve, 100));
-
-                // 4. Redirect to thank you page
-                window.location.href = '{{ route('final') }}';
-
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Error submitting form. Please try again.');
-
-                // Re-enable button on error
-                isSubmitting = false;
-                submitBtn.disabled = false;
-                submitText.style.display = 'inline';
-                submitLoader.style.display = 'none';
-            }
-        });
-    </script>
-
     <section class="card-section" id="card-section">
         <div class="container">
-            <h4 class="mt-0 mb-3" style="font-weight: 700;">Our providers</h4>
+            <h4 class="mt-0 mb-3 mobile-top-padding" style="font-weight: 700;">Our providers</h4>
 
             <div class="mb-4">
                 <div class="cards-container mb-4">
@@ -650,21 +540,6 @@
         </div>
     </section>
 
-    <script>
-        document.querySelectorAll(".more-btn").forEach(btn => {
-            btn.addEventListener("click", function () {
-                const cardBody = this.previousElementSibling;
-                cardBody.classList.toggle("active");
-
-                if (cardBody.classList.contains("active")) {
-                    this.textContent = "- Less";
-                } else {
-                    this.textContent = "+ More";
-                }
-            });
-        });
-    </script>
-
     <section id="get-matched" class="get-matched-section">
         <div class="container">
             <h1 class="match-title">How we connect you with the right provider</h1>
@@ -816,8 +691,155 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const faqQuestions = document.querySelectorAll('.faq-question');
+            // Store all vehicles data
+            const vehiclesData = @json(config('vehicles.vehicles'));
 
+            // Handle make selection to populate models
+            document.getElementById('sel_make').addEventListener('change', function () {
+                const selectedMake = this.value;
+                const modelSelect = document.getElementById('sel_model');
+
+                // Clear existing options
+                modelSelect.innerHTML = '<option value="">Select Vehicle Model</option>';
+
+                if (selectedMake) {
+                    // Filter models for selected make
+                    const models = vehiclesData
+                        .filter(vehicle => vehicle.startsWith(selectedMake + ' '))
+                        .map(vehicle => vehicle.substring(selectedMake.length + 1))
+                        .sort();
+
+                    // Add model options
+                    models.forEach(model => {
+                        const option = document.createElement('option');
+                        option.value = model;
+                        option.textContent = model;
+                        modelSelect.appendChild(option);
+                    });
+                }
+            });
+
+            // Function to submit form
+            async function submitForm() {
+                const form = document.getElementById('quiz-start-form');
+                const submitBtn = document.getElementById('submit-btn');
+                const submitText = document.getElementById('submit-text');
+                const submitLoader = document.getElementById('submit-loader');
+
+                submitBtn.disabled = true;
+                submitText.style.display = 'none';
+                submitLoader.style.display = 'inline-flex';
+
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+
+                try {
+                    // 1. Submit to Endurance/LeadConduit via LeadSubmissionController (this sets the session)
+                    const apiResponse = await fetch('{{ route('lead.submit') }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    const apiResult = await apiResponse.json();
+                    console.log('API submission result:', apiResult);
+
+                    // 2. Save to database via LeadController
+                    const dbResponse = await fetch('{{ route('lead.store') }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    const dbResult = await dbResponse.json();
+                    console.log('Database save result:', dbResult);
+
+                    // 3. Store data in session (this should happen AFTER the API call sets lead_destination)
+                    await fetch('{{ route('store.car.data') }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    // Small delay to ensure session is saved
+                    await new Promise(resolve => setTimeout(resolve, 100));
+
+                    // 4. Redirect to thank you page
+                    window.location.href = '{{ route('final') }}';
+
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Error submitting form. Please try again.');
+
+                    // Re-enable button on error
+                    submitBtn.disabled = false;
+                    submitText.style.display = 'inline';
+                    submitLoader.style.display = 'none';
+                }
+            }
+
+            // Instant Quote button clicks the submit button
+            document.getElementById('instant-quote-btn').addEventListener('click', function () {
+                document.getElementById('submit-btn').click();
+            });
+
+            // Find My Match button - scroll to top and show alert
+            const matchButton = document.querySelector('.match-cta-button');
+            if (matchButton) {
+                matchButton.addEventListener('click', function () {
+                    // Scroll to top of page
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                    // Show alert after a short delay for smooth scroll
+                    setTimeout(function () {
+                        alert('Please fill in your details');
+                    }, 500);
+                });
+            }
+
+            // Form submission
+            let isSubmitting = false;
+
+            document.getElementById('quiz-start-form').addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                // Prevent multiple submissions
+                if (isSubmitting) {
+                    return;
+                }
+
+                isSubmitting = true;
+
+                await submitForm();
+
+                isSubmitting = false;
+            });
+
+            // More/Less button functionality
+            document.querySelectorAll(".more-btn").forEach(btn => {
+                btn.addEventListener("click", function () {
+                    const cardBody = this.previousElementSibling;
+                    cardBody.classList.toggle("active");
+
+                    if (cardBody.classList.contains("active")) {
+                        this.textContent = "- Less";
+                    } else {
+                        this.textContent = "+ More";
+                    }
+                });
+            });
+
+            // FAQ functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
             faqQuestions.forEach(question => {
                 question.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -835,17 +857,19 @@
                     }
                 });
             });
+
+            // Update title with current month (only if element exists)
+            const title = document.getElementById('quiz-title');
+            if (title) {
+                const now = new Date();
+                const monthNames = [
+                    "January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December"
+                ];
+                const currentMonth = monthNames[now.getMonth()];
+                title.textContent = `Best Extended Auto Warranty in ${currentMonth} ${now.getFullYear()}`;
+            }
         });
     </script>
 
-    <script>
-        const title = document.getElementById('quiz-title');
-        const now = new Date();
-        const monthNames = [
-            "January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"
-        ];
-        const currentMonth = monthNames[now.getMonth()];
-        title.textContent = `Best Extended Auto Warranty in ${currentMonth} ${now.getFullYear()}`;
-    </script>
 @endsection

@@ -341,6 +341,12 @@ h6 {
 }
 
 /* our providers section CARD SECTION */
+@media (max-width: 768px) {
+    .mobile-top-padding {
+        padding-top: 2rem; /* adjust as needed */
+    }
+}
+
 .card-section {
     background-color: #e8e8e8;
 }
