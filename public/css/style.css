@@ -16,7 +16,7 @@ h6 {
 .hero-section {
     background-color: #e8e8e8;
     position: relative;
-    overflow-x: hidden;
+    overflow-x: visible;
 }
 
 .hero-content {
