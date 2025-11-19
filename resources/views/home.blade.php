@@ -3,7 +3,7 @@
 @section('content')
 
     <section id="hero-section" class="hero-section">
-        <div class="hero-content pt-5">
+        <div class="hero-content">
             <div class="row align-items-center g-0">
                 <!-- Left side - Text and Button -->
                 <div class="col-lg-5">
