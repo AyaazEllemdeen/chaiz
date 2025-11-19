@@ -12,7 +12,7 @@ h6 {
     font-family: "Courier New", monospace;
 }
 
-/* Hero Section */
+/* ----------------------- Hero Section */
 .hero-section {
     background-color: #e8e8e8;
     position: relative;
@@ -345,7 +345,10 @@ h6 {
     opacity: 0.7;
     cursor: not-allowed;
 }
-/* our providers section CARD SECTION */
+
+/* ----------------------hero section end */
+
+/* ---------------------- our providers section CARD SECTION */
 @media (max-width: 1200px) {
     .mobile-top-padding {
         padding-top: 2rem; /* adjust as needed */
@@ -547,7 +550,7 @@ h6 {
     display: flex;
     flex-direction: row; /* side by side */
     align-items: center; /* vertically aligned */
-    justify-content: flex-end;
+    justify-content: center; /* Changed from flex-end to center */
     gap: 10px; /* space between buttons */
     flex-wrap: wrap; /* allows wrapping if too narrow on mobile */
     height: 110px;
