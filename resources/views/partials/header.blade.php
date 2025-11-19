@@ -1,18 +1,19 @@
-<header class="site-header bg-black shadow-sm">
-    <div class="d-flex justify-content-between align-items-center py-3">
-        <div class="logo-wrap">
-            <a href="{{ url('/') }}">
-                <img src="{{ asset('img/logo.png') }}" alt="Logo" class="logo-img" style="height: 40px;">
-            </a>
-        </div>
+<header class="site-header bg-secondary shadow-sm">
+    <div style="width: 95%;" class="mx-auto">
+        <div class="d-flex justify-content-between align-items-center py-3">
+            <div class="logo-wrap">
+                <a href="{{ url('/') }}">
+                    <img src="{{ asset('img/logo/logo.png') }}" alt="Logo" class="logo-img" style="height: 49px;">
+                </a>
+            </div>
 
-        <!-- Hamburger Icon (Visible on small screens) -->
-        <button class="btn d-lg-none" id="menu-toggle" aria-label="Toggle menu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+            <!-- Hamburger Icon (Visible on small screens) -->
+            <button class="btn d-lg-none" id="menu-toggle" aria-label="Toggle menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
     </div>
 </header>
-
 
 <!-- Overlay -->
 <div class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none" id="overlay" style="z-index: 1040;">

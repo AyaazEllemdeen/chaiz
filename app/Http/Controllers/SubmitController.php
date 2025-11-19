@@ -29,6 +29,12 @@ class SubmitController extends Controller
             return redirect('/');
         }
 
-        return view('final', compact('carData'));
+        // Get the lead destination from session, with default fallback
+        $leadDestination = session('lead_destination', 'Successfully Submitted');
+
+        Log::info('Thank you page loaded with destination: ' . $leadDestination);
+        Log::info('Session data:', session()->all());
+
+        return view('final', compact('carData', 'leadDestination'));
     }
 }

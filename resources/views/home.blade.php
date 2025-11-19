@@ -2,1652 +2,405 @@
 
 @section('content')
 
-    <section id="hero-section" class="position-relative" style="height: auto;">
-        <img src="{{ asset('img/banner4.webp') }}" alt="Banner" class="object-fit-cover banner-img"
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;">
+    <section id="hero-section" class="hero-section">
+        <div class="hero-content py-5">
+            <div class="row align-items-center g-0">
+                <!-- Left side - Text and Button -->
+                <div class="col-lg-5">
+                    <div class="hero-left-container">
+                        <h1 class="hero-title mb-3">Compare Car<br>Warranties</h1>
+                        <p class="hero-subtitle mb-4">Find the best extended auto warranty for your vehicle</p>
+                        <button type="button" class="hero-cta-btn">Get Instant Quote</button>
+                    </div>
+                </div>
 
-        <div class="hero-text-overlay py-5">
-            <div class="container text-white">
-                <p class="quiz-heading">Compare Car Warranties With Confidence</p>
-                <p class="quiz-subtext">Take a short quiz to find the best extended auto warranty for your vehicle</p>
+                <!-- Right side - Form -->
+                <div class="col-lg-7">
+                    <div class="form-card">
+                        <form id="quiz-start-form">
+                            @csrf
+                            <h3 class="form-title mb-4">Your Details</h3>
 
-                <!-- Quiz starts directly below text -->
-                <div class="quiz-content-box mt-4">
-                    <form id="quiz-start-form">
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <input type="text" name="user-name" class="form-input" placeholder="Full Name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" name="user-number" class="form-input" placeholder="Cell Number"
+                                        required>
+                                </div>
+                            </div>
 
-                        <h3 class="quiz-question">What is the year, make & model of your vehicle?</h3>
-                        <div id="first-question">
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <input type="email" name="email" class="form-input" placeholder="Email Address"
+                                        required>
+                                </div>
+                                <div class="col-md-6">
+                                    <select name="user-state" class="form-input" required>
+                                        <option value="">Select Your State</option>
+                                        @foreach(['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY', 'DC', 'PR', 'GU', 'VI', 'AS', 'MP'] as $state)
+                                            <option value="{{ $state }}">{{ $state }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
 
-                            <select id="sel_year" name="sel-year" class="modal-dropdown1">
-                                <option value="">Select Year</option>
-                            </select>
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <select id="sel_make" name="sel-make" class="form-input" required>
+                                        <option value="">Select Vehicle Make</option>
+                                        @php
+                                            $makes = call_user_func(config('vehicles.makes'));
+                                        @endphp
+                                        @foreach($makes as $make)
+                                            <option value="{{ $make }}">{{ $make }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <select id="sel_model" name="sel-model" class="form-input" required>
+                                        <option value="">Select Vehicle Model</option>
+                                    </select>
+                                </div>
+                            </div>
 
-                            <select id="sel_make" name="sel-make" class="modal-dropdown1">
-                                <option value="">Select Make</option>
-                            </select>
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <select id="sel_year" name="sel-year" class="form-input" required>
+                                        <option value="">Select Vehicle Year</option>
+                                        @for($year = 2026; $year >= 1990; $year--)
+                                            <option value="{{ $year }}">{{ $year }}</option>
+                                        @endfor
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <select name="car_mileage" class="form-input" required>
+                                        <option value="">Select Vehicle Mileage</option>
+                                        <option value="less-than-100k">Less than 100,000 miles</option>
+                                        <option value="100k-140k">100,000 - 140,000 miles</option>
+                                        <option value="140k-200k">140,000 - 200,000 miles</option>
+                                        <option value="more-than-200k">More than 200,000 miles</option>
+                                    </select>
+                                </div>
+                            </div>
 
-                            <select id="sel_model" name="sel-model" class="modal-dropdown1">
-                                <option value="">Select Model</option>
-                            </select>
-                        </div>
-
-                        <input type="hidden" id="car-make" name="car-make" value="">
-
-                        <div class="quiz-intro-actions d-flex align-items-center gap-3 mb-4">
-                            <button type="button" class="begin-btn get-quote-btn">Begin</button>
-                            <p class="quiz-disclaimer-text mb-0 d-flex align-items-center">
-                                <span class="quiz-icon me-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" fill="none"
-                                        viewBox="0 0 25 24">
-                                        <path
-                                            d="M11.45 16.55L17.1 10.9 15.675 9.475 11.45 13.7 9.325 11.575 7.9 13l3.55 3.55ZM12.5 22a9.5 9.5 0 1 1 0-19 9.5 9.5 0 0 1 0 19ZM6.1 2.35 7.5 3.75 3.25 8 1.85 6.6 6.1 2.35ZM18.9 2.35 23.15 6.6 21.75 8 17.5 3.75 18.9 2.35Z"
-                                            fill="#1C1B1F" />
+                            <button type="submit" id="submit-btn" class="form-submit-btn">
+                                <span id="submit-text">Submit</span>
+                                <span id="submit-loader" class="submit-loader" style="display: none;">
+                                    <svg width="20" height="20" viewBox="0 0 50 50" style="vertical-align: middle;">
+                                        <circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="5"
+                                            stroke-dasharray="31.415, 31.415" transform="rotate(-90 25 25)">
+                                            <animateTransform attributeName="transform" type="rotate" from="0 25 25"
+                                                to="360 25 25" dur="1s" repeatCount="indefinite" />
+                                        </circle>
                                     </svg>
+                                    Processing...
                                 </span>
-                                It only takes a minute!
-                            </p>
-                        </div>
-
-                    </form>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- quiz modal start -->
-    <div id="car-quiz" class="car-quiz-modal">
-        <button class="car-quiz-close" onclick="closeModalskip()">×</button>
-        <div class="car-quiz-split">
-            <!-- LEFT SIDE: Quiz -->
-            <div class="car-quiz-left">
-                <div class="quiz-container">
-                    <div id="quiz-left-logo">
-                        <img src="{{ asset('img/logo.png') }}" alt="Company Logo" />
-                    </div>
-                    <div class="car-quiz-body">
-                        <h4 id="quiz-section-heading" class="quiz-section-heading">Vehicle Details</h4>
-                        <div class="quiz-progress-container">
-                            <div class="quiz-progress-bar" id="quiz-progress-bar">
-                                <span id="quiz-progress-text">10%</span>
-                            </div>
-                        </div>
+    <style>
+        .submit-loader {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-                        <!-- Step 1: Mileage -->
-                        <div id="quiz-step1">
-                            <h3 class="modal-question">Roughly, how many miles are on the vehicle?</h3>
-                            <div class="options-grid1">
-                                <button type="button" class="mile-opt1" data-value="<100000">Less than 100k</button>
-                                <button type="button" class="mile-opt1" data-value="130000">100-140k</button>
-                                <button type="button" class="mile-opt1" data-value="180000">140-200k</button>
-                                <button type="button" class="mile-opt1" data-value=">200000">More than 200k</button>
-                            </div>
-                            <div class="step-buttons">
-                                <button id="to-step2" class="to-step-btn">Continue</button>
-                            </div>
-                            <input type="hidden" name="car_mileage" id="input-mileage" value="">
-                        </div>
-
-                        <!-- Step 2: State -->
-                        <div id="quiz-step2" class="d-none">
-                            <h3 class="modal-question">What state would you like coverage in?</h3>
-                            <select id="user-state" name="user-state" class="modal-dropdown1" required>
-                                <option value="">Select your state</option>
-                                <option value="AL">Alabama</option>
-                                <option value="AK">Alaska</option>
-                                <option value="AZ">Arizona</option>
-                                <option value="AR">Arkansas</option>
-                                <option value="CA">California</option>
-                                <option value="CO">Colorado</option>
-                                <option value="CT">Connecticut</option>
-                                <option value="DE">Delaware</option>
-                                <option value="FL">Florida</option>
-                                <option value="GA">Georgia</option>
-                                <option value="HI">Hawaii</option>
-                                <option value="ID">Idaho</option>
-                                <option value="IL">Illinois</option>
-                                <option value="IN">Indiana</option>
-                                <option value="IA">Iowa</option>
-                                <option value="KS">Kansas</option>
-                                <option value="KY">Kentucky</option>
-                                <option value="LA">Louisiana</option>
-                                <option value="ME">Maine</option>
-                                <option value="MD">Maryland</option>
-                                <option value="MA">Massachusetts</option>
-                                <option value="MI">Michigan</option>
-                                <option value="MN">Minnesota</option>
-                                <option value="MS">Mississippi</option>
-                                <option value="MO">Missouri</option>
-                                <option value="MT">Montana</option>
-                                <option value="NE">Nebraska</option>
-                                <option value="NV">Nevada</option>
-                                <option value="NH">New Hampshire</option>
-                                <option value="NJ">New Jersey</option>
-                                <option value="NM">New Mexico</option>
-                                <option value="NY">New York</option>
-                                <option value="NC">North Carolina</option>
-                                <option value="ND">North Dakota</option>
-                                <option value="OH">Ohio</option>
-                                <option value="OK">Oklahoma</option>
-                                <option value="OR">Oregon</option>
-                                <option value="PA">Pennsylvania</option>
-                                <option value="RI">Rhode Island</option>
-                                <option value="SC">South Carolina</option>
-                                <option value="SD">South Dakota</option>
-                                <option value="TN">Tennessee</option>
-                                <option value="TX">Texas</option>
-                                <option value="UT">Utah</option>
-                                <option value="VT">Vermont</option>
-                                <option value="VA">Virginia</option>
-                                <option value="WA">Washington</option>
-                                <option value="WV">West Virginia</option>
-                                <option value="WI">Wisconsin</option>
-                                <option value="WY">Wyoming</option>
-                            </select>
-                            <div class="step-buttons">
-                                <button id="back-to-step1" class="to-step-btn">Back</button>
-                                <button id="to-step3" class="to-step-btn">Continue</button>
-                            </div>
-                        </div>
-
-                        <!-- Loading -->
-                        <div id="quiz-loading" class="d-none">
-                            <div class="loading-container">
-                                <div class="spinner"></div>
-                                <p>Gathering details...</p>
-                            </div>
-                        </div>
-
-                        <!-- Step 3: Personal Details -->
-                        <div id="quiz-step3" class="d-none">
-                            <h3 class="modal-question">Your Contact Details</h3>
-                            <p class="zip-helper-text">
-                                Please fill in your details below so we can provide accurate quotes for your vehicle.
-                            </p>
-
-                            <label for="user-zip" class="detail-label">ZIP Code</label>
-                            <input type="text" name="user-zip" id="user-zip" class="modal-dropdown1"
-                                placeholder="Enter your ZIP code" maxlength="5" pattern="\d{5}" inputmode="numeric"
-                                required />
-
-                            <label for="user-email" class="detail-label">Email Address</label>
-                            <input type="email" name="email" id="user-email" class="modal-dropdown1"
-                                placeholder="Enter your Email" required />
-
-                            <label for="user-name" class="detail-label">Full Name</label>
-                            <input type="text" name="user-name" id="user-name" class="modal-dropdown1"
-                                placeholder="Enter your name" required />
-
-                            <label for="user-number" class="detail-label">Phone Number</label>
-                            <input type="text" name="user-number" id="user-number" class="modal-dropdown1"
-                                placeholder="Enter your number" required />
-
-                            <div class="step-buttons-wrapper">
-                                <div class="step-buttons">
-                                    <button id="back-to-step2" class="to-step-btn">Back</button>
-                                    <button id="to-card" class="to-step-btn">Submit</button>
-                                </div>
-
-                                <div class="skip-section">
-                                    <p class="skip-message">Don’t want to give us your details?</p>
-                                    <button type="button" class="to-skip-btn" onclick="skipMyDetails()">Instant
-                                        Quote</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- RIGHT SIDE: Results -->
-            <div class="chaiz-results-skip d-none" id="chaiz-results-wrapper">
-                <div class="chaiz-results-skip-inner">
-                    <div id="quiz-right-div" style="margin-bottom: 37px;">
-                        <h2>Plans for your car</h2>
-                        <p>Buy coverage from leading providers, right here, right now.</p>
-                    </div>
-                    <div id="chaiz-loading-inline" class="chaiz-loading">
-                        <div class="spinner"></div>
-                        <p>Loading plans...</p>
-                    </div>
-                    <div id="search-results-skip">
-                        <!-- Chaiz results will be injected here -->
-                    </div>
-                </div>
-                <style>
-                    .chaiz-loading {
-                        display: none;
-                        text-align: center;
-                        padding: 20px;
-                    }
-
-                    .chaiz-loading .spinner {
-                        border: 4px solid #f3f3f3;
-                        border-top: 4px solid #007bff;
-                        border-radius: 50%;
-                        width: 36px;
-                        height: 36px;
-                        animation: spin 1s linear infinite;
-                        margin: 0 auto 10px;
-                    }
-
-                    @keyframes spin {
-                        0% {
-                            transform: rotate(0deg);
-                        }
-
-                        100% {
-                            transform: rotate(360deg);
-                        }
-                    }
-                </style>
-            </div>
-        </div>
-    </div>
+        #submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+    </style>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
+        // Store all vehicles data
+        const vehiclesData = @json(config('vehicles.vehicles'));
 
-            //get carData from sessionStorage
-            function getCarData() {
-                return JSON.parse(sessionStorage.getItem('carData') || '{}');
-            }
+        // Handle make selection to populate models
+        document.getElementById('sel_make').addEventListener('change', function () {
+            const selectedMake = this.value;
+            const modelSelect = document.getElementById('sel_model');
 
-            //save carData to sessionStorage
-            function saveCarData(data) {
-                sessionStorage.setItem('carData', JSON.stringify(data));
-            }
+            // Clear existing options
+            modelSelect.innerHTML = '<option value="">Select Vehicle Model</option>';
 
-            function closeModalskip() {
-                const quizModal = document.getElementById('car-quiz');
-                if (quizModal) quizModal.classList.remove('show');
-            }
-            window.closeModalskip = closeModalskip;
+            if (selectedMake) {
+                // Filter models for selected make
+                const models = vehiclesData
+                    .filter(vehicle => vehicle.startsWith(selectedMake + ' '))
+                    .map(vehicle => vehicle.substring(selectedMake.length + 1))
+                    .sort();
 
-            function skipMyDetails() {
-                console.log('Skip button clicked');
-                window.chaizSkipPressed = true;
-
-                const carData = getCarData();
-                const make = carData.make?.toLowerCase().replace(/\s+/g, '-') || 'default-make';
-                const model = carData.model?.toLowerCase().replace(/\s+/g, '-') || 'default-model';
-                const year = carData.year ? parseInt(carData.year, 10) : 2020;
-                const state = carData.state?.toUpperCase() || 'NJ';
-
-                let mileage = 30000;
-                if (typeof carData.mileage === 'string') {
-                    const digits = carData.mileage.replace(/\D/g, '');
-                    if (digits) mileage = parseInt(digits, 10);
-                }
-
-                // Configure Chaiz
-                window.chaizWarrantySearchConfig = {
-                    targetElementId: "search-results-skip",
-                    searchData: { make, model, year, state, mileage, userId: "96d8841b-6ae6-4cb6-9b43-401662e25560" }
-                };
-
-                // Reveal right-hand results panel
-                const resultsWrapper = document.getElementById('chaiz-results-wrapper');
-                if (resultsWrapper) {
-                    resultsWrapper.classList.remove('d-none');
-                    resultsWrapper.scrollIntoView({ behavior: 'smooth' });
-                }
-
-                // SHOW spinner before fetching
-                const loadingInline = document.getElementById('chaiz-loading-inline');
-                if (loadingInline) loadingInline.style.display = 'block';
-                const resultsContainer = document.getElementById('search-results-skip');
-                if (resultsContainer) resultsContainer.innerHTML = '';
-
-                function watchForChaizResults() {
-                    const container = document.getElementById('search-results-skip');
-                    if (!container) return;
-
-                    const loadingInline = document.getElementById('chaiz-loading-inline');
-
-                    const checkShadow = () => {
-                        if (container.shadowRoot && container.shadowRoot.querySelector('.chaiz-warranties_list')) {
-                            if (loadingInline) loadingInline.style.display = 'none';
-                            console.log('Results rendered ✅ (found chaiz-warranties_list inside shadow DOM)');
-                            return true;
-                        }
-                        return false;
-                    };
-
-                    // try immediately
-                    if (checkShadow()) return;
-
-                    // observer for shadow root
-                    const observer = new MutationObserver(() => {
-                        if (checkShadow()) {
-                            observer.disconnect();
-                        }
-                    });
-
-                    observer.observe(container, { childList: true });
-
-                    // fallback polling
-                    const intervalId = setInterval(() => {
-                        if (checkShadow()) {
-                            clearInterval(intervalId);
-                            observer.disconnect();
-                        }
-                    }, 500);
-                }
-
-
-                // Load Chaiz script & initialize
-                if (!document.querySelector('script[src="https://warranty-search.chaiz.com/initialize.js"]')) {
-                    const script = document.createElement('script');
-                    script.src = 'https://warranty-search.chaiz.com/initialize.js';
-                    script.onload = () => {
-                        if (typeof initializeWarrantySearch === "function") {
-                            initializeWarrantySearch(window.chaizWarrantySearchConfig);
-                        }
-                        watchForChaizResults();
-                    };
-                    document.body.appendChild(script);
-                } else {
-                    if (typeof initializeWarrantySearch === "function") {
-                        initializeWarrantySearch(window.chaizWarrantySearchConfig);
-                    }
-                    watchForChaizResults();
-                }
-            }
-
-            function submitFormData() {
-                const finalButton = document.getElementById("to-card") || document.getElementById("to-final");
-                const originalText = finalButton.textContent;
-                finalButton.disabled = true;
-                finalButton.textContent = 'Submitting...';
-
-                const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') ||
-                    document.querySelector('input[name="_token"]')?.value;
-
-                const carData = getCarData();
-                const formData = new FormData();
-                formData.append('_token', csrfToken);
-                formData.append('sel-year', carData.year);
-                formData.append('sel-make', carData.make);
-                formData.append('sel-model', carData.model);
-                formData.append('car_mileage', carData.mileage);
-                formData.append('user-state', carData.state);
-                formData.append('user-zip', carData.zip);
-                formData.append('email', carData.email);
-                formData.append('user-name', carData.name);
-                formData.append('user-number', carData.phone);
-
-                const requiredFields = ['year', 'make', 'model', 'mileage', 'state', 'zip', 'email', 'name', 'phone'];
-                const missingFields = requiredFields.filter(field => !carData[field]);
-                if (missingFields.length > 0) {
-                    alert('Missing required fields: ' + missingFields.join(', '));
-                    finalButton.disabled = false;
-                    finalButton.textContent = originalText;
-                    return;
-                }
-
-                const endpoints = ['/lead-submit-db', '/store-car-data', '/submit-car-data'];
-                Promise.all(endpoints.map(url =>
-                    fetch(url, {
-                        method: 'POST',
-                        body: formData,
-                        headers: { 'X-Requested-With': 'XMLHttpRequest' },
-                        credentials: 'same-origin'
-                    }).then(response => {
-                        if (!response.ok) return response.text().then(text => { throw new Error(`HTTP ${response.status}: ${text}`); });
-                        return response.json().catch(() => ({ success: true }));
-                    })
-                ))
-                    .then(results => {
-                        console.log('Both submissions succeeded:', results);
-                        window.location.href = "{{ route('final.page') }}";
-                    })
-                    .catch(err => {
-                        console.error('Submission error:', err);
-                        alert('Error submitting data. Check console.');
-                    })
-                    .finally(() => {
-                        finalButton.disabled = false;
-                        finalButton.textContent = originalText;
-                    });
-            }
-
-            // Make functions globally available
-            window.skipMyDetails = skipMyDetails;
-
-            const skipButton = document.querySelector('button[onclick="skipMyDetails()"]');
-            if (skipButton) {
-                skipButton.removeAttribute('onclick');
-                skipButton.addEventListener('click', skipMyDetails);
-            }
-
-            // Dropdown initialization
-            const yearSelect = document.getElementById("sel_year");
-            const makeSelect = document.getElementById("sel_make");
-            const modelSelect = document.getElementById("sel_model");
-            const beginBtn = document.querySelector(".begin-btn");
-
-            const currentYear = new Date().getFullYear();
-            for (let y = currentYear; y >= 2005; y--) {
-                yearSelect.appendChild(new Option(y, y));
-            }
-
-            const vehicles = [
-                "ACURA 2.3CL",
-                "ACURA 3.0CL",
-                "ACURA 3.2CL",
-                "ACURA 3.2TL",
-                "ACURA 3.5RL",
-                "ACURA ILX",
-                "ACURA INTEGRA",
-                "ACURA MDX",
-                "ACURA NSX",
-                "ACURA RDX",
-                "ACURA RL",
-                "ACURA RLX",
-                "ACURA RSX",
-                "ACURA SLX",
-                "ACURA TL",
-                "ACURA TLX",
-                "ACURA TSX",
-                "ACURA ZDX",
-                "ALFA ROMEO 4C",
-                "ALFA ROMEO 8C COMPETIZIONE",
-                "ALFA ROMEO GIULIA",
-                "ALFA ROMEO STELVIO",
-                "ALFA ROMEO TONALE",
-                "ASTON MARTIN DB11",
-                "ASTON MARTIN DB12",
-                "ASTON MARTIN DB7",
-                "ASTON MARTIN DB9",
-                "ASTON MARTIN DBS",
-                "ASTON MARTIN DBX",
-                "ASTON MARTIN RAPIDE",
-                "ASTON MARTIN V12 VANTAGE",
-                "ASTON MARTIN V8",
-                "ASTON MARTIN VALOUR",
-                "ASTON MARTIN VANQUISH",
-                "ASTON MARTIN VANTAGE",
-                "ASTON MARTIN VIRAGE",
-                "AUDI A3",
-                "AUDI A4",
-                "AUDI A4 ALLROAD",
-                "AUDI A5",
-                "AUDI A6",
-                "AUDI A6 ALLROAD",
-                "AUDI A7",
-                "AUDI A8",
-                "AUDI ALLROAD",
-                "AUDI E-TRON",
-                "AUDI E-TRON GT",
-                "AUDI E-TRON S",
-                "AUDI NEW S4",
-                "AUDI Q3",
-                "AUDI Q4 E-TRON",
-                "AUDI Q5",
-                "AUDI Q5 E",
-                "AUDI Q7",
-                "AUDI Q8",
-                "AUDI Q8 E-TRON",
-                "AUDI R8",
-                "AUDI RS E-TRON GT",
-                "AUDI RS Q8",
-                "AUDI RS3",
-                "AUDI RS4",
-                "AUDI RS5",
-                "AUDI RS6",
-                "AUDI RS7",
-                "AUDI S3",
-                "AUDI S4",
-                "AUDI S5",
-                "AUDI S6",
-                "AUDI S7",
-                "AUDI S8",
-                "AUDI SQ5",
-                "AUDI SQ7",
-                "AUDI SQ8",
-                "AUDI SQ8 E-TRON",
-                "AUDI TT",
-                "AUDI TT RS",
-                "AUDI TTS",
-                "BENTLEY ARNAGE",
-                "BENTLEY AZURE",
-                "BENTLEY BENTAYGA",
-                "BENTLEY BROOKLANDS",
-                "BENTLEY CONTINENTAL",
-                "BENTLEY FLYING SPUR",
-                "BENTLEY MULSANNE",
-                "BMW 128",
-                "BMW 135",
-                "BMW 1M",
-                "BMW 228",
-                "BMW 228I",
-                "BMW 228XI",
-                "BMW 230I",
-                "BMW 230XI",
-                "BMW 318",
-                "BMW 320",
-                "BMW 323",
-                "BMW 325",
-                "BMW 328",
-                "BMW 330",
-                "BMW 330E",
-                "BMW 330I",
-                "BMW 330XE",
-                "BMW 330XI",
-                "BMW 335",
-                "BMW 340",
-                "BMW 340XI",
-                "BMW 428",
-                "BMW 430I",
-                "BMW 430XI",
-                "BMW 435",
-                "BMW 440I",
-                "BMW 440XI",
-                "BMW 525",
-                "BMW 528",
-                "BMW 530",
-                "BMW 530E",
-                "BMW 530XE",
-                "BMW 535",
-                "BMW 540",
-                "BMW 540XD",
-                "BMW 545",
-                "BMW 550",
-                "BMW 640",
-                "BMW 645",
-                "BMW 650",
-                "BMW 740",
-                "BMW 745",
-                "BMW 745XE",
-                "BMW 750",
-                "BMW 760",
-                "BMW 840I",
-                "BMW 840XI",
-                "BMW ACTIVE E",
-                "BMW ACTIVEHYBRID 3",
-                "BMW ACTIVEHYBRID 5",
-                "BMW ACTIVEHYBRID 7",
-                "BMW ALPINA B6",
-                "BMW ALPINA B7",
-                "BMW ALPINA B8",
-                "BMW I3",
-                "BMW I4",
-                "BMW I4 EDRIVE35",
-                "BMW I4 EDRIVE40",
-                "BMW I4 M50",
-                "BMW I4 XDRIVE40",
-                "BMW I5",
-                "BMW I7",
-                "BMW I8",
-                "BMW IX",
-                "BMW M",
-                "BMW M2",
-                "BMW M235I",
-                "BMW M235XI",
-                "BMW M240I",
-                "BMW M240XI",
-                "BMW M3",
-                "BMW M340I",
-                "BMW M340XI",
-                "BMW M4",
-                "BMW M440I",
-                "BMW M440XI",
-                "BMW M5",
-                "BMW M550XI",
-                "BMW M6",
-                "BMW M760",
-                "BMW M8",
-                "BMW M850XI",
-                "BMW X1",
-                "BMW X2",
-                "BMW X3",
-                "BMW X4",
-                "BMW X5",
-                "BMW X6",
-                "BMW X7",
-                "BMW XM",
-                "BMW Z3",
-                "BMW Z4",
-                "BMW Z8",
-                "BUICK CASCADA",
-                "BUICK CENTURY",
-                "BUICK ENCLAVE",
-                "BUICK ENCORE",
-                "BUICK ENCORE GX",
-                "BUICK ENVISION",
-                "BUICK ENVISTA",
-                "BUICK LACROSSE",
-                "BUICK LESABRE",
-                "BUICK LUCERNE",
-                "BUICK PARK AVENUE",
-                "BUICK RAINIER",
-                "BUICK REGAL",
-                "BUICK REGAL TOURX",
-                "BUICK RENDEZVOUS",
-                "BUICK RIVIERA",
-                "BUICK TERRAZA",
-                "BUICK VERANO",
-                "CADILLAC ATS",
-                "CADILLAC ATS-V",
-                "CADILLAC CATERA",
-                "CADILLAC COMMERCIAL CHASSIS",
-                "CADILLAC CT4",
-                "CADILLAC CT4-V",
-                "CADILLAC CT5",
-                "CADILLAC CT5-V",
-                "CADILLAC CT6",
-                "CADILLAC CT6-V",
-                "CADILLAC CTS",
-                "CADILLAC CTS-V",
-                "CADILLAC DEVILLE",
-                "CADILLAC DTS",
-                "CADILLAC ELDORADO",
-                "CADILLAC ELR",
-                "CADILLAC ESCALADE",
-                "CADILLAC ESCALADE IQ",
-                "CADILLAC ESCALADE V",
-                "CADILLAC LYRIQ",
-                "CADILLAC LYRIQ-V",
-                "CADILLAC PROFESSIONAL CHASSIS",
-                "CADILLAC SEVILLE",
-                "CADILLAC SRX",
-                "CADILLAC STS",
-                "CADILLAC STS-V",
-                "CADILLAC XLR",
-                "CADILLAC XLR-V",
-                "CADILLAC XT4",
-                "CADILLAC XT5",
-                "CADILLAC XT6",
-                "CADILLAC XTS",
-                "CHEVROLET ASTRO",
-                "CHEVROLET AVALANCHE",
-                "CHEVROLET AVEO",
-                "CHEVROLET BLAZER",
-                "CHEVROLET BOLT EUV",
-                "CHEVROLET BOLT EV",
-                "CHEVROLET CAMARO",
-                "CHEVROLET CAPRICE",
-                "CHEVROLET CAPTIVA",
-                "CHEVROLET CAVALIER",
-                "CHEVROLET CITY EXPRESS",
-                "CHEVROLET CLASSIC",
-                "CHEVROLET COBALT",
-                "CHEVROLET COLORADO",
-                "CHEVROLET CORVETTE",
-                "CHEVROLET CRUZE",
-                "CHEVROLET CRUZE LIMITED",
-                "CHEVROLET EQUINOX",
-                "CHEVROLET EQUINOX LIMITED",
-                "CHEVROLET EXPRESS CUTAWAY",
-                "CHEVROLET EXPRESS G1500",
-                "CHEVROLET EXPRESS G2500",
-                "CHEVROLET EXPRESS G3500",
-                "CHEVROLET EXPRESS G4500",
-                "CHEVROLET EXPRESS VAN",
-                "CHEVROLET GEO PRIZM",
-                "CHEVROLET GMT-400",
-                "CHEVROLET HHR",
-                "CHEVROLET IMPALA",
-                "CHEVROLET IMPALA LIMITED",
-                "CHEVROLET LUMINA",
-                "CHEVROLET MALIBU",
-                "CHEVROLET MALIBU LIMITED",
-                "CHEVROLET METRO",
-                "CHEVROLET MONTE CARLO",
-                "CHEVROLET S TRUCK",
-                "CHEVROLET S10",
-                "CHEVROLET SILVERADO",
-                "CHEVROLET SILVERADO LD",
-                "CHEVROLET SILVERADO LTD",
-                "CHEVROLET SONIC",
-                "CHEVROLET SPARK",
-                "CHEVROLET SPARK EV",
-                "CHEVROLET SS",
-                "CHEVROLET SSR",
-                "CHEVROLET SUBURBAN",
-                "CHEVROLET TAHOE",
-                "CHEVROLET TRACKER",
-                "CHEVROLET TRAILBLAZER",
-                "CHEVROLET TRAVERSE",
-                "CHEVROLET TRAVERSE LIMITED",
-                "CHEVROLET TRAX",
-                "CHEVROLET UPLANDER",
-                "CHEVROLET VENTURE",
-                "CHEVROLET VOLT",
-                "CHRYSLER 200",
-                "CHRYSLER 300",
-                "CHRYSLER 300C",
-                "CHRYSLER 300M",
-                "CHRYSLER ASPEN",
-                "CHRYSLER CIRRUS",
-                "CHRYSLER CONCORDE",
-                "CHRYSLER CROSSFIRE",
-                "CHRYSLER GRAND VOYAGER",
-                "CHRYSLER LHS",
-                "CHRYSLER PACIFICA",
-                "CHRYSLER PROWLER",
-                "CHRYSLER PT CRUISER",
-                "CHRYSLER SEBRING",
-                "CHRYSLER TOWN & COUNTRY",
-                "CHRYSLER VOYAGER",
-                "DAEWOO LANOS",
-                "DAEWOO LEGANZA",
-                "DAEWOO NUBIRA",
-                "DODGE AVENGER",
-                "DODGE CALIBER",
-                "DODGE CARAVAN",
-                "DODGE CHALLENGER",
-                "DODGE CHARGER",
-                "DODGE DAKOTA",
-                "DODGE DART",
-                "DODGE DURANGO",
-                "DODGE GRAND CARAVAN",
-                "DODGE HORNET",
-                "DODGE INTREPID",
-                "DODGE JOURNEY",
-                "DODGE MAGNUM",
-                "DODGE NEON",
-                "DODGE NITRO",
-                "DODGE RAM 1500",
-                "DODGE RAM 2500",
-                "DODGE RAM 3500",
-                "DODGE RAM SRT10",
-                "DODGE RAM VAN",
-                "DODGE RAM WAGON",
-                "DODGE SPRINTER",
-                "DODGE STRATUS",
-                "DODGE VIPER",
-                "FERRARI 12 CILINDRI",
-                "FERRARI 296 GTS",
-                "FERRARI 296GTB",
-                "FERRARI 360",
-                "FERRARI 430",
-                "FERRARI 456",
-                "FERRARI 458 ITALIA",
-                "FERRARI 458 SPECIALE",
-                "FERRARI 458 SPIDER",
-                "FERRARI 488 GTB",
-                "FERRARI 488 PISTA",
-                "FERRARI 488 PISTA SPIDER",
-                "FERRARI 488 SPIDER",
-                "FERRARI 575",
-                "FERRARI 599",
-                "FERRARI 612",
-                "FERRARI 812 COMPETIZIONE",
-                "FERRARI 812 COMPETIZIONE A",
-                "FERRARI 812 GTS",
-                "FERRARI 812 SUPERFAST",
-                "FERRARI CALIFORNIA",
-                "FERRARI CALIFORNIA T",
-                "FERRARI DAYTONA SP3",
-                "FERRARI ENZO",
-                "FERRARI F12 BERLINETTA",
-                "FERRARI F12TDF",
-                "FERRARI F164 BCB",
-                "FERRARI F355",
-                "FERRARI F430",
-                "FERRARI F550",
-                "FERRARI F575",
-                "FERRARI F60 AMERICA",
-                "FERRARI F8 SPIDER",
-                "FERRARI F8 TRIBUTO",
-                "FERRARI FF",
-                "FERRARI GTC 4 LUSSO T",
-                "FERRARI GTC4 LUSSO",
-                "FERRARI LAFERRARI",
-                "FERRARI PORTOFINO",
-                "FERRARI PORTOFINO M",
-                "FERRARI PUROSANGUE",
-                "FERRARI ROMA",
-                "FERRARI ROMA SPIDER",
-                "FERRARI SF 90 SPIDER",
-                "FERRARI SF 90 STRADALE",
-                "FERRARI SF90 XX SPIDER",
-                "FERRARI SF90 XX STRADALE",
-                "FIAT 124 SPIDER",
-                "FIAT 500",
-                "FIAT 500L",
-                "FIAT 500X",
-                "FORD BRONCO",
-                "FORD BRONCO SPORT",
-                "FORD C-MAX",
-                "FORD CONTOUR",
-                "FORD CROWN VICTORIA",
-                "FORD ECONOLINE",
-                "FORD ECOSPORT",
-                "FORD EDGE",
-                "FORD ESCAPE",
-                "FORD ESCORT",
-                "FORD EXCURSION",
-                "FORD EXPEDITION",
-                "FORD EXPLORER",
-                "FORD EXPLORER SPORT TRAC",
-                "FORD F-150 HERITAGE",
-                "FORD F150",
-                "FORD F250",
-                "FORD F350",
-                "FORD F450",
-                "FORD F550",
-                "FORD FIESTA",
-                "FORD FIVE HUNDRED",
-                "FORD FLEX",
-                "FORD FOCUS",
-                "FORD FREESTAR",
-                "FORD FREESTYLE",
-                "FORD FUSION",
-                "FORD GT",
-                "FORD MAVERICK",
-                "FORD MUSTANG",
-                "FORD MUSTANG MACH-E",
-                "FORD RANGER",
-                "FORD TAURUS",
-                "FORD TAURUS X",
-                "FORD THINK NEIGHBOR",
-                "FORD THUNDERBIRD",
-                "FORD TRANSIT",
-                "FORD TRANSIT CONNECT",
-                "FORD WINDSTAR",
-                "FREIGHTLINER SPRINTER",
-                "GENESIS G70",
-                "GENESIS G80",
-                "GENESIS G90",
-                "GENESIS GV60",
-                "GENESIS GV70",
-                "GENESIS GV80",
-                "GMC ACADIA",
-                "GMC ACADIA LIMITED",
-                "GMC CANYON",
-                "GMC DENALI",
-                "GMC ENVOY",
-                "GMC HUMMER PICKUP",
-                "GMC HUMMER SUV",
-                "GMC JIMMY",
-                "GMC JIMMY / ENVOY",
-                "GMC NEW SIERRA",
-                "GMC SAFARI",
-                "GMC SAVANA",
-                "GMC SIERRA",
-                "GMC SIERRA LIMITED",
-                "GMC SONOMA",
-                "GMC SUBURBAN",
-                "GMC TERRAIN",
-                "GMC YUKON",
-                "GMC YUKON XL",
-                "HONDA ACCORD",
-                "HONDA ACCORD CROSSTOUR",
-                "HONDA CIVIC",
-                "HONDA CLARITY",
-                "HONDA CR-V",
-                "HONDA CR-Z",
-                "HONDA CROSSTOUR",
-                "HONDA ELEMENT",
-                "HONDA EV PLUS",
-                "HONDA FCX",
-                "HONDA FCX CLARITY",
-                "HONDA FIT",
-                "HONDA FIT EV",
-                "HONDA HR-V",
-                "HONDA INSIGHT",
-                "HONDA ODYSSEY",
-                "HONDA PASSPORT",
-                "HONDA PILOT",
-                "HONDA PRELUDE",
-                "HONDA PROLOGUE",
-                "HONDA RIDGELINE",
-                "HONDA S2000",
-                "HUMMER H1",
-                "HUMMER H1 ALPHA",
-                "HUMMER H2",
-                "HUMMER H2 SUT",
-                "HUMMER H3",
-                "HUMMER H3T",
-                "HYUNDAI ACCENT",
-                "HYUNDAI AZERA",
-                "HYUNDAI ELANTRA",
-                "HYUNDAI ELANTRA COUPE",
-                "HYUNDAI ELANTRA GT",
-                "HYUNDAI ELANTRA N",
-                "HYUNDAI ELANTRA TOURING",
-                "HYUNDAI ENTOURAGE",
-                "HYUNDAI EQUUS",
-                "HYUNDAI GENESIS",
-                "HYUNDAI GENESIS COUPE",
-                "HYUNDAI IONIQ",
-                "HYUNDAI IONIQ 5",
-                "HYUNDAI IONIQ 6",
-                "HYUNDAI KONA",
-                "HYUNDAI KONA N",
-                "HYUNDAI NEXO",
-                "HYUNDAI PALISADE",
-                "HYUNDAI SANTA CRUZ",
-                "HYUNDAI SANTA FE",
-                "HYUNDAI SANTA FE SPORT",
-                "HYUNDAI SANTA FE XL",
-                "HYUNDAI SONATA",
-                "HYUNDAI TIBURON",
-                "HYUNDAI TUCSON",
-                "HYUNDAI VELOSTER",
-                "HYUNDAI VELOSTER N",
-                "HYUNDAI VENUE",
-                "HYUNDAI VERACRUZ",
-                "HYUNDAI XG",
-                "INFINITI EX35",
-                "INFINITI EX37",
-                "INFINITI FX35",
-                "INFINITI FX37",
-                "INFINITI FX45",
-                "INFINITI FX50",
-                "INFINITI G20",
-                "INFINITI G25",
-                "INFINITI G35",
-                "INFINITI G37",
-                "INFINITI I30",
-                "INFINITI I35",
-                "INFINITI JX35",
-                "INFINITI M35",
-                "INFINITI M35H",
-                "INFINITI M37",
-                "INFINITI M45",
-                "INFINITI M56",
-                "INFINITI Q40",
-                "INFINITI Q45",
-                "INFINITI Q50",
-                "INFINITI Q60",
-                "INFINITI Q70",
-                "INFINITI Q70L",
-                "INFINITI QX30",
-                "INFINITI QX4",
-                "INFINITI QX50",
-                "INFINITI QX55",
-                "INFINITI QX56",
-                "INFINITI QX60",
-                "INFINITI QX70",
-                "INFINITI QX80",
-                "ISUZU AMIGO",
-                "ISUZU ASCENDER",
-                "ISUZU AXIOM",
-                "ISUZU HOMBRE",
-                "ISUZU I-280",
-                "ISUZU I-290",
-                "ISUZU I-350",
-                "ISUZU I-370",
-                "ISUZU OASIS",
-                "ISUZU RODEO",
-                "ISUZU TROOPER",
-                "ISUZU VEHICROSS",
-                "JAGUAR E-PACE",
-                "JAGUAR F-PACE",
-                "JAGUAR F-TYPE",
-                "JAGUAR I-PACE",
-                "JAGUAR S-TYPE",
-                "JAGUAR SUPER V8",
-                "JAGUAR VANDENPLAS",
-                "JAGUAR X-TYPE",
-                "JAGUAR XE",
-                "JAGUAR XF",
-                "JAGUAR XJ",
-                "JAGUAR XJ8",
-                "JAGUAR XJL",
-                "JAGUAR XJR",
-                "JAGUAR XK",
-                "JAGUAR XK8",
-                "JAGUAR XKR",
-                "JEEP CHEROKEE",
-                "JEEP COMMANDER",
-                "JEEP COMPASS",
-                "JEEP GLADIATOR",
-                "JEEP GRAND CHEROKEE",
-                "JEEP GRAND WAGONEER",
-                "JEEP LIBERTY",
-                "JEEP PATRIOT",
-                "JEEP RENEGADE",
-                "JEEP WAGONEER",
-                "JEEP WAGONEER S",
-                "JEEP WRANGLER",
-                "JEEP WRANGLER / TJ",
-                "JEEP WRANGLER UNLIMITED",
-                "KIA AMANTI",
-                "KIA BORREGO",
-                "KIA CADENZA",
-                "KIA CARNIVAL",
-                "KIA EV6",
-                "KIA EV9",
-                "KIA FORTE",
-                "KIA K4",
-                "KIA K5",
-                "KIA K900",
-                "KIA NEW SPORTAGE",
-                "KIA NIRO",
-                "KIA OPTIMA",
-                "KIA RIO",
-                "KIA RONDO",
-                "KIA SEDONA",
-                "KIA SELTOS",
-                "KIA SEPHIA",
-                "KIA SORENTO",
-                "KIA SOUL",
-                "KIA SOUL EV",
-                "KIA SPECTRA",
-                "KIA SPECTRA5",
-                "KIA SPORTAGE",
-                "KIA STINGER",
-                "KIA TELLURIDE",
-                "LAMBORGHINI AVENTADOR",
-                "LAMBORGHINI DIABLO",
-                "LAMBORGHINI GALLARDO",
-                "LAMBORGHINI HURACAN",
-                "LAMBORGHINI MURCIELAGO",
-                "LAMBORGHINI REVUELTO",
-                "LAMBORGHINI URUS",
-                "LAMBORGHINI VENENO",
-                "LAND ROVER DEFENDER",
-                "LAND ROVER DISCOVERY",
-                "LAND ROVER DISCOVERY II",
-                "LAND ROVER DISCOVERY SPORT",
-                "LAND ROVER FREELANDER",
-                "LAND ROVER LR2",
-                "LAND ROVER LR3",
-                "LAND ROVER LR4",
-                "LAND ROVER RANGE ROVER",
-                "LAND ROVER RANGE ROVER EVOQUE",
-                "LAND ROVER RANGE ROVER SPORT",
-                "LAND ROVER RANGE ROVER VELAR",
-                "LEXUS CT",
-                "LEXUS ES",
-                "LEXUS GS",
-                "LEXUS GS-F",
-                "LEXUS GX",
-                "LEXUS HS",
-                "LEXUS IS",
-                "LEXUS IS-F",
-                "LEXUS LC",
-                "LEXUS LFA",
-                "LEXUS LS",
-                "LEXUS LX",
-                "LEXUS NX",
-                "LEXUS RC",
-                "LEXUS RC-F",
-                "LEXUS RX",
-                "LEXUS RZ",
-                "LEXUS SC",
-                "LEXUS TX",
-                "LEXUS UX",
-                "LINCOLN AVIATOR",
-                "LINCOLN BLACKWOOD",
-                "LINCOLN CONTINENTAL",
-                "LINCOLN CORSAIR",
-                "LINCOLN LS",
-                "LINCOLN MARK LT",
-                "LINCOLN MKC",
-                "LINCOLN MKS",
-                "LINCOLN MKT",
-                "LINCOLN MKX",
-                "LINCOLN MKZ",
-                "LINCOLN NAUTILUS",
-                "LINCOLN NAVIGATOR",
-                "LINCOLN TOWN CAR",
-                "LINCOLN ZEPHYR",
-                "LOTUS ELISE",
-                "LOTUS EMIRA",
-                "LOTUS ESPRIT",
-                "LOTUS EVORA",
-                "LOTUS EXIGE",
-                "LUCID MOTORS AIR",
-                "MASERATI COUPE",
-                "MASERATI GHIBLI",
-                "MASERATI GRANCABRIO",
-                "MASERATI GRANSPORT",
-                "MASERATI GRANTURISMO",
-                "MASERATI GRECALE",
-                "MASERATI LEVANTE",
-                "MASERATI MC20",
-                "MASERATI QUATTROPORTE",
-                "MASERATI SPYDER",
-                "MAYBACH MAYBACH",
-                "MAZDA 3",
-                "MAZDA 5",
-                "MAZDA 6",
-                "MAZDA 626",
-                "MAZDA B2300",
-                "MAZDA B2500",
-                "MAZDA B3000",
-                "MAZDA B4000",
-                "MAZDA CX-3",
-                "MAZDA CX-30",
-                "MAZDA CX-5",
-                "MAZDA CX-50",
-                "MAZDA CX-7",
-                "MAZDA CX-70",
-                "MAZDA CX-9",
-                "MAZDA CX-90",
-                "MAZDA MAZDA2",
-                "MAZDA MILLENIA",
-                "MAZDA MPV",
-                "MAZDA MX-30",
-                "MAZDA MX-5 MIATA",
-                "MAZDA PROTEGE",
-                "MAZDA RX8",
-                "MAZDA SPEED",
-                "MAZDA TRIBUTE",
-                "MCLAREN AUTOMOTIVE 540C",
-                "MCLAREN AUTOMOTIVE 570GT",
-                "MCLAREN AUTOMOTIVE 570S",
-                "MCLAREN AUTOMOTIVE 600LT",
-                "MCLAREN AUTOMOTIVE 620R",
-                "MCLAREN AUTOMOTIVE 650S",
-                "MCLAREN AUTOMOTIVE 675LT",
-                "MCLAREN AUTOMOTIVE 720S",
-                "MCLAREN AUTOMOTIVE 750S",
-                "MCLAREN AUTOMOTIVE 765LT",
-                "MCLAREN AUTOMOTIVE ARTURA",
-                "MCLAREN AUTOMOTIVE ELVA",
-                "MCLAREN AUTOMOTIVE GT",
-                "MCLAREN AUTOMOTIVE GTS",
-                "MCLAREN AUTOMOTIVE MP4-12C",
-                "MCLAREN AUTOMOTIVE P1",
-                "MCLAREN AUTOMOTIVE SENNA",
-                "MCLAREN AUTOMOTIVE SENNA GTR",
-                "MCLAREN AUTOMOTIVE SPEEDTAIL",
-                "MERCEDES-BENZ A",
-                "MERCEDES-BENZ AMG GT",
-                "MERCEDES-BENZ B",
-                "MERCEDES-BENZ C",
-                "MERCEDES-BENZ CL",
-                "MERCEDES-BENZ CLA",
-                "MERCEDES-BENZ CLE",
-                "MERCEDES-BENZ CLK",
-                "MERCEDES-BENZ CLS",
-                "MERCEDES-BENZ E",
-                "MERCEDES-BENZ EQB",
-                "MERCEDES-BENZ EQE SEDAN",
-                "MERCEDES-BENZ EQE SUV",
-                "MERCEDES-BENZ EQS SEDAN",
-                "MERCEDES-BENZ EQS SUV",
-                "MERCEDES-BENZ ESPRINTER",
-                "MERCEDES-BENZ G",
-                "MERCEDES-BENZ GL",
-                "MERCEDES-BENZ GLA",
-                "MERCEDES-BENZ GLB",
-                "MERCEDES-BENZ GLC",
-                "MERCEDES-BENZ GLC COUPE",
-                "MERCEDES-BENZ GLE",
-                "MERCEDES-BENZ GLE COUPE",
-                "MERCEDES-BENZ GLK",
-                "MERCEDES-BENZ GLS",
-                "MERCEDES-BENZ METRIS",
-                "MERCEDES-BENZ ML",
-                "MERCEDES-BENZ R",
-                "MERCEDES-BENZ S",
-                "MERCEDES-BENZ SL",
-                "MERCEDES-BENZ SLC",
-                "MERCEDES-BENZ SLK",
-                "MERCEDES-BENZ SLR",
-                "MERCEDES-BENZ SLS",
-                "MERCEDES-BENZ SPRINTER",
-                "MERCURY COUGAR",
-                "MERCURY GRAND MARQUIS",
-                "MERCURY MARAUDER",
-                "MERCURY MARINER",
-                "MERCURY MILAN",
-                "MERCURY MONTEGO",
-                "MERCURY MONTEREY",
-                "MERCURY MOUNTAINEER",
-                "MERCURY MYSTIQUE",
-                "MERCURY SABLE",
-                "MERCURY TRACER",
-                "MERCURY VILLAGER",
-                "MINI COOPER",
-                "MINI COOPER COUPE",
-                "MINI COOPER ROADSTER",
-                "MITSUBISHI 3000 GT",
-                "MITSUBISHI DIAMANTE",
-                "MITSUBISHI ECLIPSE",
-                "MITSUBISHI ECLIPSE CROSS",
-                "MITSUBISHI ENDEAVOR",
-                "MITSUBISHI GALANT",
-                "MITSUBISHI I MIEV",
-                "MITSUBISHI LANCER",
-                "MITSUBISHI MIRAGE",
-                "MITSUBISHI MONTERO",
-                "MITSUBISHI OUTLANDER",
-                "MITSUBISHI OUTLANDER SPORT",
-                "MITSUBISHI RAIDER",
-                "NISSAN 350Z",
-                "NISSAN 370Z",
-                "NISSAN ALTIMA",
-                "NISSAN ALTRA",
-                "NISSAN ARIYA",
-                "NISSAN ARMADA",
-                "NISSAN CUBE",
-                "NISSAN FRONTIER",
-                "NISSAN GT-R",
-                "NISSAN JUKE",
-                "NISSAN KICKS",
-                "NISSAN LEAF",
-                "NISSAN MAXIMA",
-                "NISSAN MURANO",
-                "NISSAN NV",
-                "NISSAN NV200",
-                "NISSAN PATHFINDER",
-                "NISSAN QUEST",
-                "NISSAN ROGUE",
-                "NISSAN ROGUE SELECT",
-                "NISSAN ROGUE SPORT",
-                "NISSAN SENTRA",
-                "NISSAN TITAN",
-                "NISSAN TITAN XD",
-                "NISSAN VERSA",
-                "NISSAN VERSA NOTE",
-                "NISSAN XTERRA",
-                "NISSAN Z",
-                "OLDSMOBILE 88",
-                "OLDSMOBILE ALERO",
-                "OLDSMOBILE AURORA",
-                "OLDSMOBILE BRAVADA",
-                "OLDSMOBILE CUTLASS",
-                "OLDSMOBILE INTRIGUE",
-                "OLDSMOBILE LSS",
-                "OLDSMOBILE SILHOUETTE",
-                "PLYMOUTH BREEZE",
-                "PLYMOUTH GRAND VOYAGER",
-                "PLYMOUTH NEON",
-                "PLYMOUTH PROWLER",
-                "PLYMOUTH VOYAGER",
-                "PONTIAC AZTEK",
-                "PONTIAC BONNEVILLE",
-                "PONTIAC FIREBIRD",
-                "PONTIAC G3",
-                "PONTIAC G5",
-                "PONTIAC G6",
-                "PONTIAC G8",
-                "PONTIAC GRAND AM",
-                "PONTIAC GRAND PRIX",
-                "PONTIAC GTO",
-                "PONTIAC MONTANA",
-                "PONTIAC MONTANA / TRANS SPORT",
-                "PONTIAC SOLSTICE",
-                "PONTIAC SUNFIRE",
-                "PONTIAC TORRENT",
-                "PONTIAC VIBE",
-                "PORSCHE 911",
-                "PORSCHE 911 NEW GENERATION",
-                "PORSCHE 918",
-                "PORSCHE BOXSTER",
-                "PORSCHE CARRERA",
-                "PORSCHE CAYENNE",
-                "PORSCHE CAYMAN",
-                "PORSCHE MACAN",
-                "PORSCHE PANAMERA",
-                "PORSCHE TAYCAN",
-                "RAM 1500",
-                "RAM 1500 CLASSIC",
-                "RAM 2500",
-                "RAM 3500",
-                "RAM PROMASTER 1500",
-                "RAM PROMASTER 2500",
-                "RAM PROMASTER 3500",
-                "RAM PROMASTER CITY",
-                "RAM TRADESMAN",
-                "RIVIAN EDV",
-                "RIVIAN R1S",
-                "RIVIAN R1T",
-                "RIVIAN RCV",
-                "ROLLS-ROYCE CORNICHE",
-                "ROLLS-ROYCE CULLINAN",
-                "ROLLS-ROYCE DAWN",
-                "ROLLS-ROYCE GHOST",
-                "ROLLS-ROYCE PARK WARD",
-                "ROLLS-ROYCE PHANTOM",
-                "ROLLS-ROYCE SILVER SERAPH",
-                "ROLLS-ROYCE SILVER SPUR",
-                "ROLLS-ROYCE SPECTRE",
-                "ROLLS-ROYCE WRAITH",
-                "SAAB 9-2",
-                "SAAB 9-3",
-                "SAAB 9-4X",
-                "SAAB 9-5",
-                "SAAB 9-7X",
-                "SATURN ASTRA",
-                "SATURN AURA",
-                "SATURN ION",
-                "SATURN L100",
-                "SATURN L200",
-                "SATURN L300",
-                "SATURN LS",
-                "SATURN LS1",
-                "SATURN LS2",
-                "SATURN LW1",
-                "SATURN LW2",
-                "SATURN LW200",
-                "SATURN LW300",
-                "SATURN OUTLOOK",
-                "SATURN RELAY",
-                "SATURN SC1",
-                "SATURN SC2",
-                "SATURN SKY",
-                "SATURN SL",
-                "SATURN SL1",
-                "SATURN SL2",
-                "SATURN SW1",
-                "SATURN SW2",
-                "SATURN VUE",
-                "SMART FORTWO",
-                "SPRINTER 2500 SPRINTER",
-                "SPRINTER 3500 SPRINTER",
-                "SUBARU ASCENT",
-                "SUBARU B9 TRIBECA",
-                "SUBARU BAJA",
-                "SUBARU BRZ",
-                "SUBARU CROSSTREK",
-                "SUBARU FORESTER",
-                "SUBARU IMPREZA",
-                "SUBARU LEGACY",
-                "SUBARU OUTBACK",
-                "SUBARU SOLTERRA",
-                "SUBARU TRIBECA",
-                "SUBARU WRX",
-                "SUBARU XV CROSSTREK",
-                "SUZUKI AERIO",
-                "SUZUKI EQUATOR",
-                "SUZUKI ESTEEM",
-                "SUZUKI FORENZA",
-                "SUZUKI GRAND VITARA",
-                "SUZUKI KIZASHI",
-                "SUZUKI RENO",
-                "SUZUKI SWIFT",
-                "SUZUKI SX4",
-                "SUZUKI VERONA",
-                "SUZUKI VITARA",
-                "SUZUKI XL7",
-                "TESLA CYBERTRUCK",
-                "TESLA MODEL 3",
-                "TESLA MODEL S",
-                "TESLA MODEL X",
-                "TESLA MODEL Y",
-                "TESLA ROADSTER",
-                "TOYOTA 4RUNNER",
-                "TOYOTA 86",
-                "TOYOTA AVALON",
-                "TOYOTA BZ4X",
-                "TOYOTA C-HR",
-                "TOYOTA CAMRY",
-                "TOYOTA CAMRY SOLARA",
-                "TOYOTA CELICA",
-                "TOYOTA COROLLA",
-                "TOYOTA COROLLA CROSS",
-                "TOYOTA COROLLA IM",
-                "TOYOTA COROLLA MATRIX",
-                "TOYOTA CROWN",
-                "TOYOTA ECHO",
-                "TOYOTA FJ CRUISER",
-                "TOYOTA GR 86",
-                "TOYOTA GR COROLLA",
-                "TOYOTA GRAND HIGHLANDER",
-                "TOYOTA HIGHLANDER",
-                "TOYOTA LAND CRUISER",
-                "TOYOTA MIRAI",
-                "TOYOTA MR2",
-                "TOYOTA PRIUS",
-                "TOYOTA PRIUS C",
-                "TOYOTA PRIUS PLUG-IN",
-                "TOYOTA PRIUS PRIME",
-                "TOYOTA PRIUS V",
-                "TOYOTA RAV4",
-                "TOYOTA RAV4 EV",
-                "TOYOTA RAV4 HV",
-                "TOYOTA RAV4 PRIME",
-                "TOYOTA SCION",
-                "TOYOTA SCION FR-S",
-                "TOYOTA SCION IA",
-                "TOYOTA SCION IM",
-                "TOYOTA SCION IQ",
-                "TOYOTA SCION TC",
-                "TOYOTA SCION XA",
-                "TOYOTA SCION XB",
-                "TOYOTA SCION XD",
-                "TOYOTA SEQUOIA",
-                "TOYOTA SIENNA",
-                "TOYOTA SUPRA",
-                "TOYOTA TACOMA",
-                "TOYOTA TUNDRA",
-                "TOYOTA VENZA",
-                "TOYOTA YARIS",
-                "TOYOTA YARIS IA",
-                "VOLKSWAGEN ARTEON",
-                "VOLKSWAGEN ATLAS",
-                "VOLKSWAGEN ATLAS CROSS SPORT",
-                "VOLKSWAGEN BEETLE",
-                "VOLKSWAGEN CABRIO",
-                "VOLKSWAGEN CC",
-                "VOLKSWAGEN E-GOLF",
-                "VOLKSWAGEN EOS",
-                "VOLKSWAGEN EUROVAN",
-                "VOLKSWAGEN GLI",
-                "VOLKSWAGEN GOLF",
-                "VOLKSWAGEN GOLF ALLTRACK",
-                "VOLKSWAGEN GOLF R",
-                "VOLKSWAGEN GOLF SPORTWAGEN",
-                "VOLKSWAGEN GTI",
-                "VOLKSWAGEN ID.4",
-                "VOLKSWAGEN JETTA",
-                "VOLKSWAGEN NEW BEETLE",
-                "VOLKSWAGEN NEW GTI",
-                "VOLKSWAGEN NEW JETTA",
-                "VOLKSWAGEN PASSAT",
-                "VOLKSWAGEN PHAETON",
-                "VOLKSWAGEN R32",
-                "VOLKSWAGEN RABBIT",
-                "VOLKSWAGEN ROUTAN",
-                "VOLKSWAGEN TAOS",
-                "VOLKSWAGEN TIGUAN",
-                "VOLKSWAGEN TIGUAN LIMITED",
-                "VOLKSWAGEN TOUAREG",
-                "VOLKSWAGEN TOUAREG 2",
-                "VOLVO C30",
-                "VOLVO C40",
-                "VOLVO C70",
-                "VOLVO EC40",
-                "VOLVO EX30",
-                "VOLVO EX40",
-                "VOLVO EX90",
-                "VOLVO S40",
-                "VOLVO S60",
-                "VOLVO S60 CROSS COUNTRY",
-                "VOLVO S70",
-                "VOLVO S80",
-                "VOLVO S90",
-                "VOLVO V40",
-                "VOLVO V50",
-                "VOLVO V60",
-                "VOLVO V60 CROSS COUNTRY",
-                "VOLVO V70",
-                "VOLVO V90",
-                "VOLVO V90 CROSS COUNTRY",
-                "VOLVO XC40",
-                "VOLVO XC60",
-                "VOLVO XC70",
-                "VOLVO XC90",
-            ];
-            const makesModelsMap = {};
-            vehicles.forEach(vehicle => {
-                const [make, ...modelParts] = vehicle.split(" ");
-                const model = modelParts.join(" ");
-                makesModelsMap[make] = makesModelsMap[make] || [];
-                if (!makesModelsMap[make].includes(model)) makesModelsMap[make].push(model);
-            });
-
-            makeSelect.innerHTML = `<option value="">Select Make</option>`;
-            Object.keys(makesModelsMap).forEach(make => makeSelect.appendChild(new Option(make, make)));
-
-            makeSelect.addEventListener("change", () => {
-                const selectedMake = makeSelect.value;
-                modelSelect.innerHTML = `<option value="">Select Model</option>`;
-                (makesModelsMap[selectedMake] || []).forEach(model => modelSelect.appendChild(new Option(model, model)));
-            });
-
-            function openModal() {
-                const quizModal = document.getElementById('car-quiz');
-                if (quizModal) quizModal.classList.add('show');
-            }
-
-            beginBtn.addEventListener("click", e => {
-                e.preventDefault();
-                const year = yearSelect.value, make = makeSelect.value, model = modelSelect.value;
-                if (!year || !make || !model) return alert("Please select year, make & model before continuing.");
-                saveCarData({ year, make, model });
-                document.getElementById("car-make").value = `${year} ${make} ${model}`;
-                openModal();
-                beginBtn.textContent = "Continue";
-            });
-
-            const ctaBtn = document.querySelector(".match-cta-button");
-            ctaBtn?.addEventListener("click", e => {
-                e.preventDefault();
-                const year = yearSelect.value, make = makeSelect.value, model = modelSelect.value;
-
-                if (!year || !make || !model) {
-                    alert("Please select year, make & model before continuing.");
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                    return;
-                }
-
-                saveCarData({ year, make, model });
-                document.getElementById("car-make").value = `${year} ${make} ${model}`;
-                openModal();
-                beginBtn.textContent = "Continue";
-            });
-
-            // Mileage selection
-            const mileOptions = document.querySelectorAll('.mile-opt1');
-            const continueMileageBtn = document.getElementById('to-step2');
-            mileOptions.forEach(btn => btn.addEventListener('click', () => {
-                mileOptions.forEach(b => b.classList.remove('selected'));
-                btn.classList.add('selected');
-                const data = getCarData();
-                data.mileage = btn.dataset.value;
-                saveCarData(data);
-                document.getElementById('input-mileage').value = btn.dataset.value;
-                setTimeout(() => {
-                    document.getElementById('quiz-step1').classList.add('d-none');
-                    document.getElementById('quiz-step2').classList.remove('d-none');
-                    continueMileageBtn.click();
-                }, 400);
-            }));
-
-            continueMileageBtn.addEventListener('click', e => {
-                const selectedOption = document.querySelector('.mile-opt1.selected');
-                if (!selectedOption) return alert("Please select an option before continuing.");
-                const data = getCarData();
-                data.mileage = selectedOption.dataset.value;
-                saveCarData(data);
-                document.getElementById('input-mileage').value = selectedOption.dataset.value;
-                document.getElementById('quiz-step1').classList.add('d-none');
-                document.getElementById('quiz-step2').classList.remove('d-none');
-            });
-
-            // Step 2 → Step 3
-            document.getElementById("to-step3").addEventListener("click", e => {
-                e.preventDefault();
-                const state = document.getElementById("user-state").value.trim();
-                if (!state) return alert("Please select your state.");
-                const data = getCarData();
-                data.state = state;
-                saveCarData(data);
-                document.getElementById("quiz-step2").classList.add("d-none");
-                document.getElementById("quiz-loading").classList.remove("d-none");
-                setTimeout(() => {
-                    document.getElementById("quiz-loading").classList.add("d-none");
-                    document.getElementById("quiz-step3").classList.remove("d-none");
-                }, 2700);
-            });
-
-            document.getElementById("back-to-step1").addEventListener("click", e => {
-                e.preventDefault();
-                document.getElementById("quiz-step2").classList.add("d-none");
-                document.getElementById("quiz-step1").classList.remove("d-none");
-            });
-
-            document.getElementById("back-to-step2").addEventListener("click", e => {
-                e.preventDefault();
-                document.getElementById("quiz-step3").classList.add("d-none");
-                document.getElementById("quiz-step2").classList.remove("d-none");
-            });
-
-            // Final submit
-            const finalButton = document.getElementById("to-card") || document.getElementById("to-final");
-            if (finalButton) {
-                finalButton.addEventListener("click", e => {
-                    e.preventDefault();
-                    const zip = document.getElementById("user-zip").value.trim();
-                    const email = document.getElementById("user-email").value.trim();
-                    const name = document.getElementById("user-name").value.trim();
-                    const phone = document.getElementById("user-number").value.trim();
-
-                    if (!/^\d{5}$/.test(zip)) return alert("Please enter a valid 5-digit ZIP code.");
-                    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return alert("Please enter a valid email address.");
-                    if (!name || !/^[a-zA-Z]+(?: [a-zA-Z]+)+$/.test(name)) return alert("Please enter your full name.");
-                    const cleanPhone = phone.replace(/\D/g, '');
-                    if (!/^\d{10}$/.test(cleanPhone)) return alert("Please enter a valid 10-digit phone number.");
-
-                    const data = getCarData();
-                    data.zip = zip;
-                    data.email = email;
-                    data.name = name;
-                    data.phone = cleanPhone;
-                    saveCarData(data);
-
-                    submitFormData();
+                // Add model options
+                models.forEach(model => {
+                    const option = document.createElement('option');
+                    option.value = model;
+                    option.textContent = model;
+                    modelSelect.appendChild(option);
                 });
             }
+        });
 
+        // Form submission
+        let isSubmitting = false;
+
+        document.getElementById('quiz-start-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            // Prevent multiple submissions
+            if (isSubmitting) {
+                return;
+            }
+
+            isSubmitting = true;
+
+            // Get button and show loading state
+            const submitBtn = document.getElementById('submit-btn');
+            const submitText = document.getElementById('submit-text');
+            const submitLoader = document.getElementById('submit-loader');
+
+            submitBtn.disabled = true;
+            submitText.style.display = 'none';
+            submitLoader.style.display = 'inline-flex';
+
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+
+            try {
+                // 1. Submit to Endurance/LeadConduit via LeadSubmissionController (this sets the session)
+                const apiResponse = await fetch('{{ route('lead.submit') }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const apiResult = await apiResponse.json();
+                console.log('API submission result:', apiResult);
+
+                // 2. Save to database via LeadController
+                const dbResponse = await fetch('{{ route('lead.store') }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const dbResult = await dbResponse.json();
+                console.log('Database save result:', dbResult);
+
+                // 3. Store data in session (this should happen AFTER the API call sets lead_destination)
+                await fetch('{{ route('store.car.data') }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                // Small delay to ensure session is saved
+                await new Promise(resolve => setTimeout(resolve, 100));
+
+                // 4. Redirect to thank you page
+                window.location.href = '{{ route('final') }}';
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error submitting form. Please try again.');
+
+                // Re-enable button on error
+                isSubmitting = false;
+                submitBtn.disabled = false;
+                submitText.style.display = 'inline';
+                submitLoader.style.display = 'none';
+            }
         });
     </script>
-    <script>
-        const progressBar = document.getElementById('quiz-progress-bar');
-        const progressText = document.getElementById('quiz-progress-text');
-        const sectionHeading = document.getElementById('quiz-section-heading');
 
-        const stepProgress = {
-            'to-step2': 30,
-            'to-step3': 50,
-            'to-step4': 70,
-            'to-step5': 80,
-            'to-step6': 60,
-            'to-step7': 75,
-            'to-step8': 90
-        };
+    <style>
+        /* Hero Section */
+        .hero-section {
+            background-color: #e8e8e8;
+            position: relative;
+            overflow-x: hidden;
+        }
 
-        const headingMap = {
-            'to-step2': 'Vehicle Details',
-            'to-step3': 'Vehicle Details',
-            'to-step4': 'Vehicle Details',
-            'to-step5': 'Your Details',
-            'to-step6': 'Your Details',
-            'to-step7': 'Your Details',
-            'to-step8': 'Your Details'
-        };
+        .hero-content {
+            padding: 3rem 0;
+        }
 
-        document.querySelectorAll('.to-step-btn').forEach(btn => {
-            btn.addEventListener('click', function () {
-                const progress = stepProgress[this.id];
-                const heading = headingMap[this.id];
+        .hero-left-container {
+            width: 85%;
+            margin: 0 auto;
+            padding-left: 50px;
+        }
 
-                if (progress !== undefined) {
-                    progressBar.style.width = `${progress}%`;
-                    progressText.textContent = `${progress}%`;
-                }
+        /* Hero Text */
+        .hero-title {
+            font-family: 'Courier New', monospace;
+            font-size: 4.6rem;
+            font-weight: bold;
+            color: #2d2d2d;
+            line-height: 1.2;
+        }
 
-                if (heading) {
-                    sectionHeading.textContent = heading;
-                }
-            });
-        });
-    </script>
-    <!-- quiz modal end -->
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #3d3d3d;
+        }
 
-    <section id="card-section">
+        /* CTA Button */
+        .hero-cta-btn {
+            background-color: #1dd1a1;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            padding: 15px 19px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hero-cta-btn:hover {
+            background-color: #18b889;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(29, 209, 161, 0.3);
+        }
+
+        /* Form Card */
+        .form-card {
+            background-color: #000000;
+            border-radius: 12px 0 0 12px;
+            border-left: 8px solid #1dd1a1;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            margin-left: auto;
+            max-width: 700px;
+        }
+
+        .form-title {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        /* Form Inputs */
+        .form-input {
+            width: 100%;
+            background-color: #000000;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            color: #fff !important;
+            padding: 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input::placeholder {
+            color: #6c757d;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #1dd1a1;
+            box-shadow: 0 0 0 0.2rem rgba(29, 209, 161, 0.25);
+            background-color: #000000;
+        }
+
+        .form-input option {
+            background-color: #000000;
+            color: #fff;
+        }
+
+        /* Submit Button */
+        .form-submit-btn {
+            width: auto;
+            background-color: #1dd1a1;
+            border: none;
+            border-radius: 10px;
+            color: #000000;
+            padding: 11px 13px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit-btn:hover {
+            background-color: #18b889;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(29, 209, 161, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .hero-title {
+                font-size: 3rem;
+                text-align: center;
+            }
+
+            .hero-subtitle {
+                text-align: center;
+            }
+
+            .hero-cta-btn {
+                display: none;
+            }
+
+            .hero-left-container {
+                padding-left: 0;
+                width: 100%;
+                margin-bottom: 2rem;
+            }
+
+            .form-card {
+                margin-top: 0;
+                margin-left: 0;
+                border-radius: 12px;
+                border-left: 8px solid #1dd1a1;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-left-container {
+                width: 90%;
+                margin: 0 auto 2rem auto;
+            }
+
+            .form-card {
+                padding: 2rem;
+            }
+
+            .form-submit-btn {
+                padding: 12px 30px;
+            }
+        }
+    </style>
+
+    <section class="card-section" id="card-section">
         <div class="container">
-            <h4 class="mt-5 mb-3" style="font-weight: 700;">Our providers</h4>
+            <h4 class="mt-0 mb-3" style="font-weight: 700;">Our providers</h4>
 
             <div class="mb-4">
                 <div class="cards-container mb-4">
@@ -1869,7 +622,7 @@
                     </div>
                 </div>
                 <!-- omega card -->
-                <div class="service-card">
+                <div class="service-card mb-3">
                     <div class="card-header">
                         <div class="logo-section">
                             <div class="logo">
@@ -1988,7 +741,7 @@
         </div>
     </section>
 
-    <section id="warranty-section" class="warranty-section mt-5">
+    <section id="warranty-section" class="warranty-section">
         <div class="container">
             <div class="warranty-content">
                 <h2 class="warranty-title">Is an extended warranty worth it?</h2>
@@ -2095,7 +848,7 @@
         });
     </script>
 
-    <section id="get-matched" style="padding: 40px 0;">
+    <section id="get-matched" class="get-matched-section">
         <div class="container">
             <h1 class="match-title">How we connect you with the right provider</h1>
 
@@ -2131,6 +884,17 @@
             <button class="match-cta-button">Find My Match</button>
         </div>
     </section>
+    <style>
+        .warranty-section .warranty-content>*:last-child {
+            margin-bottom: 0;
+        }
+
+        #get-matched {
+            padding-top: 50px;
+            /* optional, controls spacing at the top of this section */
+            padding-bottom: 50px;
+        }
+    </style>
 
     <section id="score-section" class="score-section">
         <div class="container">
@@ -2152,88 +916,96 @@
         </div>
     </section>
 
-    <section class="faq-section container my-5">
-        <div class="faq-card border-light shadow-sm">
-            <div class="faq-card-body p-4">
-                <h2 class="faq-card-title h4 mb-4">Frequently Asked Questions</h2>
+    <section class="faq-section py-5">
+        <div class="container">
+            <div class="faq-card border-light shadow-sm">
+                <div class="faq-card-body p-4">
+                    <h2 class="faq-card-title h4 mb-4">Frequently Asked Questions</h2>
 
-                <div class="faq-accordion">
-                    <!-- FAQ Item 1 -->
-                    <div class="faq-item mb-3">
-                        <button
-                            class="faq-question btn btn-link text-left p-0 w-100 d-flex justify-content-between align-items-center">
-                            <span>Our Comprehensive Review Process for Extended Car Warranties</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer mt-2 d-none">
-                            <p>We thoroughly evaluate each plan based on factors like coverage scope, options, pricing,
-                                availability, support, and claims processing. This rigorous review process enables us to
-                                recommend only the top extended car warranty providers.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item mb-3">
-                        <button
-                            class="faq-question btn btn-link text-left p-0 w-100 d-flex justify-content-between align-items-center">
-                            <span>Who Benefits from an Extended Car Warranty?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer mt-2 d-none">
-                            <p>Typically, car owners seek extended warranties after their factory warranty expires (usually
-                                between 3-5 years or 36,000-60,000 miles). An extended warranty prolongs your car's
-                                protection, saving you money and providing peace of mind for future repairs.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- FAQ Item 2 -->
-                    <div class="faq-item mb-3">
-                        <button
-                            class="faq-question btn btn-link text-left p-0 w-100 d-flex justify-content-between align-items-center">
-                            <span>Selecting the Right Plan</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer mt-2 d-none">
-                            <p>When selecting a plan, consider your vehicle's age, mileage, typical repair costs, and your
-                                budget. Look for coverage that matches your vehicle's most likely repair needs while fitting
-                                your financial situation.</p>
-
-                            <ul>
-                                <li><strong>Bumper-to-Bumper Warranties:</strong> Comprehensive coverage for most mechanical
-                                    systems, excluding explicitly listed items.</li>
-                                <li><strong>Powertrain Warranties:</strong> Covers engine, transmission, and related
-                                    components.</li>
-                                <li><strong>Wear-and-Tear Warranties:</strong> Repairs or replacements due to natural wear
-                                    and tear.</li>
-                                <li><strong>Maintenance Plans:</strong> Covers routine maintenance, plus some wear-and-tear
-                                    parts.</li>
-                                <li><strong>Emission Warranties:</strong> Protects against emission-related failures.</li>
-                                <li><strong>Factory Accessory Plans:</strong> Extended coverage for factory-installed
-                                    accessories.</li>
-                                <li><strong>Rust or Corrosion Warranties:</strong> Covers repairs due to rust-through
-                                    problems.</li>
-                            </ul>
+                    <div class="faq-accordion">
+                        <!-- FAQ Item 1 -->
+                        <div class="faq-item mb-3">
+                            <button
+                                class="faq-question btn btn-link text-left p-0 w-100 d-flex justify-content-between align-items-center">
+                                <span>Our Comprehensive Review Process for Extended Car Warranties</span>
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer mt-2 d-none">
+                                <p>We thoroughly evaluate each plan based on factors like coverage scope, options, pricing,
+                                    availability, support, and claims processing. This rigorous review process enables us to
+                                    recommend only the top extended car warranty providers.
+                                </p>
+                            </div>
                         </div>
 
-                    </div>
+                        <div class="faq-item mb-3">
+                            <button
+                                class="faq-question btn btn-link text-left p-0 w-100 d-flex justify-content-between align-items-center">
+                                <span>Who Benefits from an Extended Car Warranty?</span>
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer mt-2 d-none">
+                                <p>Typically, car owners seek extended warranties after their factory warranty expires
+                                    (usually
+                                    between 3-5 years or 36,000-60,000 miles). An extended warranty prolongs your car's
+                                    protection, saving you money and providing peace of mind for future repairs.
+                                </p>
+                            </div>
+                        </div>
 
-                    <!-- FAQ Item 3 -->
-                    <div class="faq-item mb-3">
-                        <button
-                            class="faq-question btn btn-link text-left p-0 w-100 d-flex justify-content-between align-items-center">
-                            <span>Sustainability Model</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer mt-2 d-none">
-                            <p>With numerous options available, choosing the best car warranty can be overwhelming. Our
-                                reviews and ratings help you compare companies based on coverage, pricing, support, and
-                                claims processing, ensuring you make an informed decision.</p>
+                        <!-- FAQ Item 2 -->
+                        <div class="faq-item mb-3">
+                            <button
+                                class="faq-question btn btn-link text-left p-0 w-100 d-flex justify-content-between align-items-center">
+                                <span>Selecting the Right Plan</span>
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer mt-2 d-none">
+                                <p>When selecting a plan, consider your vehicle's age, mileage, typical repair costs, and
+                                    your
+                                    budget. Look for coverage that matches your vehicle's most likely repair needs while
+                                    fitting
+                                    your financial situation.</p>
+
+                                <ul>
+                                    <li><strong>Bumper-to-Bumper Warranties:</strong> Comprehensive coverage for most
+                                        mechanical
+                                        systems, excluding explicitly listed items.</li>
+                                    <li><strong>Powertrain Warranties:</strong> Covers engine, transmission, and related
+                                        components.</li>
+                                    <li><strong>Wear-and-Tear Warranties:</strong> Repairs or replacements due to natural
+                                        wear
+                                        and tear.</li>
+                                    <li><strong>Maintenance Plans:</strong> Covers routine maintenance, plus some
+                                        wear-and-tear
+                                        parts.</li>
+                                    <li><strong>Emission Warranties:</strong> Protects against emission-related failures.
+                                    </li>
+                                    <li><strong>Factory Accessory Plans:</strong> Extended coverage for factory-installed
+                                        accessories.</li>
+                                    <li><strong>Rust or Corrosion Warranties:</strong> Covers repairs due to rust-through
+                                        problems.</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <!-- FAQ Item 3 -->
+                        <div class="faq-item mb-3">
+                            <button
+                                class="faq-question btn btn-link text-left p-0 w-100 d-flex justify-content-between align-items-center">
+                                <span>Sustainability Model</span>
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer mt-2 d-none">
+                                <p>With numerous options available, choosing the best car warranty can be overwhelming. Our
+                                    reviews and ratings help you compare companies based on coverage, pricing, support, and
+                                    claims processing, ensuring you make an informed decision.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <script>

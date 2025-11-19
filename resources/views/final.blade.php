@@ -1,19 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-    @php
-        $carData = session('carData', []);
-    @endphp
-
-    <section class="results-layout py-5" style="background-color: #000000ff;">
+    <section class="results-layout py-5" style="background-color: #e8e8e8;">
         <div class="container results-container">
 
             <!-- Left: Thank You Section (smaller) -->
             <div class="thank-you-wrapper">
                 <h3 class="thank-you-header text-center fw-bold mb-4">Thank You!</h3>
                 <div class="thank-you-page card-box">
-                    <div id="lead-destination" class="mb-3 text-center fw-bold"></div>
-                    <p class="text-muted text-center">Here are the plans for your car:</p>
+                    <div id="lead-destination" class="mb-3 text-center fw-bold"
+                        style="color: {{ $leadDestination === 'Already Submitted Previously' ? '#f59e0b' : '#10b981' }};">
+                        {{ $leadDestination }}
+                    </div>
+                    @if($leadDestination === 'Already Submitted Previously')
+                        <p class="text-muted text-center">This lead was submitted previously. You can still view available
+                            warranty options below.</p>
+                    @else
+                        <p class="text-muted text-center">Here are the plans for your car:</p>
+                    @endif
 
                     <!-- What Happens Next & Awareness Section -->
                     <div class="content-grid">
@@ -63,7 +67,7 @@
 
             <!-- Right: Chaiz Results (bigger) -->
             <div class="chaiz-results-section">
-                <h3 class="fw-bold mb-3 text-center" style="color: white;">Get Instant Options</h3>
+                <h3 class="fw-bold mb-3 text-center" style="color: rgb(0, 0, 0);">Get Instant Options</h3>
                 <div id="search-results" class="chaiz-results"></div>
             </div>
         </div>
@@ -105,7 +109,7 @@
 
         /* Thank You header outside the card */
         .thank-you-header {
-            color: white;
+            color: rgb(0, 0, 0);
             font-size: 1.8rem;
             margin-bottom: 20px;
         }
@@ -125,69 +129,34 @@
     <script>
         window.carData = @json($carData);
 
-        async function submitLeadAndLoadChaiz() {
-            if (!window.carData || Object.keys(window.carData).length === 0) return;
-
-            if (window.leadAlreadySubmitted) {
-                console.log("Lead already submitted, skipping...");
-                loadChaizResults();
+        function loadChaizResults() {
+            if (!window.carData || Object.keys(window.carData).length === 0) {
+                console.log("No car data available");
                 return;
             }
 
-            const payload = {
-                'sel-year': window.carData['sel-year'],
-                'sel-make': window.carData['sel-make'],
-                'sel-model': window.carData['sel-model'],
-                'car_mileage': window.carData['car_mileage'],
-                'user-state': window.carData['user-state'],
-                'user-zip': window.carData['user-zip'],
-                'email': window.carData['email'],
-                'user-name': window.carData['user-name'],
-                'user-number': window.carData['user-number']
-            };
-
-            try {
-                const response = await fetch('{{ route('lead.submit') }}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify(payload)
-                });
-
-                const data = await response.json();
-                console.log('Lead submit response:', data);
-
-                window.dataLayer = window.dataLayer || [];
-                window.dataLayer.push({
-                    event: "leadSubmission",
-                    destination: data.destination
-                });
-
-                const destEl = document.getElementById('lead-destination');
-                if (destEl) {
-                    destEl.textContent = "Lead submitted to: " + data.destination;
-                }
-
-                loadChaizResults();
-            } catch (err) {
-                console.error('Error submitting lead:', err);
-                loadChaizResults();
-            }
-        }
-
-        function loadChaizResults() {
             const make = window.carData['sel-make']?.toLowerCase().replace(/\s+/g, '-') || 'default-make';
             const model = window.carData['sel-model']?.toLowerCase().replace(/\s+/g, '-') || 'default-model';
             const year = window.carData['sel-year'] || 2020;
             const state = window.carData['user-state']?.toUpperCase() || 'NJ';
-            let mileage = 30000;
 
-            if (typeof window.carData['car_mileage'] === 'string') {
-                const digits = window.carData['car_mileage'].replace(/\D/g, '');
-                if (digits) mileage = parseInt(digits, 10);
-            }
+            // Convert mileage range to numeric value
+            const mileageMap = {
+                'less-than-100k': 75000,
+                '100k-140k': 120000,
+                '140k-200k': 170000,
+                'more-than-200k': 225000
+            };
+
+            const mileage = mileageMap[window.carData['car_mileage']] || 100000;
+
+            console.log('Chaiz search data:', {
+                make,
+                model,
+                year,
+                state,
+                mileage
+            });
 
             window.chaizWarrantySearchConfig = {
                 targetElementId: "search-results",
@@ -208,6 +177,6 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', submitLeadAndLoadChaiz);
+        document.addEventListener('DOMContentLoaded', loadChaizResults);
     </script>
 @endsection

@@ -5,8 +5,21 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LeadSubmissionController;
 use App\Http\Controllers\LeadController;
 
-Route::post('/lead-submit-db', [LeadController::class, 'submit']);
+// Home page
+Route::get('/', function () {
+    return view('home');
+});
 
+// Store lead in database
+Route::post('/lead/store', [LeadController::class, 'submit'])->name('lead.store');
+
+// Store car data in session
+Route::post('/store-car-data', [SubmitController::class, 'storeCarData'])->name('store.car.data');
+
+// Thank you page
+Route::get('/thank-you', [SubmitController::class, 'submit'])->name('final');
+
+// Legacy routes (if still needed)
 Route::post('/lead-submit', [LeadSubmissionController::class, 'store'])->name('lead.submit');
 
 Route::get('/get-lead-destination', function () {
@@ -14,18 +27,3 @@ Route::get('/get-lead-destination', function () {
         'destination' => session('lead_destination', 'Successfully Submitted')
     ]);
 });
-
-Route::get('/', function () {
-    return view('home');
-});
-
-Route::post('/store-car-data', [SubmitController::class, 'storeCarData']);
-
-Route::get('/thank-you', [SubmitController::class, 'submit'])->name('final.page');
-
-Route::get('/test-session', function (Request $request) {
-    session(['test_key' => 'hello']);
-    return session('test_key', 'not set');
-});
-
-Route::post('/submit-car-data', [SubmitController::class, 'submit'])->name('submit.car');
