@@ -1051,6 +1051,24 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Multi-word Makes
+    |--------------------------------------------------------------------------
+    |
+    | List of manufacturers with multi-word names
+    |
+    */
+    'multi_word_makes' => [
+        'ALFA ROMEO',
+        'ASTON MARTIN',
+        'LAND ROVER',
+        'MCLAREN AUTOMOTIVE',
+        'MERCEDES-BENZ',
+        'LUCID MOTORS',
+        'ROLLS-ROYCE',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Get Unique Makes
     |--------------------------------------------------------------------------
     |
@@ -1059,13 +1077,30 @@ return [
     */
     'makes' => function () {
         $makes = [];
+        $multiWordMakes = config('vehicles.multi_word_makes');
+
         foreach (config('vehicles.vehicles') as $vehicle) {
-            $parts = explode(' ', $vehicle, 2);
-            $make = $parts[0];
+            $make = null;
+
+            // Check if vehicle starts with any multi-word make
+            foreach ($multiWordMakes as $multiWordMake) {
+                if (strpos($vehicle, $multiWordMake . ' ') === 0) {
+                    $make = $multiWordMake;
+                    break;
+                }
+            }
+
+            // If no multi-word make found, use first word
+            if ($make === null) {
+                $parts = explode(' ', $vehicle, 2);
+                $make = $parts[0];
+            }
+
             if (!in_array($make, $makes)) {
                 $makes[] = $make;
             }
         }
+
         sort($makes);
         return $makes;
     },
@@ -1081,12 +1116,14 @@ return [
     'models_by_make' => function ($make) {
         $models = [];
         $makeUpper = strtoupper($make);
+
         foreach (config('vehicles.vehicles') as $vehicle) {
             if (strpos($vehicle, $makeUpper . ' ') === 0) {
                 $model = substr($vehicle, strlen($makeUpper) + 1);
                 $models[] = $model;
             }
         }
+
         return $models;
     },
 ];
