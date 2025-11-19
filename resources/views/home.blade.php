@@ -167,7 +167,7 @@
 
     <section class="card-section" id="card-section">
         <div class="container">
-            <h4 class="mt-0 mb-3 mobile-top-padding" style="font-weight: 700;">Our providers</h4>
+            <h3 class="mt-0 mb-3 mobile-top-padding" style="font-weight: 600;">Our providers</h3>
 
             <div class="mb-4">
                 <div class="cards-container mb-4">
