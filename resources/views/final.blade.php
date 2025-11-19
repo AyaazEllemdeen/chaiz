@@ -9,7 +9,7 @@
                 <h3 class="thank-you-header text-center fw-bold mb-4">Thank You!</h3>
                 <div class="thank-you-page card-box">
                     <div id="lead-destination" class="mb-3 text-center fw-bold"
-                        style="color: {{ $leadDestination === 'Already Submitted Previously' ? '#f59e0b' : '#10b981' }};">
+                        style="color: {{ $leadDestination === 'Already Submitted Previously' ? '#1dd1a1' : '#1dd1a1' }};">
                         {{ $leadDestination }}
                     </div>
                     @if($leadDestination === 'Already Submitted Previously')
@@ -73,58 +73,7 @@
         </div>
     </section>
 
-    <style>
-        /* Flex container */
-        .results-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            align-items: flex-start;
-            min-width: 93%;
-            margin: 0 auto;
-        }
-
-        /* Thank You column (smaller) */
-        .thank-you-wrapper {
-            flex: 1;
-            min-width: 280px;
-            max-width: 400px;
-        }
-
-        /* Chaiz column (larger) */
-        .chaiz-results-section {
-            flex: 2;
-            min-width: 400px;
-        }
-
-        /* Card style */
-        .card-box {
-            background: #fff;
-            border: 2px solid #f7c948;
-            padding: 40px 35px;
-            border-radius: 20px;
-            transition: box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Thank You header outside the card */
-        .thank-you-header {
-            color: rgb(0, 0, 0);
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-
-        /* Mobile stacking */
-        @media (max-width: 768px) {
-
-            .thank-you-wrapper,
-            .chaiz-results-section {
-                flex: 1 1 100%;
-                max-width: 100%;
-                min-width: 100%;
-            }
-        }
-    </style>
+    <style></style>
 
     <script>
         window.carData = @json($carData);

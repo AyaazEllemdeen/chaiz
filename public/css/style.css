@@ -341,7 +341,7 @@ h6 {
 }
 
 /* our providers section CARD SECTION */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .mobile-top-padding {
         padding-top: 2rem; /* adjust as needed */
     }
@@ -570,7 +570,7 @@ h6 {
 }
 
 .get-quote-btn:hover {
-    background: #876d27;
+    background: #0a684f;
     color: white;
 }
 
@@ -1104,7 +1104,7 @@ h6 {
 }
 
 .match-cta-button:hover {
-    background: #876d27;
+    background: #0a684f;
     color: white;
 }
 
@@ -1906,14 +1906,64 @@ h6 {
     gap: 20px;
 }
 
+/* Flex container */
+.results-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: flex-start;
+    min-width: 93%;
+    margin: 0 auto;
+}
+
+/* Thank You column (smaller) */
+.thank-you-wrapper {
+    flex: 1;
+    min-width: 280px;
+    max-width: 400px;
+}
+
+/* Chaiz column (larger) */
+.chaiz-results-section {
+    flex: 2;
+    min-width: 400px;
+}
+
+/* Card style */
+.card-box {
+    background: #fff;
+    border: 2px solid #1dd1a1;
+    padding: 40px 35px;
+    border-radius: 20px;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Thank You header outside the card */
+.thank-you-header {
+    color: rgb(0, 0, 0);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+/* Mobile stacking */
+@media (max-width: 768px) {
+    .thank-you-wrapper,
+    .chaiz-results-section {
+        flex: 1 1 100%;
+        max-width: 100%;
+        min-width: 100%;
+    }
+}
+
 .what-happens-next {
-    background: #f8f9fa;
+    background: #e1fff7;
     padding: 15px;
     border-radius: 8px;
 }
 
 .what-happens-next h4 {
-    color: #2c3e50;
+    color: #000000;
     font-size: 16px;
     font-weight: 600;
     margin: 0 0 15px 0;
@@ -1947,19 +1997,19 @@ h6 {
 
 .step-content p {
     margin: 0;
-    color: #495057;
+    color: #000000;
     font-size: 13px;
     line-height: 1.4;
 }
 
 .awareness-section {
-    background: #fff3cd;
+    background: #e1fff7;
     padding: 15px;
     border-radius: 8px;
 }
 
 .awareness-section h5 {
-    color: #856404;
+    color: #000000;
     font-size: 14px;
     font-weight: 600;
     margin: 0 0 12px 0;
@@ -1978,8 +2028,8 @@ h6 {
 }
 
 .awareness-number {
-    background: #ffc107;
-    color: #856404;
+    background: #1dd1a1;
+    color: #000000;
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -1993,7 +2043,7 @@ h6 {
 
 .awareness-item p {
     margin: 0;
-    color: #856404;
+    color: #000000;
     font-size: 12px;
     line-height: 1.4;
 }

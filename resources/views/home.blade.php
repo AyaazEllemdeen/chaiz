@@ -22,21 +22,21 @@
                             <h3 class="form-title mb-4">Your Details</h3>
 
                             <div class="row g-3 mb-3">
-                                <div class="col-md-6">
+                                <div class="col-6 col-md-6">
                                     <input type="text" name="user-name" class="form-input" placeholder="Full Name" required>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-6 col-md-6">
                                     <input type="text" name="user-number" class="form-input" placeholder="Cell Number"
                                         required>
                                 </div>
                             </div>
 
                             <div class="row g-3 mb-3">
-                                <div class="col-md-6">
+                                <div class="col-6 col-md-6">
                                     <input type="email" name="email" class="form-input" placeholder="Email Address"
                                         required>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-6 col-md-6">
                                     <select name="user-state" class="form-input" required>
                                         <option value="">Select Your State</option>
                                         @foreach(['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY', 'DC', 'PR', 'GU', 'VI', 'AS', 'MP'] as $state)
@@ -47,7 +47,7 @@
                             </div>
 
                             <div class="row g-3 mb-3">
-                                <div class="col-md-6">
+                                <div class="col-6 col-md-6">
                                     <select id="sel_make" name="sel-make" class="form-input" required>
                                         <option value="">Select Vehicle Make</option>
                                         @php
@@ -58,7 +58,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-6 col-md-6">
                                     <select id="sel_model" name="sel-model" class="form-input" required>
                                         <option value="">Select Vehicle Model</option>
                                     </select>
@@ -66,7 +66,7 @@
                             </div>
 
                             <div class="row g-3 mb-4">
-                                <div class="col-md-6">
+                                <div class="col-6 col-md-6">
                                     <select id="sel_year" name="sel-year" class="form-input" required>
                                         <option value="">Select Vehicle Year</option>
                                         @for($year = 2026; $year >= 1990; $year--)
@@ -74,7 +74,7 @@
                                         @endfor
                                     </select>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-6 col-md-6">
                                     <select name="car_mileage" class="form-input" required>
                                         <option value="">Select Vehicle Mileage</option>
                                         <option value="less-than-100k">Less than 100,000 miles</option>
