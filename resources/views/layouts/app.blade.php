@@ -11,7 +11,9 @@
     <meta name="keywords"
         content="extended auto warranties 2025, best car warranty, extended car warranty cost, auto warranty coverage, vehicle warranty plans">
 
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet"
+        href="{{ asset('assets/css/style.css') }}?v={{ filemtime(public_path('assets/css/style.css')) }}">
+    <link rel="canonical" href="{{ url()->current() }}" />
     <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
