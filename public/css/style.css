@@ -351,7 +351,7 @@ h6 {
 /* ---------------------- our providers section CARD SECTION */
 @media (max-width: 1200px) {
     .mobile-top-padding {
-        padding-top: 2rem; /* adjust as needed */
+        padding-top: 2rem;
     }
 }
 
@@ -375,25 +375,19 @@ h6 {
 
 .cards-container {
     display: flex;
-    flex-wrap: wrap; /* allows cards to wrap on smaller screens */
-    gap: 5px; /* space between cards */
+    flex-wrap: wrap;
+    gap: 5px;
 }
 
 .card-section .container {
-    padding-bottom: 1rem; /* or however much space you want */
+    padding-bottom: 1rem;
 }
 
 .cards-container .service-card {
-    flex: 1 1 30%; /* grow, shrink, basis 45% */
-    min-width: 300px; /* ensures it doesn't get too small on mobile */
+    flex: 1 1 30%;
+    min-width: 300px;
 }
 
-/* Optional: make it stack on small screens */
-@media (max-width: 768px) {
-    .cards-container .service-card {
-        flex: 1 1 100%;
-    }
-}
 /* whole card */
 .service-card {
     background: white;
@@ -419,17 +413,17 @@ h6 {
     justify-content: space-between;
     gap: 15px;
     width: 100%;
-    flex-wrap: wrap; /* allow wrapping to prevent overflow */
+    flex-wrap: wrap;
 }
 
 .logo-section2 {
     display: flex;
-    align-items: center; /* vertical center */
-    justify-content: center; /* horizontal center */
-    gap: 20px; /* adjust spacing */
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
     width: 100%;
     flex-wrap: wrap;
-    text-align: center; /* helpful for text inside */
+    text-align: center;
 }
 
 .logo {
@@ -446,7 +440,7 @@ h6 {
 .logo img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* or "cover" if you want it to fill the box completely */
+    object-fit: contain;
 }
 
 .logo2 {
@@ -488,16 +482,9 @@ h6 {
     font-size: 14px;
     font-weight: 600;
     display: flex;
-    align-items: center; /* vertical center */
-    justify-content: center; /* horizontal center */
-    text-align: center; /* keeps text centered on wrap */
-}
-
-/* For iPads in portrait and landscape */
-@media (min-width: 768px) and (max-width: 1424px) {
-    .promo-badge2 {
-        width: 120px;
-    }
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .rating-section {
@@ -522,12 +509,11 @@ h6 {
     flex: 0 0 auto;
     width: 100px;
     height: 110px;
-    margin-left: 16px; /* keep if needed */
-
+    margin-left: 16px;
     display: flex;
-    flex-direction: column; /* stack score + stars */
-    align-items: center; /* center horizontally */
-    justify-content: center; /* center vertically */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
@@ -548,17 +534,17 @@ h6 {
 .cta-section2 {
     flex: 0 0 auto;
     display: flex;
-    flex-direction: row; /* side by side */
-    align-items: center; /* vertically aligned */
-    justify-content: center; /* Changed from flex-end to center */
-    gap: 10px; /* space between buttons */
-    flex-wrap: wrap; /* allows wrapping if too narrow on mobile */
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
     height: 110px;
 }
 
 .get-quote-btn2,
 .phone-btn2 {
-    flex: 0 0 auto; /* keep natural size */
+    flex: 0 0 auto;
 }
 
 .get-quote-btn {
@@ -574,7 +560,7 @@ h6 {
     text-decoration: none;
     display: inline-block;
     text-align: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* subtle shadow */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .get-quote-btn:hover {
@@ -592,7 +578,7 @@ h6 {
     cursor: pointer;
     transition: all 0.3s;
     width: 150px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* subtle shadow */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .phone-btn:hover {
@@ -606,19 +592,18 @@ h6 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Get Quote Button */
 .phone-btn2 {
     background: #fff;
     color: #000;
     border: 1.5px solid #000;
-    padding: 5px 10px; /* smaller padding */
+    padding: 5px 10px;
     border-radius: 5px;
     font-weight: 600;
-    font-size: 12px; /* smaller text */
+    font-size: 12px;
     cursor: pointer;
     transition: all 0.25s ease-in-out;
     width: auto;
-    min-width: 90px; /* smaller minimum width */
+    min-width: 90px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
     letter-spacing: 0.3px;
 }
@@ -627,13 +612,13 @@ h6 {
     background: #1dd1a1;
     color: #000;
     border: none;
-    padding: 5px 12px; /* smaller padding */
+    padding: 5px 12px;
     border-radius: 6px;
-    font-size: 12px; /* smaller text */
+    font-size: 12px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    width: 100px; /* reduced width */
+    width: 100px;
     text-decoration: none;
     text-align: center;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
@@ -647,60 +632,9 @@ h6 {
     transform: translateY(-2px);
 }
 
-@media screen and (max-width: 992px) {
-    .logo-section {
-        justify-content: center;
-    }
-
-    .cta-section {
-        align-items: center;
-        width: 100%;
-    }
-
-    .get-quote-btn,
-    .phone-btn {
-        width: 100%;
-        max-width: 220px;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .logo-section {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .promo-badge,
-    .promo-badge2 {
-        max-width: 90%;
-    }
-
-    .rating-section {
-        margin-top: 10px;
-    }
-
-    .cta-section {
-        align-items: center;
-        margin-top: 10px;
-    }
-
-    /* Make cards more compact on mobile */
-    .service-card {
-        padding: 15px;
-        margin-bottom: 10px;
-    }
-
-    .top-rated-ribbon {
-        font-size: 10px;
-        padding: 4px 18px;
-    }
-}
-
 .divider-line {
     height: 1px;
     background-color: black;
-
     width: 100%;
     margin-bottom: 10px;
 }
@@ -708,7 +642,6 @@ h6 {
 .divider-line2 {
     height: 1px;
     background-color: black;
-
     width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -785,13 +718,14 @@ h6 {
     background: #1dd1a1;
     color: rgb(255, 255, 255);
 }
+
 .card-body-row2 {
     display: flex;
-    flex-direction: column; /* stack description above features */
-    align-items: center; /* center the description horizontally */
+    flex-direction: column;
+    align-items: center;
     gap: 15px;
     padding: 10px 0;
-    text-align: center; /* center text inside the container */
+    text-align: center;
 }
 
 .card-body-row2 .description2 {
@@ -800,69 +734,237 @@ h6 {
     line-height: 1.6;
     color: #000000;
     margin-bottom: 10px;
-    max-width: 90%; /* prevent text from stretching too wide */
+    max-width: 90%;
 }
 
 .card-body-row2 .features-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* keep two columns */
+    grid-template-columns: 1fr 1fr;
     gap: 5px 15px;
     width: 100%;
-    text-align: left; /* keep features aligned to the left */
+    text-align: left;
 }
 
-@media (max-width: 1065px) {
-    .feature2 {
+/* All screens 1199px and below: Collapsed with More button */
+@media (max-width: 1199px) {
+    /* Hide content by default */
+    .service-card > .card-body-row,
+    .service-card > .card-body-row2,
+    .service-card > .divider-line {
+        display: none;
+    }
+
+    /* Show content when active */
+    .card-body-row.active,
+    .card-body-row2.active {
         display: flex;
-        align-items: flex-start;
-        gap: 8px;
-        font-size: 14px;
-        color: #374151;
-    }
-
-    .description2 {
-        font-size: 14px;
-        font-weight: 600;
-        line-height: 1.6;
-        color: #000000;
-        margin-bottom: 25px;
-        width: 400px;
-    }
-
-    .get-quote-btn2 {
-        background: #1dd1a1;
-        color: #000;
-        border: none;
-        padding: 12px 24px;
-        border-radius: 8px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: background 0.3s, box-shadow 0.3s;
-        width: 150px;
-        text-decoration: none;
-        display: inline-block;
+        flex-direction: column;
+        align-items: center;
         text-align: center;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-        font-size: 1rem;
+        padding: 10px;
+        box-sizing: border-box;
+        background: #fff;
     }
 
-    .phone-btn2 {
-        background: #fff;
-        color: #000;
-        border: 2px solid #000;
-        padding: 12px;
-        border-radius: 8px;
-        font-weight: 600;
+    .card-body-row .description,
+    .card-body-row .description2,
+    .card-body-row2 .description2 {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 8px;
+        text-align: center;
+        word-wrap: break-word;
+        font-size: 12px;
+        line-height: 1.4;
+        margin-bottom: 10px;
+    }
+
+    .card-body-row.active .features-grid,
+    .card-body-row2.active .features-grid {
+        gap: 3px 10px;
+        margin-bottom: 10px;
+    }
+
+    .card-body-row.active .feature,
+    .card-body-row.active .feature2,
+    .card-body-row2.active .feature,
+    .card-body-row2.active .feature2 {
+        font-size: 11px;
+        gap: 5px;
+    }
+
+    /* Show More button */
+    .more-btn {
+        display: block;
+        width: 100%;
+        padding: 8px;
+        background: #f5f5f5;
+        border: none;
         cursor: pointer;
-        transition: all 0.3s;
-        width: 150px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-        font-size: 1rem;
+        font-weight: bold;
+        font-size: 13px;
+        margin-top: 8px;
+        box-sizing: border-box;
+        color: #010100;
+    }
+}
+
+/* Tablets 768px - 1199px: Keep 3-card row, collapsed content */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .service-card {
+        padding: 18px;
+    }
+
+    .logo {
+        flex: 0 0 140px;
+        height: 140px;
+        width: 140px;
+    }
+
+    .logo2 {
+        flex: 0 0 85px;
+        width: 85px;
+        height: 85px;
+    }
+
+    .promo-badge2 {
+        width: 140px;
+        height: 85px;
+        font-size: 11px;
+    }
+
+    .rating-section {
+        position: absolute;
+        top: 2px;
+        right: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: flex-start;
+        gap: 1px;
+        padding: 0;
+        background: none;
+        box-shadow: none;
+        border-radius: 0;
+        z-index: 10;
+        width: auto;
+        min-width: 0;
+    }
+
+    .rating-section2 {
+        position: absolute;
+        top: 2px;
+        right: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: flex-start;
+        gap: 1px;
+        padding: 0;
+        background: none;
+        box-shadow: none;
+        border-radius: 0;
+        z-index: 10;
+        width: auto;
+        height: auto;
+        margin-left: 0;
+    }
+
+    .rating-score {
+        font-size: 18px;
+    }
+
+    .rating-score2 {
+        font-size: 14px;
+    }
+
+    .stars {
+        font-size: 12px;
+    }
+
+    .cta-section,
+    .cta-section2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-top: 8px;
+        width: 100%;
+        height: auto;
+    }
+
+    .get-quote-btn,
+    .get-quote-btn2 {
+        padding: 8px 16px;
+        font-size: 10px;
+        width: 100px;
+    }
+
+    .phone-btn,
+    .phone-btn2 {
+        padding: 8px;
+        font-size: 10px;
+        width: 100px;
+        min-width: 80px;
+    }
+
+    .top-rated-ribbon {
+        font-size: 9px;
+        padding: 4px 16px;
+    }
+
+    .card-header {
+        padding-bottom: 12px;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Logo + promo centered */
+    .logo-section,
+    .logo-section2 {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    /* Promo badge under buttons */
+    .promo-badge,
+    .promo-badge2 {
+        padding: 5px 10px;
+        font-size: 11px;
+        font-weight: 600;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        color: #000;
+        gap: 5px;
+        margin-top: 8px;
+        width: 100%;
+        height: auto;
+        line-height: 1.3;
+    }
+}
+
+/* Mobile - Below 768px: Stack cards */
+@media (max-width: 767px) {
+    .cards-container .service-card {
+        flex: 1 1 100%;
     }
 
     .service-card {
-        position: relative;
         padding: 12px;
+    }
+
+    .top-rated-ribbon {
+        font-size: 10px;
+        padding: 4px 18px;
     }
 
     /* Rating floating in top-right corner */
@@ -881,6 +983,9 @@ h6 {
         box-shadow: none;
         border-radius: 0;
         z-index: 10;
+        margin-left: 0;
+        width: auto;
+        height: auto;
     }
 
     .rating-section .rating-score,
@@ -892,96 +997,6 @@ h6 {
     .rating-section2 .stars {
         font-size: 12px;
         line-height: 1;
-    }
-
-    /* Ensure rating doesn't appear in its original place */
-    .logo-section .rating-section,
-    .logo-section2 .rating-section2 {
-        order: unset;
-    }
-
-    /* Card structure */
-    .service-card > .card-header,
-    .service-card > .top-rated-ribbon,
-    .service-card > .more-btn {
-        display: block;
-    }
-
-    .service-card > .card-body-row,
-    .service-card > .divider-line {
-        display: none;
-    }
-
-    .service-card > .card-body-row2,
-    .service-card > .divider-line {
-        display: none;
-    }
-
-    .card-body-row .description,
-    .card-body-row .description2,
-    .card-body-row2 .description2 {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 8px;
-        text-align: center;
-        word-wrap: break-word;
-        font-size: 12px;
-        line-height: 1.4;
-        margin-bottom: 10px;
-    }
-
-    .description,
-    .description2 {
-        font-weight: 600;
-    }
-
-    .card-body-row.active {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 10px;
-        box-sizing: border-box;
-        background: #fff;
-    }
-
-    .card-body-row2.active {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 10px;
-        box-sizing: border-box;
-        background: #fff;
-    }
-
-    .card-body-row.active .features-grid,
-    .card-body-row2.active .features-grid {
-        gap: 3px 10px;
-        margin-bottom: 10px;
-    }
-
-    .card-body-row.active .feature,
-    .card-body-row.active .feature2,
-    .card-body-row2.active .feature,
-    .card-body-row2.active .feature2 {
-        font-size: 11px;
-        gap: 5px;
-    }
-
-    .more-btn {
-        display: block;
-        width: 100%;
-        padding: 8px;
-        background: #f5f5f5;
-        border: none;
-        cursor: pointer;
-        font-weight: bold;
-        font-size: 13px;
-        margin-top: 8px;
-        box-sizing: border-box;
-        order: 4;
-        color: #010100;
     }
 
     .card-header {
@@ -1001,7 +1016,6 @@ h6 {
         align-items: center;
         gap: 10px;
         flex-wrap: wrap;
-        order: 1;
         width: 100%;
     }
 
@@ -1012,33 +1026,17 @@ h6 {
         flex: 0 0 90px;
     }
 
-    .logo img,
-    .logo2 img {
-        width: 100%; /* fill container */
-        height: 100%; /* fill container */
-        object-fit: contain; /* keep aspect ratio */
-    }
-
     /* Buttons under logo + rating */
     .cta-section,
     .cta-section2 {
         display: flex;
         justify-content: center;
+        align-items: center;
         gap: 8px;
         flex-wrap: wrap;
         margin-top: 8px;
         width: 100%;
-        order: 2;
-    }
-    .cta-section2 {
-        display: flex;
-        justify-content: center; /* center horizontally */
-        align-items: center; /* center vertically if multi-line */
-        gap: 8px;
-        flex-wrap: wrap;
-        margin-top: 8px;
-        width: 100%;
-        order: 2;
+        height: auto;
     }
 
     .get-quote-btn,
@@ -1063,17 +1061,21 @@ h6 {
         gap: 5px;
         margin-top: 8px;
         width: 100%;
-        order: 3;
+        height: auto;
         line-height: 1.3;
     }
 }
 
-@media (min-width: 769px) {
+/* Hide more button only on desktop (1200px and above) */
+@media (min-width: 1200px) {
     .more-btn {
         display: none;
     }
 }
-/* get matched section */
+/* ---------------------- our providers section CARD SECTION END */
+
+
+/*--------------------------- get matched section */
 .get-matched-section {
     background-color: #e8e8e8;
 }
