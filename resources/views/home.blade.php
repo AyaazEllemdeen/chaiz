@@ -398,7 +398,6 @@
                                     <img src="/img/omega.png" alt="Chaiz Logo">
                                 </a>
                             </div>
-                            <div class="promo-badge"></div>
                             <div class="rating-section">
                                 <div class="rating-score">8.2</div>
                                 <div class="stars">★★★★☆</div>
@@ -457,7 +456,6 @@
                                     <img src="/img/naac.png" alt="Chaiz Logo">
                                 </a>
                             </div>
-                            <div class="promo-badge"></div>
                             <div class="rating-section">
                                 <div class="rating-score">8.1</div>
                                 <div class="stars">★★★★☆</div>
