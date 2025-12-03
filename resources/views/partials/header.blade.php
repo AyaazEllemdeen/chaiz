@@ -3,7 +3,7 @@
         <!-- Logo on the left -->
         <div class="logo-wrap">
             <a href="{{ url('/') }}">
-                <img src="{{ asset('img/logo/Compare-Warranties-Logo.svg') }}" alt="Logo" style="height: 45px;">
+                <img src="{{ asset('img/logo/logo.png') }}" alt="Logo" style="height: 45px;">
             </a>
         </div>
 

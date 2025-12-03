@@ -37,7 +37,7 @@
 
             <!-- Right: Logo -->
             <div class="footer-right">
-                <img src="{{ asset('img/logo/Compare-Warranties-Logo.svg') }}" alt="Compare Warranties Logo" class="footer-logo">
+                <img src="{{ asset('img/logo/whitelogo.png') }}" alt="Compare Warranties Logo" class="footer-logo">
             </div>
         </div>
 
