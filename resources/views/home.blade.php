@@ -515,63 +515,6 @@
         </div>
     </section>
 
-    <style>
-        .scroll-container {
-            position: relative;
-            width: 100%;
-        }
-
-        .scroll-row-wrapper {
-            overflow: hidden;
-        }
-
-        .cards-scroll-row {
-            display: flex;
-            gap: 24px;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            padding-bottom: 10px;
-        }
-
-        .cards-scroll-row::-webkit-scrollbar {
-            display: none;
-        }
-
-        .cards-scroll-row .service-card {
-            flex: 0 0 calc((100% - 48px) / 3);
-            /* 3 cards visible */
-            max-width: calc((100% - 48px) / 3);
-        }
-
-        .scroll-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #000;
-            color: #fff;
-            border: none;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10;
-            opacity: 0.8;
-        }
-
-        .scroll-btn.left {
-            left: -20px;
-        }
-
-        .scroll-btn.right {
-            right: -20px;
-        }
-
-        .scroll-btn:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-    </style>
-
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const wrapper = document.getElementById("providersWrapper");
