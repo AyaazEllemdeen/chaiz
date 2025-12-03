@@ -899,7 +899,7 @@ h6 {
 
     .logo2 {
         flex: 0 0 85px;
-        width: 150px;
+        width: 200px;
         height: 85px;
     }
 
@@ -1095,7 +1095,7 @@ h6 {
 
     .logo,
     .logo2 {
-        width: 160px;
+        width: 200px;
         height: 90px;
         flex: 0 0 90px;
     }
