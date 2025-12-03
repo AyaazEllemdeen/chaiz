@@ -8,10 +8,14 @@
             <div class="thank-you-wrapper">
                 <h3 class="thank-you-header text-center fw-bold mb-4">Thank You!</h3>
                 <div class="thank-you-page card-box">
-                    <div id="lead-destination" class="mb-3 text-center fw-bold"
-                        style="color: {{ $leadDestination === 'Already Submitted Previously' ? '#1dd1a1' : '#1dd1a1' }};">
-                        Your Details have been submitted to {{ $leadDestination }}
+                    <div id="lead-destination" class="mb-3 text-center fw-bold" style="color: #1dd1a1;">
+                        @if($leadDestination === 'Already Submitted Previously')
+                            Oops! Seems you have submitted before. Don't worry you can still buy online at chaiz.com
+                        @else
+                            Your Details have been submitted to {{ $leadDestination }}
+                        @endif
                     </div>
+
                     <!-- What Happens Next & Awareness Section -->
                     <div class="content-grid">
                         <div class="what-happens-next mb-4">
@@ -60,7 +64,8 @@
 
             <!-- Right: Chaiz Results (bigger) -->
             <div class="chaiz-results-section">
-                <h3 class="fw-bold mb-3 text-center" style="color: rgb(0, 0, 0);">Here are plans for your car - Buy directly online.</h3>
+                <h3 class="fw-bold mb-3 text-center" style="color: rgb(0, 0, 0);">Here are plans for your car - Buy directly
+                    online.</h3>
                 <div id="search-results" class="chaiz-results"></div>
             </div>
         </div>
