@@ -1,4 +1,4 @@
-<header class="site-header bg-secondary shadow-sm">
+<header class="site-header bg-white shadow-sm">
     <div class="container d-flex justify-content-between align-items-center py-3">
         <!-- Logo on the left -->
         <div class="logo-wrap">

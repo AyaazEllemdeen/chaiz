@@ -26,7 +26,7 @@
                                     <input type="text" name="user-name" class="form-input" placeholder="Full Name" required>
                                 </div>
                                 <div class="col-6 col-md-6">
-                                    <input type="text" name="user-number" class="form-input" placeholder="Cell Number"
+                                    <input type="text" name="user-number" class="form-input" placeholder="Phone Number"
                                         required>
                                 </div>
                             </div>

@@ -10,15 +10,8 @@
                 <div class="thank-you-page card-box">
                     <div id="lead-destination" class="mb-3 text-center fw-bold"
                         style="color: {{ $leadDestination === 'Already Submitted Previously' ? '#1dd1a1' : '#1dd1a1' }};">
-                        {{ $leadDestination }}
+                        Your Details have been submitted to {{ $leadDestination }}
                     </div>
-                    @if($leadDestination === 'Already Submitted Previously')
-                        <p class="text-muted text-center">This lead was submitted previously. You can still view available
-                            warranty options below.</p>
-                    @else
-                        <p class="text-muted text-center">Here are the plans for your car:</p>
-                    @endif
-
                     <!-- What Happens Next & Awareness Section -->
                     <div class="content-grid">
                         <div class="what-happens-next mb-4">
@@ -67,7 +60,7 @@
 
             <!-- Right: Chaiz Results (bigger) -->
             <div class="chaiz-results-section">
-                <h3 class="fw-bold mb-3 text-center" style="color: rgb(0, 0, 0);">Get Instant Options</h3>
+                <h3 class="fw-bold mb-3 text-center" style="color: rgb(0, 0, 0);">Here are plans for your car - Buy directly online.</h3>
                 <div id="search-results" class="chaiz-results"></div>
             </div>
         </div>
