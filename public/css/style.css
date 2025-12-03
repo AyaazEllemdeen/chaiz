@@ -683,12 +683,11 @@ h6 {
 }
 
 .phone-btn2 {
-    background: #fff;
-    color: #000;
-    border: 1.5px solid #000;
+    background: #000000;
+    color: #ffffff;
     padding: 5px 10px;
-    border-radius: 5px;
-    font-weight: 600;
+    border: none;
+    border-radius: 6px;
     font-size: 12px;
     cursor: pointer;
     transition: all 0.25s ease-in-out;
@@ -962,6 +961,7 @@ h6 {
         flex-wrap: nowrap; /* force one row */
         gap: 6px;
         justify-content: center;
+        height: 49px;
     }
 
     .get-quote-btn,
@@ -988,7 +988,8 @@ h6 {
     }
 
     .card-header {
-        padding-bottom: 12px;
+        padding-bottom: 0px;
+        margin-bottom: 0px !important;
         border-bottom: 1px solid #ddd;
         display: flex;
         flex-direction: column;
@@ -1081,6 +1082,7 @@ h6 {
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin: 1rem;
     }
 
     /* Logo + promo side by side */

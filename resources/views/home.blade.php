@@ -177,7 +177,7 @@
                         <!-- endurance card -->
                         <div class="service-card">
                             <div class="top-rated-ribbon">TOP RATED</div>
-                            <div class="card-header mb-3">
+                            <div class="card-header">
                                 <div class="logo-section2">
                                     <div class="logo2">
                                         <a href="https://endurancewarranty.com/lp/czcw" target="_blank"
@@ -251,7 +251,7 @@
                         <!-- american dream card -->
                         <div class="service-card">
                             <div class="top-rated-ribbon">3 MONTHS FREE </div>
-                            <div class="card-header mb-3">
+                            <div class="card-header">
                                 <div class="logo-section2">
                                     <div class="logo2">
                                         <a href="https://www.americandreamautoprotect.com/u7izFNKM9E" target="_blank"
@@ -324,7 +324,7 @@
                         <!-- chaiz card -->
                         <div class="service-card">
                             <div class="top-rated-ribbon">BEST COVERAGE</div>
-                            <div class="card-header mb-3">
+                            <div class="card-header">
                                 <div class="logo-section2">
                                     <div class="logo2">
                                         <a href="https://www.chaiz.com/?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
@@ -396,7 +396,7 @@
 
                         <!-- omega card -->
                         <div class="service-card mb-3">
-                            <div class="card-header mb-3">
+                            <div class="card-header">
                                 <div class="logo-section2">
                                     <div class="logo2">
                                         <a href="https://www.chaiz.com/p/omega?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
@@ -454,7 +454,7 @@
 
                         <!-- naac card -->
                         <div class="service-card">
-                            <div class="card-header mb-3">
+                            <div class="card-header">
                                 <div class="logo-section2">
                                     <div class="logo2">
                                         <a href="https://www.chaiz.com/p/naac?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
