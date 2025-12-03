@@ -650,7 +650,7 @@
             </div>
 
             <div class="score-illustration">
-                <img src="/img/icons/icon4.png" alt="">
+                <img src="/img/icons/icon5.png" alt="">
             </div>
         </div>
     </section>
