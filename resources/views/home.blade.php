@@ -552,6 +552,30 @@
             }
         });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function setEqualCardHeights() {
+                const cards = document.querySelectorAll('.cards-scroll-row .service-card');
+                let maxHeight = 0;
+
+                // Reset height first
+                cards.forEach(card => card.style.height = 'auto');
+
+                // Find max height
+                cards.forEach(card => {
+                    const cardHeight = card.offsetHeight;
+                    if (cardHeight > maxHeight) maxHeight = cardHeight;
+                });
+
+                // Apply max height
+                cards.forEach(card => card.style.height = maxHeight + 'px');
+            }
+
+            setEqualCardHeights();
+            window.addEventListener('resize', setEqualCardHeights);
+        });
+    </script>
+
 
     <section id="warranty-section" class="warranty-section">
         <div class="container">
