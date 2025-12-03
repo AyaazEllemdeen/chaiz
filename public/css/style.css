@@ -884,7 +884,6 @@ h6 {
     }
 }
 
-
 /* Tablets 768px - 1199px: Keep 3-card row, collapsed content */
 @media (min-width: 768px) and (max-width: 1199px) {
     .service-card {
@@ -1048,11 +1047,11 @@ h6 {
         top: 2px;
         right: 8px;
         display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        justify-content: flex-start;
-        gap: 1px;
+        flex-direction: row; /* side by side */
+        align-items: center; /* vertically center number and stars */
+        gap: 4px; /* space between number and stars */
         padding: 0;
+        padding-right: 7px;
         background: none;
         box-shadow: none;
         border-radius: 0;
@@ -1065,11 +1064,14 @@ h6 {
     .rating-section .rating-score,
     .rating-section2 .rating-score2 {
         font-size: 16px;
+        order: 1; /* number comes first */
     }
 
     .rating-section .stars,
     .rating-section2 .stars {
         font-size: 12px;
+        line-height: 1;
+        order: 2; /* stars come after number */
         line-height: 1;
     }
 
