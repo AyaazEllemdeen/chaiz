@@ -415,7 +415,7 @@ h6 {
 }
 
 .scroll-row-wrapper {
-    overflow: hidden;
+    overflow: visible;
 }
 
 .cards-scroll-row {
@@ -438,7 +438,6 @@ h6 {
     max-width: calc((100% - 48px) / 3);
     height: 100%; /* ensure stretch works */
 }
-
 
 .scroll-btn {
     position: absolute;
@@ -474,8 +473,8 @@ h6 {
 }
 @media (max-width: 768px) {
     .cards-scroll-row .service-card {
-        flex: 0 0 65%; /* 1.5 cards visible */
-        max-width: 65%;
+        flex: 0 0 85%; /* 1.5 cards visible */
+        max-width: 85%;
     }
 }
 
@@ -836,19 +835,16 @@ h6 {
     text-align: left;
 }
 
-/* All screens 1199px and below: Collapsed with More button */
+/* Remove collapsing and show all content on smaller screens */
 @media (max-width: 1199px) {
-    /* Hide content by default */
+    .divider-line {
+        display: none !important;
+    }
+
     .service-card > .card-body-row,
     .service-card > .card-body-row2,
     .service-card > .divider-line {
-        display: none;
-    }
-
-    /* Show content when active */
-    .card-body-row.active,
-    .card-body-row2.active {
-        display: flex;
+        display: flex; /* Always show content */
         flex-direction: column;
         align-items: center;
         text-align: center;
@@ -861,44 +857,33 @@ h6 {
     .card-body-row .description2,
     .card-body-row2 .description2 {
         width: 100%;
-        box-sizing: border-box;
         padding: 8px;
         text-align: center;
-        word-wrap: break-word;
-        font-size: 12px;
+        font-size: 11px;
         line-height: 1.4;
         margin-bottom: 10px;
     }
 
-    .card-body-row.active .features-grid,
-    .card-body-row2.active .features-grid {
+    .card-body-row .features-grid,
+    .card-body-row2 .features-grid {
         gap: 3px 10px;
         margin-bottom: 10px;
     }
 
-    .card-body-row.active .feature,
-    .card-body-row.active .feature2,
-    .card-body-row2.active .feature,
-    .card-body-row2.active .feature2 {
-        font-size: 11px;
+    .card-body-row .feature,
+    .card-body-row .feature2,
+    .card-body-row2 .feature,
+    .card-body-row2 .feature2 {
+        font-size: 9px;
         gap: 5px;
     }
 
-    /* Show More button */
+    /* Hide the More button */
     .more-btn {
-        display: block;
-        width: 100%;
-        padding: 8px;
-        background: #f5f5f5;
-        border: none;
-        cursor: pointer;
-        font-weight: bold;
-        font-size: 13px;
-        margin-top: 8px;
-        box-sizing: border-box;
-        color: #010100;
+        display: none;
     }
 }
+
 
 /* Tablets 768px - 1199px: Keep 3-card row, collapsed content */
 @media (min-width: 768px) and (max-width: 1199px) {
@@ -975,21 +960,19 @@ h6 {
 
     .cta-section,
     .cta-section2 {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        flex-wrap: nowrap; /* force one row */
         gap: 6px;
-        flex-wrap: wrap;
-        margin-top: 8px;
-        width: 100%;
-        height: auto;
+        justify-content: center;
     }
 
     .get-quote-btn,
-    .get-quote-btn2 {
-        padding: 8px 16px;
+    .get-quote-btn2,
+    .phone-btn,
+    .phone-btn2 {
+        padding: 6px 12px;
         font-size: 10px;
-        width: 100px;
+        width: auto;
+        min-width: 90px;
     }
 
     .phone-btn,
@@ -1016,7 +999,7 @@ h6 {
     /* Logo + promo centered */
     .logo-section,
     .logo-section2 {
-        display: flex;
+        display: contents;
         flex-direction: row;
         justify-content: center;
         align-items: center;
@@ -1101,7 +1084,7 @@ h6 {
     /* Logo + promo side by side */
     .logo-section,
     .logo-section2 {
-        display: flex;
+        display: contents;
         flex-direction: row;
         justify-content: center;
         align-items: center;
@@ -1123,20 +1106,20 @@ h6 {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 8px;
-        flex-wrap: wrap;
+        gap: 8px; /* space between buttons */
+        flex-wrap: nowrap; /* force buttons on one row */
         margin-top: 8px;
-        width: 100%;
-        height: auto;
+        width: auto;
     }
 
     .get-quote-btn,
     .get-quote-btn2,
     .phone-btn,
     .phone-btn2 {
-        width: 130px;
-        padding: 8px 16px;
-        font-size: 12px;
+        padding: 6px 12px; /* smaller padding */
+        font-size: 11px; /* smaller text */
+        width: auto; /* shrink to content */
+        min-width: 90px; /* optional: ensure buttons aren’t too small */
     }
 
     /* Promo badge under buttons */

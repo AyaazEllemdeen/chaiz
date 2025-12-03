@@ -953,19 +953,19 @@
                 isSubmitting = false;
             });
 
-            // More/Less button functionality
-            document.querySelectorAll(".more-btn").forEach(btn => {
-                btn.addEventListener("click", function () {
-                    const cardBody = this.previousElementSibling;
-                    cardBody.classList.toggle("active");
+            // // More/Less button functionality
+            // document.querySelectorAll(".more-btn").forEach(btn => {
+            //     btn.addEventListener("click", function () {
+            //         const cardBody = this.previousElementSibling;
+            //         cardBody.classList.toggle("active");
 
-                    if (cardBody.classList.contains("active")) {
-                        this.textContent = "- Less";
-                    } else {
-                        this.textContent = "+ More";
-                    }
-                });
-            });
+            //         if (cardBody.classList.contains("active")) {
+            //             this.textContent = "- Less";
+            //         } else {
+            //             this.textContent = "+ More";
+            //         }
+            //     });
+            // });
 
             // FAQ functionality
             const faqQuestions = document.querySelectorAll('.faq-question');
