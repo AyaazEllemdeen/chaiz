@@ -1642,7 +1642,7 @@ h6 {
 }
 /* Footer Styles */
 .site-footer {
-    background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+    background: #ffffff;
     color: #ffffff;
     padding: 3rem 0 1.5rem;
     position: relative;
