@@ -182,7 +182,7 @@
                                     <div class="logo2">
                                         <a href="https://endurancewarranty.com/lp/czcw" target="_blank"
                                             rel="noopener noreferrer">
-                                            <img src="/img/1.png" alt="Chaiz Logo">
+                                            <img src="/img/1c.png" alt="Chaiz Logo">
                                         </a>
                                     </div>
                                     <div class="promo-badge2">
@@ -256,7 +256,7 @@
                                     <div class="logo2">
                                         <a href="https://www.americandreamautoprotect.com/u7izFNKM9E" target="_blank"
                                             rel="noopener noreferrer">
-                                            <img src="/img/american-dream.png" alt="">
+                                            <img src="/img/american-dreamc.png" alt="">
                                         </a>
                                     </div>
                                     <div class="promo-badge2">
