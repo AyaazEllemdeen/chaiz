@@ -26,6 +26,7 @@ body {
 * {
     box-sizing: border-box;
 }
+
 /* ----------------------- Hero Section */
 .hero-section {
     background-color: #ffffff;
@@ -150,28 +151,21 @@ body {
     color: #fff;
 }
 
-/* iOS SELECT FIX */
-select.form-input {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-
-    background-color: #000000;
-    color: #ffffff;
-    border: 2px solid #ffffff;
-    border-radius: 5px;
-    border-width: 1.5px;
-
-    padding: 14px;
-    padding-right: 33px;
-    font-size: 0.85rem; /* REQUIRED for iOS zoom prevention */
-    line-height: inherit;
-
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath d='M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z'/%3E%3C/svg%3E");
-
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    background-size: 16px;
+@media (pointer: coarse) {
+    select.form-input {
+        -webkit-appearance: none;
+        appearance: none;
+        background-color: #000;
+        color: #fff;
+        border: 1.5px solid #fff;
+        border-radius: 5px;
+        padding: 14px 33px 14px 14px;
+        font-size: 0.85rem;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath d='M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        background-size: 16px;
+    }
 }
 
 /* Submit Button */
