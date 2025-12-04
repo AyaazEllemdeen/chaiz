@@ -149,6 +149,7 @@ select.form-input {
     color: #ffffff;
     border: 2px solid #ffffff;
     border-radius: 5px;
+    border-width: 1.5px;
 
     padding: 14px;
     font-size: 0.85rem; /* REQUIRED for iOS zoom prevention */
