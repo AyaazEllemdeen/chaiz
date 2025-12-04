@@ -71,8 +71,6 @@
         </div>
     </section>
 
-    <style></style>
-
     <script>
         window.carData = @json($carData);
 
@@ -126,4 +124,26 @@
 
         document.addEventListener('DOMContentLoaded', loadChaizResults);
     </script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const destination = @json($leadDestination);
+
+            if (destination) {
+                window.dataLayer.push({
+                    event: 'leadSubmission',
+                    leadSubmission: 'leadSubmission',  // this matches your GTM filter
+                    destination: destination
+                });
+
+                console.log('GTM Fired:', {
+                    event: 'leadSubmission',
+                    destination: destination
+                });
+            }
+        });
+    </script>
+
 @endsection
