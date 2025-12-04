@@ -506,10 +506,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-    font-weight: 300;
     transition: all 0.2s ease;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.nav-btn svg {
+    width: 20px;
+    height: 20px;
 }
 
 .nav-btn:hover {
@@ -764,7 +767,11 @@ body {
     .nav-btn {
         width: 40px;
         height: 40px;
-        font-size: 1.25rem;
+    }
+    
+    .nav-btn svg {
+        width: 18px;
+        height: 18px;
     }
     
     .nav-btn.prev {
@@ -855,7 +862,11 @@ body {
     .nav-btn {
         width: 36px;
         height: 36px;
-        font-size: 1.1rem;
+    }
+    
+    .nav-btn svg {
+        width: 16px;
+        height: 16px;
     }
     
     .nav-btn.prev {
