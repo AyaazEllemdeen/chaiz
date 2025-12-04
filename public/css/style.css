@@ -152,6 +152,7 @@ select.form-input {
     border-width: 1.5px;
 
     padding: 14px;
+    padding-right: 33px;
     font-size: 0.85rem; /* REQUIRED for iOS zoom prevention */
     line-height: inherit;
 
