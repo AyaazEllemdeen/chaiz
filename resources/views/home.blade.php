@@ -165,352 +165,192 @@
         </div>
     </section>
 
-    <section class="card-section" id="card-section">
+    <section class="providers-section" id="providers-section">
         <div class="container">
-            <h3 class="mt-0 mb-3 mobile-top-padding" style="font-weight: 600;">Our providers</h3>
-            <div class="scroll-container">
-                <button id="scrollLeftProviders" class="scroll-btn left">‹</button>
+            <h3 class="section-title">Our providers</h3>
 
-                <div class="scroll-row-wrapper">
-                    <div class="cards-scroll-row" id="providersWrapper">
+            <div class="scroll-wrapper">
+                <button class="nav-btn prev" id="scrollLeftProviders" aria-label="Scroll left">‹</button>
 
-                        <!-- endurance card -->
-                        <div class="service-card">
-                            <div class="top-rated-ribbon">TOP RATED</div>
-                            <div class="card-header">
-                                <div class="logo-section2">
-                                    <div class="logo2">
-                                        <a href="https://endurancewarranty.com/lp/czcw" target="_blank"
-                                            rel="noopener noreferrer">
-                                            <img src="/img/1c.png" alt="Chaiz Logo">
-                                        </a>
-                                    </div>
-                                    <div class="promo-badge2">
-                                        $300 off any new plan!
-                                    </div>
-                                    <div class="rating-section2">
-                                        <div class="rating-score2">9.9</div>
-                                        <div class="stars">★★★★★</div>
-                                    </div>
-                                    <div class="cta-section2">
-                                        <a href="https://endurancewarranty.com/lp/czcw" class="get-quote-btn2"
-                                            target="_blank" rel="noopener noreferrer">Get a Quote</a>
-                                        <a href="tel:8005980082">
-                                            <button class="phone-btn2">800-598-0082</button>
-                                        </a>
-                                    </div>
-                                </div>
+                <div class="cards-track" id="providersWrapper">
+
+                    <!-- Endurance Card -->
+                    <div class="provider-card">
+                        <div class="card-badge">TOP RATED</div>
+                        <div class="card-top">
+                            <div class="logo-wrap">
+                                <a href="https://endurancewarranty.com/lp/czcw" target="_blank" rel="noopener noreferrer">
+                                    <img src="/img/1c.png" alt="Endurance Logo">
+                                </a>
                             </div>
-                            <div class="divider-line"></div>
-                            <div class="card-body-row2">
-                                <div class="description2">
-                                    Endurance offers flexibility to choose your certified mechanic, and a 30-day money-back
-                                    guarantee
-                                    for
-                                    peace of mind. Also, get a free Year of Elite Benefits featuring 24/7 Roadside
-                                    Assistance,
-                                    Complete
-                                    Tire
-                                    Coverage, Key Replacement, and more!
-                                </div>
-
-                                <div class="features-grid">
-                                    <div class="feature2">
-                                        <span class="checkmark">✓</span>
-                                        <span>Covers cars up to 20 years old/200K miles</span>
-                                    </div>
-                                    <div class="feature2">
-                                        <span class="checkmark">✓</span>
-                                        <span>1 year of FREE Elite Benefits</span>
-                                    </div>
-                                    <div class="feature2">
-                                        <span class="checkmark">✓</span>
-                                        <span>Flexible down payment to fit your budget</span>
-                                    </div>
-                                    <div class="feature2">
-                                        <span class="checkmark">✓</span>
-                                        <span>6 coverage plans to choose from</span>
-                                    </div>
-                                    <div class="feature2">
-                                        <span class="checkmark">✓</span>
-                                        <span>No obligation fast quote</span>
-                                    </div>
-                                    <div class="feature2">
-                                        <span class="checkmark">✓</span>
-                                        <span>30 Day money back guarantee</span>
-                                    </div>
-                                    <div class="feature2">
-                                        <span class="checkmark">✓</span>
-                                        <span> Quick and easy claims process</span>
-                                    </div>
-                                </div>
+                            <div class="rating-wrap">
+                                <span class="rating-number">9.9</span>
+                                <span class="rating-stars">★★★★★</span>
                             </div>
-                            <button class="more-btn">+ More</button>
                         </div>
-
-                        <!-- american dream card -->
-                        <div class="service-card">
-                            <div class="top-rated-ribbon">3 MONTHS FREE </div>
-                            <div class="card-header">
-                                <div class="logo-section2">
-                                    <div class="logo2">
-                                        <a href="https://www.americandreamautoprotect.com/u7izFNKM9E" target="_blank"
-                                            rel="noopener noreferrer">
-                                            <img src="/img/american-dreamc.png" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="promo-badge2">
-                                        $350 off
-                                    </div>
-                                    <div class="rating-section2">
-                                        <div class="rating-score2">9.2</div>
-                                        <div class="stars">★★★★★</div>
-                                    </div>
-                                    <div class="cta-section2">
-                                        <a href="https://www.americandreamautoprotect.com/u7izFNKM9E" class="get-quote-btn2"
-                                            target="_blank" rel="noopener noreferrer">Get a Quote</a>
-                                        <a href="tel:8333640947">
-                                            <button class="phone-btn2">833-364-0947</button>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="divider-line"></div>
-                            <div class="card-body-row2">
-                                <div class="description2">
-                                    American Dream Auto Protect provides peace of mind by mitigating the high costs that
-                                    come
-                                    with
-                                    unexpected repairs. Their stress-free claims process means you get approved in as little
-                                    as
-                                    48
-                                    hours.
-                                </div>
-
-                                <div class="features-grid">
-                                    <div class="feature2">
-                                        <span class="checkmark">✓</span>
-                                        <span>Choose your own repair facility</span>
-                                    </div>
-                                    <div class="feature2">
-                                        <span class="checkmark">✓</span>
-                                        <span>Customize your coverage plan</span>
-                                    </div>
-                                    <div class="feature2">
-                                        <span class="checkmark">✓</span>
-                                        <span>OFFER: $350 off + 3 months free!</span>
-                                    </div>
-                                    <div class="feature2">
-                                        <span class="checkmark">✓</span>
-                                        <span>Flexible payment plan options</span>
-                                    </div>
-                                    <div class="feature2">
-                                        <span class="checkmark">✓</span>
-                                        <span>24/7 Roadside Assistance</span>
-                                    </div>
-                                    <div class="feature2">
-                                        <span class="checkmark">✓</span>
-                                        <span>30 Day money back guarantee</span>
-                                    </div>
-                                    <div class="feature2">
-                                        <span class="checkmark">✓</span>
-                                        <span>Covers cars up to 20 years old / 200K miles</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="more-btn">+ More</button>
+                        <div class="promo-text">$300 off any new plan!</div>
+                        <div class="card-body">
+                            <p class="card-desc">Endurance offers flexibility to choose your certified mechanic, and a
+                                30-day money-back guarantee for peace of mind. Also, get a free Year of Elite Benefits
+                                featuring 24/7 Roadside Assistance, Complete Tire Coverage, Key Replacement, and more!</p>
+                            <ul class="features-list">
+                                <li>Covers cars up to 20 years old/200K miles</li>
+                                <li>1 year of FREE Elite Benefits</li>
+                                <li>Flexible down payment to fit your budget</li>
+                                <li>6 coverage plans to choose from</li>
+                                <li>No obligation fast quote</li>
+                                <li>30 Day money back guarantee</li>
+                            </ul>
                         </div>
-
-                        <!-- chaiz card -->
-                        <div class="service-card">
-                            <div class="top-rated-ribbon">BEST COVERAGE</div>
-                            <div class="card-header">
-                                <div class="logo-section2">
-                                    <div class="logo2">
-                                        <a href="https://www.chaiz.com/?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
-                                            target="_blank" rel="noopener noreferrer">
-                                            <img src="/img/chaiz.png" alt="Chaiz Logo">
-                                        </a>
-                                    </div>
-                                    <div class="promo-badge2">
-                                        Buy directly online — No Email or Phone needed
-                                    </div>
-                                    <div class="rating-section2">
-                                        <div class="rating-score2">9.9</div>
-                                        <div class="stars">★★★★★</div>
-                                    </div>
-                                    <div class="cta-section2">
-                                        <a href="https://www.chaiz.com/?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
-                                            class="get-quote-btn2" target="_blank" rel="noopener noreferrer">Buy Now</a>
-                                        <a href="tel:8339429249">
-                                            <button class="phone-btn2">833-942-9249</button>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="divider-line"></div>
-                            <div class="card-body-row2">
-                                <div class="description2">
-                                    Chaiz shows you several plans from multiple providers within 30 seconds.
-                                    Compare and buy breakdown protection from top providers today.
-                                </div>
-
-                                <div class="features-grid">
-                                    <div class="feature2">
-                                        <span class="checkmark">✓</span>
-                                        <span>Best price guaranteed</span>
-                                    </div>
-                                    <div class="feature2">
-                                        <span class="checkmark">✓</span>
-                                        <span>No email or phone needed</span>
-                                    </div>
-                                    <div class="feature2">
-                                        <span class="checkmark">✓</span>
-                                        <span>Independent and unbiased</span>
-                                    </div>
-                                    <div class="feature2">
-                                        <span class="checkmark">✓</span>
-                                        <span>Hundreds of 5* reviews</span>
-                                    </div>
-                                    <div class="feature2">
-                                        <span class="checkmark">✓</span>
-                                        <span>30-day money back guarantee</span>
-                                    </div>
-                                    <div class="feature2">
-                                        <span class="checkmark">✓</span>
-                                        <span>A+ customer service</span>
-                                    </div>
-                                    <div class="feature2">
-                                        <span class="checkmark">✓</span>
-                                        <span>Purchase completely online 24/7</span>
-                                    </div>
-                                    <div class="feature2">
-                                        <span class="checkmark">✓</span>
-                                        <span>Compare live quotes within less than a minute</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <button class="more-btn">+ More</button>
-                        </div>
-
-                        <!-- omega card -->
-                        <div class="service-card mb-3">
-                            <div class="card-header">
-                                <div class="logo-section2">
-                                    <div class="logo2">
-                                        <a href="https://www.chaiz.com/p/omega?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
-                                            target="_blank" rel="noopener noreferrer">
-                                            <img src="/img/omega.png" alt="Omega Logo">
-                                        </a>
-                                    </div>
-
-                                    <div class="rating-section2">
-                                        <div class="rating-score2">8.2</div>
-                                        <div class="stars">★★★★☆</div>
-                                    </div>
-
-                                    <div class="cta-section2">
-                                        <a href="https://www.chaiz.com/p/omega?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
-                                            class="get-quote-btn2" target="_blank" rel="noopener noreferrer">Get a Quote</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="divider-line"></div>
-
-                            <div class="card-body-row2">
-                                <div class="description2">
-                                    Once you sign your Omega Auto Care vehicle service contract, you gain access to several
-                                    member
-                                    benefits. And these are more than just simple perks, with benefits that will give you
-                                    the
-                                    peace
-                                    of mind and customer service you deserve.
-                                </div>
-
-                                <div class="features-grid">
-                                    <div class="feature2"><span class="checkmark">✓</span><span>Comprehensive
-                                            coverage</span>
-                                    </div>
-                                    <div class="feature2"><span class="checkmark">✓</span><span>Peace of mind with great
-                                            customer
-                                            service</span></div>
-                                    <div class="feature2"><span class="checkmark">✓</span><span>Roadside assistance</span>
-                                    </div>
-                                    <div class="feature2"><span class="checkmark">✓</span><span>Flexible plans tailored to
-                                            different
-                                            needs</span></div>
-                                    <div class="feature2"><span class="checkmark">✓</span><span>Nationwide repair
-                                            network</span>
-                                    </div>
-                                    <div class="feature2"><span class="checkmark">✓</span><span>Road Hazard Coverage</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <button class="more-btn">+ More</button>
-                        </div>
-
-                        <!-- naac card -->
-                        <div class="service-card">
-                            <div class="card-header">
-                                <div class="logo-section2">
-                                    <div class="logo2">
-                                        <a href="https://www.chaiz.com/p/naac?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
-                                            target="_blank" rel="noopener noreferrer">
-                                            <img src="/img/naac.png" alt="NAAC Logo">
-                                        </a>
-                                    </div>
-
-                                    <div class="rating-section2">
-                                        <div class="rating-score2">8.1</div>
-                                        <div class="stars">★★★★☆</div>
-                                    </div>
-
-                                    <div class="cta-section2">
-                                        <a href="https://www.chaiz.com/p/naac?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
-                                            class="get-quote-btn2" target="_blank" rel="noopener noreferrer">Get a Quote</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="divider-line"></div>
-
-                            <div class="card-body-row2">
-                                <div class="description2">
-                                    North American Auto Care offers convenient access to a variety of services provided by
-                                    trained
-                                    technicians, with readily available parts and potential warranty coverage for added
-                                    peace of
-                                    mind.
-                                </div>
-
-                                <div class="features-grid">
-                                    <div class="feature2"><span class="checkmark">✓</span><span>Variety of services</span>
-                                    </div>
-                                    <div class="feature2"><span class="checkmark">✓</span><span>Trained & certified
-                                            professionals</span></div>
-                                    <div class="feature2"><span class="checkmark">✓</span><span>No obligation quote</span>
-                                    </div>
-                                    <div class="feature2"><span class="checkmark">✓</span><span>Easy access to
-                                            replacements</span>
-                                    </div>
-                                    <div class="feature2"><span class="checkmark">✓</span><span>100+ years combined
-                                            experience</span></div>
-                                    <div class="feature2"><span class="checkmark">✓</span><span>Nationwide service
-                                            centers</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <button class="more-btn">+ More</button>
+                        <div class="card-actions">
+                            <a href="https://endurancewarranty.com/lp/czcw" class="btn-primary" target="_blank"
+                                rel="noopener noreferrer">Get a Quote</a>
+                            <a href="tel:8005980082" class="btn-secondary">800-598-0082</a>
                         </div>
                     </div>
 
-                    <!-- ✅ RIGHT BUTTON MUST BE HERE -->
+                    <!-- American Dream Card -->
+                    <div class="provider-card">
+                        <div class="card-badge">3 MONTHS FREE</div>
+                        <div class="card-top">
+                            <div class="logo-wrap">
+                                <a href="https://www.americandreamautoprotect.com/u7izFNKM9E" target="_blank"
+                                    rel="noopener noreferrer">
+                                    <img src="/img/american-dreamc.png" alt="American Dream Logo">
+                                </a>
+                            </div>
+                            <div class="rating-wrap">
+                                <span class="rating-number">9.2</span>
+                                <span class="rating-stars">★★★★★</span>
+                            </div>
+                        </div>
+                        <div class="promo-text">$350 off + 3 months free!</div>
+                        <div class="card-body">
+                            <p class="card-desc">American Dream Auto Protect provides peace of mind by mitigating the high
+                                costs that come with unexpected repairs. Their stress-free claims process means you get
+                                approved in as little as 48 hours.</p>
+                            <ul class="features-list">
+                                <li>Choose your own repair facility</li>
+                                <li>Customize your coverage plan</li>
+                                <li>Flexible payment plan options</li>
+                                <li>24/7 Roadside Assistance</li>
+                                <li>30 Day money back guarantee</li>
+                                <li>Covers cars up to 20 years old / 200K miles</li>
+                            </ul>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://www.americandreamautoprotect.com/u7izFNKM9E" class="btn-primary"
+                                target="_blank" rel="noopener noreferrer">Get a Quote</a>
+                            <a href="tel:8333640947" class="btn-secondary">833-364-0947</a>
+                        </div>
+                    </div>
+
+                    <!-- Chaiz Card -->
+                    <div class="provider-card">
+                        <div class="card-badge">BEST COVERAGE</div>
+                        <div class="card-top">
+                            <div class="logo-wrap">
+                                <a href="https://www.chaiz.com/?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
+                                    target="_blank" rel="noopener noreferrer">
+                                    <img src="/img/chaiz.png" alt="Chaiz Logo">
+                                </a>
+                            </div>
+                            <div class="rating-wrap">
+                                <span class="rating-number">9.9</span>
+                                <span class="rating-stars">★★★★★</span>
+                            </div>
+                        </div>
+                        <div class="promo-text">Buy directly online — No Email or Phone needed</div>
+                        <div class="card-body">
+                            <p class="card-desc">Chaiz shows you several plans from multiple providers within 30 seconds.
+                                Compare and buy breakdown protection from top providers today.</p>
+                            <ul class="features-list">
+                                <li>Best price guaranteed</li>
+                                <li>No email or phone needed</li>
+                                <li>Independent and unbiased</li>
+                                <li>Hundreds of 5* reviews</li>
+                                <li>30-day money back guarantee</li>
+                                <li>Purchase completely online 24/7</li>
+                            </ul>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://www.chaiz.com/?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
+                                class="btn-primary" target="_blank" rel="noopener noreferrer">Buy Now</a>
+                            <a href="tel:8339429249" class="btn-secondary">833-942-9249</a>
+                        </div>
+                    </div>
+
+                    <!-- Omega Card -->
+                    <div class="provider-card">
+                        <div class="card-top">
+                            <div class="logo-wrap">
+                                <a href="https://www.chaiz.com/p/omega?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
+                                    target="_blank" rel="noopener noreferrer">
+                                    <img src="/img/omega.png" alt="Omega Logo">
+                                </a>
+                            </div>
+                            <div class="rating-wrap">
+                                <span class="rating-number">8.2</span>
+                                <span class="rating-stars">★★★★☆</span>
+                            </div>
+                        </div>
+                        <div class="promo-text subtle">Member benefits included</div>
+                        <div class="card-body">
+                            <p class="card-desc">Once you sign your Omega Auto Care vehicle service contract, you gain
+                                access to several member benefits. And these are more than just simple perks, with benefits
+                                that will give you the peace of mind and customer service you deserve.</p>
+                            <ul class="features-list">
+                                <li>Comprehensive coverage</li>
+                                <li>Peace of mind with great customer service</li>
+                                <li>Roadside assistance</li>
+                                <li>Flexible plans tailored to different needs</li>
+                                <li>Nationwide repair network</li>
+                                <li>Road Hazard Coverage</li>
+                            </ul>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://www.chaiz.com/p/omega?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
+                                class="btn-primary" target="_blank" rel="noopener noreferrer">Get a Quote</a>
+                        </div>
+                    </div>
+
+                    <!-- NAAC Card -->
+                    <div class="provider-card">
+                        <div class="card-top">
+                            <div class="logo-wrap">
+                                <a href="https://www.chaiz.com/p/naac?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
+                                    target="_blank" rel="noopener noreferrer">
+                                    <img src="/img/naac.png" alt="NAAC Logo">
+                                </a>
+                            </div>
+                            <div class="rating-wrap">
+                                <span class="rating-number">8.1</span>
+                                <span class="rating-stars">★★★★☆</span>
+                            </div>
+                        </div>
+                        <div class="promo-text subtle">100+ years combined experience</div>
+                        <div class="card-body">
+                            <p class="card-desc">North American Auto Care offers convenient access to a variety of services
+                                provided by trained technicians, with readily available parts and potential warranty
+                                coverage for added peace of mind.</p>
+                            <ul class="features-list">
+                                <li>Variety of services</li>
+                                <li>Trained & certified professionals</li>
+                                <li>No obligation quote</li>
+                                <li>Easy access to replacements</li>
+                                <li>100+ years combined experience</li>
+                                <li>Nationwide service centers</li>
+                            </ul>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://www.chaiz.com/p/naac?fpr=cworg&utm_source=sem&utm_medium=cps&utm_campaign=cworg&utm_content=article"
+                                class="btn-primary" target="_blank" rel="noopener noreferrer">Get a Quote</a>
+                        </div>
+                    </div>
+
                 </div>
-                <button id="scrollRightProviders" class="scroll-btn right">›</button>
+
+                <button class="nav-btn next" id="scrollRightProviders" aria-label="Scroll right">›</button>
             </div>
         </div>
     </section>
@@ -518,61 +358,41 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const wrapper = document.getElementById("providersWrapper");
-            const scrollLeftBtn = document.getElementById("scrollLeftProviders");
-            const scrollRightBtn = document.getElementById("scrollRightProviders");
+            const prevBtn = document.getElementById("scrollLeftProviders");
+            const nextBtn = document.getElementById("scrollRightProviders");
 
-            function updateScrollUI() {
+            function getCardWidth() {
+                const card = wrapper.querySelector('.provider-card');
+                if (!card) return 340;
+                const style = getComputedStyle(wrapper);
+                const gap = parseFloat(style.gap) || 24;
+                return card.offsetWidth + gap;
+            }
+
+            function updateUI() {
                 if (!wrapper) return;
+
                 const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
+                const scrollPos = wrapper.scrollLeft;
 
-                scrollLeftBtn.disabled = wrapper.scrollLeft <= 10;
-                scrollRightBtn.disabled = wrapper.scrollLeft >= maxScroll - 10;
+                prevBtn.disabled = scrollPos <= 5;
+                nextBtn.disabled = scrollPos >= maxScroll - 5;
             }
 
-            if (scrollLeftBtn) {
-                scrollLeftBtn.addEventListener("click", () => {
-                    const card = wrapper.querySelector('.service-card');
-                    const scrollAmount = card ? card.offsetWidth + 24 : 340;
-                    wrapper.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-                });
-            }
+            prevBtn.addEventListener("click", () => {
+                const cardWidth = getCardWidth();
+                wrapper.scrollBy({ left: -cardWidth, behavior: "smooth" });
+            });
 
-            if (scrollRightBtn) {
-                scrollRightBtn.addEventListener("click", () => {
-                    const card = wrapper.querySelector('.service-card');
-                    const scrollAmount = card ? card.offsetWidth + 24 : 340;
-                    wrapper.scrollBy({ left: scrollAmount, behavior: "smooth" });
-                });
-            }
+            nextBtn.addEventListener("click", () => {
+                const cardWidth = getCardWidth();
+                wrapper.scrollBy({ left: cardWidth, behavior: "smooth" });
+            });
 
-            if (wrapper) {
-                wrapper.addEventListener("scroll", updateScrollUI);
-                window.addEventListener("resize", updateScrollUI);
-                setTimeout(updateScrollUI, 100);
-            }
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            function setEqualCardHeights() {
-                const cards = document.querySelectorAll('.cards-scroll-row .service-card');
-                let maxHeight = 0;
+            wrapper.addEventListener("scroll", updateUI);
+            window.addEventListener("resize", updateUI);
 
-                // Reset height first
-                cards.forEach(card => card.style.height = 'auto');
-
-                // Find max height
-                cards.forEach(card => {
-                    const cardHeight = card.offsetHeight;
-                    if (cardHeight > maxHeight) maxHeight = cardHeight;
-                });
-
-                // Apply max height
-                cards.forEach(card => card.style.height = maxHeight + 'px');
-            }
-
-            setEqualCardHeights();
-            window.addEventListener('resize', setEqualCardHeights);
+            setTimeout(updateUI, 100);
         });
     </script>
 
