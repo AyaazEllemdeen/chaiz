@@ -113,7 +113,15 @@
                     mileage,
                     userId: "96d8841b-6ae6-4cb6-9b43-401662e25560"
                 },
-                coverageLevel: 'basic'  
+                callbacks: {
+                    onRedirect: function (planData) {
+                        window.dataLayer.push({
+                            event: 'results_click_out',
+                            warrantyName: planData.warrantyName,
+                            providerName: planData.providerName
+                        });
+                    }
+                }
             };
 
             if (!document.querySelector('script[src="https://warranty-search.chaiz.com/initialize.js"]')) {
