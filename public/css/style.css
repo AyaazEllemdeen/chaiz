@@ -815,7 +815,7 @@ body {
         flex: 0 0 calc(100% - 2.5rem);
         min-width: 260px;
         padding: 1.25rem;
-        border-radius: 12px;
+        border-radius: 16px;
     }
     
     .card-badge {
