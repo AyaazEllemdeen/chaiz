@@ -146,7 +146,7 @@
                             </div>
 
                             <button type="submit" id="submit-btn" class="form-submit-btn">
-                                <span id="submit-text">Submit</span>
+                                <span id="submit-text">See Quotes</span>
                                 <span id="submit-loader" class="submit-loader" style="display: none;">
                                     <svg width="20" height="20" viewBox="0 0 50 50" style="vertical-align: middle;">
                                         <circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="5"
