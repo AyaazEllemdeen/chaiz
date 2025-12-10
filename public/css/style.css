@@ -1834,10 +1834,10 @@ body {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 14px 16px;
+        padding: 1px 19px;
         font-weight: bold;
         cursor: pointer;
-        font-size: 18px;
+        font-size: 15px;
     }
 
     .mobile-accordion-header .chevron {

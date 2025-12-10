@@ -11,7 +11,7 @@
 
                 <div class="thank-you-page card-box">
 
-                     <div id="lead-destination" class="mb-3 text-center fw-bold" style="color: #1dd1a1;">
+                     <div id="lead-destination" class="mb-2 text-center fw-bold" style="color: #1dd1a1;">
                             @if($leadDestination === 'Already Submitted Previously')
                                 Oops! Seems you have submitted before. Don't worry you can still buy online at chaiz.com
                             @else
