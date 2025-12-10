@@ -19,7 +19,7 @@
                     <div class="form-card">
                         <form id="quiz-start-form">
                             @csrf
-                            <h3 class="form-title mb-4">Your Details</h3>
+                            <h3 class="form-title mb-4">See Multiple Quotes in Seconds</h3>
 
                             <div class="row g-3 mb-3">
                                 <div class="col-6 col-md-6">
