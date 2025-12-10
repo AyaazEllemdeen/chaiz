@@ -11,6 +11,14 @@
 
                 <div class="thank-you-page card-box">
 
+                     <div id="lead-destination" class="mb-3 text-center fw-bold" style="color: #1dd1a1;">
+                            @if($leadDestination === 'Already Submitted Previously')
+                                Oops! Seems you have submitted before. Don't worry you can still buy online at chaiz.com
+                            @else
+                                Your Details have been submitted to {{ $leadDestination }}
+                            @endif
+                        </div>
+
                     <div class="mobile-accordion-header d-md-none" id="accordionTrigger">
                         <span>What Happens Next</span>
                         <span class="chevron" id="chevronIcon">+</span>
@@ -19,13 +27,7 @@
 
                     <div id="thankYouAccordion" class="accordion-content">
 
-                        <div id="lead-destination" class="mb-3 text-center fw-bold" style="color: #1dd1a1;">
-                            @if($leadDestination === 'Already Submitted Previously')
-                                Oops! Seems you have submitted before. Don't worry you can still buy online at chaiz.com
-                            @else
-                                Your Details have been submitted to {{ $leadDestination }}
-                            @endif
-                        </div>
+                       
 
                         <div class="content-grid">
 
