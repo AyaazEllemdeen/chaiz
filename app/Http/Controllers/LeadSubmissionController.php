@@ -132,7 +132,7 @@ class LeadSubmissionController extends Controller
             // -------------------------------
             try {
                 $partnerPayload = [
-                    'partner' => 'Chaiz',
+                    'partner' => 'Comparewarranties',
                     'transactionId' => (string) Str::uuid(),
                     'utmParameters' => 'utm_source=partner&utm_medium=cps&utm_campaign=lead-gen',
                     'lead' => [
@@ -154,7 +154,7 @@ class LeadSubmissionController extends Controller
                 $partnerResponse = Http::withHeaders([
                     'Authorization' => 'Bearer ' . env('PARTNER_API_TOKEN'),
                     'Content-Type' => 'application/json',
-                ])->post('https://chaiz-api-uat.azurewebsites.net/api/v2/Partners/Lead', $partnerPayload);
+                ])->post('https://chaiz-api.azurewebsites.net/api/v2/Partners/Lead', $partnerPayload);
 
                 Log::info('Partner Lead API response', [
                     'status' => $partnerResponse->status(),
