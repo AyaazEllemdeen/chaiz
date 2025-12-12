@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 class LeadSubmissionController extends Controller
 {
     public function store(Request $request)
     {
-        Log::info('LeadSubmissionController@store called');
-        Log::info('Request data:', $request->all());
+        Log::info('LeadSubmissionController@store called', $request->all());
 
         $validated = $request->validate([
             'sel-year' => 'required|integer',
@@ -24,19 +24,11 @@ class LeadSubmissionController extends Controller
             'user-number' => 'required|string',
         ]);
 
-        Log::info('Validation passed:', $validated);
+        Log::info('Validation passed', $validated);
 
-        $nameParts = explode(' ', $validated['user-name'], 2);
-        $firstName = ucfirst($nameParts[0] ?? '');
-        $lastName = ucfirst($nameParts[1] ?? '');
-
-        // Get zip code from config based on state
+        [$firstName, $lastName] = $this->splitName($validated['user-name']);
         $stateCode = strtoupper($validated['user-state']);
         $zipCode = config("zipcodes.{$stateCode}", config('zipcodes.default'));
-
-        Log::info("Using zip code {$zipCode} for state {$stateCode}");
-
-        // Convert mileage range to numeric value for API
         $mileageValue = $this->convertMileageToNumeric($validated['car_mileage']);
 
         $payload = [
@@ -53,69 +45,39 @@ class LeadSubmissionController extends Controller
             'smsOptIn' => true,
         ];
 
-        Log::info('Endurance payload prepared:', $payload);
+        Log::info('Prepared Endurance payload', $payload);
 
-        $url = 'https://leadsubmission.enduranceapi.com/api/v1/leads';
-
-        $enduranceIsDuplicate = false;
-        $leadConduitIsDuplicate = false;
+        $finalDestination = 'System Error';
+        $finalMessage = 'Failed to submit lead due to a system error';
 
         try {
-            Log::info('Attempting to send to Endurance API...');
-
-            $response = Http::withHeaders([
+            // -------------------------------
+            // 1️⃣ Send to Endurance
+            // -------------------------------
+            $enduranceResponse = Http::withHeaders([
                 'Content-Type' => 'application/json-patch+json',
-            ])
-                ->withBasicAuth('CHAIZ-INT-chaizcwhp', 'NqkTOZ2vJBEi3cpn')
-                ->post($url, $payload);
+            ])->withBasicAuth('CHAIZ-INT-chaizcwhp', 'NqkTOZ2vJBEi3cpn')
+                ->post('https://leadsubmission.enduranceapi.com/api/v1/leads', $payload);
 
-            Log::info('Endurance API response status: ' . $response->status());
-            Log::info('Endurance API response body: ' . $response->body());
-            Log::info('Endurance API response headers:', $response->headers());
+            Log::info('Endurance API response', [
+                'status' => $enduranceResponse->status(),
+                'body' => $enduranceResponse->body(),
+            ]);
 
-            $chaizData = [
-                'make' => strtolower($validated['sel-make']),
-                'model' => strtolower($validated['sel-model']),
-                'year' => (int) $validated['sel-year'],
-                'state' => $stateCode,
-                'mileage' => $mileageValue,
-                'userId' => '96d8841b-6ae6-4cb6-9b43-401662e25560'
-            ];
-
-            session()->flash('chaiz_search_data', $chaizData);
-
-            if ($response->successful()) {
-                Log::info('Lead successfully sent to Endurance');
-
-                session()->put('lead_already_submitted', true);
-                session()->put('lead_destination', 'Endurance');
-
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Your lead has been successfully submitted to Endurance for processing. You should receive a response shortly.',
-                    'destination' => 'Endurance'
-                ]);
+            $enduranceIsDuplicate = false;
+            if ($enduranceResponse->successful()) {
+                $finalDestination = 'Endurance';
+                $finalMessage = 'Your lead has been successfully submitted to Endurance.';
             } else {
-                // Check if it's a duplicate lead in Endurance
-                $responseBody = json_decode($response->body(), true);
-                if ($response->status() === 400 && isset($responseBody['errorCode']) && $responseBody['errorCode'] === 970) {
-                    Log::info('Duplicate lead detected in Endurance, will try LeadConduit');
+                $responseBody = json_decode($enduranceResponse->body(), true);
+                if ($enduranceResponse->status() === 400 && isset($responseBody['errorCode']) && $responseBody['errorCode'] === 970) {
                     $enduranceIsDuplicate = true;
-                } else {
-                    Log::warning('Endurance API failed (non-duplicate error), attempting fallback to LeadConduit');
-                    Log::warning('Endurance failure reason:', [
-                        'status' => $response->status(),
-                        'body' => $response->body()
-                    ]);
+                    Log::info('Duplicate lead detected in Endurance');
                 }
 
-                // Always try LeadConduit as fallback
-                $fallbackUrl = 'https://app.leadconduit.com/flows/65832665b40f680b034dae9b/sources/68471ebce9693c54cfa25e07/submit';
-
-                // Generate random UMIDs
-                $umid_adap = bin2hex(random_bytes(6));
-                $umid2_adap = bin2hex(random_bytes(6));
-
+                // -------------------------------
+                // 2️⃣ Fallback to LeadConduit
+                // -------------------------------
                 $leadConduitPayload = [
                     'first_name' => $firstName,
                     'last_name' => $lastName,
@@ -128,80 +90,102 @@ class LeadSubmissionController extends Controller
                     'model' => $validated['sel-model'],
                     'mileage' => $mileageValue,
                     'lead_type_adap' => 'E',
-                    'umid_adap' => $umid_adap,
-                    'umid2_adap' => $umid2_adap,
+                    'umid_adap' => bin2hex(random_bytes(6)),
+                    'umid2_adap' => bin2hex(random_bytes(6)),
                     'company.name' => "Null",
                 ];
 
-                Log::info('LeadConduit payload prepared:', $leadConduitPayload);
-                Log::info('Attempting to send to LeadConduit...');
+                Log::info('Prepared LeadConduit payload', $leadConduitPayload);
 
-                $fallbackResponse = Http::asForm()->post($fallbackUrl, $leadConduitPayload);
+                $leadConduitResponse = Http::asForm()->post(
+                    'https://app.leadconduit.com/flows/65832665b40f680b034dae9b/sources/68471ebce9693c54cfa25e07/submit',
+                    $leadConduitPayload
+                );
 
-                Log::info('LeadConduit API response status: ' . $fallbackResponse->status());
-                Log::info('LeadConduit API response body: ' . $fallbackResponse->body());
+                Log::info('LeadConduit API response', [
+                    'status' => $leadConduitResponse->status(),
+                    'body' => $leadConduitResponse->body(),
+                ]);
 
-                if ($fallbackResponse->successful()) {
-                    // Check LeadConduit response for duplicate
-                    $fallbackBody = json_decode($fallbackResponse->body(), true);
-                    if (
-                        isset($fallbackBody['outcome']) && $fallbackBody['outcome'] === 'failure' &&
-                        isset($fallbackBody['reason']) && stripos($fallbackBody['reason'], 'duplicate') !== false
-                    ) {
+                $leadConduitIsDuplicate = false;
+                $fallbackBody = json_decode($leadConduitResponse->body(), true);
+                if (
+                    isset($fallbackBody['outcome'], $fallbackBody['reason']) &&
+                    $fallbackBody['outcome'] === 'failure' &&
+                    stripos($fallbackBody['reason'], 'duplicate') !== false
+                ) {
+                    $leadConduitIsDuplicate = true;
+                    Log::info('Duplicate lead detected in LeadConduit');
+                }
 
-                        Log::info('Duplicate lead detected in LeadConduit');
-                        $leadConduitIsDuplicate = true;
-
-                        // Check if BOTH systems reported duplicate
-                        if ($enduranceIsDuplicate && $leadConduitIsDuplicate) {
-                            Log::info('Lead is duplicate in BOTH Endurance and LeadConduit');
-
-                            session()->put('lead_destination', 'Already Submitted Previously');
-                            session()->put('lead_already_submitted', true);
-
-                            return response()->json([
-                                'success' => true,
-                                'message' => 'This lead has been submitted previously to both our primary and backup systems.',
-                                'destination' => 'Already Submitted Previously'
-                            ]);
-                        } else {
-                            // LeadConduit duplicate but Endurance wasn't, still count as submitted to LeadConduit
-                            Log::info('Lead was duplicate in LeadConduit but submitted successfully (Endurance had non-duplicate error)');
-
-                            session()->put('lead_destination', 'American Dream');
-                            session()->put('lead_already_submitted', true);
-
-                            return response()->json([
-                                'success' => true,
-                                'message' => 'Your lead has been successfully submitted via our backup system.',
-                                'destination' => 'American Dream'
-                            ]);
-                        }
-                    }
-
-                    Log::info('Lead successfully sent to LeadConduit (American Dream)');
-
-                    session()->put('lead_destination', 'American Dream');
-                    session()->put('lead_already_submitted', true);
-
-                    return response()->json([
-                        'success' => true,
-                        'message' => 'Your lead has been successfully submitted via our backup system. You should receive a response shortly.',
-                        'destination' => 'American Dream'
-                    ]);
+                if ($enduranceIsDuplicate && $leadConduitIsDuplicate) {
+                    $finalDestination = 'Already Submitted Previously';
+                    $finalMessage = 'This lead has been submitted previously to both our primary and backup systems.';
+                } else {
+                    $finalDestination = 'American Dream';
+                    $finalMessage = 'Your lead has been submitted via our backup system.';
                 }
             }
-        } catch (\Exception $e) {
-            Log::error('Submission exception occurred');
-            Log::error('Exception message: ' . $e->getMessage());
-            Log::error('Exception trace: ' . $e->getTraceAsString());
 
-            session()->flash('lead_destination', 'System Error');
+            // -------------------------------
+            // 3️⃣ Always send to Partner Lead API
+            // -------------------------------
+            try {
+                $partnerPayload = [
+                    'partner' => 'Chaiz',
+                    'transactionId' => (string) Str::uuid(),
+                    'utmParameters' => 'utm_source=partner&utm_medium=cps&utm_campaign=lead-gen',
+                    'lead' => [
+                        'email' => $validated['email'],
+                        'firstName' => $firstName,
+                        'lastName' => $lastName,
+                    ],
+                    'vehicle' => [
+                        'state' => $stateCode,
+                        'mileage' => $mileageValue,
+                        'make' => $validated['sel-make'],
+                        'model' => $validated['sel-model'],
+                        'year' => (int) $validated['sel-year'],
+                    ],
+                ];
+
+                Log::info('Prepared Partner Lead API payload', $partnerPayload);
+
+                $partnerResponse = Http::withHeaders([
+                    'Authorization' => 'Bearer ' . env('PARTNER_API_TOKEN'),
+                    'Content-Type' => 'application/json',
+                ])->post('https://chaiz-api-uat.azurewebsites.net/api/v2/Partners/Lead', $partnerPayload);
+
+                Log::info('Partner Lead API response', [
+                    'status' => $partnerResponse->status(),
+                    'body' => $partnerResponse->body(),
+                ]);
+            } catch (\Exception $e) {
+                Log::error('Partner Lead API submission failed', ['message' => $e->getMessage()]);
+            }
+
+
+            // -------------------------------
+            // 4️⃣ Set session and return response
+            // -------------------------------
+            session()->put('lead_already_submitted', true);
+            session()->put('lead_destination', $finalDestination);
+
+            return response()->json([
+                'success' => true,
+                'message' => $finalMessage,
+                'destination' => $finalDestination,
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Submission exception occurred', [
+                'message' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
 
             return response()->json([
                 'success' => false,
                 'message' => 'Failed to submit lead due to a system error: ' . $e->getMessage(),
-                'destination' => 'System Error'
+                'destination' => 'System Error',
             ]);
         }
     }
@@ -209,15 +193,26 @@ class LeadSubmissionController extends Controller
     /**
      * Convert mileage range to numeric value
      */
-    private function convertMileageToNumeric($mileageRange)
+    private function convertMileageToNumeric(string $mileageRange): int
     {
-        $mileageMap = [
+        return match ($mileageRange) {
             'less-than-100k' => 75000,
             '100k-140k' => 120000,
             '140k-200k' => 170000,
             'more-than-200k' => 225000,
-        ];
+            default => 100000,
+        };
+    }
 
-        return $mileageMap[$mileageRange] ?? 100000;
+    /**
+     * Split full name into first and last name
+     */
+    private function splitName(string $fullName): array
+    {
+        $parts = explode(' ', $fullName, 2);
+        return [
+            ucfirst($parts[0] ?? ''),
+            ucfirst($parts[1] ?? ''),
+        ];
     }
 }
