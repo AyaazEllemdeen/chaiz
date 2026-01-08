@@ -757,6 +757,14 @@
                 return true;
             }
 
+            // Validate phone number (must be exactly 10 digits)
+            function validatePhoneNumber(phone) {
+                // Remove all non-digit characters
+                const digitsOnly = phone.replace(/\D/g, '');
+
+                return digitsOnly.length === 10;
+            }
+
             // 6. Instant Quote button clicks the submit button
             document.getElementById('instant-quote-btn').addEventListener('click', function () {
                 document.getElementById('submit-btn').click();
@@ -790,6 +798,16 @@
                 if (!validateFullName(fullName)) {
                     alert('Please enter your full name (first and last name)');
                     fullNameInput.focus();
+                    return;
+                }
+
+                // Validate phone number
+                const phoneInput = document.querySelector('input[name="user-number"]');
+                const phoneNumber = phoneInput.value;
+
+                if (!validatePhoneNumber(phoneNumber)) {
+                    alert('Please enter a valid 10-digit phone number');
+                    phoneInput.focus();
                     return;
                 }
 
