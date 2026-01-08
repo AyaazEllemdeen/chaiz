@@ -26,6 +26,7 @@ class LeadController extends Controller
             'email' => 'required|email',
             'user-name' => 'required|string',
             'user-number' => 'required|string',
+            'lead_destination' => 'nullable|string', 
         ]);
 
         if ($validator->fails()) {
@@ -41,12 +42,13 @@ class LeadController extends Controller
             'email' => $request->input('email'),
             'name' => $request->input('user-name'),
             'phone' => $request->input('user-number'),
+            'lead_destination' => $request->input('lead_destination', 'Unknown'),
         ]);
 
         return response()->json([
             'success' => true,
             'lead_id' => $lead->id,
-            'destination' => 'database'
+            'destination' => $lead->lead_destination
         ]);
     }
 }

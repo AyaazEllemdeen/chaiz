@@ -19,5 +19,6 @@ class Lead extends Model
         'email',
         'user_name',
         'user_number',
+        'lead_destination',
     ];
 }
