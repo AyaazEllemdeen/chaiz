@@ -22,6 +22,7 @@ class LeadService
             'email' => $data['email'],
             'user_name' => $data['name'],
             'user_number' => $data['phone'],
+            'lead_destination' => $data['lead_destination'] ?? 'Unknown',
         ]);
     }
 }
