@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compare best extended auto warranties 2025</title>
-    <meta name="title" content="Compare best extended auto warranties 2025">
+    <title>Compare best extended auto warranties 2026</title>
+    <meta name="title" content="Compare best extended auto warranties 2026">
     <meta name="description"
-        content="Compare the best extended auto warranties in 2025 and find the plan that fits you—learn about coverage, benefits, and extended car warranty cost.">
+        content="Compare the best extended auto warranties in 2026 and find the plan that fits you—learn about coverage, benefits, and extended car warranty cost.">
     <meta name="keywords"
-        content="extended auto warranties 2025, best car warranty, extended car warranty cost, auto warranty coverage, vehicle warranty plans">
+        content="extended auto warranties 2026, best car warranty, extended car warranty cost, auto warranty coverage, vehicle warranty plans">
     <meta property="og:image" content="{{ asset('img/banner/carbanner.jpg') }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
