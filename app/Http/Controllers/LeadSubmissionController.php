@@ -31,104 +31,63 @@ class LeadSubmissionController extends Controller
         $zipCode = config("zipcodes.{$stateCode}", config('zipcodes.default'));
         $mileageValue = $this->convertMileageToNumeric($validated['car_mileage']);
 
-        $payload = [
-            'firstName' => $firstName,
-            'lastName' => $lastName,
-            'state' => $stateCode,
-            'zipCode' => $zipCode,
-            'phone' => $validated['user-number'],
-            'email' => $validated['email'],
-            'year' => (int) $validated['sel-year'],
-            'make' => $validated['sel-make'],
-            'model' => $validated['sel-model'],
-            'mileage' => $mileageValue,
-            'smsOptIn' => true,
-        ];
-
-        Log::info('Prepared Endurance payload', $payload);
-
         $finalDestination = 'System Error';
         $finalMessage = 'Failed to submit lead due to a system error';
 
         try {
             // -------------------------------
-            // 1️⃣ Send to Endurance
+            // 1️⃣ Send to LeadConduit
             // -------------------------------
-            $enduranceResponse = Http::withHeaders([
-                'Content-Type' => 'application/json-patch+json',
-            ])->withBasicAuth('CHAIZ-INT-chaizcwhp', 'NqkTOZ2vJBEi3cpn')
-                ->post('https://leadsubmission.enduranceapi.com/api/v1/leads', $payload);
+            $leadConduitPayload = [
+                'first_name' => $firstName,
+                'last_name' => $lastName,
+                'state' => $stateCode,
+                'zipCode' => $zipCode,
+                'phone_1' => $validated['user-number'],
+                'email' => $validated['email'],
+                'year' => $validated['sel-year'],
+                'make' => $validated['sel-make'],
+                'model' => $validated['sel-model'],
+                'mileage' => $mileageValue,
+                'lead_type_adap' => 'E',
+                'umid_adap' => bin2hex(random_bytes(6)),
+                'umid2_adap' => bin2hex(random_bytes(6)),
+                'company.name' => "Null",
+            ];
 
-            Log::info('Endurance API response', [
-                'status' => $enduranceResponse->status(),
-                'body' => $enduranceResponse->body(),
+            Log::info('Prepared LeadConduit payload', $leadConduitPayload);
+
+            $leadConduitResponse = Http::asForm()->post(
+                'https://app.leadconduit.com/flows/65832665b40f680b034dae9b/sources/68471ebce9693c54cfa25e07/submit',
+                $leadConduitPayload
+            );
+
+            Log::info('LeadConduit API response', [
+                'status' => $leadConduitResponse->status(),
+                'body' => $leadConduitResponse->body(),
             ]);
 
-            $enduranceIsDuplicate = false;
-            if ($enduranceResponse->successful()) {
-                $finalDestination = 'Endurance';
-                $finalMessage = 'Your lead has been successfully submitted to Endurance.';
+            $leadConduitIsDuplicate = false;
+            $fallbackBody = json_decode($leadConduitResponse->body(), true);
+            if (
+                isset($fallbackBody['outcome'], $fallbackBody['reason']) &&
+                $fallbackBody['outcome'] === 'failure' &&
+                stripos($fallbackBody['reason'], 'duplicate') !== false
+            ) {
+                $leadConduitIsDuplicate = true;
+                Log::info('Duplicate lead detected in LeadConduit');
+            }
+
+            if ($leadConduitIsDuplicate) {
+                $finalDestination = 'Already Submitted Previously';
+                $finalMessage = 'This lead has been submitted previously.';
             } else {
-                $responseBody = json_decode($enduranceResponse->body(), true);
-                if ($enduranceResponse->status() === 400 && isset($responseBody['errorCode']) && $responseBody['errorCode'] === 970) {
-                    $enduranceIsDuplicate = true;
-                    Log::info('Duplicate lead detected in Endurance');
-                }
-
-                // -------------------------------
-                // 2️⃣ Fallback to LeadConduit
-                // -------------------------------
-                $leadConduitPayload = [
-                    'first_name' => $firstName,
-                    'last_name' => $lastName,
-                    'state' => $stateCode,
-                    'zipCode' => $zipCode,
-                    'phone_1' => $validated['user-number'],
-                    'email' => $validated['email'],
-                    'year' => $validated['sel-year'],
-                    'make' => $validated['sel-make'],
-                    'model' => $validated['sel-model'],
-                    'mileage' => $mileageValue,
-                    'lead_type_adap' => 'E',
-                    'umid_adap' => bin2hex(random_bytes(6)),
-                    'umid2_adap' => bin2hex(random_bytes(6)),
-                    'company.name' => "Null",
-                ];
-
-                Log::info('Prepared LeadConduit payload', $leadConduitPayload);
-
-                $leadConduitResponse = Http::asForm()->post(
-                    'https://app.leadconduit.com/flows/65832665b40f680b034dae9b/sources/68471ebce9693c54cfa25e07/submit',
-                    $leadConduitPayload
-                );
-
-                Log::info('LeadConduit API response', [
-                    'status' => $leadConduitResponse->status(),
-                    'body' => $leadConduitResponse->body(),
-                ]);
-
-                $leadConduitIsDuplicate = false;
-                $fallbackBody = json_decode($leadConduitResponse->body(), true);
-                if (
-                    isset($fallbackBody['outcome'], $fallbackBody['reason']) &&
-                    $fallbackBody['outcome'] === 'failure' &&
-                    stripos($fallbackBody['reason'], 'duplicate') !== false
-                ) {
-                    $leadConduitIsDuplicate = true;
-                    Log::info('Duplicate lead detected in LeadConduit');
-                }
-
-                if ($enduranceIsDuplicate && $leadConduitIsDuplicate) {
-                    $finalDestination = 'Already Submitted Previously';
-                    $finalMessage = 'This lead has been submitted previously to both our primary and backup systems.';
-                } else {
-                    $finalDestination = 'American Dream';
-                    $finalMessage = 'Your lead has been submitted via our backup system.';
-                }
+                $finalDestination = 'American Dream';
+                $finalMessage = 'Your lead has been submitted successfully.';
             }
 
             // -------------------------------
-            // 3️⃣ Always send to Partner Lead API
+            // 2️⃣ Always send to Partner Lead API
             // -------------------------------
             try {
                 $partnerPayload = [
@@ -166,7 +125,7 @@ class LeadSubmissionController extends Controller
 
 
             // -------------------------------
-            // 4️⃣ Set session and return response
+            // 3️⃣ Set session and return response
             // -------------------------------
             session()->put('lead_already_submitted', true);
             session()->put('lead_destination', $finalDestination);

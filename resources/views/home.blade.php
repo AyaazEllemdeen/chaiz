@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <section id="hero-section" class="hero-section">
         <div class="hero-content">
             <div class="row align-items-center g-0">
@@ -23,7 +22,8 @@
 
                             <div class="row g-3 mb-3">
                                 <div class="col-6 col-md-6">
-                                    <input type="text" name="user-name" class="form-input" placeholder="Full Name" required>
+                                    <input type="text" name="user-name" class="form-input" placeholder="Full Name"
+                                        required>
                                 </div>
                                 <div class="col-6 col-md-6">
                                     <input type="text" name="user-number" class="form-input" placeholder="Phone Number"
@@ -96,10 +96,10 @@
                                                 'GU' => 'Guam',
                                                 'VI' => 'U.S. Virgin Islands',
                                                 'AS' => 'American Samoa',
-                                                'MP' => 'Northern Mariana Islands'
+                                                'MP' => 'Northern Mariana Islands',
                                             ];
                                         @endphp
-                                        @foreach($states as $abbr => $name)
+                                        @foreach ($states as $abbr => $name)
                                             <option value="{{ $abbr }}">{{ $name }}</option>
                                         @endforeach
                                     </select>
@@ -113,7 +113,7 @@
                                         @php
                                             $makes = call_user_func(config('vehicles.makes'));
                                         @endphp
-                                        @foreach($makes as $make)
+                                        @foreach ($makes as $make)
                                             <option value="{{ $make }}">{{ $make }}</option>
                                         @endforeach
                                     </select>
@@ -129,7 +129,7 @@
                                 <div class="col-6 col-md-6">
                                     <select id="sel_year" name="sel-year" class="form-input" required>
                                         <option value="">Select Vehicle Year</option>
-                                        @for($year = 2026; $year >= 1990; $year--)
+                                        @for ($year = 2026; $year >= 1990; $year--)
                                             <option value="{{ $year }}">{{ $year }}</option>
                                         @endfor
                                     </select>
@@ -149,8 +149,9 @@
                                 <span id="submit-text">See Quotes</span>
                                 <span id="submit-loader" class="submit-loader" style="display: none;">
                                     <svg width="20" height="20" viewBox="0 0 50 50" style="vertical-align: middle;">
-                                        <circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="5"
-                                            stroke-dasharray="31.415, 31.415" transform="rotate(-90 25 25)">
+                                        <circle cx="25" cy="25" r="20" fill="none" stroke="currentColor"
+                                            stroke-width="5" stroke-dasharray="31.415, 31.415"
+                                            transform="rotate(-90 25 25)">
                                             <animateTransform attributeName="transform" type="rotate" from="0 25 25"
                                                 to="360 25 25" dur="1s" repeatCount="indefinite" />
                                         </circle>
@@ -179,41 +180,6 @@
                 </button>
 
                 <div class="cards-track" id="providersWrapper">
-
-                    <!-- Endurance Card -->
-                    <div class="provider-card">
-                        <div class="card-badge">TOP RATED</div>
-                        <div class="card-top">
-                            <div class="logo-wrap">
-                                <a href="https://endurancewarranty.com/lp/czcw" target="_blank" rel="noopener noreferrer">
-                                    <img src="/img/1c.png" alt="Endurance Logo">
-                                </a>
-                            </div>
-                            <div class="rating-wrap">
-                                <span class="rating-number">9.9</span>
-                                <span class="rating-stars">★★★★★</span>
-                            </div>
-                        </div>
-                        <div class="promo-text">$300 off any new plan!</div>
-                        <div class="card-body">
-                            <p class="card-desc">Endurance offers flexibility to choose your certified mechanic, and a
-                                30-day money-back guarantee for peace of mind. Also, get a free Year of Elite Benefits
-                                featuring 24/7 Roadside Assistance, Complete Tire Coverage, Key Replacement, and more!</p>
-                            <ul class="features-list">
-                                <li>Covers cars up to 20 years old/200K miles</li>
-                                <li>1 year of FREE Elite Benefits</li>
-                                <li>Flexible down payment to fit your budget</li>
-                                <li>6 coverage plans to choose from</li>
-                                <li>No obligation fast quote</li>
-                                <li>30 Day money back guarantee</li>
-                            </ul>
-                        </div>
-                        <div class="card-actions">
-                            <a href="https://endurancewarranty.com/lp/czcw" class="btn-primary" target="_blank"
-                                rel="noopener noreferrer">Get a Quote</a>
-                            <a href="tel:8005980082" class="btn-secondary">800-598-0082</a>
-                        </div>
-                    </div>
 
                     <!-- American Dream Card -->
                     <div class="provider-card">
@@ -478,7 +444,8 @@
                         <img src="/img/icons/icon2.png" alt="">
                     </div>
                     <h3 class="match-step-title">Extensive provider network</h3>
-                    <p class="match-step-description">We carefully review offers from leading warranty providers to identify
+                    <p class="match-step-description">We carefully review offers from leading warranty providers to
+                        identify
                         the best options for you.</p>
                 </div>
 
@@ -609,7 +576,7 @@
     </section>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             // 1. Provider carousel functionality
             const wrapper = document.getElementById("providersWrapper");
             const prevBtn = document.getElementById("scrollLeftProviders");
@@ -633,12 +600,18 @@
 
             prevBtn.addEventListener("click", () => {
                 const cardWidth = getCardWidth();
-                wrapper.scrollBy({ left: -cardWidth, behavior: "smooth" });
+                wrapper.scrollBy({
+                    left: -cardWidth,
+                    behavior: "smooth"
+                });
             });
 
             nextBtn.addEventListener("click", () => {
                 const cardWidth = getCardWidth();
-                wrapper.scrollBy({ left: cardWidth, behavior: "smooth" });
+                wrapper.scrollBy({
+                    left: cardWidth,
+                    behavior: "smooth"
+                });
             });
 
             wrapper.addEventListener("scroll", updateUI);
@@ -649,7 +622,7 @@
             const vehiclesData = @json(config('vehicles.vehicles'));
 
             // 3. Handle make selection to populate models
-            document.getElementById('sel_make').addEventListener('change', function () {
+            document.getElementById('sel_make').addEventListener('change', function() {
                 const selectedMake = this.value;
                 const modelSelect = document.getElementById('sel_model');
 
@@ -685,7 +658,7 @@
                 const data = Object.fromEntries(formData);
 
                 try {
-                    // 1. Submit to Endurance/LeadConduit via LeadSubmissionController (this sets the session)
+                    // 1. Submit via LeadSubmissionController (this sets the session)
                     const apiResponse = await fetch('{{ route('lead.submit') }}', {
                         method: 'POST',
                         headers: {
@@ -766,16 +739,19 @@
             }
 
             // 6. Instant Quote button clicks the submit button
-            document.getElementById('instant-quote-btn').addEventListener('click', function () {
+            document.getElementById('instant-quote-btn').addEventListener('click', function() {
                 document.getElementById('submit-btn').click();
             });
 
             // 7. Find My Match button - scroll to top and show alert
             const matchButton = document.querySelector('.match-cta-button');
             if (matchButton) {
-                matchButton.addEventListener('click', function () {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    setTimeout(function () {
+                matchButton.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                    setTimeout(function() {
                         alert('Please fill in your details');
                     }, 500);
                 });
@@ -784,7 +760,7 @@
             // 8. Form submission with validation
             let isSubmitting = false;
 
-            document.getElementById('quiz-start-form').addEventListener('submit', async function (e) {
+            document.getElementById('quiz-start-form').addEventListener('submit', async function(e) {
                 e.preventDefault();
 
                 if (isSubmitting) {
@@ -819,7 +795,7 @@
             // 9. FAQ functionality
             const faqQuestions = document.querySelectorAll('.faq-question');
             faqQuestions.forEach(question => {
-                question.addEventListener('click', function (e) {
+                question.addEventListener('click', function(e) {
                     e.preventDefault();
                     const answer = this.nextElementSibling;
                     const icon = this.querySelector('.faq-icon');
