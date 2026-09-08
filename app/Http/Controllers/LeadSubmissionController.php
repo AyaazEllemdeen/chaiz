@@ -36,7 +36,7 @@ class LeadSubmissionController extends Controller
 
         try {
             // -------------------------------
-            // 1️⃣ Send to LeadConduit
+            // 1. Send to LeadConduit (American Dream)
             // -------------------------------
             $leadConduitPayload = [
                 'first_name' => $firstName,
@@ -67,27 +67,22 @@ class LeadSubmissionController extends Controller
                 'body' => $leadConduitResponse->body(),
             ]);
 
-            $leadConduitIsDuplicate = false;
             $fallbackBody = json_decode($leadConduitResponse->body(), true);
-            if (
-                isset($fallbackBody['outcome'], $fallbackBody['reason']) &&
-                $fallbackBody['outcome'] === 'failure' &&
-                stripos($fallbackBody['reason'], 'duplicate') !== false
-            ) {
-                $leadConduitIsDuplicate = true;
-                Log::info('Duplicate lead detected in LeadConduit');
-            }
+            $isDuplicate = isset($fallbackBody['outcome'], $fallbackBody['reason'])
+                && $fallbackBody['outcome'] === 'failure'
+                && stripos($fallbackBody['reason'], 'duplicate') !== false;
 
-            if ($leadConduitIsDuplicate) {
+            if ($isDuplicate) {
                 $finalDestination = 'Already Submitted Previously';
                 $finalMessage = 'This lead has been submitted previously.';
+                Log::info('Duplicate lead detected in LeadConduit');
             } else {
                 $finalDestination = 'American Dream';
-                $finalMessage = 'Your lead has been submitted successfully.';
+                $finalMessage = 'Your lead has been successfully submitted.';
             }
 
             // -------------------------------
-            // 2️⃣ Always send to Partner Lead API
+            // 2. Always send to Partner Lead API
             // -------------------------------
             try {
                 $partnerPayload = [
@@ -123,9 +118,8 @@ class LeadSubmissionController extends Controller
                 Log::error('Partner Lead API submission failed', ['message' => $e->getMessage()]);
             }
 
-
             // -------------------------------
-            // 3️⃣ Set session and return response
+            // 3. Set session and return response
             // -------------------------------
             session()->put('lead_already_submitted', true);
             session()->put('lead_destination', $finalDestination);
@@ -149,9 +143,6 @@ class LeadSubmissionController extends Controller
         }
     }
 
-    /**
-     * Convert mileage range to numeric value
-     */
     private function convertMileageToNumeric(string $mileageRange): int
     {
         return match ($mileageRange) {
@@ -163,9 +154,6 @@ class LeadSubmissionController extends Controller
         };
     }
 
-    /**
-     * Split full name into first and last name
-     */
     private function splitName(string $fullName): array
     {
         $parts = explode(' ', $fullName, 2);
