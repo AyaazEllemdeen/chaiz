@@ -181,6 +181,42 @@
 
                 <div class="cards-track" id="providersWrapper">
 
+                    <!-- Endurance Card -->
+                    <div class="provider-card">
+                        <div class="card-badge">TOP RATED</div>
+                        <div class="card-top">
+                            <div class="logo-wrap">
+                                <a href="https://endurancewarranty.com/lp/czcw" target="_blank"
+                                    rel="noopener noreferrer">
+                                    <img src="/img/1c.png" alt="Endurance Logo">
+                                </a>
+                            </div>
+                            <div class="rating-wrap">
+                                <span class="rating-number">9.9</span>
+                                <span class="rating-stars">★★★★★</span>
+                            </div>
+                        </div>
+                        <div class="promo-text">$300 off any new plan!</div>
+                        <div class="card-body">
+                            <p class="card-desc">Endurance offers flexibility to choose your certified mechanic, and a
+                                30-day money-back guarantee for peace of mind. Also, get a free Year of Elite Benefits
+                                featuring 24/7 Roadside Assistance, Complete Tire Coverage, Key Replacement, and more!</p>
+                            <ul class="features-list">
+                                <li>Covers cars up to 20 years old/200K miles</li>
+                                <li>1 year of FREE Elite Benefits</li>
+                                <li>Flexible down payment to fit your budget</li>
+                                <li>6 coverage plans to choose from</li>
+                                <li>No obligation fast quote</li>
+                                <li>30 Day money back guarantee</li>
+                            </ul>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://endurancewarranty.com/lp/czcw" class="btn-primary" target="_blank"
+                                rel="noopener noreferrer">Get a Quote</a>
+                            <a href="tel:8005980082" class="btn-secondary">800-598-0082</a>
+                        </div>
+                    </div>
+
                     <!-- American Dream Card -->
                     <div class="provider-card">
                         <div class="card-badge">3 MONTHS FREE</div>
@@ -658,7 +694,7 @@
                 const data = Object.fromEntries(formData);
 
                 try {
-                    // 1. Submit via LeadSubmissionController (this sets the session)
+                    // 1. Submit to Endurance/LeadConduit via LeadSubmissionController (this sets the session)
                     const apiResponse = await fetch('{{ route('lead.submit') }}', {
                         method: 'POST',
                         headers: {
