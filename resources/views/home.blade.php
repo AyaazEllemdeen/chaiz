@@ -211,8 +211,8 @@
                             </ul>
                         </div>
                         <div class="card-actions">
-                            <a href="https://endurancewarranty.com/lp/czcw" class="btn-primary" target="_blank"
-                                rel="noopener noreferrer">Get a Quote</a>
+                            <a href="https://secure.money.com/pr/hb8c7a4813ef?ap-referrer=cworg" class="btn-primary"
+                                target="_blank" rel="noopener noreferrer">Get a Quote</a>
                             <a href="tel:8005980082" class="btn-secondary">800-598-0082</a>
                         </div>
                     </div>
@@ -247,7 +247,7 @@
                             </ul>
                         </div>
                         <div class="card-actions">
-                            <a href="https://www.americandreamautoprotect.com/u7izFNKM9E" class="btn-primary"
+                            <a href="https://secure.money.com/pr/jb5b813a80e3?ap-referrer=cworg" class="btn-primary"
                                 target="_blank" rel="noopener noreferrer">Get a Quote</a>
                             <a href="tel:8333640947" class="btn-secondary">833-364-0947</a>
                         </div>
