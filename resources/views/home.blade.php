@@ -186,7 +186,7 @@
                         <div class="card-badge">TOP RATED</div>
                         <div class="card-top">
                             <div class="logo-wrap">
-                                <a href="https://endurancewarranty.com/lp/czcw" target="_blank"
+                                <a href="https://secure.money.com/pr/hb8c7a4813ef?ap-referrer=cworg" target="_blank"
                                     rel="noopener noreferrer">
                                     <img src="/img/1c.png" alt="Endurance Logo">
                                 </a>
@@ -222,7 +222,8 @@
                         <div class="card-badge">24/7 ROADSIDE</div>
                         <div class="card-top">
                             <div class="logo-wrap">
-                                <a href="https://carshield.com/" target="_blank" rel="noopener noreferrer">
+                                <a href="https://secure.money.com/pr/mf449a834c8d?ap-referrer=Cworg" target="_blank"
+                                    rel="noopener noreferrer">
                                     <img src="/img/carshield.png" alt="CarShield Logo">
                                 </a>
                             </div>
