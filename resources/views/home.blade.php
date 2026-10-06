@@ -217,14 +217,13 @@
                         </div>
                     </div>
 
-                    <!-- American Dream Card -->
+                    <!-- CarShield Card -->
                     <div class="provider-card">
-                        <div class="card-badge">3 MONTHS FREE</div>
+                        <div class="card-badge">24/7 ROADSIDE</div>
                         <div class="card-top">
                             <div class="logo-wrap">
-                                <a href="https://www.americandreamautoprotect.com/u7izFNKM9E" target="_blank"
-                                    rel="noopener noreferrer">
-                                    <img src="/img/american-dreamc.png" alt="American Dream Logo">
+                                <a href="https://carshield.com/" target="_blank" rel="noopener noreferrer">
+                                    <img src="/img/carshield.png" alt="CarShield Logo">
                                 </a>
                             </div>
                             <div class="rating-wrap">
@@ -232,24 +231,24 @@
                                 <span class="rating-stars">★★★★★</span>
                             </div>
                         </div>
-                        <div class="promo-text">$350 off + 3 months free!</div>
+                        <div class="promo-text">Claims paid directly to the repair shop</div>
                         <div class="card-body">
-                            <p class="card-desc">American Dream Auto Protect provides peace of mind by mitigating the high
-                                costs that come with unexpected repairs. Their stress-free claims process means you get
-                                approved in as little as 48 hours.</p>
+                            <p class="card-desc">CarShield administers its own vehicle service contracts, so enrollment,
+                                support and claims are all handled in one connected experience. Low deductibles keep
+                                your wallet safe when it matters most.</p>
                             <ul class="features-list">
-                                <li>Choose your own repair facility</li>
-                                <li>Customize your coverage plan</li>
-                                <li>Flexible payment plan options</li>
+                                <li>Thousands of repair shops to choose from</li>
                                 <li>24/7 Roadside Assistance</li>
-                                <li>30 Day money back guarantee</li>
-                                <li>Covers cars up to 20 years old / 200K miles</li>
+                                <li>Rental car options while you're in the shop</li>
+                                <li>Courtesy towing to a safe repair facility</li>
+                                <li>Low deductibles</li>
+                                <li>Flexible payment plans</li>
                             </ul>
                         </div>
                         <div class="card-actions">
-                            <a href="https://secure.money.com/pr/jb5b813a80e3?ap-referrer=cworg" class="btn-primary"
+                            <a href="https://secure.money.com/pr/mf449a834c8d?ap-referrer=Cworg" class="btn-primary"
                                 target="_blank" rel="noopener noreferrer">Get a Quote</a>
-                            <a href="tel:8333640947" class="btn-secondary">833-364-0947</a>
+                            <a href="tel:+18005888501" class="btn-secondary">800-588-8501</a>
                         </div>
                     </div>
 
