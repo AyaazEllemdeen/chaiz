@@ -4,11 +4,15 @@ use App\Http\Controllers\SubmitController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LeadSubmissionController;
 use App\Http\Controllers\LeadController;
+use App\Http\Controllers\SitemapController;
 
 // Home page
 Route::get('/', function () {
     return view('home');
 });
+
+// Sitemap
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
 // Store lead in database
 Route::post('/lead/store', [LeadController::class, 'submit'])->name('lead.store');
