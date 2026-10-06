@@ -693,7 +693,7 @@
                 const data = Object.fromEntries(formData);
 
                 try {
-                    // 1. Submit to Endurance/LeadConduit via LeadSubmissionController (this sets the session)
+                    // 1. Submit to Chaiz via LeadSubmissionController (this sets the session)
                     const apiResponse = await fetch('{{ route('lead.submit') }}', {
                         method: 'POST',
                         headers: {

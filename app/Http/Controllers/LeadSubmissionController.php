@@ -36,90 +36,62 @@ class LeadSubmissionController extends Controller
 
         try {
             // -------------------------------
-            // 1. Send to LeadConduit (American Dream)
+            // 1. Send to Chaiz Partner Lead API
             // -------------------------------
-            $leadConduitPayload = [
-                'first_name' => $firstName,
-                'last_name' => $lastName,
-                'state' => $stateCode,
-                'zipCode' => $zipCode,
-                'phone_1' => $validated['user-number'],
-                'email' => $validated['email'],
-                'year' => $validated['sel-year'],
-                'make' => $validated['sel-make'],
-                'model' => $validated['sel-model'],
-                'mileage' => $mileageValue,
-                'lead_type_adap' => 'E',
-                'umid_adap' => bin2hex(random_bytes(6)),
-                'umid2_adap' => bin2hex(random_bytes(6)),
-                'company.name' => "Null",
+            $partnerPayload = [
+                'partner' => 'Comparewarranties',
+                'transactionId' => (string) Str::uuid(),
+                'utmParameters' => 'utm_source=partner&utm_medium=cps&utm_campaign=lead-gen',
+                'lead' => [
+                    'email' => $validated['email'],
+                    'firstName' => $firstName,
+                    'lastName' => $lastName,
+                ],
+                'vehicle' => [
+                    'state' => $stateCode,
+                    'mileage' => $mileageValue,
+                    'make' => $validated['sel-make'],
+                    'model' => $validated['sel-model'],
+                    'year' => (int) $validated['sel-year'],
+                ],
             ];
 
-            Log::info('Prepared LeadConduit payload', $leadConduitPayload);
+            Log::info('Prepared Partner Lead API payload', $partnerPayload);
 
-            $leadConduitResponse = Http::asForm()->post(
-                'https://app.leadconduit.com/flows/65832665b40f680b034dae9b/sources/68471ebce9693c54cfa25e07/submit',
-                $leadConduitPayload
-            );
+            $partnerResponse = Http::withHeaders([
+                'Authorization' => 'Bearer ' . env('PARTNER_API_TOKEN'),
+                'Content-Type' => 'application/json',
+            ])->post('https://chaiz-api.azurewebsites.net/api/v2/Partners/Lead', $partnerPayload);
 
-            Log::info('LeadConduit API response', [
-                'status' => $leadConduitResponse->status(),
-                'body' => $leadConduitResponse->body(),
+            Log::info('Partner Lead API response', [
+                'status' => $partnerResponse->status(),
+                'body' => $partnerResponse->body(),
             ]);
 
-            $fallbackBody = json_decode($leadConduitResponse->body(), true);
-            $isDuplicate = isset($fallbackBody['outcome'], $fallbackBody['reason'])
-                && $fallbackBody['outcome'] === 'failure'
-                && stripos($fallbackBody['reason'], 'duplicate') !== false;
+            $isDuplicate = stripos($partnerResponse->body(), 'duplicate') !== false;
 
             if ($isDuplicate) {
                 $finalDestination = 'Already Submitted Previously';
                 $finalMessage = 'This lead has been submitted previously.';
-                Log::info('Duplicate lead detected in LeadConduit');
-            } else {
-                $finalDestination = 'American Dream';
+                Log::info('Duplicate lead detected by Chaiz');
+            } elseif ($partnerResponse->successful()) {
+                $finalDestination = 'Chaiz';
                 $finalMessage = 'Your lead has been successfully submitted.';
-            }
-
-            // -------------------------------
-            // 2. Always send to Partner Lead API
-            // -------------------------------
-            try {
-                $partnerPayload = [
-                    'partner' => 'Comparewarranties',
-                    'transactionId' => (string) Str::uuid(),
-                    'utmParameters' => 'utm_source=partner&utm_medium=cps&utm_campaign=lead-gen',
-                    'lead' => [
-                        'email' => $validated['email'],
-                        'firstName' => $firstName,
-                        'lastName' => $lastName,
-                    ],
-                    'vehicle' => [
-                        'state' => $stateCode,
-                        'mileage' => $mileageValue,
-                        'make' => $validated['sel-make'],
-                        'model' => $validated['sel-model'],
-                        'year' => (int) $validated['sel-year'],
-                    ],
-                ];
-
-                Log::info('Prepared Partner Lead API payload', $partnerPayload);
-
-                $partnerResponse = Http::withHeaders([
-                    'Authorization' => 'Bearer ' . env('PARTNER_API_TOKEN'),
-                    'Content-Type' => 'application/json',
-                ])->post('https://chaiz-api.azurewebsites.net/api/v2/Partners/Lead', $partnerPayload);
-
-                Log::info('Partner Lead API response', [
+            } else {
+                Log::error('Partner Lead API returned an error', [
                     'status' => $partnerResponse->status(),
                     'body' => $partnerResponse->body(),
                 ]);
-            } catch (\Exception $e) {
-                Log::error('Partner Lead API submission failed', ['message' => $e->getMessage()]);
+
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Failed to submit lead to Chaiz',
+                    'destination' => 'System Error',
+                ]);
             }
 
             // -------------------------------
-            // 3. Set session and return response
+            // 2. Set session and return response
             // -------------------------------
             session()->put('lead_already_submitted', true);
             session()->put('lead_destination', $finalDestination);
