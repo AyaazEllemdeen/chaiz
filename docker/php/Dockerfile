@@ -1,5 +1,5 @@
-# Use PHP 8.2 FPM instead of Apache
-FROM php:8.2-fpm
+# Bump this tag for future PHP security releases
+FROM php:8.2.35-fpm-bookworm
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
